@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.sdxxtop.zhidian.ui.activity.ForgetPWDActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:fitsSystemWindows="true">
+
+        <com.sdxxtop.zhidian.widget.SubTitleView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:leftIsNotShow="false"
+            app:subTitle="安全校验" />
+    </LinearLayout>
+
+    <TextView
+        android:layout_width="@dimen/x108"
+        android:layout_height="@dimen/y48"
+        android:layout_marginLeft="@dimen/x80"
+        android:layout_marginTop="@dimen/y405"
+        android:text="手机号"
+        android:textColor="@color/textcolor"
+        android:textSize="@dimen/y30" />
+
+    <EditText
+        android:id="@+id/et_phonenum"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/y402"
+        android:background="@null"
+        android:hint="请输入您的手机号"
+        android:inputType="number|phone"
+        android:maxLength="11"
+        android:paddingLeft="@dimen/x199"
+        android:singleLine="true"
+        android:textCursorDrawable="@drawable/cursor"
+        android:textSize="@dimen/y30" />
+
+    <TextView
+        android:layout_width="@dimen/x590"
+        android:layout_height="@dimen/y2"
+        android:layout_marginLeft="@dimen/x79"
+        android:layout_marginTop="@dimen/y464"
+        android:background="@color/linecolor" />
+
+
+    <EditText
+        android:id="@+id/et_indentify_code"
+        android:layout_width="@dimen/x314"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/x80"
+        android:layout_marginTop="@dimen/y541"
+        android:background="@null"
+        android:ems="7"
+        android:hint="请输入验证码"
+        android:inputType="phone"
+        android:singleLine="true"
+        android:textCursorDrawable="@drawable/cursor"
+        android:textSize="@dimen/y30" />
+
+    <RadioButton
+        android:id="@+id/btn_get_indentify_code"
+        android:layout_width="@dimen/x243"
+        android:layout_height="@dimen/y97"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="@dimen/x80"
+        android:layout_marginTop="@dimen/y516"
+        android:background="@drawable/code_selector"
+        android:button="@null"
+        android:checked="false"
+        android:clickable="false"
+        android:gravity="center"
+        android:text="获取验证码"
+        android:textColor="@drawable/code_color_selector"
+        android:textSize="@dimen/y32" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/y2"
+        android:layout_marginLeft="@dimen/x79"
+        android:layout_marginTop="@dimen/y610"
+        android:layout_toLeftOf="@id/btn_get_indentify_code"
+        android:background="@color/linecolor" />
+
+    <Button
+        android:id="@+id/btn_next"
+        style="?android:attr/borderlessButtonStyle"
+        android:layout_width="@dimen/x591"
+        android:layout_height="@dimen/y93"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="@dimen/y759"
+        android:background="@drawable/shape_login"
+        android:text="下一步"
+        android:textColor="@color/bai"
+        android:textSize="@dimen/y32" />
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/y260"
+        android:layout_alignParentBottom="true"
+        android:background="@mipmap/background2" />
+</RelativeLayout>

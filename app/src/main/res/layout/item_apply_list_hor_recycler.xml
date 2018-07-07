@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="30dp"
+        android:layout_gravity="center"
+        android:background="@drawable/item_apply_list_hor_bg"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:paddingBottom="4dp"
+        android:paddingLeft="15dp"
+        android:paddingRight="15dp"
+        android:paddingTop="4dp">
+
+        <TextView
+            android:id="@+id/item_hor_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="7dp"
+            android:text="请假"
+            android:textSize="12sp" />
+
+        <LinearLayout
+            android:id="@+id/item_hor_delete_layout"
+            android:gravity="center"
+            android:layout_width="10dp"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/item_hor_delete"
+                android:layout_width="8dp"
+                android:layout_height="8dp"
+                android:background="@mipmap/crossing_off" />
+        </LinearLayout>
+
+    </LinearLayout>
+
+</LinearLayout>

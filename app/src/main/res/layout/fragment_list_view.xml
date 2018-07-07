@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:id="@+id/one_key_ll"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="9dp"
+        android:orientation="horizontal"
+        android:paddingBottom="10dp"
+        android:paddingTop="10dp"
+        android:visibility="gone">
+
+        <TextView
+            android:id="@+id/one_key_select"
+            android:layout_width="18dp"
+            android:layout_height="18dp"
+            android:background="@mipmap/unselected" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:text="全选"
+            android:textColor="@color/textcolor"
+            android:textSize="15dp" />
+    </LinearLayout>
+
+    <com.scwang.smartrefresh.layout.SmartRefreshLayout
+        android:id="@+id/smart_refresh_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/one_key_ll">
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/lv_recycler_view"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/backgroundcolor" />
+    </com.scwang.smartrefresh.layout.SmartRefreshLayout>
+
+
+    <TextView
+        android:id="@+id/tv_no_apply"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/y300"
+        android:gravity="center"
+        android:text="没有需要的审批的申请！"
+        android:visibility="gone" />
+
+    <Button
+        android:id="@+id/btn_no_apply"
+        android:layout_width="@dimen/x250"
+        android:layout_height="@dimen/y80"
+        android:layout_centerInParent="true"
+        android:background="@drawable/shape_view_black_solid"
+        android:text="一键审批成功"
+        android:textColor="@color/bai"
+        android:visibility="gone" />
+
+</RelativeLayout>

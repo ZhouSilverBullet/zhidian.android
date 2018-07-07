@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:fitsSystemWindows="true"
+    tools:context="com.sdxxtop.zhidian.ui.activity.ContactSearchActivity">
+
+    <RelativeLayout
+        android:id="@+id/rl_serch_background"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/y115"
+        android:background="@color/backgroundcolor">
+
+        <RelativeLayout
+            android:layout_width="@dimen/x581"
+            android:layout_height="@dimen/y75"
+            android:layout_alignParentLeft="true"
+            android:layout_centerInParent="true"
+            android:layout_marginLeft="@dimen/x10"
+            android:background="@color/bai">
+
+            <EditText
+                android:id="@+id/et_search"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="@dimen/x30"
+                android:background="@null"
+                android:drawableLeft="@mipmap/search"
+                android:drawablePadding="@dimen/x17"
+                android:gravity="center_vertical"
+                android:hint="搜索"
+                android:imeOptions="actionSearch"
+                android:singleLine="true"
+                android:textColor="@color/textcolor"
+                android:textCursorDrawable="@drawable/cursor"
+                android:textSize="@dimen/y30" />
+        </RelativeLayout>
+
+        <TextView
+            android:id="@+id/tv_cancel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="@dimen/x50"
+            android:text="取消"
+            android:textColor="@color/lan"
+            android:textSize="@dimen/y40" />
+    </RelativeLayout>
+
+
+    <ListView
+        android:id="@+id/lv_show_search"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/rl_serch_background"></ListView>
+</RelativeLayout>

@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.sdxxtop.zhidian.ui.activity.MessageNotificationActivity">
+
+    <com.sdxxtop.zhidian.widget.SubTitleView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:leftText="消息中心"
+        app:subTitle="信息设置" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="@color/white"
+        android:paddingLeft="16dp"
+        android:paddingRight="16dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:text="消息提醒"
+            android:textColor="@color/textcolor"
+            android:textSize="17sp" />
+
+        <CheckBox
+            android:id="@+id/message_notification_message_notice_switch"
+            android:layout_width="53dp"
+            android:layout_height="33dp"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:background="@drawable/iv_switch"
+            android:button="@null" />
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:background="@color/white"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingLeft="16dp"
+            android:paddingRight="16dp">
+
+            <TextView
+                android:id="@+id/message_notification_notice_nouse_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:text="勿扰模式"
+                android:textColor="@color/textcolor"
+                android:textSize="17sp" />
+
+            <CheckBox
+                android:id="@+id/message_notification_notice_nouse_switch"
+                android:layout_width="53dp"
+                android:layout_height="33dp"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:background="@drawable/iv_switch"
+                android:button="@null" />
+
+            <TextView
+                android:id="@+id/message_notification_notice_nouse_hint"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/message_notification_notice_nouse_switch"
+                android:layout_marginTop="10dp"
+                android:text="开启后，在设定时间段内收到新消息时不会提醒"
+                android:textColor="@color/texthintcolor"
+                android:textSize="12sp" />
+
+        </RelativeLayout>
+
+        <com.sdxxtop.zhidian.widget.TextAndTextView
+            android:id="@+id/message_notification_notice_nouse_start"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:tatv_text_right_value="23:00"
+            app:tatv_text_view="开始时间" />
+
+        <com.sdxxtop.zhidian.widget.TextAndTextView
+            android:id="@+id/message_notification_notice_nouse_end"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:tatv_line_is_show="false"
+            app:tatv_text_right_value="06:00"
+            app:tatv_text_view="结束时间" />
+    </LinearLayout>
+</LinearLayout>

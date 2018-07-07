@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
+    android:orientation="vertical">
+
+    <com.sdxxtop.zhidian.widget.SubTitleView
+        android:id="@+id/examine_title_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:leftText="返回"
+        app:rightText="筛选"
+        app:rightTextColor="@color/notice_contentcolor"
+        app:rightTextIsShow="true"
+        app:subTitle="我审批的" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:animateLayoutChanges="true"
+        android:background="@color/backgroundcolor"
+        android:focusable="true"
+        android:focusableInTouchMode="true"
+        android:orientation="horizontal"
+        android:padding="5dp">
+
+        <TextView
+            android:id="@+id/examine_search_cancel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:paddingRight="5dp"
+            android:text="取消"
+            android:textColor="@color/blue"
+            android:visibility="gone" />
+
+        <EditText
+            android:id="@+id/examine_search_edit"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_toLeftOf="@id/examine_search_cancel"
+            android:background="@drawable/examine_search_edit"
+            android:drawableLeft="@mipmap/search"
+            android:drawablePadding="3dp"
+            android:hint="搜索人名"
+            android:padding="5dp"
+            android:textSize="14sp" />
+
+    </RelativeLayout>
+
+    <android.support.design.widget.TabLayout
+        android:id="@+id/tab_examine"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:tabIndicatorColor="#3296FA"
+        app:tabSelectedTextColor="#3296FA"
+        app:tabTextAppearance="@style/AppliedTabLayoutTextStyle"
+        app:tabTextColor="@color/notice_contentcolor" />
+
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/y2"
+        android:background="#D3D3D3" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <android.support.v4.view.ViewPager
+            android:id="@+id/fragment_examine_viewpager"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+        <RelativeLayout
+            android:id="@+id/rly_onekey"
+            android:layout_width="@dimen/x83"
+            android:layout_height="@dimen/y83"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentRight="true"
+            android:layout_marginBottom="@dimen/y131"
+            android:layout_marginRight="@dimen/x39">
+
+            <com.sdxxtop.zhidian.widget.CircleImageView
+                android:id="@+id/cir_onekey"
+                android:layout_width="@dimen/x83"
+                android:layout_height="@dimen/y83"
+                android:src="#3296FA" />
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/tv_onekey"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="一键"
+                    android:textColor="@color/bai"
+                    android:textSize="@dimen/y24" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="审批"
+                    android:textColor="@color/bai"
+                    android:textSize="@dimen/y24" />
+
+            </LinearLayout>
+
+        </RelativeLayout>
+
+    </RelativeLayout>
+
+
+</LinearLayout>

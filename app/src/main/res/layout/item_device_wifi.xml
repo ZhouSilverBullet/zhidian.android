@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/y111"
+        android:descendantFocusability="blocksDescendants">
+
+        <ImageView
+            android:layout_width="@dimen/x30"
+            android:layout_height="@dimen/y22"
+            android:layout_marginLeft="@dimen/x32"
+            android:layout_marginTop="@dimen/y32"
+            android:background="@mipmap/wifi" />
+
+        <TextView
+            android:id="@+id/tv_item_wifi_name"
+            android:layout_width="@dimen/x150"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/x85"
+            android:layout_marginTop="@dimen/y20"
+            android:singleLine="true"
+            android:text="图书馆"
+            android:textColor="@color/textcolor"
+            android:textSize="@dimen/y30" />
+
+        <TextView
+            android:id="@+id/tv_item_wifi_info"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/x85"
+            android:layout_marginTop="@dimen/y65"
+            android:text="360WIFI-e7f47d"
+            android:textColor="@color/texthintcolor"
+            android:textSize="@dimen/y24" />
+
+        <View
+            android:id="@+id/line"
+            android:layout_width="@dimen/x689"
+            android:layout_height="@dimen/y2"
+            android:background="@color/linecolor"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="@dimen/y10"
+            android:layout_below="@+id/tv_item_wifi_info"></View>
+
+        <CheckBox
+            android:id="@+id/cb_item_wifi"
+            android:layout_width="@dimen/x105"
+            android:layout_height="@dimen/y65"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="@dimen/x34"
+            android:background="@drawable/iv_switch"
+            android:button="@null" />
+    </RelativeLayout>
+</LinearLayout>

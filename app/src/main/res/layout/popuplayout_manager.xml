@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+    <RelativeLayout
+        android:layout_width="@dimen/x273"
+        android:layout_height="@dimen/y172"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="@dimen/x15"
+        android:layout_marginTop="@dimen/y80"
+        android:background="@drawable/shape_corner">
+
+        <ImageView
+            android:layout_width="@dimen/x28"
+            android:layout_height="@dimen/y38"
+            android:background="@mipmap/gps"
+            android:layout_marginTop="@dimen/y32"
+            android:layout_marginLeft="@dimen/x32"/>
+
+        <TextView
+            android:id="@+id/pop_vote"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/y26"
+            android:layout_marginLeft="@dimen/x93"
+            android:text="GPS设备"
+            android:textSize="@dimen/y34"/>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/y2"
+            android:layout_centerVertical="true"
+            android:background="@color/linecolor" />
+
+        <ImageView
+            android:layout_width="@dimen/x38"
+            android:layout_height="@dimen/y28"
+            android:background="@mipmap/wifi"
+            android:layout_marginTop="@dimen/y120"
+            android:layout_marginLeft="@dimen/x32"/>
+
+        <TextView
+            android:id="@+id/pop_mark"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/y108"
+            android:layout_marginLeft="@dimen/x93"
+            android:text="WiFi设备"
+            android:textSize="@dimen/y34" />
+
+    </RelativeLayout>
+</RelativeLayout>

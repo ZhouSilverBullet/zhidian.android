@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.sdxxtop.zhidian.ui.activity.ModifyMobileInputActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:fitsSystemWindows="true">
+
+        <com.sdxxtop.zhidian.widget.SubTitleView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:subTitle="更换手机账号" />
+    </LinearLayout>
+
+    <EditText
+        android:id="@+id/et_login_pwd"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/x55"
+        android:layout_marginTop="@dimen/y308"
+        android:background="@null"
+        android:ems="16"
+        android:hint="请输入当前登录密码"
+        android:digits="0123456789abcdefghigklmnopqrstuvwxyzABCDEFGHIGKLMNOPQRSTUVWXYZ"
+        android:singleLine="true"
+        android:textCursorDrawable="@drawable/cursor"
+        android:textSize="@dimen/y30" />
+
+    <View
+        android:layout_width="@dimen/x643"
+        android:layout_height="@dimen/y2"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="@dimen/y374"
+        android:background="@color/linecolor" />
+
+    <Button
+        android:id="@+id/btn_next"
+        android:layout_width="@dimen/x591"
+        android:layout_height="@dimen/y91"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="@dimen/y495"
+        android:background="@drawable/btn_make_suer"
+        android:text="下一步"
+        android:textColor="@color/bai"
+        android:textSize="@dimen/y32" />
+</RelativeLayout>

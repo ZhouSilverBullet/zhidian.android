@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/white"
+    android:orientation="horizontal"
+    android:paddingLeft="6dp"
+    android:paddingRight="15dp"
+    android:paddingTop="5dp">
+
+    <RelativeLayout
+        android:layout_width="60dp"
+        android:layout_height="60dp">
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/item_work_detail_response_circle_img"
+            android:layout_width="42dp"
+            android:layout_height="42dp"
+            android:layout_centerInParent="true" />
+
+        <TextView
+            android:id="@+id/item_work_detail_response_short_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:text="李白"
+            android:textColor="@color/white"
+            android:textSize="17sp" />
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/item_work_detail_response_name"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:layout_weight="1"
+                android:text="张小白"
+                android:textColor="@color/texthintcolor"
+                android:textSize="17sp" />
+
+            <TextView
+                android:id="@+id/item_work_detail_response_time"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom"
+                android:textColor="@color/notice_contentcolor"
+                android:textSize="12sp"
+                tools:text="11/20 08:25" />
+        </LinearLayout>
+
+
+        <TextView
+            android:id="@+id/item_work_detail_response_content"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingBottom="5dp"
+            android:text="不错不错不错不错,不错不错不错不不错不错不错不错不错不错错不错不错不错不错不错不错不错不错不错不错"
+            android:textColor="@color/textcolor" />
+
+        <TextView
+            android:id="@+id/item_work_detail_response_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingBottom="5dp"
+            android:text="回复"
+            android:textColor="@color/blue_text_color" />
+    </LinearLayout>
+</LinearLayout>

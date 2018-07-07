@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.mcxtzhang.swipemenulib.SwipeMenuLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <FrameLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:id="@+id/item_vote_img_img"
+                android:layout_width="66dp"
+                android:layout_height="66dp"
+                android:background="@color/backgroundcolor"
+                android:scaleType="centerCrop" />
+
+            <ImageView
+                android:id="@+id/item_vote_img_default_img"
+                android:layout_width="40dp"
+                android:layout_height="35dp"
+                android:layout_gravity="center"
+                android:src="@mipmap/add_images" />
+        </FrameLayout>
+
+
+        <EditText
+            android:id="@+id/item_vote_img_edit"
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:layout_gravity="center_vertical"
+            android:background="@null"
+            android:hint="选项1，最多20字"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp" />
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/item_vote_img_btn_delete"
+        android:layout_width="60dp"
+        android:layout_height="match_parent"
+        android:background="@color/dot_red"
+        android:text="删除" />
+</com.mcxtzhang.swipemenulib.SwipeMenuLayout>

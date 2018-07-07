@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/tv_noresult"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="暂无数据啦"
+        android:layout_centerInParent="true"
+        android:textColor="@color/texthintcolor"
+        android:textSize="@dimen/y46"
+        android:visibility="gone"/>
+
+    <com.sdxxtop.zhidian.widget.XListView
+        android:id="@+id/lv_vote"
+        android:divider="@null"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scrollbars="none"></com.sdxxtop.zhidian.widget.XListView>
+</RelativeLayout>

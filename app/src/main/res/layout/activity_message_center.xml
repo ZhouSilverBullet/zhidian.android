@@ -1,0 +1,249 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/backgroundcolor"
+    android:orientation="vertical">
+
+    <com.sdxxtop.zhidian.widget.SubTitleView
+        android:id="@+id/message_center_title_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:leftText="返回"
+        app:rightText="设置"
+        app:rightTextColor="@color/textcolor"
+        app:rightTextIsShow="true"
+        app:subTitle="消息中心" />
+
+    <RelativeLayout
+        android:id="@+id/message_center_relat"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:background="@color/white"
+        android:paddingBottom="5dp"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        android:paddingTop="5dp"
+        android:visibility="gone">
+
+        <FrameLayout
+            android:id="@+id/message_center_frame"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_marginRight="10dp">
+
+            <ImageView
+                android:layout_width="23dp"
+                android:layout_height="24dp"
+                android:layout_gravity="center"
+                android:src="@drawable/message_approval" />
+
+            <TextView
+                android:id="@+id/message_center_frame_text"
+                android:layout_width="18dp"
+                android:layout_height="18dp"
+                android:layout_gravity="right"
+                android:background="@drawable/fragment_home_red_dot"
+                android:gravity="center"
+                android:text="1"
+                android:textColor="@color/white"
+                android:textSize="10sp"
+                android:visibility="invisible" />
+
+        </FrameLayout>
+
+        <TextView
+            android:id="@+id/message_center_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="1dp"
+            android:layout_toRightOf="@id/message_center_frame"
+            android:ellipsize="end"
+            android:lines="1"
+            android:text="我的审批"
+            android:textColor="@color/apply_text_color"
+            android:textSize="16sp" />
+
+        <TextView
+            android:id="@+id/message_center_content"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="5dp"
+            android:layout_toRightOf="@id/message_center_frame"
+            android:ellipsize="end"
+            android:lines="1"
+            android:text="请假"
+            android:textColor="@color/texthintcolor"
+            android:textSize="14sp" />
+
+        <TextView
+            android:id="@+id/message_center_time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:text="111"
+            android:textColor="@color/notice_contentcolor"
+            android:textSize="14sp" />
+    </RelativeLayout>
+
+    <View
+        android:id="@+id/message_center_line"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/recycler_text_item_line_color" />
+
+    <RelativeLayout
+        android:id="@+id/message_center_relat1"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:background="@color/white"
+        android:paddingBottom="5dp"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        android:paddingTop="5dp"
+        android:visibility="gone">
+
+        <FrameLayout
+            android:id="@+id/message_center_frame1"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_marginRight="10dp">
+
+            <ImageView
+                android:layout_width="23dp"
+                android:layout_height="24dp"
+                android:layout_gravity="center"
+                android:src="@drawable/message_notice" />
+
+            <TextView
+                android:id="@+id/message_center_frame_text1"
+                android:layout_width="18dp"
+                android:layout_height="18dp"
+                android:layout_gravity="right"
+                android:background="@drawable/fragment_home_red_dot"
+                android:gravity="center"
+                android:text="1"
+                android:textColor="@color/white"
+                android:textSize="10sp"
+                android:visibility="invisible" />
+
+        </FrameLayout>
+
+        <TextView
+            android:id="@+id/message_center_title1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="1dp"
+            android:layout_toRightOf="@id/message_center_frame1"
+            android:ellipsize="end"
+            android:lines="1"
+            android:text="公告"
+            android:textColor="@color/apply_text_color"
+            android:textSize="16sp" />
+
+        <TextView
+            android:id="@+id/message_center_content1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="5dp"
+            android:layout_toRightOf="@id/message_center_frame1"
+            android:ellipsize="end"
+            android:lines="1"
+            android:text="请假"
+            android:textColor="@color/texthintcolor"
+            android:textSize="14sp" />
+
+        <TextView
+            android:id="@+id/message_center_time1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:text="111"
+            android:textColor="@color/notice_contentcolor"
+            android:textSize="14sp" />
+    </RelativeLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/recycler_text_item_line_color" />
+
+    <RelativeLayout
+        android:id="@+id/message_center_relat3"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:background="@color/white"
+        android:paddingBottom="5dp"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        android:paddingTop="5dp"
+        android:visibility="gone">
+
+        <FrameLayout
+            android:id="@+id/message_center_frame3"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_marginRight="10dp">
+
+            <ImageView
+                android:layout_width="23dp"
+                android:layout_height="24dp"
+                android:layout_gravity="center"
+                android:src="@drawable/work_report" />
+
+            <TextView
+                android:id="@+id/message_center_frame_text3"
+                android:layout_width="18dp"
+                android:layout_height="18dp"
+                android:layout_gravity="right"
+                android:background="@drawable/fragment_home_red_dot"
+                android:gravity="center"
+                android:text="1"
+                android:textColor="@color/white"
+                android:textSize="10sp"
+                android:visibility="invisible" />
+
+        </FrameLayout>
+
+        <TextView
+            android:id="@+id/message_center_title3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="1dp"
+            android:layout_toRightOf="@id/message_center_frame3"
+            android:ellipsize="end"
+            android:lines="1"
+            android:text="工作汇报"
+            android:textColor="@color/apply_text_color"
+            android:textSize="16sp" />
+
+        <TextView
+            android:id="@+id/message_center_content3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="5dp"
+            android:layout_toRightOf="@id/message_center_frame3"
+            android:ellipsize="end"
+            android:lines="1"
+            android:text="请假"
+            android:textColor="@color/texthintcolor"
+            android:textSize="14sp" />
+
+        <TextView
+            android:id="@+id/message_center_time3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:text="111"
+            android:textColor="@color/notice_contentcolor"
+            android:textSize="14sp" />
+    </RelativeLayout>
+</LinearLayout>
+

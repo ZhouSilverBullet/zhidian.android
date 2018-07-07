@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="10dp">
+
+    <TextView
+        android:id="@+id/stat_report_bg"
+        android:layout_width="41dp"
+        android:layout_height="41dp"
+        android:background="@color/lan" />
+
+    <TextView
+        android:id="@+id/stat_report_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="12dp"
+        android:layout_toRightOf="@id/stat_report_bg"
+        android:text="今日迟到"
+        android:textColor="@color/apply_text_color"
+        android:textSize="16sp" />
+
+    <TextView
+        android:id="@+id/stat_report_content"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginLeft="12dp"
+        android:layout_toRightOf="@id/stat_report_bg"
+        android:text="今日迟到"
+        android:textColor="@color/texthintcolor"
+        android:textSize="14sp" />
+
+    <TextView
+        android:id="@+id/stat_report_status_btn"
+        android:layout_width="52dp"
+        android:layout_height="29dp"
+        android:gravity="center"
+        android:layout_alignParentRight="true"
+        android:layout_centerVertical="true"
+        android:text="启用"
+        android:textColor="@color/lan" />
+</RelativeLayout>

@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.sdxxtop.zhidian.ui.activity.ClassifyActivity">
+    <com.sdxxtop.zhidian.widget.SubTitleView
+        app:subTitle="所属行业"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/y101">
+
+        <TextView
+            android:id="@+id/tv_xueqian"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="@dimen/x39"
+            android:text="学前教育"
+            android:textSize="@dimen/y34"
+            android:textColor="@color/textcolor"/>
+
+        <View
+            android:layout_width="@dimen/x711"
+            android:layout_height="@dimen/y2"
+            android:layout_alignParentRight="true"
+            android:layout_marginTop="@dimen/y100"
+            android:background="@color/linecolor"></View>
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/y101">
+
+        <TextView
+            android:id="@+id/tv_chuzhong"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="@dimen/x39"
+            android:text="初中等教育"
+            android:textSize="@dimen/y34"
+            android:textColor="@color/textcolor"/>
+
+        <View
+            android:layout_width="@dimen/x711"
+            android:layout_height="@dimen/y2"
+            android:layout_alignParentRight="true"
+            android:layout_marginTop="@dimen/y100"
+            android:background="@color/linecolor"></View>
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/y101">
+
+        <TextView
+            android:id="@+id/tv_gaodeng"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="@dimen/x39"
+            android:text="高等教育"
+            android:textSize="@dimen/y34"
+            android:textColor="@color/textcolor"/>
+
+        <View
+            android:layout_width="@dimen/x711"
+            android:layout_height="@dimen/y2"
+            android:layout_alignParentRight="true"
+            android:layout_marginTop="@dimen/y100"
+            android:background="@color/linecolor"></View>
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/y101">
+
+        <TextView
+            android:id="@+id/tv_peixun"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="@dimen/x39"
+            android:text="培训"
+            android:textSize="@dimen/y34"
+            android:textColor="@color/textcolor"/>
+
+        <View
+            android:layout_width="@dimen/x711"
+            android:layout_height="@dimen/y2"
+            android:layout_alignParentRight="true"
+            android:layout_marginTop="@dimen/y100"
+            android:background="@color/linecolor"></View>
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/y101">
+
+        <TextView
+            android:id="@+id/tv_other"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="@dimen/x39"
+            android:text="其他"
+            android:textSize="@dimen/y34"
+            android:textColor="@color/textcolor"/>
+
+        <View
+            android:layout_width="@dimen/x711"
+            android:layout_height="@dimen/y2"
+            android:layout_alignParentRight="true"
+            android:layout_marginTop="@dimen/y100"
+            android:background="@color/linecolor"></View>
+    </RelativeLayout>
+</LinearLayout>

@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.sdxxtop.zhidian.ui.activity.NoticeReciveRangeActivity">
+
+    <com.sdxxtop.zhidian.widget.SubTitleView
+        android:id="@+id/notice_recive_title_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:leftText="返回"
+        app:subTitle="通讯录" />
+    
+    <!--app:rightText="取消"-->
+    <!--app:rightTextIsShow="true"-->
+
+    <com.sdxxtop.zhidian.widget.LinkManView
+        android:id="@+id/linkView"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/y95"
+        android:layout_below="@+id/notice_recive_title_view"></com.sdxxtop.zhidian.widget.LinkManView>
+
+    <RelativeLayout
+        android:id="@+id/cb_check_all_background"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/y61"
+        android:layout_below="@id/linkView">
+
+        <TextView
+            android:id="@+id/cb_check_all"
+            android:layout_width="@dimen/x39"
+            android:layout_height="@dimen/y39"
+            android:layout_marginLeft="@dimen/x24"
+            android:background="@drawable/unselected"
+            android:button="@null" />
+
+        <TextView
+            android:id="@+id/cb_check_all_value"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/x89"
+            android:text="全选"
+            android:textColor="@color/textcolor"
+            android:textSize="@dimen/y34" />
+    </RelativeLayout>
+
+
+    <ListView
+        android:id="@+id/lvShow"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@+id/rl_bottom"
+        android:layout_below="@+id/cb_check_all_background"></ListView>
+
+    <RelativeLayout
+        android:id="@+id/rl_bottom"
+        android:layout_width="match_parent"
+        android:layout_height="71dp"
+        android:layout_alignParentBottom="true"
+        android:orientation="vertical">
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/recycler_text_item_line_color" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_centerVertical="true"
+            android:orientation="horizontal">
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/notice_recive_recycler"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1" />
+
+            <Button
+                android:id="@+id/btn_make_sure"
+                android:layout_width="@dimen/x224"
+                android:layout_height="46dp"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="@dimen/x31"
+                android:background="@drawable/btn_make_suer"
+                android:text="确定"
+                android:textColor="@color/bai"
+                android:textSize="@dimen/y32" />
+        </LinearLayout>
+
+    </RelativeLayout>
+</RelativeLayout>

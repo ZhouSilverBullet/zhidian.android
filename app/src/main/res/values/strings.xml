@@ -1,0 +1,38 @@
+<resources>
+    <string name="app_name">知点</string>
+    <drawable name="bkcolor">#FFFFFF</drawable>
+    <string name="xlistview_header_hint_normal">下拉刷新</string>
+    <string name="xlistview_header_hint_ready">松开刷新数据</string>
+    <string name="xlistview_header_hint_loading">正在加载...</string>
+    <string name="xlistview_header_last_time">上次更新时间：</string>
+    <string name="xlistview_footer_hint_normal">查看更多</string>
+    <string name="xlistview_footer_hint_ready">松开载入更多</string>
+
+
+    <string-array name="custom_weekdays">
+        <item>日</item>
+        <item>一</item>
+        <item>二</item>
+        <item>三</item>
+        <item>四</item>
+        <item>五</item>
+        <item>六</item>
+    </string-array>
+
+    <string name="apply_grid_leave_text">请假</string>
+    <string name="apply_grid_forget_punch_card_text">漏打卡</string>
+    <string name="apply_grid_late_text">消迟到早退</string>
+    <string name="apply_grid_evection_text">出差</string>
+    <string name="apply_grid_overtime_text">加班</string>
+    <string name="apply_grid_collective_leave_text">集体申请</string>
+    <string name="apply_grid_change_shift_text">调班</string>
+    <string name="apply_grid_field_personnel_text">外勤</string>
+    <string name="apply_grid_mobile_phone_text">手机解绑</string>
+
+    <string name="toast_apply_start_end_time">请填写开始时间或结束时间</string>
+    <string name="toast_apply_edit_null">理由不能为空</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+</resources>

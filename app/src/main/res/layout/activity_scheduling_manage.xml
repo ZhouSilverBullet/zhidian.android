@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/backgroundcolor"
+    android:orientation="vertical"
+    tools:context="com.sdxxtop.zhidian.ui.activity.SchedulingManageActivity">
+
+    <com.sdxxtop.zhidian.widget.SubTitleView
+        android:id="@+id/scheduling_title_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:leftText="返回"
+        app:rightText="新建规则"
+        app:rightTextIsShow="true"
+        app:subTitle="排班管理" />
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/scheduling_recycler"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+</LinearLayout>

@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.sdxxtop.zhidian.ui.activity.GaoDeMapActivity">
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:focusable="true"
+        android:focusableInTouchMode="true"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:id="@+id/map_back"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="10dp"
+            android:src="@drawable/nav_button_return" />
+
+        <AutoCompleteTextView
+            android:id="@+id/keyWord"
+            style="@style/AutoCompleteStyle"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_centerHorizontal="true"
+            android:layout_toLeftOf="@+id/man_cancel"
+            android:layout_toRightOf="@id/map_back"
+            android:background="@null"
+            android:completionThreshold="1"
+            android:drawableLeft="@mipmap/search"
+            android:drawablePadding="5dp"
+            android:dropDownHeight="wrap_content"
+            android:dropDownWidth="match_parent"
+            android:gravity="left|center_vertical"
+            android:hint="请输入关键字"
+            android:paddingLeft="10dp"
+            android:textColor="@color/textcolor"
+            android:textColorHint="@color/texthintcolor"
+            android:textSize="14sp" />
+
+        <TextView
+            android:id="@+id/man_cancel"
+            android:layout_width="80dp"
+            android:layout_height="match_parent"
+            android:layout_alignParentRight="true"
+            android:clickable="true"
+            android:gravity="center"
+            android:onClick="onActionSearchByKey"
+            android:text="取消" />
+    </RelativeLayout>
+
+    <com.amap.api.maps2d.MapView
+        android:id="@+id/map"
+        android:layout_width="match_parent"
+        android:layout_height="220dp" />
+
+
+    <com.sdxxtop.zhidian.widget.SegmentedGroup xmlns:segmentedgroup="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/segmented_group"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="4dp"
+        segmentedgroup:sc_border_width="1dp"
+        segmentedgroup:sc_corner_radius="2dp">
+
+        <RadioButton
+            android:id="@+id/radio0"
+            style="@style/RadioButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight=".5"
+            android:checked="true"
+            android:text="住宅区" />
+
+        <RadioButton
+            android:id="@+id/radio1"
+            style="@style/RadioButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight=".5"
+            android:text="学校" />
+
+        <RadioButton
+            android:id="@+id/radio2"
+            style="@style/RadioButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight=".5"
+            android:text="楼宇" />
+
+        <RadioButton
+            android:id="@+id/radio3"
+            style="@style/RadioButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight=".33"
+            android:text="商场" />
+
+    </com.sdxxtop.zhidian.widget.SegmentedGroup>
+
+
+    <ListView
+        android:id="@+id/listview"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/map"
+        android:layout_weight="1"
+        android:cacheColorHint="#00000000"
+        android:divider="@android:color/darker_gray"
+        android:dividerHeight="1px" />
+</LinearLayout>

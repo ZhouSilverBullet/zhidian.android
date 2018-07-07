@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+    <ListView
+        android:id="@+id/lv_conten"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/x20"
+        android:layout_marginRight="@dimen/x20"
+        android:background="@drawable/shape_border_radius_bg"/>
+
+    <Button
+        android:id="@+id/btn_dissmis"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/y100"
+        android:layout_marginTop="@dimen/y20"
+        android:layout_marginLeft="@dimen/x20"
+        android:layout_marginRight="@dimen/x20"
+        android:layout_marginBottom="@dimen/y30"
+        android:textSize="@dimen/y40"
+        android:textColor="@color/lan"
+        android:text="取消"
+        android:background="@drawable/shape_border_radius_bg"/>
+
+</LinearLayout>

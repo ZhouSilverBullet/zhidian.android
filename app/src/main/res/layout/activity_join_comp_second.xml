@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
+    android:orientation="vertical"
+    tools:context="com.sdxxtop.zhidian.ui.activity.JoinCompSecondActivity">
+
+    <com.sdxxtop.zhidian.widget.SubTitleView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:subTitle="加入公司" />
+
+    <android.support.v4.widget.DrawerLayout
+        android:id="@+id/join_second_draw_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <RelativeLayout
+                android:id="@+id/title_layout_rl"
+                android:layout_width="match_parent"
+                android:layout_height="45dp">
+
+                <TextView
+                    android:layout_width="@dimen/x100"
+                    android:layout_height="@dimen/y40"
+                    android:layout_alignParentTop="true"
+                    android:layout_marginLeft="@dimen/x39"
+                    android:layout_marginTop="@dimen/y31"
+                    android:text="公司"
+                    android:textColor="@color/textcolor"
+                    android:textSize="@dimen/y34" />
+
+                <TextView
+                    android:id="@+id/tv_company"
+                    android:layout_width="wrap_content"
+                    android:layout_height="@dimen/y40"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginRight="@dimen/x39"
+                    android:layout_marginTop="@dimen/y31"
+                    android:text=""
+                    android:textColor="@color/texthintcolor"
+                    android:textSize="@dimen/y34" />
+            </RelativeLayout>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/y2"
+                android:background="@color/linecolor" />
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="45dp">
+
+                <TextView
+                    android:layout_width="@dimen/x100"
+                    android:layout_height="@dimen/y40"
+                    android:layout_alignParentTop="true"
+                    android:layout_marginLeft="@dimen/x39"
+                    android:layout_marginTop="@dimen/y31"
+                    android:text="职位"
+                    android:textColor="@color/textcolor"
+                    android:textSize="@dimen/y34" />
+
+                <EditText
+                    android:id="@+id/et_job"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginRight="@dimen/x39"
+                    android:layout_marginTop="@dimen/y31"
+                    android:background="@null"
+                    android:gravity="center_vertical|right"
+                    android:hint="请输入职位"
+                    android:singleLine="true"
+                    android:textCursorDrawable="@drawable/cursor"
+                    android:textSize="@dimen/y34" />
+            </RelativeLayout>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/y2"
+                android:background="@color/linecolor" />
+
+            <RelativeLayout
+                android:id="@+id/rl_part"
+                android:layout_width="match_parent"
+                android:layout_height="45dp"
+                android:layout_below="@+id/rl_phone">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="@dimen/x33"
+                    android:text="部门"
+                    android:textColor="@color/textcolor"
+                    android:textSize="@dimen/y34" />
+
+                <TextView
+                    android:id="@+id/tv_part"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginRight="@dimen/x75"
+                    android:gravity="right"
+                    android:singleLine="true"
+                    android:textColor="@color/textcolor"
+                    android:textSize="@dimen/y34" />
+
+                <ImageView
+                    android:layout_width="@dimen/x21"
+                    android:layout_height="@dimen/y37"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginRight="@dimen/x42"
+                    android:background="@mipmap/next_step" />
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="#F4F4F4"
+                android:paddingTop="20dp">
+
+                <Button
+                    android:id="@+id/btn_join"
+                    android:layout_width="@dimen/x591"
+                    android:layout_height="@dimen/y91"
+                    android:layout_alignParentTop="true"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="@dimen/y80"
+                    android:background="@drawable/btn_make_suer"
+                    android:text="加入"
+                    android:textColor="@color/bai"
+                    android:textSize="@dimen/y32" />
+            </RelativeLayout>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="200dp"
+            android:layout_height="match_parent"
+            android:layout_gravity="right"
+            android:background="@color/white">
+
+            <ListView
+                android:id="@+id/join_second_list_view"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+        </LinearLayout>
+    </android.support.v4.widget.DrawerLayout>
+
+
+</LinearLayout>

@@ -1,0 +1,449 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
+    android:orientation="vertical">
+
+    <com.sdxxtop.zhidian.widget.SubTitleView
+        android:id="@+id/submiss_title_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:leftText="返回"
+        app:subTitle="请假" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:background="@color/backgroundcolor">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/y267"
+                    android:layout_margin="@dimen/y18"
+                    android:background="@drawable/shape_blue_radius_bg"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/tv_content"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:text="事假"
+                        android:textColor="@color/bai"
+                        android:textSize="@dimen/y30" />
+
+                    <ImageView
+                        android:id="@+id/lv_list_divider"
+                        android:layout_width="@dimen/x3"
+                        android:layout_height="@dimen/y121"
+                        android:background="@color/bai" />
+
+                    <LinearLayout
+                        android:id="@+id/lv_list_linear"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1.6"
+                        android:gravity="center">
+
+                        <ListView
+                            android:id="@+id/lv_list_event"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:divider="@null" />
+
+                    </LinearLayout>
+
+                </LinearLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/white"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/tv_place"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/x28"
+                    android:layout_marginTop="@dimen/y20"
+                    android:text="抄送人"
+                    android:textColor="#999999"
+                    android:textSize="@dimen/y30"
+                    android:visibility="gone" />
+
+                <TextView
+                    android:id="@+id/tv_place_name"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/x28"
+                    android:layout_marginTop="@dimen/y10"
+                    android:text="李贵喜"
+                    android:textColor="#333333"
+                    android:textSize="@dimen/y30"
+                    android:visibility="gone" />
+
+                <TextView
+                    android:id="@+id/tv_over_time_place"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/x28"
+                    android:layout_marginTop="@dimen/y20"
+                    android:text="加班地点"
+                    android:textColor="#999999"
+                    android:textSize="@dimen/y30"
+                    android:visibility="gone" />
+
+                <TextView
+                    android:id="@+id/tv_over_time_name"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/x28"
+                    android:layout_marginTop="@dimen/y10"
+                    android:text="李贵喜"
+                    android:textColor="#333333"
+                    android:textSize="@dimen/y30"
+                    android:visibility="gone" />
+
+                <TextView
+                    android:id="@+id/submiss_reason"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/x28"
+                    android:layout_marginTop="@dimen/y20"
+                    android:text="理由"
+                    android:textColor="#999999"
+                    android:textSize="@dimen/y30" />
+
+                <TextView
+                    android:id="@+id/tv_Reason"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/x28"
+                    android:layout_marginTop="@dimen/y20"
+                    android:text="忘记打卡了"
+                    android:textColor="#333333"
+                    android:textSize="@dimen/y30" />
+
+                <android.support.v7.widget.RecyclerView
+                    android:id="@+id/hor_reason"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/y91"
+                    android:layout_marginLeft="@dimen/x28"
+                    android:layout_marginTop="@dimen/y10" />
+
+                <TextView
+                    android:id="@+id/tv_copy_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/x28"
+                    android:layout_marginTop="@dimen/y20"
+                    android:text="抄送人"
+                    android:textColor="#999999"
+                    android:textSize="@dimen/y30" />
+
+                <TextView
+                    android:id="@+id/tv_copy_person"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/x28"
+                    android:layout_marginTop="@dimen/y10"
+                    android:text="李贵喜"
+                    android:textColor="#333333"
+                    android:textSize="@dimen/y30" />
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/y23"
+                    android:layout_marginTop="@dimen/y27"
+                    android:background="#F4F4F4" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/y263"
+                    android:orientation="horizontal">
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_marginLeft="@dimen/x28"
+                        android:gravity="center"
+                        android:orientation="vertical">
+
+                        <RelativeLayout
+                            android:layout_width="@dimen/x82"
+                            android:layout_height="@dimen/y82">
+
+                            <de.hdodenhof.circleimageview.CircleImageView
+                                android:id="@+id/submiss_me_circle_image"
+                                android:layout_width="@dimen/x82"
+                                android:layout_height="@dimen/y82" />
+
+                            <TextView
+                                android:id="@+id/tv_me"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_centerInParent="true"
+                                android:text="小白"
+                                android:textColor="@color/bai"
+                                android:textSize="@dimen/y28" />
+
+                        </RelativeLayout>
+
+                        <ImageView
+                            android:layout_width="@dimen/x3"
+                            android:layout_height="@dimen/x48"
+                            android:background="#E5E5E5" />
+
+
+                        <RelativeLayout
+                            android:layout_width="@dimen/x82"
+                            android:layout_height="@dimen/y82">
+
+                            <de.hdodenhof.circleimageview.CircleImageView
+                                android:id="@+id/submiss_approver_circle_image"
+                                android:layout_width="@dimen/x82"
+                                android:layout_height="@dimen/y82" />
+
+                            <TextView
+                                android:id="@+id/tv_approver"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_centerInParent="true"
+                                android:text="小白"
+                                android:textColor="@color/bai"
+                                android:textSize="@dimen/y28" />
+
+                        </RelativeLayout>
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_marginLeft="@dimen/y27"
+                        android:gravity="center_vertical"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/my_user_text"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:ellipsize="end"
+                            android:lines="1"
+                            android:maxWidth="100dp"
+                            android:text="我"
+                            android:textColor="#303030"
+                            android:textSize="@dimen/y32" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/y6"
+                            android:text="发起申请"
+                            android:textColor="#3296FA"
+                            android:textSize="@dimen/y28" />
+
+                        <TextView
+                            android:id="@+id/tv_approver_name"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/y53"
+                            android:ellipsize="end"
+                            android:lines="1"
+                            android:maxWidth="150dp"
+                            android:text="徐小白"
+                            android:textColor="#303030"
+                            android:textSize="@dimen/y32" />
+
+                        <TextView
+                            android:id="@+id/tv_approvaling"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/y6"
+                            android:text="审批中"
+                            android:textColor="#999999"
+                            android:textSize="@dimen/y28" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginRight="@dimen/x32"
+                        android:gravity="right"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/submiss_me_time"
+                            android:layout_width="wrap_content"
+                            android:layout_height="0dp"
+                            android:layout_weight="1"
+                            android:gravity="center"
+                            android:text="2018/5/5 4:26"
+                            android:textColor="#666666"
+                            android:textSize="@dimen/y24" />
+
+                        <TextView
+                            android:id="@+id/submiss_approver_time"
+                            android:layout_width="wrap_content"
+                            android:layout_height="0dp"
+                            android:layout_weight="1"
+                            android:gravity="center"
+                            android:text="以等待2小时15分"
+                            android:textColor="#666666"
+                            android:textSize="@dimen/y24" />
+
+                    </LinearLayout>
+                </LinearLayout>
+                <!--这个是同意之后显示理由的地方-->
+                <TextView
+                    android:id="@+id/tv_agreed_liyou"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="66dp"
+                    android:layout_marginRight="66dp"
+                    android:paddingBottom="10dp"
+                    android:text="liyou "
+                    android:textColor="@color/texthintcolor"
+                    android:visibility="gone" />
+
+            </LinearLayout>
+
+            <!--我的审批-->
+            <RelativeLayout
+                android:id="@+id/approver_rl"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:background="@color/white"
+                android:visibility="gone">
+
+                <EditText
+                    android:id="@+id/approver_msg"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    android:background="@null"
+                    android:hint="输入理由(可不输入)"
+                    android:paddingBottom="10dp"
+                    android:paddingLeft="5dp"
+                    android:paddingRight="5dp"
+                    android:paddingTop="10dp"
+                    android:textSize="12sp" />
+
+                <View
+                    android:id="@+id/approver_msg_line"
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_below="@id/approver_msg"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    android:background="@color/item_apply_hor_gray" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="55dp"
+                    android:layout_below="@id/approver_msg_line"
+                    android:layout_marginTop="10dp"
+                    android:gravity="center"
+                    android:orientation="horizontal">
+
+                    <Button
+                        android:id="@+id/btn_approver_unagreed"
+                        style="?android:attr/borderlessButtonStyle"
+                        android:layout_width="103dp"
+                        android:layout_height="32dp"
+                        android:layout_marginLeft="@dimen/x28"
+                        android:background="@drawable/shape_view_red_submission_bg"
+                        android:text="驳回"
+                        android:textColor="@color/dot_red"
+                        android:textSize="14sp" />
+
+                    <Button
+                        android:id="@+id/btn_approver_agreed"
+                        style="?android:attr/borderlessButtonStyle"
+                        android:layout_width="103dp"
+                        android:layout_height="32dp"
+                        android:layout_marginLeft="49dp"
+                        android:background="@drawable/shape_view_blue_submission_bg"
+                        android:text="同意"
+                        android:textColor="@color/white"
+                        android:textSize="14sp" />
+                </LinearLayout>
+            </RelativeLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:background="@color/backgroundcolor" />
+        </LinearLayout>
+    </ScrollView>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:gravity="bottom">
+
+        <LinearLayout
+            android:id="@+id/ll_withdraw"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/recycler_text_item_line_color" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/y142"
+                android:background="@color/bai"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <Button
+                    android:id="@+id/btn_urge"
+                    style="?android:attr/borderlessButtonStyle"
+                    android:layout_width="@dimen/x339"
+                    android:layout_height="@dimen/y91"
+                    android:background="@drawable/shape_view_blue_border_bg"
+                    android:text="催办"
+                    android:textColor="#3296FA"
+                    android:textSize="@dimen/y32" />
+
+                <Button
+                    android:id="@+id/btn_withdraw"
+                    style="?android:attr/borderlessButtonStyle"
+                    android:layout_width="@dimen/x339"
+                    android:layout_height="@dimen/y91"
+                    android:layout_marginLeft="@dimen/x28"
+                    android:background="@drawable/shape_view_blue_border_bg"
+                    android:text="撤回"
+                    android:textColor="#3296FA"
+                    android:textSize="@dimen/y32" />
+
+            </LinearLayout>
+        </LinearLayout>
+    </FrameLayout>
+
+</LinearLayout>

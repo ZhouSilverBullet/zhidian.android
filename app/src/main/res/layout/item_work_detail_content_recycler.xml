@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/white"
+    android:orientation="vertical"
+    android:paddingBottom="5dp"
+    android:paddingLeft="15dp"
+    android:paddingRight="15dp"
+    android:paddingTop="5dp">
+
+    <TextView
+        android:id="@+id/item_work_detail_content_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="本周工作"
+        android:textColor="@color/texthintcolor"
+        android:textSize="15sp" />
+
+    <TextView
+        android:id="@+id/item_work_detail_content_content"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="今天反馈今天反馈今天反馈今天反馈今天反馈今天反馈今天反馈今天反馈今天反馈今天反馈今天反馈今天反馈今天反馈今天反馈"
+        android:textColor="@color/textcolor"
+        android:textSize="15sp" />
+</LinearLayout>

@@ -1,0 +1,331 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+<RelativeLayout
+        android:id="@+id/rl_first_step"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/y243">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="@dimen/y35"
+            android:text="简单三步，完成创建"
+            android:textColor="@color/texthintcolor"
+            android:textSize="@dimen/y28" />
+
+        <TextView
+            android:layout_width="@dimen/x159"
+            android:layout_height="@dimen/y2"
+            android:layout_marginLeft="@dimen/x172"
+            android:layout_marginTop="@dimen/y115"
+            android:background="@color/linecolor" />
+
+        <ImageView
+            android:layout_width="@dimen/y53"
+            android:layout_height="@dimen/x53"
+            android:layout_marginLeft="@dimen/x100"
+            android:layout_marginTop="@dimen/y94"
+            android:background="@mipmap/underway" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/x117"
+            android:layout_marginTop="@dimen/y97"
+            android:text="1"
+            android:textColor="@color/bai"
+            android:textSize="@dimen/y34" />
+
+        <TextView
+            android:layout_width="@dimen/x159"
+            android:layout_height="@dimen/y2"
+            android:layout_marginLeft="@dimen/x421"
+            android:layout_marginTop="@dimen/y115"
+            android:background="@color/linecolor" />
+
+        <ImageView
+            android:layout_width="@dimen/y53"
+            android:layout_height="@dimen/x53"
+            android:layout_marginLeft="@dimen/x354"
+            android:layout_marginTop="@dimen/y94"
+            android:background="@mipmap/not_proceeded" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/x371"
+            android:layout_marginTop="@dimen/y95"
+            android:text="2"
+            android:textColor="@color/texthintcolor"
+            android:textSize="@dimen/y34" />
+
+        <ImageView
+            android:layout_width="@dimen/y53"
+            android:layout_height="@dimen/x53"
+            android:layout_marginLeft="@dimen/x602"
+            android:layout_marginTop="@dimen/y94"
+            android:background="@mipmap/not_proceeded" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/x618"
+            android:layout_marginTop="@dimen/y96"
+            android:text="3"
+            android:textColor="@color/texthintcolor"
+            android:textSize="@dimen/y34" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/x72"
+            android:layout_marginTop="@dimen/y172"
+            android:text="创建公司"
+            android:textColor="@color/lan"
+            android:textSize="@dimen/y28" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/x293"
+            android:layout_marginTop="@dimen/y172"
+            android:text="设置考勤设备"
+            android:textColor="@color/texthintcolor"
+            android:textSize="@dimen/y28" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/x540"
+            android:layout_marginTop="@dimen/y172"
+            android:text="设置考勤时间"
+            android:textColor="@color/texthintcolor"
+            android:textSize="@dimen/y28" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/rl_first_fragment"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/rl_first_step">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/x33"
+                android:layout_marginTop="@dimen/y31"
+                android:text="公司名称"
+                android:textColor="@color/textcolor"
+                android:textSize="@dimen/y34" />
+
+            <EditText
+                android:id="@+id/et_comp_qname"
+                android:layout_width="@dimen/x450"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/x221"
+                android:layout_marginTop="@dimen/y31"
+                android:background="@null"
+                android:ems="13"
+                android:hint="公司全称"
+                android:textSize="@dimen/y34"
+                android:singleLine="true"
+                android:textColor="@color/texthintcolor"
+                android:textCursorDrawable="@drawable/cursor" />
+
+            <TextView
+                android:layout_width="@dimen/x666"
+                android:layout_height="@dimen/y2"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="@dimen/y98"
+                android:background="@color/linecolor" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/y98">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/x33"
+                android:layout_marginTop="@dimen/y31"
+                android:text="公司简称"
+                android:textColor="@color/textcolor"
+                android:textSize="@dimen/y34" />
+
+            <EditText
+                android:id="@+id/et_comp_jname"
+                android:layout_width="@dimen/x450"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/x221"
+                android:layout_marginTop="@dimen/y31"
+                android:background="@null"
+                android:ems="13"
+                android:hint="公司简称"
+                android:textSize="@dimen/y34"
+                android:singleLine="true"
+                android:textColor="@color/texthintcolor"
+                android:textCursorDrawable="@drawable/cursor" />
+
+            <TextView
+                android:layout_width="@dimen/x666"
+                android:layout_height="@dimen/y2"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="@dimen/y98"
+                android:background="@color/linecolor" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/iv_select_location_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/y196">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/x33"
+                android:layout_marginTop="@dimen/y31"
+                android:text="选择地区"
+                android:textColor="@color/textcolor"
+                android:textSize="@dimen/y34" />
+
+            <TextView
+                android:id="@+id/tv_select_location"
+                android:layout_width="@dimen/x450"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/x221"
+                android:layout_marginTop="@dimen/y31"
+                android:ellipsize="marquee"
+                android:focusable="true"
+                android:focusableInTouchMode="true"
+                android:marqueeRepeatLimit="marquee_forever"
+                android:singleLine="true"
+                android:hint="点击选择"
+                android:textColor="@color/texthintcolor"
+                android:textSize="@dimen/y34" />
+
+            <ImageView
+                android:id="@+id/iv_select_location"
+                android:layout_width="@dimen/x25"
+                android:layout_height="@dimen/y34"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="@dimen/x42"
+                android:background="@mipmap/gps_location" />
+
+            <TextView
+                android:layout_width="@dimen/x666"
+                android:layout_height="@dimen/y2"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="@dimen/y98"
+                android:background="@color/linecolor" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/y294">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/x33"
+                android:layout_marginTop="@dimen/y31"
+                android:text="详细地址"
+                android:textColor="@color/textcolor"
+                android:textSize="@dimen/y34" />
+
+            <EditText
+                android:id="@+id/et_comp_location"
+                android:layout_width="@dimen/x450"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/x221"
+                android:layout_marginTop="@dimen/y31"
+                android:background="@null"
+                android:ems="13"
+                android:hint="详细地址"
+                android:textSize="@dimen/y34"
+                android:singleLine="true"
+                android:textColor="@color/texthintcolor"
+                android:textCursorDrawable="@drawable/cursor" />
+
+            <TextView
+                android:layout_width="@dimen/x666"
+                android:layout_height="@dimen/y2"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="@dimen/y98"
+                android:background="@color/linecolor" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/y102"
+            android:layout_marginTop="@dimen/y392">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/x33"
+                android:layout_marginTop="@dimen/y31"
+                android:text="公司规模"
+                android:textColor="@color/textcolor"
+                android:textSize="@dimen/y34" />
+
+            <TextView
+                android:id="@+id/tv_comp_guimo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/x221"
+                android:layout_marginTop="@dimen/y31"
+                android:hint="公司规模"
+                android:textColor="@color/texthintcolor"
+                android:textSize="@dimen/y34" />
+
+            <ImageView
+                android:id="@+id/iv_select_guimo"
+                android:layout_width="@dimen/x21"
+                android:layout_height="@dimen/y37"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="@dimen/x42"
+                android:background="@mipmap/next_step" />
+
+        </RelativeLayout>
+
+    </RelativeLayout>
+
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/y311"
+        android:layout_below="@+id/rl_first_fragment"
+        android:background="@color/backgroundcolor"></View>
+
+    <RelativeLayout
+        android:id="@+id/rl_bottom"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/y142"
+        android:layout_alignParentBottom="true">
+
+        <Button
+            android:id="@+id/btn_next"
+            android:layout_width="@dimen/x689"
+            android:layout_height="@dimen/y91"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="@dimen/y26"
+            android:background="@drawable/btn_make_suer"
+            android:text="下一步"
+            android:textColor="@color/bai"
+            android:textSize="@dimen/y32" />
+    </RelativeLayout>
+</RelativeLayout>

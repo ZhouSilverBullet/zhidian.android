@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/bai"
+    android:orientation="vertical">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/x32"
+        android:layout_marginTop="@dimen/y73"
+        android:text="审批类别"
+        android:textColor="#989898"
+        android:textSize="@dimen/y40" />
+
+    <GridView
+        android:id="@+id/gridv_race_select"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/y800"
+        android:layout_marginLeft="@dimen/x26"
+        android:layout_marginRight="@dimen/y26"
+        android:layout_marginTop="@dimen/y15"
+        android:horizontalSpacing="@dimen/x17"
+        android:numColumns="2"
+        android:verticalSpacing="@dimen/y17" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginBottom="@dimen/y70"
+        android:gravity="bottom|center_horizontal">
+
+        <Button
+            android:id="@+id/gridv_btn"
+            android:layout_width="@dimen/x501"
+            android:layout_height="@dimen/y101"
+            android:background="#5D95F7"
+            android:text="确定"
+            android:textColor="@color/bai"
+            android:textSize="@dimen/y30" />
+
+    </LinearLayout>
+
+</LinearLayout>

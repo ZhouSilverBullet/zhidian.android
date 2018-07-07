@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="5dp">
+
+    <TextView
+        android:id="@+id/mine_score_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:text="最后结果"
+        android:textColor="@color/textcolor"
+        android:textSize="15sp" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:orientation="horizontal">
+
+        <com.sdxxtop.zhidian.widget.RatingBar
+            android:id="@+id/item_mine_initiate_score_rating"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            app:clickable="true"
+            app:starCount="5"
+            app:starEmpty="@mipmap/star_unselected"
+            app:starFill="@mipmap/star"
+            app:starImageSize="@dimen/y40"
+            app:starPadding="@dimen/y30"
+            app:starStep="5.0"
+            app:stepSize="Half" />
+
+        <TextView
+            android:id="@+id/item_mine_initiate_score_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="1分   非常差" />
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="1dp"
+            android:layout_weight="1" />
+
+        <TextView
+            android:id="@+id/mine_score_submit"
+            android:layout_width="60dp"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="10dp"
+            android:background="@drawable/item_mine_seek_blue_bg"
+            android:gravity="center"
+            android:padding="5dp"
+            android:text="评分"
+            android:textColor="@color/blue"
+            android:visibility="gone" />
+    </LinearLayout>
+
+</LinearLayout>

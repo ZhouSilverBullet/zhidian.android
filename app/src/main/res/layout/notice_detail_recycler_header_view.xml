@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/notice2_detail_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingTop="10dp"
+        android:text="期末考试提前到12.27"
+        android:textColor="@color/apply_text_color"
+        android:textSize="16sp" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="25dp"
+        android:layout_marginBottom="5dp"
+        android:layout_marginTop="5dp"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:text="接收范围:"
+            android:textColor="@color/texthintcolor"
+            android:textSize="12sp" />
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/notice2_detail_recycler"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="center_vertical" />
+
+    </LinearLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="15dp">
+
+        <TextView
+            android:id="@+id/notice2_detail_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:ellipsize="end"
+            android:lines="1"
+            android:maxWidth="100dp"
+            android:text="张三张三张三张三张三张三张三张三"
+            android:textColor="@color/texthintcolor"
+            android:textSize="12sp" />
+
+        <TextView
+            android:id="@+id/notice2_detail_time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_toRightOf="@id/notice2_detail_name"
+            android:textColor="@color/texthintcolor"
+            android:textSize="12sp" />
+
+        <TextView
+            android:id="@+id/notice2_detail_read"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:text="已读：1人   未读：3人"
+            android:textColor="@color/blue"
+            android:textSize="12sp" />
+    </RelativeLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:background="@color/white" />
+</LinearLayout>

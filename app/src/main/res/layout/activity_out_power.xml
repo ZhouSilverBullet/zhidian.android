@@ -1,0 +1,179 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.sdxxtop.zhidian.ui.activity.OutPowerActivity">
+
+    <com.sdxxtop.zhidian.widget.SubTitleView
+        android:id="@+id/out_power_title_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:rightText="筛选"
+        app:rightTextIsShow="true"
+        app:subTitle="外勤权限" />
+
+    <android.support.v4.widget.DrawerLayout
+        android:id="@+id/drawerlayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <RadioGroup
+                android:id="@+id/rg_tab"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/y95"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <RadioButton
+                    android:id="@+id/rb_all"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:button="@null"
+                    android:checked="true"
+                    android:gravity="center"
+                    android:text="全部"
+                    android:textColor="@drawable/notice_textcolor_selector"
+                    android:textSize="@dimen/y30" />
+
+                <RadioButton
+                    android:id="@+id/rb_open"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:button="@null"
+                    android:checked="false"
+                    android:gravity="center"
+                    android:text="已开启"
+                    android:textColor="@drawable/notice_textcolor_selector"
+                    android:textSize="@dimen/y30" />
+
+                <RadioButton
+                    android:id="@+id/rb_close"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:button="@null"
+                    android:checked="false"
+                    android:gravity="center"
+                    android:text="未开启"
+                    android:textColor="@drawable/notice_textcolor_selector"
+                    android:textSize="@dimen/y30" />
+            </RadioGroup>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <LinearLayout
+                    android:id="@+id/ll_all"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/y2"
+                    android:orientation="horizontal"
+                    android:visibility="visible">
+
+                    <View
+                        android:layout_width="0dp"
+                        android:layout_height="@dimen/y4"
+                        android:layout_weight="1"
+                        android:background="@color/lan" />
+
+                    <View
+                        android:layout_width="0dp"
+                        android:layout_height="@dimen/y2"
+                        android:layout_weight="1"
+                        android:background="@color/linecolor" />
+
+                    <View
+                        android:layout_width="0dp"
+                        android:layout_height="@dimen/y2"
+                        android:layout_weight="1"
+                        android:background="@color/linecolor" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/ll_open"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/y2"
+                    android:orientation="horizontal"
+                    android:visibility="gone">
+
+                    <View
+                        android:layout_width="0dp"
+                        android:layout_height="@dimen/y2"
+                        android:layout_weight="1"
+                        android:background="@color/linecolor" />
+
+                    <View
+                        android:layout_width="0dp"
+                        android:layout_height="@dimen/y4"
+                        android:layout_weight="1"
+                        android:background="@color/lan" />
+
+                    <View
+                        android:layout_width="0dp"
+                        android:layout_height="@dimen/y2"
+                        android:layout_weight="1"
+                        android:background="@color/linecolor" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/ll_close"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/y2"
+                    android:orientation="horizontal"
+                    android:visibility="gone">
+
+                    <View
+                        android:layout_width="0dp"
+                        android:layout_height="@dimen/y2"
+                        android:layout_weight="1"
+                        android:background="@color/linecolor" />
+
+                    <View
+                        android:layout_width="0dp"
+                        android:layout_height="@dimen/y2"
+                        android:layout_weight="1"
+                        android:background="@color/linecolor" />
+
+                    <View
+                        android:layout_width="0dp"
+                        android:layout_height="@dimen/y4"
+                        android:layout_weight="1"
+                        android:background="@color/lan" />
+
+                </LinearLayout>
+            </RelativeLayout>
+
+
+            <android.support.v4.view.ViewPager
+                android:id="@+id/vp_group"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"></android.support.v4.view.ViewPager>
+        </LinearLayout>
+
+        <RelativeLayout
+            android:id="@+id/right"
+            android:layout_width="200dp"
+            android:layout_height="match_parent"
+            android:layout_gravity="right"
+            android:background="@color/bai">
+
+            <ListView
+                android:id="@+id/right_listview"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+        </RelativeLayout>
+    </android.support.v4.widget.DrawerLayout>
+</LinearLayout>
+
+

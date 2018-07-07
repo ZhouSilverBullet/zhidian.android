@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.sdxxtop.zhidian.widget.SquareFrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/item_statistical_layout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/item_statistical_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:text="今日迟到"
+        android:textColor="@color/white"
+        android:textSize="15sp" />
+</com.sdxxtop.zhidian.widget.SquareFrameLayout>

@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/white"
+    android:minHeight="60dp"
+    android:orientation="horizontal"
+    android:padding="8dp">
+
+    <TextView
+        android:id="@+id/item_stat_sort_text"
+        android:layout_width="30dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical"
+        android:layout_marginRight="6dp"
+        android:gravity="center"
+        android:text="1"
+        android:textColor="@color/apply_text_color"
+        android:textSize="17sp" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingRight="10dp">
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/item_stat_img"
+            android:layout_width="42dp"
+            android:layout_height="42dp"
+            android:layout_centerVertical="true" />
+
+        <TextView
+            android:id="@+id/item_stat_short_name"
+            android:layout_width="42dp"
+            android:layout_height="42dp"
+            android:layout_centerVertical="true"
+            android:gravity="center"
+            android:text="aaa" />
+
+        <RelativeLayout
+            android:id="@+id/item_stat_rl"
+            android:layout_width="wrap_content"
+            android:layout_height="42dp"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="10dp"
+            android:layout_toRightOf="@id/item_stat_img">
+
+            <TextView
+                android:id="@+id/item_stat_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:ellipsize="end"
+                android:lines="1"
+                android:maxWidth="90dp"
+                android:text="流畅句"
+                android:textColor="@color/apply_text_color"
+                android:textSize="16sp" />
+
+            <TextView
+                android:id="@+id/item_stat_content"
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:ellipsize="end"
+                android:lines="1"
+                android:text="中心小学中心小"
+                android:textColor="@color/texthintcolor"
+                android:textSize="12sp" />
+        </RelativeLayout>
+
+
+        <TextView
+            android:id="@+id/item_stat_hint_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_toRightOf="@id/item_stat_rl"
+            android:text="6次"
+            android:textColor="@color/notice_contentcolor"
+            android:textSize="14sp" />
+
+        <TextView
+            android:id="@+id/item_stat_hint_muint"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:text="10分钟"
+            android:textColor="@color/notice_contentcolor"
+            android:textSize="14sp" />
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/item_stat_hint_muint_recycler"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true" />
+
+    </RelativeLayout>
+</LinearLayout>

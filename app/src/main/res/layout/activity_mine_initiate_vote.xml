@@ -1,0 +1,392 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.sdxxtop.zhidian.ui.activity.MineInitiateVoteActivity">
+
+    <com.sdxxtop.zhidian.widget.SubTitleView
+        android:id="@+id/title_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:leftText="返回"
+        app:subTitle="打分" />
+
+    <android.support.v4.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:background="@color/backgroundcolor">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                android:paddingBottom="10dp"
+                android:paddingLeft="15dp"
+                android:paddingRight="15dp"
+                android:paddingTop="10dp">
+
+                <LinearLayout
+                    android:id="@+id/activity_mine_initiate_people_layout"
+                    android:layout_width="62dp"
+                    android:layout_height="51dp"
+                    android:layout_alignParentRight="true"
+                    android:background="@drawable/mine_initiate_vote_text_bg"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/activity_mine_initiate_people_text"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="1"
+                        android:textColor="@color/textcolor"
+                        android:textSize="14sp" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:text="参与人数"
+                        android:textColor="@color/texthintcolor"
+                        android:textSize="12dp" />
+                </LinearLayout>
+
+                <TextView
+                    android:id="@+id/activity_mine_initiate_title"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="5dp"
+                    android:layout_toLeftOf="@id/activity_mine_initiate_people_layout"
+                    android:ellipsize="end"
+                    android:lines="1"
+                    android:text="李老师上课情况怎么样？"
+                    android:textColor="@color/textcolor" />
+
+                <LinearLayout
+                    android:id="@+id/activity_mine_initiate_second_layout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/activity_mine_initiate_title"
+                    android:layout_marginRight="5dp"
+                    android:layout_marginTop="15dp"
+                    android:layout_toLeftOf="@id/activity_mine_initiate_people_layout">
+
+                    <TextView
+                        android:id="@+id/activity_mine_initiate_username"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:lines="1"
+                        android:maxWidth="70dp"
+                        android:text="流畅句流流流"
+                        android:textColor="@color/lan"
+                        android:textSize="14sp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginRight="10dp"
+                        android:text="发起"
+                        android:textColor="@color/texthintcolor" />
+
+                    <TextView
+                        android:id="@+id/activity_mine_initiate_time"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:ellipsize="end"
+                        android:lines="1"
+                        android:text="剩余04天23时52分"
+                        android:textColor="@color/notice_contentcolor" />
+                </LinearLayout>
+            </RelativeLayout>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                android:orientation="horizontal"
+                android:paddingBottom="10dp"
+                android:paddingLeft="15dp"
+                android:paddingRight="15dp">
+
+                <TextView
+                    android:id="@+id/activity_mine_initiate_canyu_people"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="5dp"
+                    android:ellipsize="end"
+                    android:lines="1"
+                    android:maxWidth="250dp"
+                    android:text="参与人：中心校"
+                    android:textColor="@color/texthintcolor" />
+
+                <TextView
+                    android:id="@+id/activity_mine_initiate_gongkai"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="公开"
+                    android:textColor="@color/texthintcolor" />
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp">
+
+                <ImageView
+                    android:id="@+id/activity_mine_initiate_img"
+                    android:layout_width="122dp"
+                    android:layout_height="122dp"
+                    android:paddingBottom="10dp"
+                    android:scaleType="centerCrop"
+                    android:visibility="visible" />
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/recycler_text_item_line_color" />
+
+            <TextView
+                android:id="@+id/activity_mine_initiate_dec"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                android:padding="15dp"
+                android:text="投票说明，比如，本次评分影响晋升，请认真打分 请认真打分"
+                android:textColor="@color/textcolor" />
+
+
+            <!--容器了不同的情况下出现不同的界面-->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+                <!--文字和图片投票-->
+                <LinearLayout
+                    android:id="@+id/activity_mine_initiate_single_text_and_image_vote_layout"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical"
+                    android:visibility="gone">
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:padding="12dp">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="投票选项"
+                            android:textColor="@color/textcolor"
+                            android:textSize="14sp" />
+
+                        <TextView
+                            android:id="@+id/activity_mine_initiate_single_text"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentRight="true"
+                            android:text="单选"
+                            android:textColor="@color/textcolor" />
+                    </RelativeLayout>
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="4dp"
+                        android:background="@color/white" />
+
+                    <LinearLayout
+                        android:id="@+id/activity_mine_initiate_text_pingfen_layout"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+
+                    </LinearLayout>
+
+                    <CheckBox
+                        android:id="@+id/activity_mine_initiate_niming_toupiao"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true"
+                        android:layout_gravity="center_vertical"
+                        android:layout_marginBottom="15dp"
+                        android:layout_marginLeft="15dp"
+                        android:layout_marginTop="10dp"
+                        android:button="@drawable/iv_vote_switch"
+                        android:paddingLeft="5dp"
+                        android:text="匿名" />
+                </LinearLayout>
+
+                <!--打分-->
+                <LinearLayout
+                    android:id="@+id/activity_mine_initiate_single_mark"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="40dp"
+                        android:orientation="horizontal"
+                        android:paddingLeft="15dp"
+                        android:paddingRight="15dp">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_vertical"
+                            android:paddingRight="10dp"
+                            android:text="评分结果"
+                            android:textColor="@color/textcolor"
+                            android:textSize="15sp" />
+
+                        <TextView
+                            android:id="@+id/activity_mine_initiate_single_all_num"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_vertical"
+                            android:text="(评分结果"
+                            android:textColor="@color/texthintcolor"
+                            android:textSize="15sp" />
+
+                        <TextView
+                            android:id="@+id/activity_mine_initiate_single_last"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_vertical"
+                            android:drawableRight="@mipmap/query"
+                            android:text="最后得分"
+                            android:textColor="@color/blue"
+                            android:textSize="15sp" />
+
+                        <TextView
+                            android:id="@+id/activity_mine_initiate_single_last_right"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_vertical"
+                            android:text="）"
+                            android:textColor="@color/texthintcolor"
+                            android:textSize="15sp"
+                            android:visibility="gone" />
+
+                        <View
+                            android:layout_width="0dp"
+                            android:layout_height="1dp"
+                            android:layout_weight="1" />
+
+                        <CheckBox
+                            android:id="@+id/activity_mine_initiate_niming"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentRight="true"
+                            android:layout_centerVertical="true"
+                            android:layout_gravity="center_vertical"
+                            android:button="@drawable/iv_vote_switch"
+                            android:paddingLeft="5dp"
+                            android:text="匿名"
+                            android:visibility="gone" />
+                    </LinearLayout>
+
+                    <!--用于添加控件的-->
+                    <LinearLayout
+                        android:id="@+id/activity_mine_initiate_mark_layout"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+                <TextView
+                    android:id="@+id/activity_mine_delete_show"
+                    android:layout_width="match_parent"
+                    android:layout_height="60dp"
+                    android:gravity="center"
+                    android:text="该项目已删除"
+                    android:textColor="@color/dot_red"
+                    android:visibility="gone" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+    </android.support.v4.widget.NestedScrollView>
+
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/recycler_text_item_line_color" />
+
+    <LinearLayout
+        android:id="@+id/activity_mine_initiate_submit_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:paddingTop="5dp">
+
+        <Button
+            android:id="@+id/activity_mine_initiate_add_btn"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/y91"
+            android:layout_marginBottom="@dimen/y25"
+            android:layout_marginLeft="@dimen/x30"
+            android:layout_marginRight="@dimen/x30"
+            android:layout_marginTop="@dimen/y26"
+            android:background="@drawable/shape_view_blue_submission_bg"
+            android:gravity="center"
+            android:text="投票"
+            android:textColor="@color/bai"
+            android:textSize="@dimen/y32" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/activity_mine_initiate_change_layout"
+        android:layout_width="match_parent"
+        android:layout_height="51dp"
+        android:background="@color/white"
+        android:orientation="horizontal"
+        android:visibility="gone">
+
+        <TextView
+            android:id="@+id/activity_mine_initiate_change_time"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="修改结束时间"
+            android:textColor="@color/lan"
+            android:textSize="16sp" />
+
+        <View
+            android:layout_width="1dp"
+            android:layout_height="match_parent"
+            android:background="@color/recycler_text_item_line_color" />
+
+        <TextView
+            android:id="@+id/activity_mine_initiate_delete"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="删除投票"
+            android:textColor="@color/lan"
+            android:textSize="16sp" />
+
+    </LinearLayout>
+</LinearLayout>

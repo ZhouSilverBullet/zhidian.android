@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.sdxxtop.zhidian.ui.activity.ModifyGpsActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:fitsSystemWindows="true">
+
+        <com.sdxxtop.zhidian.widget.SubTitleView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:subTitle="修改GPS" />
+    </LinearLayout>
+
+    <RelativeLayout
+        android:id="@+id/relativeLayout"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/y101">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="@dimen/x32"
+            android:text="名字"
+            android:textColor="@color/textcolor"
+            android:textSize="@dimen/y34" />
+
+        <EditText
+            android:id="@+id/et_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="@dimen/x157"
+            android:background="@null"
+            android:hint=""
+            android:singleLine="true"
+            android:textColor="@color/texthintcolor"
+            android:textCursorDrawable="@drawable/cursor"
+            android:textSize="@dimen/y34" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/y2"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="@dimen/y98"
+            android:background="@color/linecolor" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/rl_fanwei"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/y102"
+        android:layout_below="@+id/relativeLayout">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="@dimen/x32"
+            android:text="打卡范围"
+            android:textColor="@color/textcolor"
+            android:textSize="@dimen/y34" />
+
+        <TextView
+            android:id="@+id/tv_fanwei_show"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="@dimen/x226"
+            android:text="300m"
+            android:textColor="@color/texthintcolor"
+            android:textSize="@dimen/y34" />
+
+        <!--<TextView
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/y2"
+            android:layout_centerHorizontal="true"
+            android:background="@color/linecolor"
+            android:layout_marginTop="@dimen/y98" />-->
+
+        <ImageView
+            android:id="@+id/iv_select_fanwei"
+            android:layout_width="@dimen/x21"
+            android:layout_height="@dimen/y37"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="@dimen/x30"
+            android:background="@mipmap/next_step" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/y2"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="@dimen/y98"
+            android:background="@color/linecolor" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/rl_gps_select"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/y102"
+        android:layout_below="@+id/rl_fanwei">
+
+        <TextView
+            android:id="@+id/tv_gps_show"
+            android:layout_width="@dimen/x620"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="@dimen/x41"
+            android:text=""
+            android:textColor="@color/texthintcolor"
+            android:textSize="@dimen/y34" />
+
+        <!--<TextView
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/y2"
+            android:layout_centerHorizontal="true"
+            android:background="@color/linecolor"
+            android:layout_marginTop="@dimen/y98" />-->
+
+        <ImageView
+            android:id="@+id/iv_gps_into"
+            android:layout_width="@dimen/x25"
+            android:layout_height="@dimen/y34"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="@dimen/x32"
+            android:background="@mipmap/gps_location" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/rl_gps_select"
+        android:background="@color/backgroundcolor">
+
+
+        <Button
+            android:id="@+id/btn_save"
+            android:layout_width="@dimen/x591"
+            android:layout_height="@dimen/y91"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="@dimen/y80"
+            android:background="@drawable/btn_make_suer"
+            android:text="保存"
+            android:textColor="@color/bai"
+            android:textSize="@dimen/y32" />
+    </RelativeLayout>
+</LinearLayout>

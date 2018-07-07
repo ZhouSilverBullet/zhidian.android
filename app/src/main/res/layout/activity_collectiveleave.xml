@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
+    android:focusable="true"
+    android:focusableInTouchMode="true"
+    android:orientation="vertical">
+
+    <com.sdxxtop.zhidian.widget.SubTitleView
+        android:id="@+id/leave_title_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:leftText="返回"
+        app:subTitle="集体申请" />
+
+    <android.support.design.widget.TabLayout
+        android:id="@+id/tab_applied"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/y81"
+        app:tabIndicatorColor="#3296FA"
+        app:tabSelectedTextColor="#3296FA"
+        app:tabTextAppearance="@style/AppliedTabLayoutTextStyle"
+        app:tabTextColor="@color/notice_contentcolor" />
+
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/y2"
+        android:background="#D3D3D3" />
+
+    <android.support.v4.view.ViewPager
+        android:id="@+id/fragment_applied_viewpager"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+</LinearLayout>

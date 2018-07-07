@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.sdxxtop.zhidian.ui.fragment.StatInstructionsActivity">
+
+    <com.sdxxtop.zhidian.widget.SubTitleView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:leftText="返回"
+        app:subTitle="统计" />
+
+    <android.support.v4.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:padding="10dp"
+                android:text="统计报表说明"
+                android:textColor="@color/textcolor"
+                android:textSize="15sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:gravity="center"
+                android:text="一、统计部门："
+                android:textColor="@color/lan" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="4dp"
+                android:orientation="vertical"
+                android:paddingLeft="15dp"
+                android:paddingRight="15dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="月统计："
+                    android:textColor="@color/lan"
+                    android:textSize="12sp" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="1、月迟到图：描述各个部门当月的迟到总次数。比如：12月，xxx小学总计迟到3次、xxx小学总计迟到2次、......\n2、月缺勤图：描述各个部门当月的未到总次数。比如：12月，xxx小学总计未到3次、xxx小学总计未到2次、......。\n3、月工时图：描述各个部门当月的平均工时，并 统计出各部门一起的总平均工时。比如：12月，xxx小学平均5.77h、xxx小学平均6.01h、......。总计平均6.02h。\n4、月加班图：描述各个部门当月的加班总时间，及平均每人加班数。比如：12月，xxx小学总共加班50h，平均每人加班1h。\n5、月漏打卡图：描述各个部门当月的漏打卡总次数。比如：12月，xxx小学漏打卡总计15次。\n6、外勤统计图：描述各个部门当月的外勤总次数。比如：12月，xxx小学外勤总计2次。"
+                    android:textColor="@color/textcolor"
+                    android:textSize="12sp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="日统计："
+                    android:textColor="@color/lan"
+                    android:textSize="12sp" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="1.今日迟到：描述各个部门当日的迟到总次数。比如：12月11日，xxx小学总计迟到3次、xxx小学总计迟到2次、......。\n2.今日缺勤图：描述各个部门当日的未到总次数。比如：12月11日，xxx小学总计未到3次、xxx小学总计未到2次、......。\n3.今日工时图：描述各个部门当日的平均工时，并统计出各部门一起的总平均工时。比如：12月11，xxx小学平均5.77h、xxx小学平均6.01h、......。总计平均6.02h。\n4.今日加班图：描述各个部门当日的加班总时间，及平均加班时间。比如：12月11日，xxx小学总共加班50h，平均每人加班1h。\n5.今日漏打卡图：描述各个部门当日的漏打卡总次数。比如：12月11日，xxx小学漏打卡总计15次。\n6.今日外勤图：描述各个部门当天的外勤总次数。比如：12月，xxx小学外勤总计2次"
+                    android:textColor="@color/textcolor"
+                    android:textSize="12sp" />
+
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:gravity="center"
+                android:text="二、个人榜单："
+                android:textColor="@color/lan" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:paddingBottom="20dp"
+                android:paddingLeft="15dp"
+                android:paddingRight="15dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp"
+                    android:gravity="center"
+                    android:text="月统计："
+                    android:textColor="@color/lan"
+                    android:textSize="12sp" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="1.月迟到榜：描述当月迟到名单及排名。比如：12月，小明迟到6次，40分钟，小红迟到3次，30分钟。\n2.月缺勤榜：描述当月员工未到次数并排名。比如：12月，小明未到15次，小伙未到13次。\n3.月工时榜：描述各员工当月的工时并排名，并统计出该部门的平均工时。比如：12月，小明105h、小红117h、......xxx小学平均5.77h\n4.月加班榜：描述各员工当月的加班总时间并排名。比如：12月，小红加班100h，部门平均加班20h。\n5.月漏打卡榜：描述各员工当月的漏打卡总次数。比如：12月，小明漏打卡10次。\n6.总表（包括月未到）：月出勤榜：描述各员工应出勤天数、实出勤天数、缺勤天数。比如：12月，小明应出勤22天，是出勤20天，缺勤2天\n7.月外勤榜：描述各员工当月的外勤总次数。比如：12月，小红外勤总计2次。"
+                    android:textColor="@color/textcolor"
+                    android:textSize="12sp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="日统计："
+                    android:textColor="@color/lan"
+                    android:textSize="12sp" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text=" 1．今日迟到：描述当日迟到名单及排名。比如：12月11日，小明迟到40分钟，小红迟到30分钟。\n2．今日缺勤：描述当日未到名单。比如：12月11日，小明、小红未到。\n3．今日工时：描述各员工当日的工时并排名，并统计出该部门的平均工时。比如：12月11日，小明5h、小红7h、......xxx小学平均5.77h\n4．今日加班：描述各员工当日的加班总时间并排名。比如：12月11日，小红加班2h，部门平均加班1h。\n5．今日漏打卡：描述各员工当天的漏打卡总次数。比如：12月11日，小明漏打卡1次。\n6．今日打卡记录：描述当日各员工的打卡详情的记录。比如：12月11日，小红打卡时间 07:50-11:53 13:12-16:42"
+                    android:textColor="@color/textcolor"
+                    android:textSize="12sp" />
+
+            </LinearLayout>
+        </LinearLayout>
+    </android.support.v4.widget.NestedScrollView>
+
+
+</LinearLayout>

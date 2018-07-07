@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="110dp"
+        android:layout_height="99dp"
+        android:background="@drawable/vote"
+        android:gravity="center_vertical"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:id="@+id/mine_vote_toupiao"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:gravity="center"
+            android:padding="5dp">
+
+            <ImageView
+                android:layout_width="19dp"
+                android:layout_height="19dp"
+                android:adjustViewBounds="true"
+                android:src="@mipmap/vote_pop" />
+
+            <TextView
+                android:id="@+id/pop_vote"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:text="投票"
+                android:textSize="17sp" />
+        </LinearLayout>
+
+
+        <View
+            android:layout_marginTop="7dp"
+            android:layout_width="100dp"
+            android:layout_height="@dimen/y2"
+            android:layout_gravity="center"
+            android:background="@color/linecolor"
+            android:paddingLeft="6dp"
+            android:paddingRight="6dp" />
+
+        <LinearLayout
+            android:id="@+id/mine_vote_dafen"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:gravity="center"
+            android:padding="5dp">
+
+            <ImageView
+                android:layout_width="19dp"
+                android:layout_height="19dp"
+                android:adjustViewBounds="true"
+                android:src="@mipmap/grade" />
+
+            <TextView
+                android:id="@+id/pop_vote_dafen"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:text="打分"
+                android:textSize="17sp" />
+        </LinearLayout>
+    </LinearLayout>
+
+
+</LinearLayout>

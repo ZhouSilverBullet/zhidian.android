@@ -1,0 +1,14 @@
+<com.scwang.smartrefresh.layout.SmartRefreshLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mine_work_smart_refresh_layout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.sdxxtop.zhidian.ui.fragment.MineWorkFragment">
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/mine_work_recycler"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/backgroundcolor" />
+
+</com.scwang.smartrefresh.layout.SmartRefreshLayout>

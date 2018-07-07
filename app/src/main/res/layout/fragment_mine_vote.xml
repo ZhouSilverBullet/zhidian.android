@@ -1,0 +1,18 @@
+<com.scwang.smartrefresh.layout.SmartRefreshLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/fragment_mine_vote_smart_layout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/backgroundcolor"
+    tools:context="com.sdxxtop.zhidian.ui.fragment.MineVoteFragment">
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/fragment_mine_vote_recycler"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/backgroundcolor"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        app:layoutManager="LinearLayoutManager" />
+</com.scwang.smartrefresh.layout.SmartRefreshLayout>

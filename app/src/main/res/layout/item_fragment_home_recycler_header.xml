@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="280dp">
+
+    <RelativeLayout
+        android:id="@+id/item_home_recycler_top_layout"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:layout_marginBottom="20dp">
+
+        <LinearLayout
+            android:id="@+id/item_home_recycler_header_layout"
+            android:layout_width="132dp"
+            android:layout_height="132dp"
+            android:layout_centerInParent="true"
+            android:background="@drawable/punch_card_forbidden"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/item_home_recycler_header_work"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text=""
+                android:textColor="@color/white"
+                android:textSize="18sp" />
+
+            <TextView
+                android:id="@+id/item_home_recycler_header_auto_time"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text=""
+                android:textColor="@color/white"
+                android:textSize="18sp" />
+
+        </LinearLayout>
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginLeft="10dp"
+        android:orientation="horizontal"
+        android:paddingBottom="20dp"
+        android:paddingLeft="10dp">
+
+        <View
+            android:layout_width="8dp"
+            android:layout_height="8dp"
+            android:layout_gravity="center_vertical"
+            android:background="@drawable/blue_dot" />
+
+        <TextView
+            android:id="@+id/item_home_recycler_header_take_card"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:textColor="@color/apply_text_color"
+            android:layout_marginLeft="5dp"
+            android:text="今日打卡" />
+
+        <TextView
+            android:id="@+id/item_home_recycler_header_fill_card"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:background="@drawable/red_suqare_bg"
+            android:gravity="center"
+            android:includeFontPadding="false"
+            android:padding="3dp"
+            android:text="全部补卡"
+            android:textColor="@color/dot_red"
+            android:textSize="10sp" />
+    </LinearLayout>
+</RelativeLayout>

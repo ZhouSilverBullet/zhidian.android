@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/backgroundcolor"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:padding="10dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="切换打卡方式"
+            android:textColor="@color/texthintcolor" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:id="@+id/dialog_change_card_gps"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:padding="5dp">
+
+            <ImageView
+                android:layout_width="62dp"
+                android:layout_height="62dp"
+                android:background="@drawable/dialog_change_img_bg"
+                android:padding="18dp"
+                android:src="@drawable/change_gps" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:text="GPS打卡"
+                android:textColor="@color/dialog_change_text"
+                android:textSize="15sp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/dialog_change_card_wifi"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:padding="5dp">
+
+            <ImageView
+                android:layout_width="62dp"
+                android:layout_height="62dp"
+                android:background="@drawable/dialog_change_img_bg"
+                android:padding="18dp"
+                android:src="@drawable/change_wifi" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:text="WiFi打卡"
+                android:textColor="@color/dialog_change_text"
+                android:textSize="15sp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/dialog_change_card_face"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:padding="5dp">
+
+            <ImageView
+                android:layout_width="62dp"
+                android:layout_height="62dp"
+                android:background="@drawable/dialog_change_img_bg"
+                android:padding="18dp"
+                android:src="@drawable/change_face_recognition" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:text="人脸识别"
+                android:textColor="@color/dialog_change_text"
+                android:textSize="15sp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/dialog_change_card_field"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:padding="5dp">
+
+            <ImageView
+                android:layout_width="62dp"
+                android:layout_height="62dp"
+                android:background="@drawable/dialog_change_img_bg"
+                android:padding="18dp"
+                android:src="@drawable/change_my_field" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:text="外勤"
+                android:textColor="@color/dialog_change_text"
+                android:textSize="15sp" />
+        </LinearLayout>
+
+        <!--<LinearLayout-->
+        <!--android:id="@+id/ch_share_dialog_qq"-->
+        <!--android:layout_width="0dp"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_weight="1"-->
+        <!--android:background="@drawable/ch_pressd_bg"-->
+        <!--android:gravity="center"-->
+        <!--android:orientation="vertical"-->
+        <!--android:padding="5dp">-->
+
+        <!--<ImageView-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:padding="5dp"-->
+        <!--android:src="@drawable/ssdk_oks_classic_qq" />-->
+
+        <!--<TextView-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:text="QQ"-->
+        <!--android:textColor="@color/ch_black"-->
+        <!--android:textSize="15sp" />-->
+        <!--</LinearLayout>-->
+
+    </LinearLayout>
+
+    <!--<View-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="1dp"-->
+    <!--android:background="@color/recycler_text_item_line_color" />-->
+    <LinearLayout
+        android:id="@+id/dialog_change_card_cancel"
+        android:layout_width="match_parent"
+        android:layout_height="38dp"
+        android:gravity="center_vertical"
+        android:orientation="vertical">
+
+        <ImageView
+            android:layout_width="16dp"
+            android:layout_height="16dp"
+            android:layout_gravity="center"
+            android:src="@drawable/cancel" />
+    </LinearLayout>
+
+</LinearLayout>

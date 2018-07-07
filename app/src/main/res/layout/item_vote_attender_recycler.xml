@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:paddingBottom="9dp"
+    android:paddingLeft="11dp"
+    android:paddingRight="11dp"
+    android:paddingTop="9dp">
+
+    <FrameLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/item_vote_att_img"
+            android:layout_width="42dp"
+            android:layout_height="42dp" />
+
+        <TextView
+            android:id="@+id/item_vote_att_img_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:textSize="14sp" />
+    </FrameLayout>
+
+
+    <TextView
+        android:id="@+id/item_vote_att_name"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical"
+        android:layout_marginLeft="10dp"
+        android:ellipsize="end"
+        android:lines="1"
+        android:textColor="@color/textcolor"
+        android:textSize="17sp" />
+
+    <TextView
+        android:id="@+id/item_vote_att_grade_user"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical"
+        android:textColor="@color/notice_contentcolor"
+        android:textSize="17sp" />
+
+    <View
+        android:layout_width="0dp"
+        android:layout_height="1dp"
+        android:layout_weight="1" />
+
+    <TextView
+        android:id="@+id/item_vote_att_grade"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical"
+        android:layout_marginRight="5dp"
+        android:gravity="center"
+        android:textColor="@color/notice_contentcolor"
+        android:textSize="17sp" />
+</LinearLayout>

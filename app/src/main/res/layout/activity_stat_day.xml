@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.sdxxtop.zhidian.ui.activity.StatDayActivity">
+
+    <com.sdxxtop.zhidian.widget.SubTitleView
+        android:id="@+id/statistical_title_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:leftText="返回"
+        app:subTitle="今日旷工" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:padding="10dp">
+
+        <TextView
+            android:id="@+id/statistical_day_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:ellipsize="end"
+            android:gravity="center"
+            android:lines="1"
+            android:text="2017年12月11日迟到图"
+            android:textColor="@color/textcolor"
+            android:textSize="15sp" />
+
+        <TextView
+            android:id="@+id/statistical_day_text"
+            android:layout_width="23dp"
+            android:layout_height="23dp"
+            android:layout_marginLeft="15dp"
+            android:background="@drawable/today"
+            android:gravity="center" />
+    </LinearLayout>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1">
+
+        <com.github.mikephil.charting.charts.PieChart
+            android:id="@+id/statistical_pie_chart"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+        <TextView
+            android:id="@+id/statistical_pie_no_data_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:textColor="@color/texthintcolor"
+            android:textSize="15sp" />
+    </FrameLayout>
+
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/recycler_text_item_line_color" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/statistical_day_selector"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="选择天"
+            android:textColor="@color/textcolor"
+            android:textSize="17sp" />
+
+        <TextView
+            android:id="@+id/statistical_up_day"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="上一天"
+            android:textColor="@color/blue"
+            android:textSize="17sp" />
+
+        <TextView
+            android:id="@+id/statistical_down_day"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="下一天"
+            android:textColor="@color/blue"
+            android:textSize="17sp" />
+
+
+    </LinearLayout>
+
+</LinearLayout>

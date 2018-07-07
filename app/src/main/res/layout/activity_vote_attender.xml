@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/backgroundcolor"
+    android:orientation="vertical"
+    tools:context="com.sdxxtop.zhidian.ui.activity.VoteAttenderActivity">
+
+    <com.sdxxtop.zhidian.widget.SubTitleView
+        android:id="@+id/vote_title_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:leftText="返回"
+        app:subTitle="参与人列表" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:paddingBottom="11dp"
+        android:paddingLeft="16dp"
+        android:paddingRight="16dp"
+        android:paddingTop="11dp">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_weight="1"
+            android:text="参与人"
+            android:textColor="@color/dialog_change_text"
+            android:textSize="14sp" />
+
+        <TextView
+            android:id="@+id/vote_attender_grade"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="打分选项"
+            android:textColor="@color/dialog_change_text"
+            android:textSize="14sp" />
+
+        <TextView
+            android:id="@+id/vote_attender_three_text"
+            android:layout_width="0dp"
+            android:layout_marginRight="10dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_weight="1"
+            android:gravity="right"
+            android:text="分数"
+            android:textColor="@color/dialog_change_text"
+            android:textSize="14sp" />
+    </LinearLayout>
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/vote_attender_recycler"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white" />
+</LinearLayout>

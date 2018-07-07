@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.sdxxtop.zhidian.ui.activity.CreateCompanyActivity">
+
+    <LinearLayout
+        android:id="@+id/create_company_title_view_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:fitsSystemWindows="true">
+
+        <com.sdxxtop.zhidian.widget.SubTitleView
+            android:id="@+id/create_company_title_view"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:subTitle="创建公司" />
+    </LinearLayout>
+
+    <FrameLayout
+        android:id="@+id/framelayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/create_company_title_view_layout"></FrameLayout>
+
+</RelativeLayout>

@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
+    android:focusable="true"
+    android:focusableInTouchMode="true"
+    android:orientation="vertical">
+
+    <com.sdxxtop.zhidian.widget.SubTitleView
+        android:id="@+id/mobile_title_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:leftText="返回"
+        app:subTitle="手机解绑" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:background="@color/backgroundcolor">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/white"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/y93"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/mobile_phone_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/x39"
+                    android:text="解绑手机：iPhone6s(XXX的iPhone )"
+                    android:textColor="#333333"
+                    android:textSize="@dimen/y34" />
+
+
+            </LinearLayout>
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/y2"
+                android:background="#D3D3D3" />
+
+            <EditText
+                android:id="@+id/mobile_phone_content"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/y131"
+                android:layout_marginLeft="@dimen/x33"
+                android:layout_marginRight="@dimen/x33"
+                android:layout_marginTop="@dimen/y28"
+                android:background="@null"
+                android:gravity="left"
+                android:hint="请输入理由（最多200字）"
+                android:maxLength="200"
+                android:textColor="#999999"
+                android:textSize="14sp" />
+
+            <TextView
+                android:id="@+id/mobile_phone_content_change"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="right"
+                android:paddingRight="@dimen/x33"
+                android:text="0/200"
+                android:textColor="#999999"
+                android:textSize="@dimen/y24" />
+
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/horlv_photo"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/y100"
+                android:layout_marginLeft="@dimen/x30"
+                android:layout_marginTop="@dimen/y4"
+                android:visibility="visible" />
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/y23"
+                android:layout_marginTop="@dimen/y17"
+                android:background="#F4F4F4" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/x34"
+                android:layout_marginTop="@dimen/x29"
+                android:text="审批人"
+                android:textColor="#333333"
+                android:textSize="@dimen/y34" />
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/horlv_approving_officer"
+                android:layout_width="match_parent"
+                android:layout_height="65dp"
+                android:layout_marginLeft="@dimen/x30"
+                android:layout_marginTop="@dimen/y22"
+                android:paddingBottom="10dp" />
+        </LinearLayout>
+    </ScrollView>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <Button
+            android:id="@+id/btn_submission"
+            style="?android:attr/borderlessButtonStyle"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/y91"
+            android:layout_marginBottom="@dimen/y25"
+            android:layout_marginLeft="@dimen/x30"
+            android:layout_marginRight="@dimen/x30"
+            android:layout_marginTop="@dimen/y26"
+            android:background="@drawable/shape_view_blue_solid_bg"
+            android:gravity="center"
+            android:text="提交申请"
+            android:textColor="@color/bai"
+            android:textSize="@dimen/y32" />
+
+    </LinearLayout>
+
+</LinearLayout>

@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:paddingBottom="1dp"
+    android:paddingLeft="10dp"
+    android:paddingRight="10dp"
+    android:paddingTop="1dp">
+
+    <LinearLayout
+        android:id="@+id/item_home_recycler_left_layout"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/item_home_recycler_time"
+            android:layout_width="39dp"
+            android:layout_height="39dp"
+            android:layout_gravity="center_vertical"
+            android:background="@drawable/item_fragment_home_recycler_item_bg"
+            android:gravity="center"
+            android:text="09:00"
+            android:textColor="@color/recycler_text_stroke_color" />
+
+        <TextView
+            android:id="@+id/item_home_recycler_left_divider"
+            android:layout_width="1dp"
+            android:layout_height="match_parent"
+            android:layout_gravity="center_horizontal"
+            android:background="@color/recycler_text_stroke_color" />
+    </LinearLayout>
+
+    <RelativeLayout
+        android:id="@+id/item_home_recycler_right_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@+id/item_home_recycler_left_layout"
+        android:paddingBottom="10dp"
+        android:paddingLeft="10dp">
+
+        <TextView
+            android:id="@+id/item_home_recycler_work_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="上班打卡"
+            android:textColor="@color/recycler_text_item_title_color" />
+
+        <TextView
+            android:id="@+id/item_home_recycler_work_xiuxi"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="13dp"
+            android:text="打卡时间"
+            android:visibility="gone"
+            android:textColor="@color/recycler_text_item_title_color" />
+
+        <TextView
+            android:id="@+id/item_home_recycler_work_time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/item_home_recycler_work_title"
+            android:layout_marginTop="5dp"
+            android:text="08:00"
+            android:textColor="@color/recycler_text_stroke_color" />
+
+        <TextView
+            android:id="@+id/item_home_recycler_field_gps_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/item_home_recycler_work_time"
+            android:layout_marginTop="5dp"
+            android:drawableLeft="@drawable/legwork_site"
+            android:drawablePadding="3dp"
+            android:textColor="@color/texthintcolor"
+            android:textSize="14sp"
+            android:visibility="gone" />
+
+        <FrameLayout
+            android:id="@+id/item_home_recycler_work_field_layout"
+            android:layout_width="87dp"
+            android:layout_height="87dp"
+            android:layout_below="@id/item_home_recycler_field_gps_text"
+            android:visibility="gone">
+
+            <ImageView
+                android:id="@+id/item_home_recycler_work_field_icon"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:layout_gravity="bottom|left"
+                android:scaleType="centerCrop"
+                android:src="@mipmap/girl" />
+
+            <TextView
+                android:id="@+id/item_home_recycler_work_field_delete"
+                android:layout_width="15dp"
+                android:layout_height="15dp"
+                android:layout_gravity="right|top"
+                android:background="@mipmap/delete" />
+        </FrameLayout>
+
+        <TextView
+            android:id="@+id/item_home_recycler_work_description"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_marginTop="13dp"
+            android:text="上班"
+            android:textColor="@color/recycler_text_stroke_color" />
+
+        <TextView
+            android:id="@+id/item_home_recycler_work_leak"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="8dp"
+            android:layout_toRightOf="@id/item_home_recycler_work_title"
+            android:text="漏打卡"
+            android:textColor="@color/dot_red"
+            android:textSize="12sp" />
+
+        <ImageView
+            android:id="@+id/item_home_recycler_field_take_photo"
+            android:layout_width="18dp"
+            android:layout_height="18dp"
+            android:layout_marginLeft="5dp"
+            android:layout_toRightOf="@id/item_home_recycler_work_leak"
+            android:src="@drawable/home_page_photo"
+            android:visibility="gone" />
+
+        <View
+            android:id="@+id/item_home_recycler_field_line"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_below="@id/item_home_recycler_work_field_layout"
+            android:layout_marginTop="10dp"
+            android:background="@color/recycler_text_item_line_color"
+            android:visibility="gone" />
+
+        <View
+            android:id="@+id/item_home_recycler_work_time_line"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_below="@id/item_home_recycler_work_time"
+            android:layout_marginTop="10dp"
+            android:background="@color/recycler_text_item_line_color" />
+    </RelativeLayout>
+
+</LinearLayout>

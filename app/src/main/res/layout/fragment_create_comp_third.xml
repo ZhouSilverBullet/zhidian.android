@@ -1,0 +1,305 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <RelativeLayout
+        android:id="@+id/rl_third_step"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/y243"
+        android:layout_below="@+id/include_layout">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="@dimen/y35"
+            android:text="简单三步，完成创建"
+            android:textColor="@color/texthintcolor"
+            android:textSize="@dimen/y28" />
+
+        <TextView
+            android:layout_width="@dimen/x159"
+            android:layout_height="@dimen/y2"
+            android:layout_marginLeft="@dimen/x172"
+            android:layout_marginTop="@dimen/y115"
+            android:background="@color/lan"/>
+
+        <ImageView
+            android:layout_width="@dimen/y53"
+            android:layout_height="@dimen/x53"
+            android:layout_marginLeft="@dimen/x100"
+            android:layout_marginTop="@dimen/y94"
+            android:background="@mipmap/complete"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/x117"
+            android:layout_marginTop="@dimen/y97"
+            android:text="1"
+            android:textSize="@dimen/y34"
+            android:textColor="@color/bai"/>
+
+        <TextView
+            android:layout_width="@dimen/x159"
+            android:layout_height="@dimen/y2"
+            android:layout_marginLeft="@dimen/x421"
+            android:layout_marginTop="@dimen/y115"
+            android:background="@color/lan"/>
+
+        <ImageView
+            android:layout_width="@dimen/y53"
+            android:layout_height="@dimen/x53"
+            android:layout_marginLeft="@dimen/x354"
+            android:layout_marginTop="@dimen/y94"
+            android:background="@mipmap/complete"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/x372"
+            android:layout_marginTop="@dimen/y96"
+            android:text="2"
+            android:textSize="@dimen/y34"
+            android:textColor="@color/bai"/>
+
+        <ImageView
+            android:layout_width="@dimen/y53"
+            android:layout_height="@dimen/x53"
+            android:layout_marginLeft="@dimen/x602"
+            android:layout_marginTop="@dimen/y94"
+            android:background="@mipmap/underway"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/x618"
+            android:layout_marginTop="@dimen/y96"
+            android:text="3"
+            android:textSize="@dimen/y34"
+            android:textColor="@color/bai"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="创建公司"
+            android:textSize="@dimen/y28"
+            android:textColor="@color/texthintcolor"
+            android:layout_marginLeft="@dimen/x72"
+            android:layout_marginTop="@dimen/y172"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="设置考勤设备"
+            android:textSize="@dimen/y28"
+            android:textColor="@color/texthintcolor"
+            android:layout_marginLeft="@dimen/x293"
+            android:layout_marginTop="@dimen/y172"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="设置考勤时间"
+            android:textSize="@dimen/y28"
+            android:textColor="@color/lan"
+            android:layout_marginLeft="@dimen/x540"
+            android:layout_marginTop="@dimen/y172"/>
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/rl_third_fragment"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/rl_third_step">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="@dimen/x33"
+                android:text="班次名称"
+                android:textColor="@color/textcolor"
+                android:textSize="@dimen/y34"/>
+
+            <EditText
+                android:id="@+id/et_class_name"
+                android:layout_width="@dimen/x450"
+                android:layout_height="wrap_content"
+                android:hint="请输入名称"
+                android:textSize="@dimen/y34"
+                android:textColor="@color/texthintcolor"
+                android:background="@null"
+                android:textCursorDrawable="@drawable/cursor"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="@dimen/x221"
+                android:ems="13"
+                android:singleLine="true"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/y2"
+                android:layout_centerHorizontal="true"
+                android:background="@color/linecolor"
+                android:layout_marginTop="@dimen/y98" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/y98">
+
+            <TextView
+                android:id="@+id/tv_start_time"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="@dimen/x33"
+                android:text="上班时间"
+                android:textColor="@color/textcolor"
+                android:textSize="@dimen/y34"/>
+
+            <TextView
+                android:id="@+id/tv_start_time_show"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:text="09:00"
+                android:layout_toLeftOf="@+id/iv_select_start_time"
+                android:textSize="@dimen/y34"
+                android:layout_marginRight="@dimen/x23"/>
+
+            <ImageView
+                android:id="@+id/iv_select_start_time"
+                android:layout_width="@dimen/x21"
+                android:layout_height="@dimen/y37"
+                android:layout_centerVertical="true"
+                android:layout_alignParentRight="true"
+                android:layout_marginRight="@dimen/x42"
+                android:background="@mipmap/next_step"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/y2"
+                android:layout_centerHorizontal="true"
+                android:background="@color/linecolor"
+                android:layout_marginTop="@dimen/y98" />
+        </RelativeLayout>
+
+
+        <RelativeLayout
+            android:id="@+id/rl_up_time"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/y196">
+
+            <TextView
+                android:id="@+id/tv_end_time"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="@dimen/x33"
+                android:text="下班时间"
+                android:textColor="@color/textcolor"
+                android:textSize="@dimen/y34"/>
+
+            <TextView
+                android:id="@+id/tv_end_time_show"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:text="18:00"
+                android:layout_toLeftOf="@+id/iv_select_end_time"
+                android:textSize="@dimen/y34"
+                android:layout_marginRight="@dimen/x23"/>
+
+            <ImageView
+                android:id="@+id/iv_select_end_time"
+                android:layout_width="@dimen/x21"
+                android:layout_height="@dimen/y37"
+                android:layout_centerVertical="true"
+                android:layout_alignParentRight="true"
+                android:layout_marginRight="@dimen/x42"
+                android:background="@mipmap/next_step"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/y2"
+                android:layout_centerHorizontal="true"
+                android:background="@color/linecolor"
+                android:layout_marginTop="@dimen/y98" />
+        </RelativeLayout>
+
+        <TextView
+            android:id="@+id/textview_up"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/y23"
+            android:layout_below="@+id/rl_up_time"
+            android:background="@color/backgroundcolor"/>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/y100"
+            android:layout_below="@+id/textview_up">
+
+            <TextView
+                android:id="@+id/tv_sign_time"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="@dimen/x33"
+                android:text="上下班前后允许打卡时间"
+                android:textColor="@color/textcolor"
+                android:textSize="@dimen/y34"/>
+
+            <TextView
+                android:id="@+id/tv_sign_time_show"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:text="1小时"
+                android:layout_toLeftOf="@+id/iv_sign_time"
+                android:textSize="@dimen/y34"
+                android:layout_marginRight="@dimen/x23"/>
+
+            <ImageView
+                android:id="@+id/iv_sign_time"
+                android:layout_width="@dimen/x21"
+                android:layout_height="@dimen/y37"
+                android:layout_centerVertical="true"
+                android:layout_alignParentRight="true"
+                android:layout_marginRight="@dimen/x42"
+                android:background="@mipmap/next_step"/>
+
+        </RelativeLayout>
+    </RelativeLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/y403"
+        android:layout_below="@+id/rl_third_fragment"
+        android:background="@color/backgroundcolor"></View>
+
+    <RelativeLayout
+        android:id="@+id/rl_bottom"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/y142"
+        android:layout_alignParentBottom="true">
+
+        <Button
+            android:id="@+id/btn_next"
+            android:layout_width="@dimen/x689"
+            android:layout_height="@dimen/y91"
+            android:layout_marginTop="@dimen/y26"
+            android:layout_centerHorizontal="true"
+            android:background="@drawable/btn_make_suer"
+            android:text="下一步"
+            android:textColor="@color/bai"
+            android:textSize="@dimen/y32"/>
+    </RelativeLayout>
+</RelativeLayout>

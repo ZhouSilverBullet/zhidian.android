@@ -1,0 +1,276 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:focusable="true"
+    android:focusableInTouchMode="true"
+    android:orientation="vertical"
+    tools:context="com.sdxxtop.zhidian.ui.activity.CompanyInfoActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:fitsSystemWindows="true">
+
+        <com.sdxxtop.zhidian.widget.SubTitleView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:subTitle="公司信息" />
+    </LinearLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/y101">
+
+        <TextView
+            android:id="@+id/company_info_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="@dimen/x39"
+            android:text="公司名称"
+            android:textColor="@color/textcolor"
+            android:textSize="@dimen/y34" />
+
+        <!--<TextView
+            android:id="@+id/tv_company_name"
+            android:layout_width="@dimen/x300"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="@dimen/x30"
+            android:gravity="right"
+            android:singleLine="true"
+            android:text=""
+            android:textColor="@color/texthintcolor"
+            android:textSize="@dimen/y34" />-->
+
+        <EditText
+            android:id="@+id/et_company_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="@dimen/x30"
+            android:layout_marginRight="@dimen/x30"
+            android:layout_toRightOf="@id/company_info_text"
+            android:background="@null"
+            android:ellipsize="end"
+            android:gravity="right"
+            android:singleLine="true"
+            android:text=""
+            android:textColor="@color/texthintcolor"
+            android:textCursorDrawable="@drawable/cursor"
+            android:textSize="@dimen/y34" />
+
+        <View
+            android:layout_width="@dimen/x711"
+            android:layout_height="@dimen/y2"
+            android:layout_alignParentRight="true"
+            android:layout_marginTop="@dimen/y100"
+            android:background="@color/linecolor"></View>
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/y101">
+
+        <TextView
+            android:id="@+id/company_info_short_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="@dimen/x39"
+            android:text="公司简称"
+            android:textColor="@color/textcolor"
+            android:textSize="@dimen/y34" />
+
+        <!--<TextView
+            android:id="@+id/tv_company_short_name"
+            android:layout_width="@dimen/x300"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="@dimen/x30"
+            android:gravity="right"
+            android:singleLine="true"
+            android:text=""
+            android:textColor="@color/texthintcolor"
+            android:textSize="@dimen/y34" />-->
+
+        <EditText
+            android:id="@+id/et_company_short_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="@dimen/x30"
+            android:layout_marginRight="@dimen/x30"
+            android:layout_toRightOf="@id/company_info_short_text"
+            android:background="@null"
+            android:ellipsize="end"
+            android:gravity="right"
+            android:singleLine="true"
+            android:text=""
+            android:textColor="@color/texthintcolor"
+            android:textCursorDrawable="@drawable/cursor"
+            android:textSize="@dimen/y34" />
+
+        <View
+            android:layout_width="@dimen/x711"
+            android:layout_height="@dimen/y2"
+            android:layout_alignParentRight="true"
+            android:layout_marginTop="@dimen/y100"
+            android:background="@color/linecolor"></View>
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/y101">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="@dimen/x39"
+            android:text="所属行业"
+            android:textColor="@color/textcolor"
+            android:textSize="@dimen/y34" />
+
+        <TextView
+            android:id="@+id/tv_company_classify"
+            android:layout_width="@dimen/x300"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="@dimen/x30"
+            android:drawablePadding="@dimen/x20"
+            android:drawableRight="@mipmap/next_step"
+            android:gravity="right"
+            android:singleLine="true"
+            android:text=""
+            android:textColor="@color/texthintcolor"
+            android:textSize="@dimen/y34" />
+
+        <View
+            android:layout_width="@dimen/x711"
+            android:layout_height="@dimen/y2"
+            android:layout_alignParentRight="true"
+            android:layout_marginTop="@dimen/y100"
+            android:background="@color/linecolor"></View>
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/y101">
+
+        <TextView
+            android:id="@+id/company_address_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="@dimen/x39"
+            android:text="公司地址"
+            android:textColor="@color/textcolor"
+            android:textSize="@dimen/y34" />
+
+        <TextView
+            android:id="@+id/tv_company_address"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="@dimen/x30"
+            android:layout_marginRight="@dimen/x30"
+            android:layout_toRightOf="@id/company_address_text"
+            android:drawablePadding="@dimen/x20"
+            android:drawableRight="@mipmap/next_step"
+            android:gravity="right"
+            android:singleLine="true"
+            android:text=""
+            android:textColor="@color/texthintcolor"
+            android:textSize="@dimen/y34" />
+
+        <View
+            android:layout_width="@dimen/x711"
+            android:layout_height="@dimen/y2"
+            android:layout_alignParentRight="true"
+            android:layout_marginTop="@dimen/y100"
+            android:background="@color/linecolor"></View>
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/rl_company_short"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/y101"
+        android:visibility="gone">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="@dimen/x39"
+            android:text="公司短码"
+            android:textColor="@color/textcolor"
+            android:textSize="@dimen/y34" />
+
+        <TextView
+            android:id="@+id/tv_company_short_code"
+            android:layout_width="@dimen/x300"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="@dimen/x30"
+            android:gravity="right"
+            android:singleLine="true"
+            android:text=""
+            android:textColor="@color/texthintcolor"
+            android:textSize="@dimen/y34" />
+
+    </RelativeLayout>
+
+    <LinearLayout
+        android:id="@+id/ll_transafer"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:visibility="gone">
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/y23"
+            android:background="@color/backgroundcolor"></View>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/y101">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="@dimen/x39"
+                android:text="移交管理员"
+                android:textColor="@color/textcolor"
+                android:textSize="@dimen/y34" />
+
+            <ImageView
+                android:id="@+id/iv_transfer"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="@dimen/x30"
+                android:background="@mipmap/next_step" />
+
+            <View
+                android:layout_width="@dimen/x711"
+                android:layout_height="@dimen/y2"
+                android:layout_alignParentRight="true"
+                android:layout_marginTop="@dimen/y100"
+                android:background="@color/linecolor"></View>
+        </RelativeLayout>
+    </LinearLayout>
+</LinearLayout>

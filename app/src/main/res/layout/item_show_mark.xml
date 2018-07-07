@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/y348"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@color/backgroundcolor">
+
+    <TextView
+        android:id="@+id/tv_item_mark_time"
+        android:layout_width="@dimen/x147"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/y58"
+        android:gravity="center"
+        android:text=""
+        android:layout_marginLeft="@dimen/x12"
+        android:textColor="@color/texthintcolor"
+        android:textSize="@dimen/y23" />
+
+    <RelativeLayout
+        android:id="@+id/rl_item"
+        android:layout_width="@dimen/x562"
+        android:layout_height="@dimen/y302"
+        android:background="@drawable/shape_corner"
+        android:layout_marginTop="@dimen/y37"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="@dimen/x23">
+
+    <TextView
+        android:id="@+id/tv_item_mark_title"
+        android:layout_width="@dimen/x440"
+        android:singleLine="true"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/x21"
+        android:layout_marginTop="@dimen/y27"
+        android:text="北京上海你选择哪一个"
+        android:textColor="@color/textcolor"
+        android:textSize="@dimen/y30" />
+
+        <TextView
+            android:id="@+id/tv_item_mark_state"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="@dimen/x23"
+            android:layout_marginTop="@dimen/y30"
+            android:text=""
+            android:textSize="@dimen/y24" />
+
+    <View
+        android:id="@+id/view_line"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/y2"
+        android:background="@color/backgroundcolor"
+        android:layout_marginTop="@dimen/y75"></View>
+
+        <TextView
+            android:id="@+id/tv_item_mark_score"
+            android:layout_width="@dimen/x233"
+            android:layout_height="@dimen/y37"
+            android:text=""
+            android:textColor="@color/texthintcolor"
+            android:textSize="@dimen/y28"
+            android:layout_marginLeft="@dimen/x21"
+            android:layout_marginTop="@dimen/y119"/>
+
+        <com.sdxxtop.zhidian.widget.RatingBar
+            android:id="@+id/tv_item_ratingbar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/x41"
+            android:layout_marginTop="@dimen/y202"
+            app:clickable="false"
+            app:starCount="5"
+            app:starEmpty="@mipmap/star_unselected"
+            app:starFill="@mipmap/star"
+            app:starImageSize="@dimen/y40"
+            app:starPadding="@dimen/y30"
+            app:starStep="5.0"
+            app:stepSize="Half"
+            android:visibility="gone"/>
+
+        <SeekBar
+            android:id="@+id/seekbar_item"
+            android:layout_width="@dimen/x488"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/x41"
+            android:layout_marginTop="@dimen/y232"
+            android:maxHeight="@dimen/y3"
+            android:minHeight="@dimen/y3"
+            android:max="100"
+            android:progress="100"
+            android:thumb="@mipmap/anonymity"
+            android:progressDrawable="@drawable/layer_progress"/>
+    </RelativeLayout>
+</RelativeLayout>

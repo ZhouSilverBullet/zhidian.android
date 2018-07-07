@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.sdxxtop.zhidian.ui.activity.ModifyMobileActivity">
+
+    <com.sdxxtop.zhidian.widget.SubTitleView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:subTitle="绑定手机号" />
+
+    <ImageView
+        android:layout_width="@dimen/x125"
+        android:layout_height="@dimen/y141"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="@dimen/y246"
+        android:background="@mipmap/setti_address_book" />
+
+    <ImageView
+        android:layout_width="@dimen/x575"
+        android:layout_height="@dimen/y91"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="@dimen/y296"
+        android:background="@mipmap/bound_mobile_background" />
+
+    <TextView
+        android:id="@+id/tv_current_mobile"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="@dimen/y515"
+        android:text=""
+        android:textColor="@color/textcolor"
+        android:textSize="@dimen/y36" />
+
+    <Button
+        android:id="@+id/btn_change_mobile"
+        android:layout_width="@dimen/x591"
+        android:layout_height="@dimen/y91"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="@dimen/y621"
+        android:background="@drawable/btn_make_suer"
+        android:text="更换手机账号"
+        android:textColor="@color/bai"
+        android:textSize="@dimen/y32" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="@dimen/y751"
+        android:text="手机账号可以用来登录和找回密码"
+        android:textColor="@color/texthintcolor"
+        android:textSize="@dimen/y30" />
+</RelativeLayout>

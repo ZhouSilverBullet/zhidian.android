@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.sdxxtop.zhidian.ui.activity.RegistNextActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:fitsSystemWindows="true">
+
+        <com.sdxxtop.zhidian.widget.SubTitleView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:bottomLineIsShow="false"
+            app:subTitle="" />
+    </LinearLayout>
+
+    <com.sdxxtop.zhidian.widget.CircleImageView
+        android:layout_width="@dimen/x171"
+        android:layout_height="@dimen/y171"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="@dimen/y129"
+        android:src="@mipmap/head_portrait" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/x80"
+        android:layout_marginTop="@dimen/y405"
+        android:text="姓名"
+        android:textColor="@color/textcolor"
+        android:textSize="@dimen/y30" />
+
+    <EditText
+        android:id="@+id/et_user_name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/x166"
+        android:layout_marginTop="@dimen/y404"
+        android:background="@null"
+        android:ems="10"
+        android:hint="请输入您的真实姓名"
+        android:inputType="textPersonName"
+        android:singleLine="true"
+        android:textCursorDrawable="@drawable/cursor"
+        android:textSize="@dimen/y30" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/y2"
+        android:layout_marginLeft="@dimen/x79"
+        android:layout_marginRight="@dimen/x79"
+        android:layout_marginTop="@dimen/y464"
+        android:background="@color/linecolor" />
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/x80"
+        android:layout_marginTop="@dimen/y553"
+        android:text="密码"
+        android:textColor="@color/textcolor"
+        android:textSize="@dimen/y30" />
+
+    <EditText
+        android:id="@+id/et_user_pwd"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/x166"
+        android:layout_marginTop="@dimen/y551"
+        android:background="@null"
+        android:digits="0123456789abcdefghigklmnopqrstuvwxyzABCDEFGHIGKLMNOPQRSTUVWXYZ"
+        android:ems="10"
+        android:hint="请设置您的密码"
+        android:singleLine="true"
+        android:textCursorDrawable="@drawable/cursor"
+        android:textSize="@dimen/y30" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/y2"
+        android:layout_marginLeft="@dimen/x80"
+        android:layout_marginRight="@dimen/x80"
+        android:layout_marginTop="@dimen/y610"
+        android:background="@color/linecolor" />
+
+    <Button
+        android:id="@+id/btn_finish"
+        style="?android:attr/borderlessButtonStyle"
+        android:layout_width="@dimen/x591"
+        android:layout_height="@dimen/y93"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="@dimen/y759"
+        android:background="@drawable/shape_login"
+        android:text="完成"
+        android:textColor="@color/bai"
+        android:textSize="@dimen/y32" />
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/y260"
+        android:layout_alignParentBottom="true"
+        android:background="@mipmap/background2" />
+</RelativeLayout>

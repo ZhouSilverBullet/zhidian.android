@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#F4F4F4"
+    android:orientation="vertical">
+
+    <com.sdxxtop.zhidian.widget.SubTitleView
+        android:id="@+id/top_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:leftIsNotShow="true"
+        app:subTitle="申请" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/y279"
+        android:background="#3296FA"
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:id="@+id/image_my_apply"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <ImageView
+
+                android:layout_width="@dimen/x68"
+                android:layout_height="@dimen/y68"
+                android:layout_marginTop="10px"
+                android:background="@mipmap/applied" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/y16"
+                android:gravity="center"
+                android:text="我申请的"
+                android:textColor="@color/bai"
+                android:textSize="@dimen/y30" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/image_examine_layout"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+                <ImageView
+                    android:id="@+id/image_examine"
+                    android:layout_width="@dimen/x68"
+                    android:layout_height="@dimen/y68"
+                    android:layout_marginTop="10px"
+                    android:background="@mipmap/examine" />
+
+                <TextView
+                    android:id="@+id/fragment_apply_count"
+                    android:layout_width="@dimen/x35"
+                    android:layout_height="@dimen/y35"
+                    android:layout_marginLeft="@dimen/x45"
+                    android:background="@drawable/fragment_home_red_dot"
+                    android:gravity="center"
+                    android:text="2"
+                    android:visibility="gone"
+                    android:textColor="@color/bai"
+                    android:textSize="@dimen/y20" />
+
+
+            </RelativeLayout>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/y16"
+                android:gravity="center"
+                android:text="我审批的"
+                android:textColor="@color/bai"
+                android:textSize="@dimen/y30" />
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <GridView
+        android:id="@+id/gridv_apply"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="#F4F4F4"
+        android:gravity="center"
+        android:horizontalSpacing="@dimen/x2"
+        android:numColumns="3"
+        android:paddingBottom="@dimen/y2"
+        android:stretchMode="columnWidth"
+        android:verticalSpacing="@dimen/y2" />
+
+
+</LinearLayout>

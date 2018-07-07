@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="@dimen/x110"
+                android:layout_height="@dimen/y100"
+                android:paddingRight="@dimen/x5">
+
+    <ImageView
+        android:id="@+id/img_photo"
+        android:layout_width="@dimen/x83"
+        android:layout_height="@dimen/y83"
+        android:layout_marginTop="@dimen/x16"
+        android:visibility="gone"/>
+
+    <com.sdxxtop.zhidian.widget.CircleImageView
+        android:id="@+id/cirimg_conten"
+        android:layout_width="@dimen/x99"
+        android:layout_height="@dimen/y99"
+        android:src="#3296FA"/>
+
+    <TextView
+        android:id="@+id/tv_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:layout_marginRight="@dimen/x3"
+        android:text="常军"
+        android:textColor="@color/bai"
+        android:textSize="@dimen/y28"/>
+
+    <ImageView
+        android:id="@+id/image_delete"
+        android:layout_width="@dimen/x30"
+        android:layout_height="@dimen/y30"
+        android:layout_marginLeft="@dimen/x67"
+        android:background="@mipmap/delete_img"
+        android:visibility="visible"/>
+
+    <com.sdxxtop.zhidian.widget.CircleImageView
+        android:id="@+id/circleimg_add"
+        android:layout_width="@dimen/x99"
+        android:layout_height="@dimen/y99"
+        android:src="#F6F6F6"
+        android:visibility="gone"/>
+    
+    <ImageView
+        android:id="@+id/image_add"
+        android:layout_width="@dimen/x43"
+        android:layout_height="@dimen/y43"
+        android:layout_centerInParent="true"
+        android:layout_marginRight="@dimen/x3"
+        android:background="@mipmap/apply_add"
+        android:visibility="gone"/>
+
+</RelativeLayout>

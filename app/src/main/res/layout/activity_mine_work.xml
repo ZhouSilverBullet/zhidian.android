@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.sdxxtop.zhidian.ui.activity.MineWorkActivity">
+
+    <com.sdxxtop.zhidian.widget.SubTitleView
+        android:id="@+id/mine_work_title_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:rightText="新建"
+        app:rightTextIsShow="true"
+        app:subTitle="工作汇报" />
+
+    <com.sdxxtop.zhidian.widget.PagerSlidingTabStrip
+        android:id="@+id/mine_work_tab"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        app:pstsIndicatorColor="@color/lan"
+        app:pstsDividerColor="@color/transparent"
+        app:pstsIndicatorHeight="1dp"
+        app:pstsTextAllCaps="true"
+        app:pstsUnderlineColor="@color/recycler_text_item_line_color"
+        app:pstsUnderlineHeight="1dp" />
+
+    <!--<View-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="1dp"-->
+    <!--android:background="@color/recycler_text_item_line_color" />-->
+
+    <android.support.v4.view.ViewPager
+        android:id="@+id/mine_work_pager"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+</LinearLayout>

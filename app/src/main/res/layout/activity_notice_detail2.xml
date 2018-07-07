@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.sdxxtop.zhidian.ui.activity.NoticeDetail2Activity">
+
+    <com.sdxxtop.zhidian.widget.SubTitleView
+        android:id="@+id/notice2_detail_title_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:leftText="公告"
+        app:subTitle="" />
+
+    <!--<ScrollView-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="match_parent">-->
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:paddingLeft="16dp"
+        android:paddingRight="16dp">
+
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/notice2_detail_image_recycler"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <!--<TextView-->
+        <!--android:id="@+id/notice2_detail_content"-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:paddingBottom="15dp"-->
+        <!--android:paddingTop="15dp" />-->
+
+    </LinearLayout>
+    <!--</ScrollView>-->
+
+
+</LinearLayout>

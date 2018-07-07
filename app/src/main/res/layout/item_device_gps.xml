@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:descendantFocusability="blocksDescendants">
+
+        <ImageView
+            android:layout_width="@dimen/x22"
+            android:layout_height="@dimen/y30"
+            android:layout_marginLeft="@dimen/x32"
+            android:layout_marginTop="@dimen/y32"
+            android:background="@mipmap/gps" />
+
+        <TextView
+            android:id="@+id/tv_item_gps_name"
+            android:layout_width="@dimen/x497"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/x85"
+            android:layout_marginTop="@dimen/y20"
+            android:ellipsize="end"
+            android:singleLine="true"
+            android:text="将军希望小学"
+            android:textColor="@color/textcolor"
+            android:textSize="@dimen/y30" />
+
+        <TextView
+            android:id="@+id/tv_item_gps_info"
+            android:layout_width="@dimen/x497"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/x85"
+            android:layout_marginTop="@dimen/y65"
+            android:text="山东省临沂市罗庄区盛庄街道沂河路罗庄区盛装街道"
+            android:textColor="@color/texthintcolor"
+            android:textSize="@dimen/y24" />
+
+        <View
+            android:id="@+id/line"
+            android:layout_width="@dimen/x689"
+            android:layout_height="@dimen/y2"
+            android:layout_below="@+id/tv_item_gps_info"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="@dimen/y10"
+            android:background="@color/linecolor"></View>
+
+        <CheckBox
+            android:id="@+id/cb_item_gps"
+            android:layout_width="@dimen/x105"
+            android:layout_height="@dimen/y65"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="@dimen/x34"
+            android:background="@drawable/iv_switch"
+            android:button="@null" />
+    </RelativeLayout>
+</LinearLayout>

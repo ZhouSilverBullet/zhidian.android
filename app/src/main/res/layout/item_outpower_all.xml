@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:fresco="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/rl_item_parent"
+    android:layout_width="@dimen/x130"
+    android:layout_height="@dimen/y180"
+    android:layout_marginLeft="@dimen/x38">
+
+        <RelativeLayout
+            android:id="@+id/rl_item_background"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/y13">
+
+            <com.sdxxtop.zhidian.widget.CircleImageView
+                android:id="@+id/iv_item_recy_img"
+                android:layout_width="@dimen/x96"
+                android:layout_height="@dimen/y98"
+                android:layout_centerHorizontal="true"
+                android:src="@color/lan" />
+
+            <TextView
+                android:id="@+id/tv_item_recy_short_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_centerInParent="true"
+                android:text=""
+                android:textColor="@color/bai"
+                android:textSize="@dimen/y28" />
+
+            <ImageView
+                android:id="@+id/iv_item_power"
+                android:layout_width="@dimen/x96"
+                android:layout_height="@dimen/y50"
+                android:layout_marginLeft="@dimen/x17"
+                android:layout_marginTop="@dimen/y50"
+                android:background="@mipmap/poweropen"
+                android:visibility="invisible" />
+
+        </RelativeLayout>
+
+        <TextView
+            android:id="@+id/tv_item_recy_name"
+            android:layout_width="@dimen/x211"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/rl_item_background"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="@dimen/y13"
+            android:gravity="center"
+            android:singleLine="true"
+            android:text=""
+            android:textColor="@color/textcolor"
+            android:textSize="@dimen/y34" />
+</RelativeLayout>

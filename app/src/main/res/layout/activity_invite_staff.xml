@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.sdxxtop.zhidian.ui.activity.InviteStaffActivity">
+
+    <com.sdxxtop.zhidian.widget.SubTitleView
+        android:id="@+id/invite_title_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:subTitle="邀请员工" />
+
+    <RelativeLayout
+        android:id="@+id/invite_cell_rl"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/y101"
+        android:layout_below="@id/invite_title_view">
+
+        <ImageView
+            android:layout_width="@dimen/x22"
+            android:layout_height="@dimen/y34"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="@dimen/x32"
+            android:layout_marginTop="@dimen/y159"
+            android:background="@mipmap/cellphone" />
+
+        <TextView
+            android:id="@+id/tv_phone_add"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="@dimen/x85"
+            android:text="手机号添加"
+            android:textColor="@color/textcolor"
+            android:textSize="@dimen/y34" />
+
+        <ImageView
+            android:layout_width="@dimen/x21"
+            android:layout_height="@dimen/y37"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="@dimen/x42"
+            android:background="@mipmap/next_step" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/y2"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="@dimen/y98"
+            android:background="@color/linecolor" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/rl_qr_cord"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/y102"
+        android:layout_below="@id/invite_cell_rl">
+
+        <ImageView
+            android:layout_width="@dimen/x34"
+            android:layout_height="@dimen/y26"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="@dimen/x32"
+            android:layout_marginTop="@dimen/y159"
+            android:background="@drawable/code" />
+
+        <TextView
+            android:id="@+id/tv_qr_cord_show"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="@dimen/x85"
+            android:text="二维码邀请"
+            android:textColor="@color/textcolor"
+            android:textSize="@dimen/y34" />
+
+        <ImageView
+            android:layout_width="@dimen/x21"
+            android:layout_height="@dimen/y37"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="@dimen/x42"
+            android:background="@mipmap/next_step" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/y2"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="@dimen/y98"
+            android:background="@color/linecolor" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/rl_piliang"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/y102"
+        android:layout_below="@id/rl_qr_cord">
+
+        <ImageView
+            android:layout_width="@dimen/x34"
+            android:layout_height="@dimen/y26"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="@dimen/x32"
+            android:layout_marginTop="@dimen/y159"
+            android:background="@mipmap/bulk_import" />
+
+        <TextView
+            android:id="@+id/tv_pilinag_add"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="@dimen/x85"
+            android:text="批量导入员工"
+            android:textColor="@color/textcolor"
+            android:textSize="@dimen/y34" />
+
+        <ImageView
+            android:layout_width="@dimen/x21"
+            android:layout_height="@dimen/y37"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="@dimen/x42"
+            android:background="@mipmap/next_step" />
+
+        <!--<TextView
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/y2"
+            android:layout_centerHorizontal="true"
+            android:background="@color/linecolor"
+            android:layout_marginTop="@dimen/y98" />-->
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/rl_piliang"
+        android:background="@color/backgroundcolor"></RelativeLayout>
+</RelativeLayout>

@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/y348"
+    android:background="@color/backgroundcolor">
+
+    <TextView
+        android:id="@+id/tv_item_vote_time"
+        android:layout_width="@dimen/x147"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/y58"
+        android:gravity="center"
+        android:text=""
+        android:layout_marginLeft="@dimen/x12"
+        android:textColor="@color/texthintcolor"
+        android:textSize="@dimen/y23" />
+
+    <RelativeLayout
+        android:id="@+id/rl_item"
+        android:layout_width="@dimen/x562"
+        android:layout_height="@dimen/y302"
+        android:background="@drawable/shape_corner"
+        android:layout_marginTop="@dimen/y37"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="@dimen/x23">
+
+    <TextView
+        android:id="@+id/tv_item_vote_title"
+        android:layout_width="@dimen/x440"
+        android:singleLine="true"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/x21"
+        android:layout_marginTop="@dimen/y27"
+        android:text="北京上海你选择哪一个"
+        android:textColor="@color/textcolor"
+        android:textSize="@dimen/y30" />
+
+        <TextView
+            android:id="@+id/tv_item_vote_state"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="@dimen/x23"
+            android:layout_marginTop="@dimen/y30"
+            android:text=""
+            android:textSize="@dimen/y24" />
+
+    <View
+        android:id="@+id/view_line"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/y2"
+        android:background="@color/backgroundcolor"
+        android:layout_marginTop="@dimen/y75"></View>
+
+        <TextView
+            android:id="@+id/tv_item_vote"
+            android:layout_width="@dimen/x150"
+            android:layout_height="@dimen/y90"
+            android:text="投票"
+            android:textSize="@dimen/y50"
+            android:layout_marginLeft="@dimen/x190"
+            android:layout_marginTop="@dimen/y150"/>
+    <TextView
+        android:id="@+id/tv_item_select_one"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/x93"
+        android:layout_marginTop="@dimen/y244"
+        android:text=""
+        android:textColor="@color/textcolor"
+        android:textSize="@dimen/y28" />
+
+        <TextView
+            android:id="@+id/tv_item_select_two"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/x324"
+            android:layout_marginTop="@dimen/y244"
+            android:text=""
+            android:textColor="@color/textcolor"
+            android:textSize="@dimen/y28" />
+
+    <TextView
+        android:id="@+id/tv_item_detail"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="@dimen/x42"
+        android:layout_marginTop="@dimen/y243"
+        android:text="…"
+        android:visibility="gone"/>
+
+
+    </RelativeLayout>
+</RelativeLayout>

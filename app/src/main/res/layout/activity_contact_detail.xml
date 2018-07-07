@@ -1,0 +1,358 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.sdxxtop.zhidian.ui.activity.ContactDetailActivity">
+
+    <com.sdxxtop.zhidian.widget.KnowHeightScrollView
+        android:id="@+id/know_height_scroll"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/backgroundcolor">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="172dp"
+                android:background="@color/white">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="130dp"
+                    android:background="@color/lan">
+
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="130dp"
+                        android:background="@mipmap/personal_background" />
+                </LinearLayout>
+
+                <RelativeLayout
+                    android:layout_width="62dp"
+                    android:layout_height="62dp"
+                    android:layout_gravity="bottom"
+                    android:layout_marginLeft="15dp">
+
+                    <com.sdxxtop.zhidian.widget.CircleImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:src="@color/bai" />
+
+                    <de.hdodenhof.circleimageview.CircleImageView
+                        android:id="@+id/iv_img"
+                        android:layout_width="60dp"
+                        android:layout_height="60dp"
+                        android:layout_centerInParent="true" />
+
+                    <TextView
+                        android:id="@+id/tv_short_name"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerInParent="true"
+                        android:text=""
+                        android:textColor="@color/bai"
+                        android:textSize="21sp" />
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="62dp"
+                    android:layout_gravity="right|bottom"
+                    android:layout_marginLeft="83dp"
+                    android:layout_marginRight="23dp"
+                    android:paddingTop="20dp">
+
+                    <TextView
+                        android:id="@+id/tv_name"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="4dp"
+                        android:text=""
+                        android:textColor="@color/textcolor"
+                        android:textSize="18sp" />
+
+                    <ImageView
+                        android:id="@+id/cb_collect"
+                        style="?android:attr/borderlessButtonStyle"
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:layout_alignParentRight="true"
+                        android:layout_marginTop="5dp"
+                        android:background="@drawable/checkbox_collect"
+                        android:button="@null" />
+                </RelativeLayout>
+            </FrameLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="10dp"
+                android:background="@color/white" />
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="47dp"
+                android:background="@color/white">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="46dp"
+                    android:gravity="center_vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_marginLeft="17dp"
+                        android:layout_marginRight="14dp"
+                        android:text="手机"
+                        android:textColor="@color/texthintcolor"
+                        android:textSize="17sp" />
+
+                    <TextView
+                        android:id="@+id/tv_phone"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginRight="14dp"
+                        android:text=""
+                        android:textColor="@color/textcolor"
+                        android:textSize="17sp" />
+                </LinearLayout>
+
+                <ImageView
+                    android:id="@+id/iv_phone"
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginRight="23dp"
+                    android:background="@mipmap/phone" />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_alignParentBottom="true"
+                    android:background="@color/recycler_text_item_line_color" />
+            </RelativeLayout>
+
+            <com.sdxxtop.zhidian.widget.ContactTextView
+                android:id="@+id/contact_position"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:visibility="gone"
+                app:ctv_text_name="职位" />
+
+            <com.sdxxtop.zhidian.widget.ContactTextView
+                android:id="@+id/contact_partment"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:visibility="gone"
+                app:ctv_text_name="部门" />
+
+            <com.sdxxtop.zhidian.widget.ContactTextView
+                android:id="@+id/contact_sex"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:visibility="gone"
+                app:ctv_text_name="性别" />
+
+            <com.sdxxtop.zhidian.widget.ContactTextView
+                android:id="@+id/contact_work_place"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:visibility="gone"
+                app:ctv_text_name="工作地点" />
+
+            <com.sdxxtop.zhidian.widget.ContactTextView
+                android:id="@+id/contact_email"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:visibility="gone"
+                app:ctv_text_name="邮箱" />
+
+            <com.sdxxtop.zhidian.widget.ContactTextView
+                android:id="@+id/contact_qq"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:visibility="gone"
+                app:ctv_text_name="QQ" />
+
+            <com.sdxxtop.zhidian.widget.ContactTextView
+                android:id="@+id/contact_wx"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:visibility="gone"
+                app:ctv_text_name="微信" />
+
+            <com.sdxxtop.zhidian.widget.ContactTextView
+                android:id="@+id/contact_mingzu"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:visibility="gone"
+                app:ctv_text_name="民族" />
+
+            <com.sdxxtop.zhidian.widget.ContactTextView
+                android:id="@+id/contact_jiguan"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:visibility="gone"
+                app:ctv_text_name="籍贯" />
+
+            <com.sdxxtop.zhidian.widget.ContactTextView
+                android:id="@+id/contact_birthday"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:visibility="gone"
+                app:ctv_text_name="生日" />
+
+            <com.sdxxtop.zhidian.widget.ContactTextView
+                android:id="@+id/contact_idcard"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:visibility="gone"
+                app:ctv_text_name="身份证" />
+
+            <com.sdxxtop.zhidian.widget.ContactTextView
+                android:id="@+id/contact_merry"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:visibility="gone"
+                app:ctv_text_name="婚姻状况" />
+
+            <com.sdxxtop.zhidian.widget.ContactTextView
+                android:id="@+id/contact_address"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:visibility="gone"
+                app:ctv_text_name="家庭住址" />
+
+            <com.sdxxtop.zhidian.widget.ContactTextView
+                android:id="@+id/contact_contact"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:visibility="gone"
+                app:ctv_text_name="紧急联系人" />
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="47dp"
+                android:background="@color/white">
+
+                <TextView
+                    android:id="@+id/tvBind"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="17dp"
+                    android:text="绑定的设备"
+                    android:textColor="@color/texthintcolor"
+                    android:textSize="@dimen/y34" />
+
+                <TextView
+                    android:id="@+id/tv_device_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    android:layout_toLeftOf="@+id/btn_remove"
+                    android:layout_toRightOf="@+id/tvBind"
+                    android:ellipsize="marquee"
+                    android:focusable="true"
+                    android:focusableInTouchMode="true"
+                    android:marqueeRepeatLimit="marquee_forever"
+                    android:singleLine="true"
+                    android:textColor="@color/texthintcolor"
+                    android:textSize="17sp" />
+
+                <Button
+                    android:id="@+id/btn_remove"
+                    style="?android:attr/borderlessButtonStyle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="30dp"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginRight="16dp"
+                    android:background="@drawable/btn_remove_selector"
+                    android:text="解除绑定"
+                    android:textColor="@color/bai"
+                    android:textSize="16sp" />
+            </RelativeLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:background="@color/backgroundcolor" />
+        </LinearLayout>
+    </com.sdxxtop.zhidian.widget.KnowHeightScrollView>
+
+    <LinearLayout
+        android:id="@+id/ll_background"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/blue"
+        android:fitsSystemWindows="true"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="45dp">
+
+
+        </RelativeLayout>
+    </LinearLayout>
+
+    <RelativeLayout
+        android:id="@+id/title_rl"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:background="@color/transparent">
+
+            <LinearLayout
+                android:id="@+id/tv_return"
+                android:layout_width="wrap_content"
+                android:layout_height="45dp"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginRight="7dp"
+                    android:paddingLeft="16dp"
+                    android:src="@mipmap/return_white" />
+
+                <TextView
+                    android:id="@+id/view_sub_title_left_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:text="通讯录"
+                    android:textColor="@color/white"
+                    android:textSize="18sp" />
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:ellipsize="end"
+                android:lines="1"
+                android:maxWidth="200dp"
+                android:text="详细资料"
+                android:textColor="@color/white"
+                android:textSize="18sp" />
+
+        </RelativeLayout>
+    </RelativeLayout>
+
+</RelativeLayout>

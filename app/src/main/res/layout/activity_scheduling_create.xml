@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:fitsSystemWindows="true"
+    android:orientation="vertical"
+    tools:context="com.sdxxtop.zhidian.ui.activity.SchedulingCreateActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/backgroundcolor"
+        android:orientation="vertical">
+
+        <com.sdxxtop.zhidian.widget.SubTitleView
+            android:id="@+id/scheduling_title_view"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:leftText="返回"
+            app:subTitle="新建排班" />
+
+        <com.sdxxtop.zhidian.widget.TextAndEditView
+            android:id="@+id/scheduling_edit_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:taev_edit_text_hint="例如幼儿园的早班"
+            app:taev_text_view="规则名称" />
+
+        <com.sdxxtop.zhidian.widget.TextAndTextView
+            android:id="@+id/scheduling_text_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:tatv_text_right_value=""
+            app:tatv_text_view="适用范围" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            android:paddingTop="10dp">
+
+            <Button
+                android:id="@+id/scheduling_btn"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/y91"
+                android:layout_marginBottom="@dimen/y25"
+                android:layout_marginLeft="@dimen/x30"
+                android:layout_marginRight="@dimen/x30"
+                android:layout_marginTop="@dimen/y26"
+                android:background="#3296FA"
+                android:gravity="center"
+                android:text="下一步"
+                android:textColor="@color/bai"
+                android:textSize="@dimen/y32" />
+        </LinearLayout>
+    </LinearLayout>
+
+
+</LinearLayout>

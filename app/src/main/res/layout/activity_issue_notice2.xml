@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:fitsSystemWindows="true"
+    android:orientation="vertical"
+    tools:context="com.sdxxtop.zhidian.ui.activity.IssueNotice2Activity">
+
+    <com.sdxxtop.zhidian.widget.SubTitleView
+        android:id="@+id/issue_notice2_title_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:leftText="公告"
+        app:subTitle="发布公告" />
+
+    <android.support.v4.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:background="@color/backgroundcolor">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <com.sdxxtop.zhidian.widget.TextAndTextView
+                android:id="@+id/issue_notice2_fanwei"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:tatv_text_right_value="默认选择全公司"
+                app:tatv_text_view="接收范围" />
+
+            <com.sdxxtop.zhidian.widget.TextAndEditView
+                android:id="@+id/issue_notice2_title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:taev_edit_text_hint="请输入公告标题"
+                app:taev_text_view="公告标题" />
+
+            <com.sdxxtop.zhidian.widget.TextAndEditView
+                android:id="@+id/issue_notice2_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:taev_edit_text_hint="请输入发布人姓名"
+                app:taev_text_view="发布人" />
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="45dp"
+                android:background="@color/white"
+                android:paddingLeft="15dp"
+                android:paddingRight="15dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:text="设置公告图片"
+                    android:textColor="@color/textcolor"
+                    android:textSize="17dp" />
+
+                <ImageView
+                    android:id="@+id/issue_notice2_photo_selector"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:src="@mipmap/select_image" />
+            </RelativeLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/recycler_text_item_line_color" />
+
+            <LinearLayout
+                android:id="@+id/issue_notice2_recycler_layout"
+                android:layout_width="match_parent"
+                android:layout_height="105dp"
+                android:background="@color/white"
+                android:orientation="horizontal"
+                android:paddingLeft="15dp"
+                android:paddingRight="15dp"
+                android:visibility="gone">
+
+                <android.support.v7.widget.RecyclerView
+                    android:id="@+id/issue_notice2_recycler"
+                    android:layout_width="match_parent"
+                    android:layout_height="90dp"
+                    android:layout_gravity="center_vertical"
+                    android:background="@color/white" />
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="170dp"
+                android:layout_marginTop="10dp"
+                android:background="@color/white"
+                android:paddingBottom="10dp"
+                android:paddingLeft="17dp"
+                android:paddingRight="17dp"
+                android:paddingTop="10dp">
+
+                <EditText
+                    android:id="@+id/issue_notice2_content"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@null"
+                    android:gravity="left|top"
+                    android:hint="请输入公告内容"
+                    android:textSize="14sp" />
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/issue_notice2_change_text"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                android:gravity="right"
+                android:paddingBottom="10dp"
+                android:paddingRight="17dp"
+                android:text="0/200"
+                android:textColor="#999999"
+                android:textSize="12sp" />
+        </LinearLayout>
+    </android.support.v4.widget.NestedScrollView>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/recycler_text_item_line_color" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:paddingTop="5dp">
+
+        <Button
+            android:id="@+id/issue_notice2_add_btn"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/y91"
+            android:layout_marginBottom="@dimen/y25"
+            android:layout_marginLeft="@dimen/x30"
+            android:layout_marginRight="@dimen/x30"
+            android:layout_marginTop="@dimen/y26"
+            android:background="#3296FA"
+            android:gravity="center"
+            android:text="发布公告"
+            android:textColor="@color/bai"
+            android:textSize="@dimen/y32" />
+    </LinearLayout>
+
+</LinearLayout>

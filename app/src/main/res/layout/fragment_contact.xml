@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <com.sdxxtop.zhidian.widget.SubTitleView
+        android:id="@+id/contact_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:leftIsNotShow="true"
+        app:rightText="邀请"
+        app:subTitle="通讯录" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/contact_title"
+        android:background="@color/backgroundcolor">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <RelativeLayout
+                android:id="@+id/rl_serch_background"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/y115"
+                android:background="@color/backgroundcolor">
+
+                <RelativeLayout
+                    android:id="@+id/rl_serch"
+                    android:layout_width="@dimen/x721"
+                    android:layout_height="@dimen/y75"
+                    android:layout_centerInParent="true"
+                    android:background="@color/bai">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerInParent="true"
+                        android:layout_marginLeft="@dimen/x358"
+                        android:drawableLeft="@mipmap/search"
+                        android:drawablePadding="@dimen/x17"
+                        android:text="搜索"
+                        android:textColor="@color/texthintcolor"
+                        android:textSize="@dimen/y30" />
+                </RelativeLayout>
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/rl_all_comp"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/y120"
+                android:layout_below="@+id/rl_serch_background"
+                android:background="@color/bai">
+
+                <RelativeLayout
+                    android:layout_width="@dimen/x83"
+                    android:layout_height="@dimen/x83"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="@dimen/x22">
+
+                    <com.sdxxtop.zhidian.widget.CircleImageView
+                        android:layout_width="@dimen/x83"
+                        android:layout_height="@dimen/y83"
+                        android:src="@color/lan" />
+
+                    <TextView
+                        android:id="@+id/tv_short_name"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerInParent="true"
+                        android:text="全"
+                        android:textColor="@color/bai" />
+                </RelativeLayout>
+
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="@dimen/x125"
+                    android:text="全公司"
+                    android:textColor="@color/textcolor"
+                    android:textSize="@dimen/y30" />
+
+                <TextView
+                    android:id="@+id/tv_all_comp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginRight="@dimen/x30"
+                    android:drawablePadding="@dimen/x20"
+                    android:drawableRight="@mipmap/next_step"
+                    android:text="组织架构"
+                    android:textColor="@color/texthintcolor"
+                    android:textSize="@dimen/y28" />
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/rl_collection"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/rl_all_comp"
+                android:visibility="gone">
+
+                <RelativeLayout
+                    android:id="@+id/rl_xin"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/y47"
+                    android:background="@color/backgroundcolor">
+
+                    <ImageView
+                        android:layout_width="@dimen/x28"
+                        android:layout_height="@dimen/y24"
+                        android:layout_centerVertical="true"
+                        android:layout_marginLeft="@dimen/x32"
+                        android:background="@mipmap/enshrine" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_marginLeft="@dimen/x73"
+                        android:text="我的收藏"
+                        android:textColor="@color/texthintcolor"
+                        android:textSize="@dimen/y28" />
+                </RelativeLayout>
+
+                <com.sdxxtop.zhidian.widget.MyListView
+                    android:id="@+id/lv_collection"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/rl_xin"
+                    android:focusable="false"
+                    android:focusableInTouchMode="false"></com.sdxxtop.zhidian.widget.MyListView>
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/rl_mine"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/rl_collection"
+                android:visibility="gone">
+
+                <RelativeLayout
+                    android:id="@+id/rl_zhong"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/y47"
+                    android:background="@color/backgroundcolor">
+
+                    <TextView
+                        android:id="@+id/tv_my_bumen"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_marginLeft="@dimen/x32"
+                        android:singleLine="true"
+                        android:text=""
+                        android:textColor="@color/texthintcolor"
+                        android:textSize="@dimen/y28" />
+
+                    <!--<TextView-->
+                    <!--android:layout_width="wrap_content"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:layout_centerVertical="true"-->
+                    <!--android:layout_marginLeft="@dimen/x1"-->
+                    <!--android:layout_toRightOf="@+id/tv_my_bumen"-->
+                    <!--android:text="（我的部门）"-->
+                    <!--android:textColor="@color/texthintcolor"-->
+                    <!--android:textSize="@dimen/y28" />-->
+                </RelativeLayout>
+
+                <com.sdxxtop.zhidian.widget.MyListView
+                    android:id="@+id/lv_mine"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/rl_zhong"
+                    android:focusable="false"
+                    android:focusableInTouchMode="false"></com.sdxxtop.zhidian.widget.MyListView>
+            </RelativeLayout>
+        </RelativeLayout>
+    </ScrollView>
+
+</RelativeLayout>

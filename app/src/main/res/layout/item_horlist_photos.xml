@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="@dimen/x160"
+                android:layout_height="@dimen/y160"
+                android:paddingRight="@dimen/x5">
+
+    <ImageView
+        android:id="@+id/img_photo"
+        android:layout_width="@dimen/x160"
+        android:layout_height="@dimen/y160"
+        android:layout_marginTop="@dimen/x16"
+        android:visibility="visible"/>
+
+    <ImageView
+        android:id="@+id/image_delete"
+        android:layout_width="@dimen/x32"
+        android:layout_height="@dimen/y32"
+        android:layout_marginLeft="@dimen/x150"
+        android:layout_marginTop="@dimen/y10"
+        android:background="@mipmap/delete_img"
+        android:visibility="visible"/>
+
+</RelativeLayout>

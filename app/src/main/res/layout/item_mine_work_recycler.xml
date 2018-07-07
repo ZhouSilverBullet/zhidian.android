@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/recycler_item_selector"
+    android:gravity="center"
+    android:orientation="horizontal"
+    android:paddingBottom="5dp"
+    android:paddingLeft="10dp"
+    android:paddingRight="15dp"
+    android:paddingTop="5dp">
+
+    <FrameLayout
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:padding="5dp">
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/item_mine_work_recycler_img"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+        <TextView
+            android:id="@+id/item_mine_work_recycler_small_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:textSize="14sp" />
+    </FrameLayout>
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/item_mine_work_recycler_content"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="5dp"
+                android:layout_toLeftOf="@id/item_mine_work_recycler_type_time"
+                android:layout_weight="1"
+                android:ellipsize="end"
+                android:singleLine="true"
+                android:text="测试测试测试测试测试测试"
+                android:textColor="@color/textcolor"
+                android:textSize="17sp" />
+
+            <TextView
+                android:id="@+id/item_mine_work_recycler_type_time"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="5dp"
+                android:text="日报"
+                android:textColor="@color/textcolor"
+                android:textSize="17sp" />
+
+            <View
+                android:id="@+id/item_mine_work_recycler_red_view"
+                android:layout_width="7dp"
+                android:layout_height="7dp"
+                android:layout_marginRight="5dp"
+                android:layout_gravity="center_vertical"
+                android:background="@drawable/fragment_home_red_dot" />
+
+        </LinearLayout>
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/item_mine_work_recycler_right"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="2017.03.06"
+        android:textColor="@color/texthintcolor"
+        android:textSize="17sp" />
+
+</LinearLayout>

@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:fitsSystemWindows="true"
+    android:focusable="true"
+    android:focusableInTouchMode="true"
+    android:orientation="vertical"
+    tools:context="com.sdxxtop.zhidian.ui.activity.MineWorkDetailActivity">
+
+    <com.sdxxtop.zhidian.widget.SubTitleView
+        android:id="@+id/mine_work_detail_title_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <android.support.v4.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:background="@color/backgroundcolor">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                android:orientation="vertical"
+                android:paddingBottom="10dp"
+                android:paddingLeft="15dp"
+                android:paddingRight="15dp"
+                android:paddingTop="10dp">
+
+                <TextView
+                    android:id="@+id/mine_work_detail_first_title"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/textcolor"
+                    android:textStyle="bold"
+                    tools:text="05月26日-06月03日 周报" />
+
+                <TextView
+                    android:id="@+id/mine_work_detail_first_time"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/texthintcolor"
+                    tools:text="2017-12-13 22:56" />
+
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="10dp" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                android:paddingBottom="5dp"
+                android:paddingTop="5dp">
+
+                <android.support.v7.widget.RecyclerView
+                    android:id="@+id/mine_work_detail_content_recycler"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/backgroundcolor" />
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="10dp" />
+
+            <TextView
+                android:id="@+id/mine_work_detail_response_text"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                android:paddingBottom="10dp"
+                android:paddingLeft="15dp"
+                android:paddingRight="15dp"
+                android:paddingTop="10dp"
+                tools:text="回复（100）" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/recycler_text_item_line_color" />
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/mine_work_detail_response_recycler"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/backgroundcolor"
+                android:paddingBottom="40dp" />
+
+        </LinearLayout>
+    </android.support.v4.widget.NestedScrollView>
+
+    <com.sdxxtop.zhidian.widget.SendEditLayout
+        android:id="@+id/mine_work_detail_send_edit_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:visibility="gone" />
+    <!--<View-->
+    <!--android:id="@+id/mine_work_detail_send_line"-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="1dp"-->
+    <!--android:background="@color/recycler_text_item_line_color"-->
+    <!--android:visibility="gone" />-->
+
+    <!--<LinearLayout-->
+    <!--android:id="@+id/mine_work_detail_send_layout"-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="45dp"-->
+    <!--android:orientation="horizontal"-->
+    <!--android:visibility="gone">-->
+
+    <!--<EditText-->
+    <!--android:id="@+id/mine_work_detail_send_edit"-->
+    <!--android:layout_width="0dp"-->
+    <!--android:layout_height="match_parent"-->
+    <!--android:layout_weight="1"-->
+    <!--android:background="@color/white"-->
+    <!--android:hint="请输入评论内容"-->
+    <!--android:paddingLeft="15dp"-->
+    <!--android:paddingRight="5dp"-->
+    <!--android:textSize="15sp" />-->
+
+    <!--<Button-->
+    <!--android:id="@+id/mine_work_detail_send_btn"-->
+    <!--android:layout_width="50dp"-->
+    <!--android:layout_height="35dp"-->
+    <!--android:layout_gravity="center_vertical"-->
+    <!--android:layout_marginRight="15dp"-->
+    <!--android:background="@drawable/short_btn_blue_selector"-->
+    <!--android:text="发送"-->
+    <!--android:textColor="@color/white" />-->
+    <!--</LinearLayout>-->
+
+</LinearLayout>

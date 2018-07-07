@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.sdxxtop.zhidian.ui.activity.CheckSafeActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:fitsSystemWindows="true">
+
+        <com.sdxxtop.zhidian.widget.SubTitleView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:subTitle="安全校验" />
+    </LinearLayout>
+
+    <EditText
+        android:id="@+id/et_indentify_code"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/x55"
+        android:layout_marginTop="@dimen/y308"
+        android:background="@null"
+        android:ems="11"
+        android:hint="请输入验证码"
+        android:inputType="number|phone"
+        android:singleLine="true"
+        android:textCursorDrawable="@drawable/cursor"
+        android:textSize="@dimen/y30" />
+
+    <RadioButton
+        android:id="@+id/btn_get_indentify_code"
+        android:layout_width="@dimen/x242"
+        android:layout_height="@dimen/y86"
+        android:layout_marginLeft="@dimen/x427"
+        android:layout_marginTop="@dimen/y287"
+        android:background="@drawable/code_selector"
+        android:button="@null"
+        android:checked="false"
+        android:clickable="false"
+        android:gravity="center"
+        android:text="获取验证码"
+        android:textColor="@drawable/code_color_selector"
+        android:textSize="@dimen/y32" />
+
+    <View
+        android:layout_width="@dimen/x643"
+        android:layout_height="@dimen/y2"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="@dimen/y384"
+        android:background="@color/linecolor" />
+
+    <TextView
+        android:id="@+id/tv_left"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/x54"
+        android:layout_marginTop="@dimen/y407"
+        android:text="请输入"
+        android:textColor="@color/texthintcolor"
+        android:textSize="@dimen/y24" />
+
+    <TextView
+        android:id="@+id/tv_mobile"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/y407"
+        android:layout_toRightOf="@+id/tv_left"
+        android:text="15810101100"
+        android:textColor="@color/lan"
+        android:textSize="@dimen/y24" />
+
+    <TextView
+        android:id="@+id/tv_right"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/y407"
+        android:layout_toRightOf="@+id/tv_mobile"
+        android:text="收到的短信验证码"
+        android:textColor="@color/texthintcolor"
+        android:textSize="@dimen/y24" />
+
+    <Button
+        android:id="@+id/btn_next"
+        android:layout_width="@dimen/x591"
+        android:layout_height="@dimen/y91"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="@dimen/y495"
+        android:background="@drawable/btn_make_suer"
+        android:text="下一步"
+        android:textColor="@color/bai"
+        android:textSize="@dimen/y32" />
+</RelativeLayout>

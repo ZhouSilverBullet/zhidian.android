@@ -1,0 +1,240 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.sdxxtop.zhidian.ui.activity.CreateCompanySuccActivity">
+
+    <com.sdxxtop.zhidian.widget.SubTitleView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:subTitle="创建成功"
+        />
+
+    <RelativeLayout
+        android:id="@+id/rl_succ"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/y555">
+
+        <ImageView
+            android:layout_width="@dimen/y128"
+            android:layout_height="@dimen/y128"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="@dimen/y198"
+            android:background="@mipmap/succeed" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/x243"
+            android:layout_marginTop="@dimen/y371"
+            android:text="恭喜您创建成功！"
+            android:textColor="@color/lan"
+            android:textSize="@dimen/y36" />
+    </RelativeLayout>
+
+    <TextView
+        android:id="@+id/tv_line"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/y23"
+        android:layout_below="@+id/rl_succ"
+        android:background="@color/linecolor" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tv_line">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="@dimen/y28"
+            android:text="“知点考勤”的核心功能"
+            android:textColor="@color/textcolor"
+            android:textSize="@dimen/y28" />
+
+        <RelativeLayout
+            android:id="@+id/rl_face"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/x72"
+            android:layout_marginTop="@dimen/y104">
+
+            <ImageView
+                android:id="@+id/iv_face"
+                android:layout_width="@dimen/x46"
+                android:layout_height="@dimen/y42"
+                android:layout_centerHorizontal="true"
+                android:background="@mipmap/face_recognition" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/iv_face"
+                android:layout_marginTop="@dimen/y30"
+                android:text="多种考勤"
+                android:textColor="@color/textcolor"
+                android:textSize="@dimen/y28" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/rl_course"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="@dimen/y104">
+
+            <ImageView
+                android:id="@+id/iv_course"
+                android:layout_width="@dimen/x46"
+                android:layout_height="@dimen/y42"
+                android:layout_centerHorizontal="true"
+                android:background="@mipmap/course_arranging" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/iv_course"
+                android:layout_marginTop="@dimen/y30"
+                android:text="灵活排版"
+                android:textColor="@color/textcolor"
+                android:textSize="@dimen/y28" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/rl_punch"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="@dimen/x72"
+            android:layout_marginTop="@dimen/y104">
+
+            <ImageView
+                android:id="@+id/iv_punch"
+                android:layout_width="@dimen/x46"
+                android:layout_height="@dimen/y42"
+                android:layout_centerHorizontal="true"
+                android:background="@mipmap/punch_card" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/iv_punch"
+                android:layout_marginTop="@dimen/y30"
+                android:text="智能打卡"
+                android:textColor="@color/textcolor"
+                android:textSize="@dimen/y28" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/rl_manage"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/x72"
+            android:layout_marginTop="@dimen/y260">
+
+            <ImageView
+                android:id="@+id/iv_manage"
+                android:layout_width="@dimen/x46"
+                android:layout_height="@dimen/y42"
+                android:layout_centerHorizontal="true"
+                android:background="@mipmap/manage" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/iv_manage"
+                android:layout_marginTop="@dimen/y30"
+                android:text="管理能手"
+                android:textColor="@color/textcolor"
+                android:textSize="@dimen/y28" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/rl_mobil"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="@dimen/y260">
+
+            <ImageView
+                android:id="@+id/iv_mobile"
+                android:layout_width="@dimen/x46"
+                android:layout_height="@dimen/y42"
+                android:layout_centerHorizontal="true"
+                android:background="@mipmap/mobile_oa" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/iv_mobile"
+                android:layout_marginTop="@dimen/y30"
+                android:text="移动OA"
+                android:textColor="@color/textcolor"
+                android:textSize="@dimen/y28" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/rl_leg"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="@dimen/x72"
+            android:layout_marginTop="@dimen/y260">
+
+            <ImageView
+                android:id="@+id/iv_leg"
+                android:layout_width="@dimen/x46"
+                android:layout_height="@dimen/y42"
+                android:layout_centerHorizontal="true"
+                android:background="@mipmap/legwork" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/iv_leg"
+                android:layout_marginTop="@dimen/y30"
+                android:text="外勤管理"
+                android:textColor="@color/textcolor"
+                android:textSize="@dimen/y28" />
+        </RelativeLayout>
+    </RelativeLayout>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/y2"
+        android:layout_above="@+id/ll_bottom"
+        android:background="@color/linecolor" />
+
+    <LinearLayout
+        android:id="@+id/ll_bottom"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/y142"
+        android:layout_alignParentBottom="true"
+        android:orientation="horizontal"
+        android:padding="@dimen/x25">
+
+        <Button
+            android:id="@+id/btn_invite"
+            style="?android:attr/borderlessButtonStyle"
+            android:layout_width="@dimen/x339"
+            android:layout_height="@dimen/y91"
+            android:background="@drawable/button_join"
+            android:text="邀请员工"
+            android:textColor="#3296FA"
+            android:textSize="@dimen/x32" />
+
+        <Button
+            android:id="@+id/btn_main"
+            style="?android:attr/borderlessButtonStyle"
+            android:layout_width="@dimen/x339"
+            android:layout_height="@dimen/y91"
+            android:layout_marginLeft="@dimen/x23"
+            android:background="#3296FA"
+            android:text="进入首页"
+            android:textColor="#FFFFFF"
+            android:textSize="@dimen/x32" />
+    </LinearLayout>
+</RelativeLayout>

@@ -1,0 +1,214 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:fitsSystemWindows="true"
+    android:focusable="true"
+    android:focusableInTouchMode="true"
+    android:orientation="vertical"
+    tools:context="com.sdxxtop.zhidian.ui.activity.WorkWeeklyActivity">
+
+    <com.sdxxtop.zhidian.widget.SubTitleView
+        android:id="@+id/work_weekly_title_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:subTitle="周报" />
+
+    <android.support.v4.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:background="@color/backgroundcolor">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <!--日报 或者 月报-->
+            <com.sdxxtop.zhidian.widget.TextAndTextView
+                android:id="@+id/text_and_text_daily_view"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:tatv_line_is_show="false"
+                app:tatv_text_view="日期" />
+
+            <!--周报-->
+            <LinearLayout
+                android:id="@+id/work_weekly_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="15dp"
+                    android:drawablePadding="5dp"
+                    android:text="日期"
+                    android:textColor="@color/textcolor"
+                    android:textSize="17sp" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="15dp"
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginRight="15dp"
+                    android:layout_marginTop="15dp"
+                    android:gravity="center">
+
+                    <Button
+                        android:id="@+id/work_weekly_left_btn"
+                        android:layout_width="0dp"
+                        android:layout_height="42dp"
+                        android:layout_weight="1"
+                        android:background="@drawable/gray_selector_time"
+                        android:gravity="center"
+                        android:text="06-10" />
+
+                    <View
+                        android:layout_width="26dp"
+                        android:layout_height="2dp"
+                        android:layout_marginLeft="4dp"
+                        android:layout_marginRight="4dp"
+                        android:background="@color/time_selector_gray" />
+
+                    <Button
+                        android:id="@+id/work_weekly_right_btn"
+                        android:layout_width="0dp"
+                        android:layout_height="42dp"
+                        android:layout_weight="1"
+                        android:background="@drawable/gray_selector_time"
+                        android:gravity="center"
+                        android:text="06-10" />
+
+                </LinearLayout>
+            </LinearLayout>
+
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="10dp"
+                android:background="@color/backgroundcolor" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                android:orientation="vertical"
+                android:paddingBottom="12dp"
+                android:paddingTop="12dp">
+
+                <TextView
+                    android:id="@+id/work_weekly_title_1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="7dp"
+                    android:drawableLeft="@drawable/required"
+                    android:drawablePadding="5dp"
+                    android:text="本月工作总结"
+                    android:textColor="@color/textcolor"
+                    android:textSize="17sp" />
+
+                <EditText
+                    android:id="@+id/work_weekly_content_1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/white"
+                    android:hint="请输入明日工作计划"
+                    android:paddingLeft="17dp"
+                    android:paddingRight="17dp"
+                    android:paddingTop="14dp"
+                    android:textColor="@color/textcolor"
+                    android:textColorHint="@color/texthintcolor"
+                    android:textSize="15sp" />
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="10dp"
+                android:background="@color/backgroundcolor" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                android:orientation="vertical"
+                android:paddingBottom="12dp"
+                android:paddingTop="12dp">
+
+                <TextView
+                    android:id="@+id/work_weekly_title_2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="7dp"
+                    android:drawableLeft="@drawable/required"
+                    android:drawablePadding="5dp"
+                    android:text="本月工作总结"
+                    android:textColor="@color/textcolor"
+                    android:textSize="17sp" />
+
+                <EditText
+                    android:id="@+id/work_weekly_content_2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/white"
+                    android:hint="请输入明日工作计划"
+                    android:paddingLeft="17dp"
+                    android:paddingRight="17dp"
+                    android:paddingTop="14dp"
+                    android:textColor="@color/textcolor"
+                    android:textColorHint="@color/texthintcolor"
+                    android:textSize="15sp" />
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="10dp"
+                android:background="@color/backgroundcolor" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                android:orientation="vertical"
+                android:paddingBottom="12dp"
+                android:paddingTop="12dp">
+
+                <TextView
+                    android:id="@+id/work_weekly_title_3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="15dp"
+                    android:drawablePadding="5dp"
+                    android:text="工作中的问题"
+                    android:textColor="@color/textcolor"
+                    android:textSize="17sp" />
+
+                <EditText
+                    android:id="@+id/work_weekly_content_3"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/white"
+                    android:hint="请输入工作中的问题"
+                    android:paddingLeft="17dp"
+                    android:paddingRight="17dp"
+                    android:paddingTop="14dp"
+                    android:textColor="@color/textcolor"
+                    android:textColorHint="@color/texthintcolor"
+                    android:textSize="15sp" />
+            </LinearLayout>
+
+
+            <include layout="@layout/item_work_content_view" />
+        </LinearLayout>
+    </android.support.v4.widget.NestedScrollView>
+
+    <include layout="@layout/apply_submit_btn_layout" />
+
+</LinearLayout>

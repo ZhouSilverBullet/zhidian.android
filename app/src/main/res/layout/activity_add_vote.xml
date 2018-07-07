@@ -1,0 +1,181 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.sdxxtop.zhidian.ui.activity.AddVoteActivity">
+
+    <include
+        android:id="@+id/include_layout"
+        layout="@layout/item_head_layout"></include>
+
+    <EditText
+        android:id="@+id/et_vote_title"
+        android:layout_width="@dimen/x624"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="@dimen/y140"
+        android:background="@null"
+        android:textCursorDrawable="@drawable/cursor"
+        android:singleLine="true"
+        android:hint="请输入投票标题，最多25个字"
+        android:textSize="@dimen/y30"/>
+
+    <View
+        android:layout_width="@dimen/x666"
+        android:layout_height="@dimen/y2"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="@dimen/y202"
+        android:background="@color/linecolor"></View>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/x33"
+        android:layout_marginTop="@dimen/y237"
+        android:text="参与投票"
+        android:textColor="@color/textcolor"
+        android:textSize="@dimen/y34" />
+
+    <TextView
+        android:id="@+id/tv_defult_show"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/y245"
+        android:layout_marginLeft="@dimen/x187"
+        android:text="（默认全公司的人）"
+        android:textSize="@dimen/y24"
+        android:textColor="@color/texthintcolor"/>
+
+    <!--<TextView
+        android:id="@+id/tv_names_show"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/y245"
+        android:layout_marginLeft="@dimen/x187"
+        android:text="场点击"
+        android:textSize="@dimen/y24"
+        android:textColor="@color/texthintcolor"/>-->
+
+    <ImageView
+        android:id="@+id/iv_select_range"
+        android:layout_width="@dimen/x21"
+        android:layout_height="@dimen/y37"
+        android:layout_marginTop="@dimen/y235"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="@dimen/x42"
+        android:background="@mipmap/next_step"/>
+
+    <View
+        android:layout_width="@dimen/x666"
+        android:layout_height="@dimen/y2"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="@dimen/y299"
+        android:background="@color/linecolor"></View>
+
+    <EditText
+        android:id="@+id/et_add_explain"
+        android:layout_width="@dimen/x624"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/x33"
+        android:layout_marginTop="@dimen/y327"
+        android:background="@null"
+        android:hint="添加投票说明"
+        android:textCursorDrawable="@drawable/cursor"
+        android:singleLine="true"
+        android:drawableLeft="@mipmap/addition"
+        android:drawablePadding="@dimen/x23"
+        android:textSize="@dimen/y30"/>
+
+    <RadioGroup
+        android:id="@+id/rg_tab"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/y83"
+        android:gravity="center"
+        android:layout_marginTop="@dimen/y381"
+        android:background="@color/backgroundcolor"
+        android:orientation="horizontal">
+
+        <RadioButton
+            android:id="@+id/rbText"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:button="@null"
+            android:checked="true"
+            android:gravity="center"
+            android:text="文字投票"
+            android:textColor="@drawable/notice_textcolor_selector"
+            android:textSize="@dimen/y30" />
+
+        <TextView
+            android:layout_width="@dimen/x1"
+            android:layout_height="@dimen/y30"
+            android:background="@color/texthintcolor" />
+
+        <RadioButton
+            android:id="@+id/rbImg"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:button="@null"
+            android:checked="false"
+            android:gravity="center"
+            android:text="图片投票"
+            android:textColor="@drawable/notice_textcolor_selector"
+            android:textSize="@dimen/y30" />
+    </RadioGroup>
+
+    <RelativeLayout
+        android:id="@+id/rl_line"
+        android:layout_below="@+id/rg_tab"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:id="@+id/ll_text"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/y2"
+            android:orientation="horizontal">
+
+            <View
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="@dimen/y4"
+                android:background="@color/lan"/>
+
+            <View
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="@dimen/y2"
+                android:background="@color/linecolor"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/ll_img"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/y2"
+            android:orientation="horizontal"
+            android:visibility="gone">
+
+            <View
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="@dimen/y2"
+                android:background="@color/linecolor"/>
+
+            <View
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="@dimen/y4"
+                android:background="@color/lan"/>
+        </LinearLayout>
+    </RelativeLayout>
+
+    <android.support.v4.view.ViewPager
+        android:id="@+id/vp_group"
+        android:layout_below="@+id/rl_line"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"></android.support.v4.view.ViewPager>
+</RelativeLayout>

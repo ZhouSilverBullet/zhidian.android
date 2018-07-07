@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.sdxxtop.zhidian.ui.activity.VoteActivity">
+
+    <com.sdxxtop.zhidian.widget.SubTitleView
+        android:id="@+id/vote_title_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:leftText="返回"
+        app:rightText="发起"
+        app:rightTextIsShow="true"
+        app:subTitle="民主评议" />
+
+    <RadioGroup
+        android:id="@+id/rg_tab"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/y95"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+        <RadioButton
+            android:id="@+id/rb_start"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:button="@null"
+            android:checked="true"
+            android:gravity="center"
+            android:text="我发起的"
+            android:textColor="@drawable/notice_textcolor_selector"
+            android:textSize="@dimen/y30" />
+
+        <TextView
+            android:layout_width="@dimen/x1"
+            android:layout_height="@dimen/y30"
+            android:background="@color/translate" />
+
+        <RadioButton
+            android:id="@+id/rb_review"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:button="@null"
+            android:checked="false"
+            android:gravity="center"
+            android:text="去评议"
+            android:textColor="@drawable/notice_textcolor_selector"
+            android:textSize="@dimen/y30" />
+    </RadioGroup>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:id="@+id/ll_notread"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/y2"
+            android:orientation="horizontal">
+
+            <View
+                android:layout_width="0dp"
+                android:layout_height="@dimen/y4"
+                android:layout_weight="1"
+                android:background="@color/lan" />
+
+            <View
+                android:layout_width="0dp"
+                android:layout_height="@dimen/y2"
+                android:layout_weight="1"
+                android:background="@color/linecolor" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/ll_read"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/y2"
+            android:orientation="horizontal"
+            android:visibility="gone">
+
+            <View
+                android:layout_width="0dp"
+                android:layout_height="@dimen/y2"
+                android:layout_weight="1"
+                android:background="@color/linecolor" />
+
+            <View
+                android:layout_width="0dp"
+                android:layout_height="@dimen/y4"
+                android:layout_weight="1"
+                android:background="@color/lan" />
+        </LinearLayout>
+    </RelativeLayout>
+
+
+    <android.support.v4.view.ViewPager
+        android:id="@+id/vp_group"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"></android.support.v4.view.ViewPager>
+</LinearLayout>

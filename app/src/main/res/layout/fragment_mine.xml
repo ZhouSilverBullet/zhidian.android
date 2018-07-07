@@ -1,0 +1,217 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/backgroundcolor">
+
+    <com.sdxxtop.zhidian.widget.SubTitleView
+        android:id="@+id/top_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:leftIsNotShow="true"
+        app:subTitle="我的" />
+
+    <RelativeLayout
+        android:id="@+id/rl_top"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/y279"
+        android:layout_below="@+id/top_layout"
+        android:background="@color/lan">
+
+        <TextView
+            android:id="@+id/tv_setting"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="@dimen/y32"
+            android:layout_marginTop="@dimen/y32"
+            android:text="设置"
+            android:textColor="@color/bai"
+            android:textSize="@dimen/y30" />
+
+        <RelativeLayout
+            android:layout_width="@dimen/x103"
+            android:layout_height="@dimen/y103"
+            android:layout_marginLeft="@dimen/x25"
+            android:layout_marginTop="@dimen/y151">
+
+            <com.sdxxtop.zhidian.widget.CircleImageView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_centerInParent="true"
+                android:src="@color/bai" />
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/iv_img"
+                android:layout_width="@dimen/x99"
+                android:layout_height="@dimen/y99"
+                android:layout_centerInParent="true"
+                android:src="#999" />
+
+            <TextView
+                android:id="@+id/tv_short_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:text=""
+                android:textColor="@color/bai"
+                android:textSize="@dimen/y34" />
+        </RelativeLayout>
+
+        <TextView
+            android:id="@+id/tv_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/x142"
+            android:layout_marginTop="@dimen/y169"
+            android:text=""
+            android:textColor="@color/bai"
+            android:textSize="@dimen/y30" />
+
+        <TextView
+            android:id="@+id/tv_position"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/x12"
+            android:layout_marginTop="@dimen/y176"
+            android:layout_toRightOf="@+id/tv_name"
+            android:text=""
+            android:textColor="@color/bai"
+            android:textSize="@dimen/y20" />
+
+        <TextView
+            android:id="@+id/tv_phone"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/x146"
+            android:layout_marginTop="@dimen/y215"
+            android:text=""
+            android:textColor="@color/bai"
+            android:textSize="@dimen/y24" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/rl_middle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/rl_top"
+        android:background="@color/white">
+
+        <!--<TextView-->
+        <!--android:id="@+id/tv_mine"-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_marginLeft="@dimen/x21"-->
+        <!--android:layout_marginTop="@dimen/y28"-->
+        <!--android:text="我的"-->
+        <!--android:textColor="@color/textcolor"-->
+        <!--android:textSize="@dimen/y24" />-->
+
+        <!--<TextView-->
+        <!--android:id="@+id/tv_notice"-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_marginLeft="@dimen/x102"-->
+        <!--android:layout_marginTop="@dimen/y73"-->
+        <!--android:background="@null"-->
+        <!--android:drawablePadding="@dimen/y28"-->
+        <!--android:drawableTop="@mipmap/announcement"-->
+        <!--android:text="公告"-->
+        <!--android:textColor="@color/textcolor"-->
+        <!--android:textSize="@dimen/y28" />-->
+
+        <!--<TextView-->
+        <!--android:id="@+id/tv_attendance"-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_marginLeft="@dimen/x321"-->
+        <!--android:layout_marginTop="@dimen/y73"-->
+        <!--android:background="@null"-->
+        <!--android:drawablePadding="@dimen/y28"-->
+        <!--android:drawableTop="@mipmap/my_attendance"-->
+        <!--android:text="我的考勤"-->
+        <!--android:textColor="@color/textcolor"-->
+        <!--android:textSize="@dimen/y28" />-->
+
+        <!--<TextView-->
+        <!--android:id="@+id/tv_field"-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_marginLeft="@dimen/x571"-->
+        <!--android:layout_marginTop="@dimen/y70"-->
+        <!--android:background="@null"-->
+        <!--android:drawablePadding="@dimen/y23"-->
+        <!--android:drawableTop="@mipmap/my_field"-->
+        <!--android:text="我的外勤"-->
+        <!--android:textColor="@color/textcolor"-->
+        <!--android:textSize="@dimen/y28"-->
+        <!--android:visibility="invisible" />-->
+
+        <TextView
+            android:id="@+id/tv_mine"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/x21"
+            android:layout_marginTop="@dimen/y28"
+            android:text="我的"
+            android:textColor="@color/textcolor"
+            android:textSize="@dimen/y24" />
+
+        <GridView
+            android:id="@+id/mine_gridView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/tv_mine"
+            android:layout_centerHorizontal="true"
+            android:horizontalSpacing="5dp"
+            android:numColumns="3"
+            android:paddingBottom="10dp"
+            android:scrollbars="none" />
+    </RelativeLayout>
+
+    <View
+        android:id="@+id/view_line"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/y23"
+        android:layout_below="@+id/rl_middle"
+        android:background="@color/backgroundcolor" />
+
+    <RelativeLayout
+        android:id="@+id/rl_bottom"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/view_line"
+        android:background="@color/white"
+        android:visibility="visible">
+
+        <TextView
+            android:id="@+id/tv_manage"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/x21"
+            android:layout_marginTop="@dimen/y28"
+            android:text="管理"
+            android:textColor="@color/textcolor"
+            android:textSize="@dimen/y24" />
+
+        <GridView
+            android:id="@+id/gridView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/tv_manage"
+            android:layout_centerHorizontal="true"
+            android:horizontalSpacing="5dp"
+            android:numColumns="3"
+            android:paddingBottom="10dp"
+            android:scrollbars="none" />
+
+    </RelativeLayout>
+
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/rl_bottom"
+        android:background="@color/backgroundcolor" />
+</RelativeLayout>

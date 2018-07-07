@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.sdxxtop.zhidian.ui.activity.MessageNoticeActivity">
+
+    <com.sdxxtop.zhidian.widget.SubTitleView
+        android:id="@+id/include_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:leftText="设置"
+        app:subTitle="信息通知" />
+
+    <RelativeLayout
+        android:id="@+id/rl_message_notice"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/y100"
+        android:layout_below="@+id/include_layout">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="@dimen/x33"
+            android:text="消息提醒"
+            android:textColor="@color/textcolor"
+            android:textSize="@dimen/y34" />
+
+        <CheckBox
+            android:id="@+id/cb_message_notice"
+            android:layout_width="@dimen/x105"
+            android:layout_height="@dimen/y65"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="@dimen/x34"
+            android:background="@drawable/iv_switch"
+            android:button="@null" />
+
+    </RelativeLayout>
+
+    <View
+        android:id="@+id/line"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/y23"
+        android:layout_below="@+id/rl_message_notice"
+        android:background="@color/backgroundcolor"></View>
+
+    <RelativeLayout
+        android:id="@+id/rl_rejection_notice"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/y121"
+        android:layout_below="@+id/line">
+
+        <TextView
+            android:id="@+id/tv_rejection_notice"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/x33"
+            android:layout_marginTop="@dimen/y21"
+            android:text="勿扰模式"
+            android:textColor="@color/textcolor"
+            android:textSize="@dimen/y34" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/tv_rejection_notice"
+            android:layout_marginLeft="@dimen/x33"
+            android:layout_marginTop="@dimen/y19"
+            android:text="开启后，在设定时间段内收到新消息时不会提醒"
+            android:textColor="@color/texthintcolor"
+            android:textSize="@dimen/y24" />
+
+        <CheckBox
+            android:id="@+id/cb_rejection_notice"
+            android:layout_width="@dimen/x105"
+            android:layout_height="@dimen/y65"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="@dimen/x34"
+            android:background="@drawable/iv_switch"
+            android:button="@null" />
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/rl_start_time"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/y100"
+        android:layout_below="@+id/rl_rejection_notice"
+        android:visibility="invisible">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="@dimen/x33"
+            android:text="开始时间"
+            android:textColor="@color/textcolor"
+            android:textSize="@dimen/y34" />
+
+        <TextView
+            android:id="@+id/tv_stat_time_show"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="@dimen/x30"
+            android:drawablePadding="@dimen/x20"
+            android:drawableRight="@mipmap/next_step"
+            android:text="23:00"
+            android:textColor="@color/texthintcolor"
+            android:textSize="@dimen/y34" />
+
+        <View
+            android:layout_width="@dimen/x711"
+            android:layout_height="@dimen/y2"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentRight="true"
+            android:background="@color/linecolor"></View>
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/rl_end_time"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/y100"
+        android:layout_below="@+id/rl_start_time"
+        android:visibility="invisible">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="@dimen/x33"
+            android:text="结束时间"
+            android:textColor="@color/textcolor"
+            android:textSize="@dimen/y34" />
+
+        <TextView
+            android:id="@+id/tv_end_time_show"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="@dimen/x30"
+            android:drawablePadding="@dimen/x20"
+            android:drawableRight="@mipmap/next_step"
+            android:text="06:00"
+            android:textColor="@color/texthintcolor"
+            android:textSize="@dimen/y34" />
+
+    </RelativeLayout>
+</RelativeLayout>

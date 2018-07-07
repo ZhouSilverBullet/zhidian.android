@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.sdxxtop.zhidian.ui.activity.MainActivity">
+
+    <FrameLayout
+        android:id="@+id/fl_home"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="12"></FrameLayout>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/y2"
+        android:background="@color/linecolor" />
+
+    <RadioGroup
+        android:id="@+id/rg_home"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:orientation="horizontal">
+
+        <RadioButton
+            android:id="@+id/rb_main"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_weight="1"
+            android:button="@null"
+            android:checked="false"
+            android:drawablePadding="@dimen/y10"
+            android:drawableTop="@drawable/home_page_selector"
+            android:gravity="center_horizontal"
+            android:text="首页"
+            android:textColor="@color/texthintcolor"
+            android:textSize="@dimen/y20" />
+
+        <RadioButton
+            android:id="@+id/rb_apply"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_weight="1"
+            android:button="@null"
+            android:drawablePadding="@dimen/y10"
+            android:drawableTop="@drawable/apply_selector"
+            android:gravity="center_horizontal"
+            android:text="申请"
+            android:textColor="@color/texthintcolor"
+            android:textSize="@dimen/y20" />
+
+        <RadioButton
+            android:id="@+id/rb_book"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_weight="1"
+            android:button="@null"
+            android:drawablePadding="@dimen/y10"
+            android:drawableTop="@drawable/address_selector"
+            android:gravity="center_horizontal"
+            android:text="通讯录"
+            android:textColor="@color/texthintcolor"
+            android:textSize="@dimen/y20" />
+
+        <RadioButton
+            android:id="@+id/rb_mine"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_weight="1"
+            android:button="@null"
+            android:drawablePadding="@dimen/y10"
+            android:drawableTop="@drawable/mine_selector"
+            android:gravity="center_horizontal"
+            android:text="我的"
+            android:textColor="@color/texthintcolor"
+            android:textSize="@dimen/y20" />
+    </RadioGroup>
+</LinearLayout>

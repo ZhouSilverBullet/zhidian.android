@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
+    android:orientation="vertical"
+    tools:context="com.sdxxtop.zhidian.ui.activity.OneKeyExamination2Activity">
+
+    <com.sdxxtop.zhidian.widget.SubTitleView
+        android:id="@+id/examine_title_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:leftText="返回"
+        app:rightText="筛选"
+        app:rightTextColor="@color/notice_contentcolor"
+        app:rightTextIsShow="true"
+        app:subTitle="一键审批" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:animateLayoutChanges="true"
+        android:background="@color/backgroundcolor"
+        android:focusable="true"
+        android:focusableInTouchMode="true"
+        android:orientation="horizontal"
+        android:padding="5dp">
+
+        <TextView
+            android:id="@+id/examine_search_cancel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:paddingRight="5dp"
+            android:text="取消"
+            android:textColor="@color/blue"
+            android:visibility="gone" />
+
+        <EditText
+            android:id="@+id/one_key_examine_search_edit"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_toLeftOf="@id/examine_search_cancel"
+            android:background="@drawable/examine_search_edit"
+            android:drawableLeft="@mipmap/search"
+            android:drawablePadding="3dp"
+            android:hint="搜索人名"
+            android:padding="5dp"
+            android:textSize="14sp" />
+
+    </RelativeLayout>
+
+    <FrameLayout
+        android:id="@+id/one_key_frame_layout"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/recycler_text_item_line_color" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="71dp"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/btn_one_key_approver_unagreed"
+            style="?android:attr/borderlessButtonStyle"
+            android:layout_width="103dp"
+            android:layout_height="32dp"
+            android:background="@drawable/shape_view_red_submission_bg"
+            android:text="驳回"
+            android:textColor="@color/dot_red"
+            android:textSize="14sp" />
+
+        <Button
+            android:id="@+id/btn_one_key_approver_agreed"
+            style="?android:attr/borderlessButtonStyle"
+            android:layout_width="103dp"
+            android:layout_height="32dp"
+            android:layout_marginLeft="49dp"
+            android:background="@drawable/shape_view_blue_submission_bg"
+            android:text="同意"
+            android:textColor="@color/white"
+            android:textSize="14sp" />
+    </LinearLayout>
+
+</LinearLayout>

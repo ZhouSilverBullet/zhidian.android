@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:paddingBottom="12dp"
+    android:paddingLeft="10dp"
+    android:paddingRight="10dp"
+    android:paddingTop="12dp">
+
+    <ImageView
+        android:id="@+id/item_pop_mine_work_icon"
+        android:layout_width="24dp"
+        android:layout_height="24dp"
+        android:src="@drawable/daily_toast" />
+
+    <TextView
+        android:id="@+id/item_pop_mine_work_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_marginLeft="5dp"
+        android:layout_toRightOf="@id/item_pop_mine_work_icon"
+        android:text="日报"
+        android:textColor="@color/textcolor"
+        android:textSize="17sp" />
+</RelativeLayout>

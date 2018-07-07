@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#3F51B5</color>
+    <color name="colorPrimaryDark">#303F9F</color>
+    <color name="colorAccent">#FF4081</color>
+    <color name="hui">#E5E5E5</color>
+    <color name="lan">#3296FA</color>
+    <color name="bai">#FFFFFF</color>
+    <color name="textcolor">#333333</color>
+    <color name="linecolor">#E5E5E5</color>
+    <color name="notice_contentcolor">#666666</color>
+    <color name="texthintcolor">#999999</color>
+    <color name="backgroundcolor">#F4F4F4</color>
+    <color name="alpah">#ffffffff</color>
+    <color name="lv">#54BB5B</color>
+
+    <color name="sky_blue_color">#e0eff9</color>
+    <color name="text_color_red">#F23030</color>
+
+    <!--home fragment-->
+    <color name="calendar_selector_color">#3296FA</color>
+    <color name="white">#ffffff</color>
+    <color name="translate">#00000000</color>
+    <color name="dot_red">#F23030</color>
+    <color name="recycler_text_stroke_color">#BDBDBD</color>
+    <color name="recycler_text_item_title_color">#333333</color>
+    <color name="recycler_text_item_line_color">#E4E4E4</color>
+    <color name="blue">#3296FA</color>
+    <color name="dialog_img_stroke_color">#D2D2D2</color>
+    <color name="dialog_change_text">#363636</color>
+
+    <color name="apply_text_color">#303030</color>
+    <color name="apply_text_gray">#5D95F7</color>
+
+    <color name="black_bg">#7a7a7a</color>
+    <color name="item_apply_hor_gray">#D3D3D3</color>
+
+    <color name="mine_initiate_orange_color">#FFC09F</color>
+    <color name="mine_initiate_seek_progress_color">#FF6600</color>
+    <color name="mine_initiate_seek_bg_color">#EDEDED</color>
+
+    <color name="time_selector_gray">#EDEDF0</color>
+    <color name="time_selector_gray2">#88EDEDF0</color>
+    
+    <color name="grey">#d7d7d7</color>
+</resources>

@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/white"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/line"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/y33"
+        android:background="@color/backgroundcolor"
+        android:visibility="gone" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <RelativeLayout
+            android:id="@+id/rl_item"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/y111"
+            android:layout_marginLeft="@dimen/y16"
+            android:layout_toRightOf="@+id/checkbox">
+
+            <RelativeLayout
+                android:layout_width="@dimen/x83"
+                android:layout_height="@dimen/y83"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="@dimen/x22">
+
+                <de.hdodenhof.circleimageview.CircleImageView
+                    android:id="@+id/iv_item_user_head"
+                    android:layout_width="@dimen/x83"
+                    android:layout_height="@dimen/y83" />
+                <!--这个src能动态赋值就好了-->
+                <TextView
+                    android:id="@+id/tv_item_short_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:text=""
+                    android:textColor="@color/bai"
+                    android:textSize="@dimen/y28" />
+            </RelativeLayout>
+
+            <TextView
+                android:id="@+id/tv_item_user_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="@dimen/x125"
+                android:text="徐洪峰"
+                android:textColor="@color/textcolor"
+                android:textSize="@dimen/y30" />
+
+            <TextView
+                android:id="@+id/tv_item_user_job"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="@dimen/x33"
+                android:text="校长"
+                android:textColor="@color/texthintcolor"
+                android:textSize="@dimen/y28" />
+        </RelativeLayout>
+
+        <CheckBox
+            android:id="@+id/checkbox"
+            android:layout_width="18dp"
+            android:layout_height="18dp"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="@dimen/x26"
+            android:background="@drawable/checkbox_select_all"
+            android:button="@null"
+            android:visibility="gone" />
+
+        <ImageView
+            android:id="@+id/tv_item_right_icon"
+            android:layout_width="18dp"
+            android:layout_height="18dp"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="@dimen/x33"
+            android:src="@mipmap/the_right"
+            android:visibility="visible" />
+    </RelativeLayout>
+
+</LinearLayout>

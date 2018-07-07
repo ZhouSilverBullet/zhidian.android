@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.sdxxtop.zhidian.ui.activity.InviteOfExcelActivity">
+
+    <com.sdxxtop.zhidian.widget.SubTitleView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:subTitle="批量导入员工" />
+
+    <ImageView
+        android:id="@+id/invite_img"
+        android:layout_width="@dimen/x271"
+        android:layout_height="@dimen/y230"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="@dimen/y333"
+        android:background="@mipmap/computer" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/invite_img">
+
+        <TextView
+            android:id="@+id/invite_of_excel_tx1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="电脑后台可批量导入员工"
+            android:textColor="@color/textcolor"
+            android:textSize="18sp" />
+
+        <TextView
+            android:id="@+id/invite_of_excel_tx2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/invite_of_excel_tx1"
+            android:gravity="center"
+            android:text="更方便、更快捷"
+            android:textColor="@color/textcolor"
+            android:textSize="18sp" />
+
+        <TextView
+            android:id="@+id/tv_net2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/invite_of_excel_tx2"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginTop="15dp"
+            android:text=""
+            android:textColor="@color/lan"
+            android:textSize="14sp" />
+
+    </RelativeLayout>
+</RelativeLayout>

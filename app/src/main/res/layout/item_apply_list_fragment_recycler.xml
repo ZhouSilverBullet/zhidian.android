@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/white">
+
+    <TextView
+        android:id="@+id/item_one_key_select"
+        android:layout_width="18dp"
+        android:layout_height="18dp"
+        android:layout_centerVertical="true"
+        android:layout_marginLeft="10dp"
+        android:background="@mipmap/unselected"
+        android:visibility="gone" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:layout_toRightOf="@id/item_one_key_select"
+        android:paddingBottom="11dp"
+        android:paddingLeft="0dp"
+        android:paddingRight="11dp"
+        android:paddingTop="11dp">
+
+        <!--<TextView-->
+        <!--android:id="@+id/item_apply_list_fragment_recycler_left_text"-->
+        <!--android:layout_width="42dp"-->
+        <!--android:layout_height="42dp"-->
+        <!--android:visibility="gone"-->
+        <!--android:layout_marginRight="10dp"-->
+        <!--android:background="@color/black"-->
+        <!--android:gravity="center"-->
+        <!--android:text="常军"-->
+        <!--android:textColor="@color/white"-->
+        <!--android:textSize="14sp" />-->
+
+        <com.sdxxtop.zhidian.widget.CircleTextImageView
+            android:id="@+id/item_apply_list_fragment_recycler_left_text"
+            android:layout_width="42dp"
+            android:layout_height="42dp"
+            android:layout_marginRight="10dp"
+            app:citv_text_size="14sp" />
+
+
+        <LinearLayout
+            android:id="@+id/item_apply_list_fragment_recycler_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="5dp"
+            android:layout_toLeftOf="@+id/item_apply_list_fragment_recycler_time"
+            android:layout_toRightOf="@id/item_apply_list_fragment_recycler_left_text"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/item_apply_list_fragment_recycler_title"
+                    android:layout_width="0dp"
+                    android:layout_height="23dp"
+                    android:layout_marginRight="5dp"
+                    android:layout_weight="1"
+                    android:ellipsize="end"
+                    android:singleLine="true"
+                    android:text="都打卡都打卡都打卡都打卡都打卡都打卡都打卡都打卡都打卡都打卡都打卡都打卡"
+                    android:textColor="@color/apply_text_color"
+                    android:textSize="15sp" />
+
+                <TextView
+                    android:id="@+id/item_apply_list_fragment_recycler_opinion"
+                    android:layout_width="48dp"
+                    android:layout_height="20dp"
+                    android:layout_alignBaseline="@id/item_apply_list_fragment_recycler_layout"
+                    android:layout_toRightOf="@id/item_apply_list_fragment_recycler_layout"
+                    android:background="@drawable/item_apply_list_recycler_blue_bg"
+                    android:gravity="center"
+                    android:text="驳回"
+                    android:textSize="12dp"
+                    android:visibility="gone" />
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/item_apply_list_fragment_recycler_status"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/item_apply_list_fragment_recycler_layout"
+            android:layout_marginRight="80dp"
+            android:layout_toRightOf="@id/item_apply_list_fragment_recycler_left_text"
+            android:text="审核中"
+            android:textColor="@color/texthintcolor"
+            android:textSize="13sp" />
+
+
+        <TextView
+            android:id="@+id/item_apply_list_fragment_recycler_time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBaseline="@id/item_apply_list_fragment_recycler_layout"
+            android:layout_alignParentRight="true"
+            android:text="2017-08-02" />
+
+
+    </RelativeLayout>
+
+</RelativeLayout>

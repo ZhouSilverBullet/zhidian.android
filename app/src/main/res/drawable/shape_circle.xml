@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android"
+    android:shape="oval">
+
+    <!-- solid表示远的填充色
+    <solid android:color="#FF6600" />
+    &lt;!&ndash; stroke则代表远的边框线 &ndash;&gt;
+    <stroke
+        android:width="1dp"
+        android:color="#FF6600" />
+    &lt;!&ndash; size控制高宽 &ndash;&gt;
+    <size
+        android:height="20dp"
+        android:width="20dp" />-->
+    <!-- 按下状态
+    <item android:color="#FF6600" android:state_pressed="true" />
+
+    &lt;!&ndash; 有焦点状态 &ndash;&gt;
+    <item android:color="#FF6600" android:state_focused="true" />
+
+    &lt;!&ndash; 普通状态 &ndash;&gt;
+    <item android:color="#FF6600" />-->
+</layer-list>

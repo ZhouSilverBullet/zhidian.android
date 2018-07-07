@@ -1,0 +1,326 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.sdxxtop.zhidian">
+
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.CALL_PHONE" /> <!-- 拨打电话权限 -->
+    <!-- 获取网络状态改变的权限 -->
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <!-- 允许程序设置内置sd卡的写权限 -->
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <!-- 允许程序获取网络状态 -->
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <!-- 允许程序访问WiFi网络信息 -->
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <!-- 允许程序读写手机状态和身份 -->
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <!-- 允许程序访问CellID或WiFi热点来获取粗略的位置 -->
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <!-- 用于进行网络定位 -->
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <!-- 用于访问GPS定位 -->
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <!-- 用于获取运营商信息，用于支持提供运营商信息相关的接口 -->
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <!-- 用于获取wifi的获取权限，wifi信息会用来进行网络定位 -->
+    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
+    <!-- 用于申请调用A-GPS模块 -->
+    <uses-permission android:name="android.permission.ACCESS_LOCATION_EXTRA_COMMANDS" />
+    <!-- 获取通讯录权限 -->
+    <uses-permission android:name="android.permission.READ_CONTACTS" />
+    <uses-permission android:name="android.permission.GET_TASKS" />
+    <uses-permission android:name="android.permission.VIBRATE" />
+
+    <application
+        android:name=".App"
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
+        <meta-data
+            android:name="com.amap.api.v2.apikey"
+            android:value="5b193759b4111bf6ac191abb9270918d" />
+        <!--
+        android:launchMode="singleTask"
+        把这行注释掉就可以解决按home键 在进去应用程序回到离开时界面了
+        -->
+        <service android:name="com.amap.api.location.APSService" />
+        <service android:name=".alipush.RemindActionService" />
+
+        <service
+            android:name=".alipush.LocationService"
+             />
+
+        <activity
+            android:name=".ui.activity.NormalLoginActivity"
+            android:launchMode="singleTop"
+            android:screenOrientation="portrait" />
+        <!--
+        android:screenOrientation="portrait"
+        设置activity不可以横竖屏切换
+        -->
+        <activity
+            android:name=".ui.activity.CreateCompanyActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ui.activity.ForgetPWDActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ui.activity.LoginSuccessActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ui.activity.RegistFirstActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ui.activity.RegistNextActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ui.activity.ResetPWDActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ui.activity.CreateCompanySuccActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ui.activity.WIFISettingActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ui.activity.GPSSettingActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ui.activity.MainActivity"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ui.activity.InviteStaffActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ui.activity.InviteOfExcelActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ui.activity.InviteOfPhoneActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ui.activity.JoinCompFirstActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ui.activity.JoinCompSecondActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ui.activity.ContactSearchActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ui.activity.ShowAllPartActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ui.activity.IssueNoticeActivity"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name=".ui.activity.ContactDetailActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ui.activity.NoticeDetailActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ui.activity.NoticeReciveRangeActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ui.activity.NoticeReciveDetailActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ui.activity.GaoDeMapActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ui.activity.VoteActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ui.activity.AddVoteActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ui.activity.AddMarkActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ui.activity.MySettingActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ui.activity.ChangeCompanyActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ui.activity.CompanyInfoActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ui.activity.DeviceInfoActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ui.activity.OutPowerActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ui.activity.AccountPwdActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ui.activity.MessageNoticeActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ui.activity.AboutUsActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ui.activity.ModifyMobileActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ui.activity.ModifyPasswordActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ui.activity.ModifyMobileInputActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ui.activity.ChangeMobileActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ui.activity.SettingForgetPasswordActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ui.activity.SettingResetPasswordActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ui.activity.ClassifyActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ui.activity.CheckSafeActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ui.activity.ModifyCompanyNameActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ui.activity.ModifyCompanyShortNameActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ui.activity.MyInfoActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ui.activity.AddWifiActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ui.activity.AddGpsActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ui.activity.ModifyWifiActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ui.activity.ModifyGpsActivity"
+            android:screenOrientation="portrait" />
+        <activity android:name=".ui.activity.MyAppliedActivity" />
+        <activity android:name=".ui.activity.ExamineActivity" />
+        <activity android:name=".ui.activity.LeaveActivity" />
+        <activity android:name=".ui.activity.PunchCardActivity" />
+        <activity android:name=".ui.activity.EvectionActivity" />
+        <activity android:name=".ui.activity.OvertimeActivity" />
+        <activity android:name=".ui.activity.CollectiveLeaveActivity" />
+        <activity android:name=".ui.activity.ChangeShiftActivity" />
+        <activity android:name=".ui.activity.MobilePhoneActivity" />
+
+        <provider
+            android:name="android.support.v4.content.FileProvider"
+            android:authorities="com.sdxxtop.zhidian.FileProvider"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/file_paths" />
+        </provider>
+
+        <activity android:name=".ui.activity.OneKeyExamination2Activity" />
+        <activity android:name=".ui.activity.MessageCenterActivity" />
+        <activity android:name=".ui.activity.MessageCenterNoticeActivity" />
+        <activity android:name=".ui.activity.MessageCenterApprovalActivity" />
+        <activity android:name=".ui.activity.MineAttendanceActivity" />
+        <activity android:name=".ui.activity.MineFieldActivity" />
+        <activity android:name=".ui.activity.SchedulingManageActivity" />
+        <activity android:name=".ui.activity.SchedulingChangeActivity" />
+        <activity android:name=".ui.activity.SchedulingNewAddActivity" />
+        <activity android:name=".ui.activity.SchedulingCreateActivity" />
+        <activity android:name=".ui.activity.SchedulingListActivity" />
+        <activity android:name=".ui.activity.StatisticalActivity" />
+        <activity android:name=".ui.activity.StatDayActivity" />
+        <activity android:name=".ui.activity.StatMonthActivity" />
+        <activity android:name=".ui.activity.StatReportActivity" />
+        <activity android:name=".ui.fragment.StatInstructionsActivity" />
+        <activity android:name=".ui.activity.AddVote2Activity" />
+        <activity android:name=".ui.activity.MineInitiateVoteActivity" />
+        <activity android:name=".ui.activity.VoteAttenderActivity" />
+        <activity android:name=".ui.activity.IssueNotice2Activity" />
+        <activity android:name=".ui.activity.Notice2Activity" />
+        <activity
+            android:name=".ui.activity.NoticeDetail2Activity"
+            android:exported="true"
+            android:launchMode="standard" />
+        <activity
+            android:name=".ui.activity.SubmissionActivity"
+            android:exported="true"
+            android:launchMode="standard" />
+        <activity
+            android:name=".alipush.PushCenterActivity"
+            android:exported="true"
+            android:launchMode="singleTask" />
+        <activity android:name=".ui.activity.NoticeReadActivity" />
+        <activity android:name=".ui.activity.StatPeopleActivity" />
+        <activity android:name=".ui.activity.FaceLivenessExpActivity" />
+        <activity android:name=".ui.activity.FaceDetectExpActivity" />
+
+        <!-- 阿里云推送 start -->
+        <meta-data
+            android:name="com.alibaba.app.appkey"
+            android:value="24825254" />
+        <meta-data
+            android:name="com.alibaba.app.appsecret"
+            android:value="ae7217cb4f524fdfd94d1ae1054647f6" />
+
+        <receiver
+            android:name=".alipush.AliMessageReceiver"
+            android:exported="false"> <!-- 为保证receiver安全，建议设置不可导出，如需对其他应用开放可通过android：permission进行限制 -->
+            <intent-filter>
+                <action android:name="com.alibaba.push2.action.NOTIFICATION_OPENED" />
+            </intent-filter>
+            <intent-filter>
+                <action android:name="com.alibaba.push2.action.NOTIFICATION_REMOVED" />
+            </intent-filter>
+            <intent-filter>
+                <action android:name="com.alibaba.sdk.android.push.RECEIVE" />
+            </intent-filter>
+        </receiver>
+        <!-- 阿里云推送 end -->
+        <activity
+            android:name=".ui.activity.SplashActivity"
+            android:theme="@style/style_splash">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".ui.activity.MessageNotificationActivity" />
+        <activity
+            android:name=".ui.activity.GuideActivity"
+            android:theme="@style/style_splash" />
+        <activity
+            android:name=".ui.activity.PhotoViewActivity"
+            android:theme="@style/full_screen_splash" />
+        <activity
+            android:name=".ui.activity.AmapPoiActivity"
+            android:windowSoftInputMode="adjustPan" />
+        <activity android:name=".ui.activity.MineWorkActivity" />
+        <activity android:name=".ui.activity.MineWorkDetailActivity" />
+        <activity android:name=".ui.activity.WorkWeeklyActivity" />
+        <activity android:name=".ui.activity.MineWorkListActivity"></activity>
+
+        <receiver
+            android:name=".alipush.RemindActionReceiver"
+            android:process=":zhidian">
+            <intent-filter>
+                <action android:name="zhidian.intent_action_reamind" />
+            </intent-filter>
+        </receiver>
+    </application>
+
+</manifest>

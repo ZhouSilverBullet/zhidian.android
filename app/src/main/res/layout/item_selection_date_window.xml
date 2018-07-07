@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <android.support.v4.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/bai"
+            android:orientation="vertical">
+
+            <include layout="@layout/calendar_title_change_date" />
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/y4"
+                android:background="#D3D3D3" />
+
+            <com.prolificinteractive.materialcalendarview.MaterialCalendarView
+                android:id="@+id/material_calendar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="-50dp"
+                android:background="@color/translate"
+                app:mcv_selectionColor="@color/calendar_selector_color"
+                app:mcv_weekDayLabels="@array/custom_weekdays" />
+
+            <LinearLayout
+                android:id="@+id/ll_bottom"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:visibility="gone">
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/y23"
+                    android:layout_marginTop="@dimen/y17"
+                    android:background="#F4F4F4" />
+
+                <TextView
+                    android:id="@+id/item_selector_date_title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/x35"
+                    android:layout_marginTop="@dimen/y19"
+                    android:ellipsize="end"
+                    android:lines="1"
+                    android:text="12月3日  冬季时间"
+                    android:textColor="#666666"
+                    android:textSize="@dimen/y24" />
+
+                <android.support.v7.widget.RecyclerView
+                    android:id="@+id/item_selector_date_recycler"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@color/white"
+                    android:minHeight="120dp" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+    </android.support.v4.widget.NestedScrollView>
+
+    <LinearLayout
+        android:id="@+id/date_bottom_layout"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/y142"
+        android:layout_gravity="bottom"
+        android:background="@color/white"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/btn_return"
+            android:layout_width="@dimen/x339"
+            android:layout_height="@dimen/y91"
+            android:background="@drawable/shape_view_blue_border_bg"
+            android:text="返回"
+            android:textColor="#3296FA"
+            android:textSize="@dimen/x32" />
+
+        <Button
+            android:id="@+id/btn_determine"
+            android:layout_width="@dimen/x339"
+            android:layout_height="@dimen/y91"
+            android:layout_marginLeft="@dimen/x28"
+            android:background="#3296FA"
+            android:text="确定"
+            android:textColor="@color/bai"
+            android:textSize="@dimen/x32" />
+
+    </LinearLayout>
+</LinearLayout>

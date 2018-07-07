@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.sdxxtop.zhidian.ui.activity.NoticeDetailActivity">
+
+    <include
+        android:id="@+id/include_layout"
+        layout="@layout/item_head_layout"></include>
+
+    <RelativeLayout
+        android:id="@+id/rl_detail_text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/include_layout">
+
+        <TextView
+            android:id="@+id/tv_notice_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text=""
+            android:textColor="@color/textcolor"
+            android:textSize="@dimen/y32"
+            android:layout_marginLeft="@dimen/x33"
+            android:layout_marginTop="@dimen/y18"/>
+
+        <TextView
+            android:id="@+id/tv_recive_range"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="接收范围："
+            android:textColor="@color/texthintcolor"
+            android:textSize="@dimen/y24"
+            android:layout_marginLeft="@dimen/x33"
+            android:layout_marginTop="@dimen/y79"/>
+
+        <android.support.v7.widget.RecyclerView
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/y60"
+            android:layout_marginTop="@dimen/y68"
+            android:layout_toRightOf="@+id/tv_recive_range"></android.support.v7.widget.RecyclerView>
+
+        <TextView
+            android:id="@+id/tv_notice_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text=""
+            android:textColor="@color/texthintcolor"
+            android:textSize="@dimen/y24"
+            android:layout_marginLeft="@dimen/x33"
+            android:layout_marginTop="@dimen/y128"/>
+
+        <TextView
+            android:id="@+id/tv_notice_time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text=""
+            android:textColor="@color/texthintcolor"
+            android:textSize="@dimen/y24"
+            android:layout_toRightOf="@+id/tv_notice_name"
+            android:layout_marginLeft="@dimen/x20"
+            android:layout_marginTop="@dimen/y128"/>
+
+        <RelativeLayout
+            android:id="@+id/rl_read_or_not"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="@dimen/x32"
+            android:layout_marginTop="@dimen/y128">
+
+            <TextView
+                android:id="@+id/tv_1read"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="已读："
+                android:textSize="@dimen/y24"
+                android:textColor="@color/lan"/>
+
+            <TextView
+                android:id="@+id/tv_read"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text=""
+                android:layout_toRightOf="@+id/tv_1read"
+                android:textSize="@dimen/y24"
+                android:textColor="@color/lan"/>
+
+            <TextView
+                android:id="@+id/tv_1not_read"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="未读："
+                android:layout_marginLeft="@dimen/x30"
+                android:layout_toRightOf="@+id/tv_read"
+                android:textSize="@dimen/y24"
+                android:textColor="@color/lan"/>
+
+        </RelativeLayout>
+    </RelativeLayout>
+
+    <ImageView
+        android:id="@+id/iv_notice_img"
+        android:layout_width="@dimen/x713"
+        android:layout_height="@dimen/y386"
+        android:layout_marginTop="@dimen/y18"
+        android:scaleType="fitXY"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/rl_detail_text"/>
+
+    <TextView
+        android:id="@+id/tv_notice_content"
+        android:layout_width="@dimen/x691"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/iv_notice_img"
+        android:layout_marginTop="@dimen/y19"
+        android:layout_centerHorizontal="true"
+        android:textColor="@color/notice_contentcolor"
+        android:textSize="@dimen/y28"
+        android:text=" "/>
+
+    <TextView
+        android:id="@+id/tv_not_read"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/rl_detail_text"
+        android:layout_toEndOf="@+id/tv_notice_content"
+        android:layout_toRightOf="@+id/tv_notice_content"
+        android:text=""
+        android:textColor="@color/lan"
+        android:textSize="@dimen/y24" />
+</RelativeLayout>

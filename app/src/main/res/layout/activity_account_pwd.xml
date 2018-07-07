@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.sdxxtop.zhidian.ui.activity.AccountPwdActivity">
+
+    <com.sdxxtop.zhidian.widget.SubTitleView
+        android:id="@+id/include_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:leftText="设置"
+        app:subTitle="密码账号管理" />
+
+    <RelativeLayout
+        android:id="@+id/rl_login_phone"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/y101"
+        android:layout_below="@+id/include_layout">
+
+        <ImageView
+            android:layout_width="@dimen/x22"
+            android:layout_height="@dimen/y34"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="@dimen/x32"
+            android:layout_marginTop="@dimen/y159"
+            android:background="@mipmap/cellphone" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="@dimen/x85"
+            android:text="登录账号"
+            android:textColor="@color/textcolor"
+            android:textSize="@dimen/y34" />
+
+        <TextView
+            android:id="@+id/tv_login_phone"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="@dimen/x42"
+            android:drawablePadding="@dimen/y20"
+            android:drawableRight="@mipmap/next_step"
+            android:text=""
+            android:textColor="@color/texthintcolor"
+            android:textSize="@dimen/y34" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/y2"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="@dimen/y98"
+            android:background="@color/linecolor" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/rl_modify_password"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/y102"
+        android:layout_below="@+id/rl_login_phone">
+
+        <ImageView
+            android:layout_width="@dimen/x27"
+            android:layout_height="@dimen/y34"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="@dimen/x32"
+            android:layout_marginTop="@dimen/y159"
+            android:background="@mipmap/password" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="@dimen/x85"
+            android:text="修改密码"
+            android:textColor="@color/textcolor"
+            android:textSize="@dimen/y34" />
+
+        <ImageView
+            android:id="@+id/iv_modify_password"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="@dimen/x42"
+            android:background="@mipmap/next_step" />
+
+    </RelativeLayout>
+</RelativeLayout>

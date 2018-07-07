@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/y111"
+        android:descendantFocusability="blocksDescendants">
+
+        <ImageView
+            android:layout_width="@dimen/x30"
+            android:layout_height="@dimen/y24"
+            android:layout_marginLeft="@dimen/x32"
+            android:layout_centerVertical="true"
+            android:background="@mipmap/attendance_machine" />
+
+        <TextView
+            android:id="@+id/tv_item_machine_name"
+            android:layout_width="@dimen/x183"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/x85"
+            android:layout_centerVertical="true"
+            android:singleLine="true"
+            android:text="北海幼儿园"
+            android:textColor="@color/textcolor"
+            android:textSize="@dimen/y30" />
+
+        <View
+            android:layout_width="@dimen/x689"
+            android:layout_height="@dimen/y2"
+            android:background="@color/linecolor"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="@dimen/y30"
+            android:layout_below="@+id/tv_item_machine_name"></View>
+
+        <CheckBox
+            android:id="@+id/cb_item_gps"
+            android:layout_width="@dimen/x105"
+            android:layout_height="@dimen/y65"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="@dimen/x34"
+            android:background="@drawable/iv_switch"
+            android:button="@null" />
+    </RelativeLayout>
+</LinearLayout>

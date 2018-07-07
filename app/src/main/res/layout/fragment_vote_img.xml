@@ -1,0 +1,214 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <com.sdxxtop.zhidian.widget.MyListView
+        android:id="@+id/lv_vote_text"
+        android:layout_width="@dimen/x689"
+        android:layout_height="match_parent"
+        android:layout_centerHorizontal="true"></com.sdxxtop.zhidian.widget.MyListView>
+
+    <View
+        android:id="@+id/line"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/y23"
+        android:layout_below="@+id/lv_vote_text"
+        android:background="@color/backgroundcolor"></View>
+
+    <RelativeLayout
+        android:id="@+id/rl_setting_background"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/y91"
+        android:layout_below="@+id/line"
+        android:background="@color/bai">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="@dimen/x34"
+            android:text="高级设置"
+            android:textColor="@color/textcolor"
+            android:textSize="@dimen/y34" />
+
+        <CheckBox
+            android:id="@+id/cb_senior_setting"
+            android:layout_width="@dimen/x105"
+            android:layout_height="@dimen/y65"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="@dimen/x34"
+            android:background="@drawable/iv_switch"
+            android:button="@null" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/rl_text_explain"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/y67"
+        android:layout_below="@+id/rl_setting_background"
+        android:background="@color/backgroundcolor">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="@dimen/y33"
+            android:text="默认单选，一周后结束，投票后显示结果"
+            android:textColor="@color/texthintcolor"
+            android:textSize="@dimen/y24" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/rl_senior_settings"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/rl_text_explain"
+        android:background="@color/bai">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/x33"
+                android:layout_marginTop="@dimen/y31"
+                android:text="单选多选"
+                android:textColor="@color/textcolor"
+                android:textSize="@dimen/y34" />
+
+            <TextView
+                android:id="@+id/tv_sing_or_more"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="@dimen/x30"
+                android:drawablePadding="@dimen/y20"
+                android:drawableRight="@mipmap/next_step"
+                android:text="单选多选"
+                android:textColor="@color/texthintcolor"
+                android:textSize="@dimen/y34" />
+
+            <View
+                android:layout_width="@dimen/x666"
+                android:layout_height="@dimen/y2"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="@dimen/y98"
+                android:background="@color/linecolor" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/y98">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/x33"
+                android:layout_marginTop="@dimen/y31"
+                android:text="结束时间"
+                android:textColor="@color/textcolor"
+                android:textSize="@dimen/y34" />
+
+            <TextView
+                android:id="@+id/tv_end_time"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="@dimen/x30"
+                android:drawablePadding="@dimen/y20"
+                android:drawableRight="@mipmap/next_step"
+                android:text="2017年12月22日"
+                android:textColor="@color/texthintcolor"
+                android:textSize="@dimen/y34" />
+
+            <View
+                android:layout_width="@dimen/x666"
+                android:layout_height="@dimen/y2"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="@dimen/y98"
+                android:background="@color/linecolor" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/y196">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/x33"
+                android:layout_marginTop="@dimen/y31"
+                android:text="投票结果展示"
+                android:textColor="@color/textcolor"
+                android:textSize="@dimen/y34" />
+
+            <TextView
+                android:id="@+id/tv_result_show"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="@dimen/x30"
+                android:drawablePadding="@dimen/y20"
+                android:drawableRight="@mipmap/next_step"
+                android:text="结束投票后可见"
+                android:textColor="@color/texthintcolor"
+                android:textSize="@dimen/y34" />
+
+            <View
+                android:layout_width="@dimen/x666"
+                android:layout_height="@dimen/y2"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="@dimen/y98"
+                android:background="@color/linecolor" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/y99"
+            android:layout_marginTop="@dimen/y294">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/x33"
+                android:layout_marginTop="@dimen/y28"
+                android:text="投票者是否匿名"
+                android:textColor="@color/textcolor"
+                android:textSize="@dimen/y34" />
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/y71"
+            android:layout_marginTop="@dimen/y395"
+            android:background="@color/backgroundcolor"></RelativeLayout>
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/y142"
+        android:layout_below="@+id/rl_senior_settings"
+        android:background="@color/bai">
+
+        <Button
+            android:id="@+id/btn_release"
+            android:layout_width="@dimen/x689"
+            android:layout_height="@dimen/y91"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="@dimen/y26"
+            android:background="@drawable/btn_make_suer"
+            android:text="发布"
+            android:textColor="@color/bai"
+            android:textSize="@dimen/y32" />
+    </RelativeLayout>
+</RelativeLayout>

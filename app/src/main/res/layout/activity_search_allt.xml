@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.sdxxtop.zhidian.ui.activity.ShowAllPartActivity">
+
+    <com.sdxxtop.zhidian.widget.SubTitleView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:subTitle="通讯录" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/y99"
+        android:orientation="horizontal">
+
+
+        <com.sdxxtop.zhidian.widget.LinkManView
+            android:id="@+id/linkView"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="6"></com.sdxxtop.zhidian.widget.LinkManView>
+    </LinearLayout>
+
+    <ListView
+        android:id="@+id/lvShow"
+        android:background="@color/backgroundcolor"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"></ListView>
+</LinearLayout>
