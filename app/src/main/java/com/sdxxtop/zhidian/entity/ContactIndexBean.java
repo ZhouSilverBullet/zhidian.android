@@ -1,5 +1,7 @@
 package com.sdxxtop.zhidian.entity;
 
+import com.sdxxtop.zhidian.http.BaseModel;
+
 import java.util.List;
 
 /**
@@ -9,41 +11,7 @@ import java.util.List;
  * 描述：通讯录主页实体
  */
 
-public class ContactIndexBean {
-
-    /**
-     * code : 200
-     * msg : 成功
-     * data : {"colloect_user":[{"userid":50000028,"name":"王五","position":"","img":"#9d81ff","user_status":1},{"userid":50000029,"name":"程六","position":"","img":"#81a4f9","user_status":1},{"userid":50000037,"name":"王昭君","position":"","img":"#9396fa","user_status":1},{"userid":50000000,"name":"周洋1","position":"PHP工程师","img":"http://cdn.sdxxtop.com/app/face/1.jpg","user_status":1},{"userid":50000027,"name":"李四","position":"","img":"#9396fa","user_status":1},{"userid":50000031,"name":"赵九","position":"","img":"#4e76e4","user_status":1},{"userid":50000033,"name":"虞姬","position":"","img":"#9d81ff","user_status":1},{"userid":50000035,"name":"赵云","position":"","img":"#9396fa","user_status":1},{"userid":50000036,"name":"阿珂","position":"","img":"#9d81ff","user_status":1},{"userid":50000247,"name":"阿斯蒂芬","position":"","img":"#9396fa","user_status":1}],"part_user":[{"userid":50000037,"name":"王昭君","position":"","img":"#9396fa","user_status":1},{"userid":50000000,"name":"周洋1","position":"PHP工程师","img":"http://cdn.sdxxtop.com/app/face/1.jpg","user_status":1}],"part_name":"旭兴科技","is_invite":1}
-     */
-
-    private int code;
-    private String msg;
-    private DataEntity data;
-
-    public int getCode() {
-        return code;
-    }
-
-    public void setCode(int code) {
-        this.code = code;
-    }
-
-    public String getMsg() {
-        return msg;
-    }
-
-    public void setMsg(String msg) {
-        this.msg = msg;
-    }
-
-    public DataEntity getData() {
-        return data;
-    }
-
-    public void setData(DataEntity data) {
-        this.data = data;
-    }
+public class ContactIndexBean extends BaseModel<ContactIndexBean.DataEntity> {
 
     public static class DataEntity {
         /**
@@ -57,6 +25,10 @@ public class ContactIndexBean {
         private int is_invite;
         private List<ColloectUserEntity> colloect_user;
         private List<ColloectUserEntity> part_user;
+        /**
+         *收索的时候用的
+         */
+        private List<ColloectUserEntity> userinfo;
 
         public String getPart_name() {
             return part_name;
@@ -90,6 +62,14 @@ public class ContactIndexBean {
             this.part_user = part_user;
         }
 
+        public List<ColloectUserEntity> getUserinfo() {
+            return userinfo;
+        }
+
+        public void setUserinfo(List<ColloectUserEntity> userinfo) {
+            this.userinfo = userinfo;
+        }
+
         public static class ColloectUserEntity {
             /**
              * userid : 50000028
@@ -104,6 +84,12 @@ public class ContactIndexBean {
             private String position;
             private String img;
             private int user_status;
+            private String student_id;
+            private String student_name;
+            /**
+             * 用户类型 1:教师 2:家长
+             */
+            private int user_type;
 
             public int getUserid() {
                 return userid;
@@ -143,6 +129,39 @@ public class ContactIndexBean {
 
             public void setUser_status(int user_status) {
                 this.user_status = user_status;
+            }
+
+            public int getUser_type() {
+                return user_type;
+            }
+
+            public void setUser_type(int user_type) {
+                this.user_type = user_type;
+            }
+
+            /**
+             * true:教师 false:家长
+             *
+             * 为0的时候可能是没有获取到数据造成的
+             */
+            public boolean isTeacher() {
+                return user_type == 1 || user_type == 0;
+            }
+
+            public String getStudent_id() {
+                return student_id;
+            }
+
+            public void setStudent_id(String student_id) {
+                this.student_id = student_id;
+            }
+
+            public String getStudent_name() {
+                return student_name;
+            }
+
+            public void setStudent_name(String student_name) {
+                this.student_name = student_name;
             }
         }
     }

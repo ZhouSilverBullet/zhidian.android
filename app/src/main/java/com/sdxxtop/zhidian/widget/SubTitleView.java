@@ -3,10 +3,12 @@ package com.sdxxtop.zhidian.widget;
 import android.app.Activity;
 import android.content.Context;
 import android.content.res.TypedArray;
+import android.graphics.drawable.Drawable;
 import android.text.TextUtils;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
@@ -25,6 +27,8 @@ public class SubTitleView extends RelativeLayout {
     private int layoutBgColor;
     private boolean leftNotShow;
     private boolean rightTextIsShow;
+    private boolean rightImageIsShow;
+    private Drawable rightImageDrawable;
 
     private String leftTextValue;
     private int leftTextColor;
@@ -34,6 +38,7 @@ public class SubTitleView extends RelativeLayout {
     private String rightTextValue;
     private int rightTextColor;
     private View bottomLine;
+    private ImageView rightImg;
 
     public SubTitleView(Context context) {
         this(context, null);
@@ -50,9 +55,11 @@ public class SubTitleView extends RelativeLayout {
         layoutBgColor = a.getColor(R.styleable.SubTitleView_layoutBg, context.getResources().getColor(R.color.white));
         leftNotShow = a.getBoolean(R.styleable.SubTitleView_leftIsNotShow, false);
         rightTextIsShow = a.getBoolean(R.styleable.SubTitleView_rightTextIsShow, false);
+        rightImageIsShow = a.getBoolean(R.styleable.SubTitleView_rightImageIsShow, false);
         leftTextValue = a.getString(R.styleable.SubTitleView_leftText);
         leftTextColor = a.getColor(R.styleable.SubTitleView_leftTextColor, context.getResources().getColor(R.color.textcolor));
         rightTextValue = a.getString(R.styleable.SubTitleView_rightText);
+        rightImageDrawable = a.getDrawable(R.styleable.SubTitleView_rightImage);
         rightTextColor = a.getColor(R.styleable.SubTitleView_rightTextColor, context.getResources().getColor(R.color.blue));
         subTitleValue = a.getString(R.styleable.SubTitleView_subTitle);
         lineIsShow = a.getBoolean(R.styleable.SubTitleView_bottomLineIsShow, true);
@@ -70,6 +77,7 @@ public class SubTitleView extends RelativeLayout {
         leftText = (TextView) findViewById(R.id.view_sub_title_left_text);
         titleText = (TextView) findViewById(R.id.view_sub_title_title_view);
         rightText = (TextView) findViewById(R.id.view_sub_title_right_text);
+        rightImg = (ImageView) findViewById(R.id.view_sub_title_right_img);
         bottomLine = findViewById(R.id.view_sub_title_bottom_line);
         if (lineIsShow) {
             bottomLine.setVisibility(VISIBLE);
@@ -91,6 +99,14 @@ public class SubTitleView extends RelativeLayout {
             rightText.setVisibility(GONE);
         }
 
+        if (rightImageIsShow) {
+            rightImg.setVisibility(VISIBLE);
+            if (rightImageDrawable != null) {
+                rightImg.setImageDrawable(rightImageDrawable);
+            }
+        } else {
+            rightImg.setVisibility(GONE);
+        }
 
         if (leftNotShow) {
             leftLayout.setVisibility(GONE);
@@ -118,7 +134,15 @@ public class SubTitleView extends RelativeLayout {
         return rightText;
     }
 
+    public ImageView getRightImg() {
+        return rightImg;
+    }
+
     public TextView getLeftText() {
         return leftText;
+    }
+
+    public TextView getTitleText() {
+        return titleText;
     }
 }

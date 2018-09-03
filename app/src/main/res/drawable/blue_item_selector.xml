@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:drawable="@drawable/item_contact_stroke_gray_press_bg" android:state_pressed="true"/>
+    <item android:drawable="@drawable/item_contact_stroke_gray_press_bg" android:state_focused="true"/>
+    <item android:drawable="@drawable/item_student_solid_blue_bg"/>
+</selector>

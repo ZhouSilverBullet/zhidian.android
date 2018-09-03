@@ -31,7 +31,7 @@
                 android:id="@+id/issue_notice2_fanwei"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                app:tatv_text_right_value="默认选择全公司"
+                app:tatv_text_right_value="选择接收范围"
                 app:tatv_text_view="接收范围" />
 
             <com.sdxxtop.zhidian.widget.TextAndEditView

@@ -1,5 +1,6 @@
 package com.sdxxtop.zhidian.entity;
 
+import android.support.annotation.NonNull;
 import android.text.TextUtils;
 
 import com.sdxxtop.zhidian.http.BaseModel;
@@ -175,7 +176,7 @@ public class MainIndexBean extends BaseModel<MainIndexBean.DataBean> {
             this.work_type = work_type;
         }
 
-        public static class SignLogBean implements Serializable {
+        public static class SignLogBean implements Serializable, Comparable<SignLogBean> {
             /**
              * sign_id : 577
              * sign_time : 2018-05-03 09:00:00
@@ -313,6 +314,36 @@ public class MainIndexBean extends BaseModel<MainIndexBean.DataBean> {
 
             public void setCompare(boolean compare) {
                 isCompare = compare;
+            }
+
+            @Override
+            public int compareTo(@NonNull SignLogBean o) {
+                String oSignDate = o.sys_date;
+                if (!TextUtils.isEmpty(this.sys_date) && !TextUtils.isEmpty(oSignDate)) {
+                    long sysLong = DateUtil.convertTimeToLong(sys_date, "HH:mm");
+                    long oSysLong = DateUtil.convertTimeToLong(oSignDate, "HH:mm");
+                    if (sysLong > oSysLong) {
+                        return 1;
+                    } else {
+                        return -1;
+                    }
+                }
+                return -1;
+            }
+
+            @Override
+            public boolean equals(Object o) {
+                if (this == o) return true;
+                if (o == null || getClass() != o.getClass()) return false;
+                SignLogBean that = (SignLogBean) o;
+                return sys_date.equals(that.sys_date);
+            }
+
+            @Override
+            public int hashCode() {
+                int result = sys_date.hashCode();
+                result = 31 * result + sys_date.hashCode();
+                return result;
             }
         }
 

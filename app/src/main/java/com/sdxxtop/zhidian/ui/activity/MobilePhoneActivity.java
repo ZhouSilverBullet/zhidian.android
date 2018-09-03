@@ -103,7 +103,7 @@ public class MobilePhoneActivity extends BaseApproverActivity {
     }
 
     private void submit() {
-        String phoneEditContent = phoneContent.getText().toString();
+        String phoneEditContent = phoneContent.getText().toString().trim();
 
         if (TextUtils.isEmpty(phoneEditContent)) {
             showToast("请填写手机绑定理由");

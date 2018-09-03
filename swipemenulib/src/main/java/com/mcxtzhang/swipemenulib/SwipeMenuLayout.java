@@ -526,6 +526,10 @@ public class SwipeMenuLayout extends ViewGroup {
         mExpandAnim.setDuration(300).start();
     }
 
+    public boolean isExpand() {
+        return isExpand;
+    }
+
     /**
      * 每次执行动画之前都应该先取消之前的动画
      */

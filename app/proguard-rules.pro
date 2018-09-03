@@ -189,6 +189,7 @@
 -dontwarn com.huawei.**
 
 -keep class com.sdxxtop.zhidian.entity.**{*;}
+-keep class com.sdxxtop.zhidian.BuildConfig  {*;}
 
 #自定义控件
 -keep public class * extends android.view.View {
@@ -206,3 +207,13 @@
 -keep public class * extends android.content.ContentProvider
 #-keep public class * extends android.app.backup.BackupAgentHelper
 #-keep public class * extends android.preference.Preference
+
+# 腾讯im混淆
+-keep class com.tencent.**{*;}
+-dontwarn com.tencent.**
+
+-keep class tencent.**{*;}
+-dontwarn tencent.**
+
+-keep class qalsdk.**{*;}
+-dontwarn qalsdk.**

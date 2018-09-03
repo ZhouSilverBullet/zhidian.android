@@ -67,7 +67,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:gravity="center"
-                android:orientation="horizontal">
+                android:orientation="horizontal"
+                android:paddingLeft="10dp">
 
                 <LinearLayout
                     android:id="@+id/item_vote_vote_wave_layout1"
@@ -88,6 +89,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="10dp"
+                        android:singleLine="true"
                         android:text="北京"
                         android:textColor="@color/textcolor"
                         android:textSize="14sp" />
@@ -113,6 +115,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="10dp"
+                        android:singleLine="true"
                         android:text="北京"
                         android:textColor="@color/textcolor"
                         android:textSize="14sp" />

@@ -1,6 +1,8 @@
 package com.sdxxtop.zhidian.ui.activity;
 
+import android.Manifest;
 import android.content.Intent;
+import android.graphics.Bitmap;
 import android.graphics.Point;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -56,14 +58,19 @@ import com.sdxxtop.zhidian.entity.LocationBean;
 import com.sdxxtop.zhidian.model.ConstantValue;
 import com.sdxxtop.zhidian.ui.base.BaseActivity;
 import com.sdxxtop.zhidian.utils.ItemDivider;
+import com.sdxxtop.zhidian.utils.PictureUtil;
 import com.sdxxtop.zhidian.utils.PreferenceUtils;
 import com.sdxxtop.zhidian.utils.ToastUtil;
 import com.sdxxtop.zhidian.utils.ViewUtil;
+import com.tencent.qcloud.timchat.utils.FileUtil;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import butterknife.BindView;
+import io.reactivex.functions.Consumer;
 
 public class AmapPoiActivity extends BaseActivity implements PoiSearch.OnPoiSearchListener, LocationSource, AMapLocationListener, GeocodeSearch.OnGeocodeSearchListener {
     @BindView(R.id.dialog_search_back)
@@ -110,6 +117,9 @@ public class AmapPoiActivity extends BaseActivity implements PoiSearch.OnPoiSear
     private SearchAdapter searchAdapter2;
     private Marker locationMarker;
     private PoiItem firstItem;
+    private String skipActivityName;
+    private double locationLatitude;
+    private double locationLongitude;
 
     @Override
     protected int getActivityView() {
@@ -124,8 +134,34 @@ public class AmapPoiActivity extends BaseActivity implements PoiSearch.OnPoiSear
     }
 
     @Override
+    protected void initVariables() {
+        if (getIntent() != null) {
+            skipActivityName = getIntent().getStringExtra("activity");
+            locationLatitude = getIntent().getDoubleExtra("location_latitude", -1);
+            locationLongitude = getIntent().getDoubleExtra("location_longitude", -1);
+        }
+    }
+
+    @Override
     protected void initView() {
         super.initView();
+
+        rxPermissions.request(Manifest.permission.ACCESS_FINE_LOCATION,
+                Manifest.permission.ACCESS_COARSE_LOCATION
+        ).subscribe(new Consumer<Boolean>() {
+            @Override
+            public void accept(Boolean aBoolean) throws Exception {
+                if (aBoolean) {
+                    toInitView();
+                } else {
+                    showToast("请开启定位权限再进行知点的定位功能");
+                    finish();
+                }
+            }
+        });
+    }
+
+    private void toInitView() {
         searchAdapter = new SearchAdapter(R.layout.item_amap_search_layout);
         searchRecycler.setLayoutManager(new LinearLayoutManager(this));
         searchRecycler.addItemDecoration(new ItemDivider().setDividerWidth(ViewUtil.dp2px(mContext, 1)));
@@ -136,8 +172,9 @@ public class AmapPoiActivity extends BaseActivity implements PoiSearch.OnPoiSear
         currentRecycler.addItemDecoration(new ItemDivider().setDividerWidth(ViewUtil.dp2px(mContext, 1)));
         currentRecycler.setAdapter(searchAdapter2);
         init();
-
     }
+
+    private boolean isFirst;
 
     /**
      * 初始化
@@ -159,18 +196,29 @@ public class AmapPoiActivity extends BaseActivity implements PoiSearch.OnPoiSear
             @Override
             public void onCameraChangeFinish(CameraPosition cameraPosition) {
 //                if (isItemClickAction) {
-                searchLatlonPoint = new LatLonPoint(cameraPosition.target.latitude, cameraPosition.target.longitude);
+
+                if (locationLatitude != -1 && locationLongitude != -1 && !isFirst) {
+                    searchLatlonPoint = new LatLonPoint(locationLatitude, locationLongitude);
+                    aMap.moveCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(locationLatitude, locationLongitude), 16f));
+                } else {
+                    searchLatlonPoint = new LatLonPoint(cameraPosition.target.latitude, cameraPosition.target.longitude);
+                }
                 geoAddress();
                 startJumpAnimation();
-//                }
                 isItemClickAction = false;
+//                }
             }
         });
 
         aMap.setOnMapLoadedListener(new AMap.OnMapLoadedListener() {
             @Override
             public void onMapLoaded() {
+//                if (locationLatitude != -1 && locationLongitude != -1) {
+//                    LatLng locationLatLng = new LatLng(locationLatitude, locationLongitude);
+//                    addMarkerInScreenCenter(locationLatLng);
+//                } else {
                 addMarkerInScreenCenter(null);
+//                }
             }
         });
 
@@ -183,6 +231,24 @@ public class AmapPoiActivity extends BaseActivity implements PoiSearch.OnPoiSear
 
         geocoderSearch = new GeocodeSearch(this);
         geocoderSearch.setOnGeocodeSearchListener(this);
+
+
+//        findViewById(R.id.demo_click).setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                aMap.getMapScreenShot(new AMap.OnMapScreenShotListener() {
+//                    @Override
+//                    public void onMapScreenShot(Bitmap bitmap) {
+//
+//                    }
+//
+//                    @Override
+//                    public void onMapScreenShot(Bitmap bitmap, int i) {
+//                        saveMapScreenShot(bitmap);
+//                    }
+//                });
+//            }
+//        });
     }
 
     /**
@@ -202,8 +268,10 @@ public class AmapPoiActivity extends BaseActivity implements PoiSearch.OnPoiSear
      * @param locationLatLng
      */
     private void addMarkerInScreenCenter(LatLng locationLatLng) {
-        LatLng latLng = aMap.getCameraPosition().target;
-        Point screenPosition = aMap.getProjection().toScreenLocation(latLng);
+        if (locationLatLng == null) {
+            locationLatLng = aMap.getCameraPosition().target;
+        }
+        Point screenPosition = aMap.getProjection().toScreenLocation(locationLatLng);
         locationMarker = aMap.addMarker(new MarkerOptions()
                 .anchor(0.5f, 0.5f)
                 .icon(BitmapDescriptorFactory.fromResource(R.drawable.purple_pin)));
@@ -261,6 +329,18 @@ public class AmapPoiActivity extends BaseActivity implements PoiSearch.OnPoiSear
             locationMarker.setAnimation(animation);
             //开始动画
             locationMarker.startAnimation();
+
+            locationMarker.setAnimationListener(new Animation.AnimationListener() {
+                @Override
+                public void onAnimationStart() {
+
+                }
+
+                @Override
+                public void onAnimationEnd() {
+                    isFirst = true;
+                }
+            });
 
         } else {
             Log.e("ama", "screenMarker is null");
@@ -548,7 +628,6 @@ public class AmapPoiActivity extends BaseActivity implements PoiSearch.OnPoiSear
                 bean.longitude = firstItem.getLatLonPoint().getLongitude();
 
 
-
                 String formatAddress = regeocodeAddress.getFormatAddress();
                 String[] range;
                 if (formatAddress.contains("区")) {
@@ -576,10 +655,10 @@ public class AmapPoiActivity extends BaseActivity implements PoiSearch.OnPoiSear
                 String tempAddress = "";
                 if (range.length >= 2) {
                     bean.snippet = range[1];
-                    tempAddress= range[0];
+                    tempAddress = range[0];
                 } else {
                     bean.snippet = range[0];
-                    tempAddress= range[0];
+                    tempAddress = range[0];
                 }
                 bean.title = tempAddress;
                 handleFirstItem(bean);
@@ -632,16 +711,75 @@ public class AmapPoiActivity extends BaseActivity implements PoiSearch.OnPoiSear
                 if (tempLocationBean == null) {
                     return;
                 }
-                Intent intentFirst = new Intent();
-                intentFirst.putExtra("ar", tempLocationBean.title);
-                intentFirst.putExtra("ad", tempLocationBean.snippet);
-                String value = tempLocationBean.longitude + "," + tempLocationBean.latitude;
-                intentFirst.putExtra("lt", value);
-                PreferenceUtils.getInstance(AmapPoiActivity.this).saveParam(ConstantValue.COMPANY_JIN_WEIDU, value);
-                setResult(10087, intentFirst);
-                finish();
+
+                if (TextUtils.isEmpty(skipActivityName)) {
+                    Intent intentFirst = new Intent();
+                    intentFirst.putExtra("ar", tempLocationBean.title);
+                    intentFirst.putExtra("ad", tempLocationBean.snippet);
+                    double longitude = tempLocationBean.longitude;
+                    double latitude = tempLocationBean.latitude;
+                    String value = longitude + "," + latitude;
+                    intentFirst.putExtra("lt", value);
+                    intentFirst.putExtra("longitude", longitude);
+                    intentFirst.putExtra("latitude", latitude);
+                    PreferenceUtils.getInstance(AmapPoiActivity.this).saveParam(ConstantValue.COMPANY_JIN_WEIDU, value);
+                    setResult(10087, intentFirst);
+                    finish();
+
+                } else {
+                    showProgressDialog("");
+                    aMap.getMapScreenShot(new AMap.OnMapScreenShotListener() {
+                        @Override
+                        public void onMapScreenShot(Bitmap bitmap) {
+
+                        }
+
+                        @Override
+                        public void onMapScreenShot(Bitmap bitmap, int i) {
+                            saveMapScreenShot(bitmap);
+                        }
+                    });
+                }
             }
         });
+    }
+
+    private void saveMapScreenShot(Bitmap bitmap) {
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMddHHmmss");
+        try {
+            // 保存在SD卡根目录下，图片为png格式。
+            Bitmap cropBitmap = PictureUtil.centerSquareScaleBitmap(bitmap, ViewUtil.dp2px(mContext, 300));
+            String filename = "zhidian_" + sdf.format(new Date()) + ".png";
+            String file = FileUtil.createFile(cropBitmap, filename);
+            if (TextUtils.isEmpty(file)) {
+//                Toast.makeText(this, "截屏失败", Toast.LENGTH_LONG).show();
+            } else {
+//                Toast.makeText(this, "截屏成功", Toast.LENGTH_LONG).show();
+            }
+            closeProgressDialog();
+
+            Intent intentFirst = new Intent();
+            intentFirst.putExtra("ar", tempLocationBean.title);
+            intentFirst.putExtra("ad", tempLocationBean.snippet);
+            double longitude = tempLocationBean.longitude;
+            double latitude = tempLocationBean.latitude;
+            String value = longitude + "," + latitude;
+            intentFirst.putExtra("lt", value);
+            intentFirst.putExtra("longitude", longitude);
+            intentFirst.putExtra("latitude", latitude);
+
+            String cacheFilePath = FileUtil.getCacheFilePath(filename);
+
+            intentFirst.putExtra("image_url", cacheFilePath);
+            PreferenceUtils.getInstance(AmapPoiActivity.this).saveParam(ConstantValue.COMPANY_JIN_WEIDU, value);
+            setResult(10087, intentFirst);
+            finish();
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            closeProgressDialog();
+        }
     }
 
     /**

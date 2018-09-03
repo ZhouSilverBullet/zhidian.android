@@ -61,8 +61,8 @@
         android:layout_height="35dp"
         android:layout_above="@+id/item_amap_search_root1"
         android:layout_margin="15dp"
-        android:padding="5dp"
         android:background="@drawable/amap_location_img_bg"
+        android:padding="5dp"
         android:src="@drawable/to_location" />
 
     <LinearLayout
@@ -164,4 +164,11 @@
                 android:background="@color/white" />
         </LinearLayout>
     </LinearLayout>
+
+    <!--<Button-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_alignParentBottom="true"-->
+        <!--android:id="@+id/demo_click"-->
+        <!--/>-->
 </RelativeLayout>

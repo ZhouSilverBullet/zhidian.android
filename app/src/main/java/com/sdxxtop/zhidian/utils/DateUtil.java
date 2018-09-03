@@ -168,6 +168,34 @@ public class DateUtil {
     }
 
     /**
+     * 月份小于10 带0
+     * student 学生考勤  xx月xx日
+     * @param dateDay
+     * @return
+     */
+    public static String getChineseSelector2Date(CalendarDay dateDay) {
+        int i = dateDay.getMonth() + 1;
+        String title = "";
+        int day = dateDay.getDay();
+        String stringMonth = "";
+        String stringDay = "";
+        if (i < 10) {
+            stringMonth = "0" + i;
+        } else {
+            stringMonth = i + "";
+        }
+
+        if (day < 10) {
+            stringDay = "0" + day;
+        } else {
+            stringDay = "" + day;
+        }
+
+        title = stringMonth + "月" + stringDay + "日";
+        return title;
+    }
+
+    /**
      * 配合统计 年月 使用的
      *
      * @param dateDay
@@ -733,7 +761,7 @@ public class DateUtil {
 
     public static String getSubmissionData(String time) {
         long days = 0, hours = 0, minutes = 0;
-        DateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm");
+        DateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         try {
             Date d1 = Calendar.getInstance().getTime();
             Date d2 = df.parse(time);
@@ -808,16 +836,16 @@ public class DateUtil {
             int nowMonth = endCurrentDate.get(Calendar.MONTH) + 1; // 0-based!
             int nowsDay = endCurrentDate.get(Calendar.DAY_OF_MONTH);
 
-//            if (month != nowMonth) {
-            return month + "月" + day + "日" + "-" + nowMonth + "月" + nowsDay + "日";
-//            }
+            if (month != nowMonth) {
+                return month + "月" + day + "日" + "-" + nowMonth + "月" + nowsDay + "日";
+            }
 
-//            if (day != nowsDay) {
-//
-//                return month + "月" + day + "日" + "~" + day + "日";
-//            }
-//
-//            return month + "月" + day + "日";
+            if (day != nowsDay) {
+
+                return month + "月" + day + "日" + "-" + nowsDay + "日";
+            }
+
+            return month + "月" + day + "日";
 
 
         } catch (ParseException e) {
@@ -862,4 +890,17 @@ public class DateUtil {
         return daysAgo;
     }
 
+    public static String getVisitTime(String time) {
+        try {
+            Date date = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").parse(time);
+            Calendar currentDate = Calendar.getInstance();
+            currentDate.setTime(date);
+            SimpleDateFormat formatter = new SimpleDateFormat("MM月dd日 HH:mm");
+            String format = formatter.format(currentDate.getTime());
+//            String weekOfDate = getWeekOfDate(date);
+            return /*weekOfDate + "\t" +*/ format;
+        } catch (Exception e) {
+        }
+        return "";
+    }
 }

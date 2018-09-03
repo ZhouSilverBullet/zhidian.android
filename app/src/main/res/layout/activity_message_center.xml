@@ -245,5 +245,10 @@
             android:textColor="@color/notice_contentcolor"
             android:textSize="14sp" />
     </RelativeLayout>
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/message_center_recycler"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
 </LinearLayout>
 

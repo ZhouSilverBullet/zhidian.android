@@ -194,4 +194,12 @@ public class AppSession {
         session = null;
     }
 
+    /**
+     * 腾讯使用的
+     *
+     * @return
+     */
+    public String getIdentify() {
+        return "t" + getCompanyId() + getUserId();
+    }
 }

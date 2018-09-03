@@ -30,6 +30,7 @@ public class AnalyticsHome {
 
             @Override
             public void onFailed(String s, String s1) {
+                bind(userId);
                 LogUtils.e(TAG, " onFailed bindAccount s= " + s);
                 LogUtils.e(TAG, " onFailed bindAccount s1= " + s1);
             }

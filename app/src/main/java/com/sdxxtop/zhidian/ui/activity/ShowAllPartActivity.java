@@ -1,6 +1,5 @@
 package com.sdxxtop.zhidian.ui.activity;
 
-import android.content.Intent;
 import android.widget.ListView;
 
 import com.sdxxtop.zhidian.R;
@@ -62,9 +61,7 @@ public class ShowAllPartActivity extends BaseActivity implements ShowContactPart
 
     @Override
     public void onClickUserCallBack(int position) {
-        Intent intent = new Intent(mContext, ContactDetailActivity.class);
-        intent.putExtra("userId", dataBean.getUserinfo().get(position).getUserid() + "");
-        startActivity(intent);
+        ContactDetailActivity.startContactDetailActivityTeacher(mContext, dataBean.getUserinfo().get(position).getUserid() + "");
     }
 
 

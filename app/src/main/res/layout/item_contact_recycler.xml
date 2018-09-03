@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/recycler_item_selector">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="55dp"
+        android:layout_marginLeft="11dp"
+        android:layout_marginRight="11dp">
+
+        <RelativeLayout
+            android:id="@+id/item_contact_left_layout"
+            android:layout_width="42dp"
+            android:layout_height="42dp"
+            android:layout_centerVertical="true">
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/item_contact_circle_img"
+                android:layout_width="42dp"
+                android:layout_height="42dp" />
+
+            <TextView
+                android:id="@+id/item_contact_short_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:text=""
+                android:textColor="@color/bai"
+                android:textSize="14sp" />
+        </RelativeLayout>
+
+        <TextView
+            android:id="@+id/item_contact_user_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="14dp"
+            android:layout_toRightOf="@id/item_contact_left_layout"
+            android:text="safasdfas"
+            android:textColor="@color/textcolor"
+            android:textSize="17sp" />
+
+        <TextView
+            android:id="@+id/item_contact_user_job"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:text="校长"
+            android:textColor="@color/notice_contentcolor"
+            android:textSize="14sp" />
+
+    </RelativeLayout>
+
+</LinearLayout>

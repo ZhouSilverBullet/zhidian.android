@@ -48,10 +48,7 @@
         -->
         <service android:name="com.amap.api.location.APSService" />
         <service android:name=".alipush.RemindActionService" />
-
-        <service
-            android:name=".alipush.LocationService"
-             />
+        <service android:name=".alipush.LocationService" />
 
         <activity
             android:name=".ui.activity.NormalLoginActivity"
@@ -312,7 +309,7 @@
         <activity android:name=".ui.activity.MineWorkActivity" />
         <activity android:name=".ui.activity.MineWorkDetailActivity" />
         <activity android:name=".ui.activity.WorkWeeklyActivity" />
-        <activity android:name=".ui.activity.MineWorkListActivity"></activity>
+        <activity android:name=".ui.activity.MineWorkListActivity" />
 
         <receiver
             android:name=".alipush.RemindActionReceiver"
@@ -321,6 +318,23 @@
                 <action android:name="zhidian.intent_action_reamind" />
             </intent-filter>
         </receiver>
+
+        <activity android:name=".ui.activity.CourseTableActivity" />
+        <activity android:name=".ui.activity.ParentListActivity" />
+        <activity android:name=".ui.activity.ParentDetailActivity" />
+        <activity android:name=".ui.activity.HomeworkActivity" />
+        <activity android:name=".ui.activity.HomeworkDetailActivity" />
+        <activity android:name=".ui.activity.HomeworkListActivity" />
+        <activity android:name=".ui.activity.CourseUpdateActivity" />
+        <activity android:name=".ui.activity.StudentAttendanceActivity" />
+        <activity android:name=".ui.activity.PartAndParentActivity" />
+        <activity android:name=".im.ZDGroupMemberActivity" />
+        <activity android:name=".im.ZDSearchGroupMemberActivity" />
+        <activity android:name=".im.ZDEditActivity" />
+        <activity android:name=".im.GroupManagerActivity" />
+        <activity
+            android:name=".ui.activity.IMDialogActivity"
+            android:theme="@style/dialog_for_activity" />
     </application>
 
 </manifest>

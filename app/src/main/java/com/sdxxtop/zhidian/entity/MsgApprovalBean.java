@@ -17,7 +17,10 @@ public class MsgApprovalBean extends BaseModel<MsgApprovalBean.DataBean> {
          */
 
         private int num;
+        private int parent_num;
         private List<ApplyBean> apply;
+        private List<ApplyBean> parent_apply;
+        private List<ApplyBean> all_apply;
 
         public int getNum() {
             return num;
@@ -33,6 +36,30 @@ public class MsgApprovalBean extends BaseModel<MsgApprovalBean.DataBean> {
 
         public void setApply(List<ApplyBean> apply) {
             this.apply = apply;
+        }
+
+        public int getParent_num() {
+            return parent_num;
+        }
+
+        public void setParent_num(int parent_num) {
+            this.parent_num = parent_num;
+        }
+
+        public List<ApplyBean> getParent_apply() {
+            return parent_apply;
+        }
+
+        public void setParent_apply(List<ApplyBean> parent_apply) {
+            this.parent_apply = parent_apply;
+        }
+
+        public List<ApplyBean> getAll_apply() {
+            return all_apply;
+        }
+
+        public void setAll_apply(List<ApplyBean> all_apply) {
+            this.all_apply = all_apply;
         }
 
         public static class ApplyBean {
@@ -99,6 +126,17 @@ public class MsgApprovalBean extends BaseModel<MsgApprovalBean.DataBean> {
             private String title;
             private String reviewer_name;
             private String approver_name;
+
+            private String visit_time;
+            private String student_name;
+
+            public String getVisit_time() {
+                return visit_time;
+            }
+
+            public void setVisit_time(String visit_time) {
+                this.visit_time = visit_time;
+            }
 
             public int getApply_id() {
                 return apply_id;
@@ -346,6 +384,14 @@ public class MsgApprovalBean extends BaseModel<MsgApprovalBean.DataBean> {
 
             public void setApprover_name(String approver_name) {
                 this.approver_name = approver_name;
+            }
+
+            public String getStudent_name() {
+                return student_name;
+            }
+
+            public void setStudent_name(String student_name) {
+                this.student_name = student_name;
             }
         }
     }

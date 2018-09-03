@@ -84,4 +84,17 @@ public class RequestUtils {
 
         return retrofit.create(ApiService.class);
     }
+
+    public static ApiService createDifferentBaseUrlRequest(String baseUrl) {
+        OkHttpClient.Builder builder = new OkHttpClient.Builder();
+
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl(baseUrl)
+                .client(builder.build())
+                .addConverterFactory(GsonConverterFactory.create())
+                .addCallAdapterFactory(RxJavaCallAdapterFactory.create())
+                .build();
+
+        return retrofit.create(ApiService.class);
+    }
 }

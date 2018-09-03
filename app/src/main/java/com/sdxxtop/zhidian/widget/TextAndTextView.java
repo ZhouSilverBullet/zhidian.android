@@ -47,7 +47,7 @@ public class TextAndTextView extends LinearLayout {
     }
 
     private void init() {
-        LayoutInflater.from(getContext()).inflate(R.layout.view_text_and_text, this, true);
+        LayoutInflater.from(getContext()).inflate(R.layout.view_text_and_text1, this, true);
         textNameText = (TextView) findViewById(R.id.text_and_text_name);
         textRightText = (TextView) findViewById(R.id.text_and_text_right);
         textRightImage = (TextView) findViewById(R.id.text_and_text_right_image);

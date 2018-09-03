@@ -1,5 +1,7 @@
 package com.sdxxtop.zhidian.model;
 
+import com.sdxxtop.zhidian.BuildConfig;
+
 /**
  * 作者：CaiCM
  * 日期：2018/3/22  时间：13:24
@@ -7,7 +9,7 @@ package com.sdxxtop.zhidian.model;
  * 描述：控制常量值
  */
 
-public class ConstantValue {
+public interface ConstantValue {
 
     public static String BASE_URL = "http://app.sdxxtop.com/api/";
 
@@ -17,7 +19,7 @@ public class ConstantValue {
     public static String CONFIG = "config";
 
     // TODO: 2018/3/21  发版切换
-    public static boolean isDebug = true;
+    public static boolean isDebug = BuildConfig.DEBUG;
 
     /**
      * 用户id
@@ -145,4 +147,28 @@ public class ConstantValue {
      * 当前版本 版本高出现guide
      */
     public static String GUIDE_SHOW_VERSION = "guide_show_version";
+
+    /**
+     * 课程选择名称
+     */
+    public static String COURSE_SELECTOR_NAME = "course_selector_name";
+    /**
+     * 课程选择id
+     */
+    public static String COURSE_SELECTOR_ID = "course_selector_id";
+    /**
+     * 课程选择班级/人 内容
+     */
+    public static String HOMEWORK_SELECTOR_USER_OR_GRADE_NAME = "homework_selector_user_or_grade_name";
+    /**
+     * 课程选择班级/人的 GradeId
+     */
+    public static String HOMEWORK_SELECTOR_GRADE_ID = "homework_selector_grade_id";
+    /**
+     * 课程选择班级/人的 StudentId
+     */
+    public static String HOMEWORK_SELECTOR_STUDENT_ID= "HOMEWORK_SELECTOR_STUDENT_ID";
+
+
+    public static String TIM_SIGNATURE = "tim_signature";
 }

@@ -116,11 +116,11 @@ public class CollectiveBusinessFragment extends BaseApproverFragment {
     }
 
     private void submit() {
-        String startTime = tvStartTime.getText().toString();
-        String endTime = tvEndTime.getText().toString();
-        String eidtContent = contentEdit.getText().toString();
+        String startTime = tvStartTime.getText().toString().trim();
+        String endTime = tvEndTime.getText().toString().trim();
+        String eidtContent = contentEdit.getText().toString().trim();
 
-        String busiAddress = editText.getText().toString();
+        String busiAddress = editText.getText().toString().trim();
 
         if (TextUtils.isEmpty(busiAddress)) {
             showToast("请输入出差地址");
@@ -128,7 +128,8 @@ public class CollectiveBusinessFragment extends BaseApproverFragment {
         }
 
         String collectValue = getCollectValue();
-        if (TextUtils.isEmpty(collectValue)) {
+        String partValue = getPartValue();
+        if (TextUtils.isEmpty(collectValue) && TextUtils.isEmpty(partValue)) {
             showToast("请选择出差人员");
             return;
         }
@@ -156,7 +157,7 @@ public class CollectiveBusinessFragment extends BaseApproverFragment {
         params.put("st", startTime);
         params.put("et", endTime);
         params.put("gui", collectValue);
-        params.put("gpi", getPartValue());
+        params.put("gpi", partValue);
         params.put("at", at);
 
         //设置相片

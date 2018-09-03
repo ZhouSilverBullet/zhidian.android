@@ -15,7 +15,7 @@ public class LogUtils {
 
 
 
-    static String mTag = "LogUtils";
+    static String mTag = "Log_ZhiDian";
 
     //for error log
     public static void error(String msg) {

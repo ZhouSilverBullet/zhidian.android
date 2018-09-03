@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:fitsSystemWindows="true"
+    android:focusable="true"
+    android:focusableInTouchMode="true"
+    android:orientation="vertical"
+    tools:context="com.sdxxtop.zhidian.ui.activity.HomeworkActivity">
+
+    <com.sdxxtop.zhidian.widget.SubTitleView
+        android:id="@+id/home_work_title_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:rightText="记录"
+        app:rightTextColor="@color/textcolor"
+        app:rightTextIsShow="true"
+        app:subTitle="布置作业" />
+
+    <android.support.v4.widget.DrawerLayout
+        android:id="@+id/home_work_drawer"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <android.support.v4.widget.NestedScrollView
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:background="@color/backgroundcolor">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@color/white"
+                    android:orientation="vertical">
+
+                    <com.sdxxtop.zhidian.widget.TextAndTextView
+                        android:id="@+id/home_work_selector_subject"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        app:tatv_text_view="请选择科目" />
+
+                    <EditText
+                        android:id="@+id/home_work_content_text"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="16dp"
+                        android:layout_marginRight="16dp"
+                        android:layout_marginTop="10dp"
+                        android:background="@drawable/edt_home_work_bg"
+                        android:gravity="left|top"
+                        android:hint="请输入作业内容"
+                        android:minHeight="120dp"
+                        android:padding="10dp"
+                        android:textSize="14sp" />
+
+                    <android.support.v7.widget.RecyclerView
+                        android:id="@+id/home_work_photo_recycler"
+                        android:layout_width="match_parent"
+                        android:layout_height="100dp"
+                        android:layout_marginBottom="10dp"
+                        android:layout_marginLeft="16dp"
+                        android:layout_marginRight="16dp"
+                        android:layout_marginTop="5dp"
+                        android:visibility="visible" />
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="10dp"
+                        android:background="@color/backgroundcolor" />
+
+                    <com.sdxxtop.zhidian.widget.TextAndTextView
+                        android:id="@+id/home_work_selector_class"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        app:tatv_line_is_show="false"
+                        app:tatv_text_view="选择班级 / 人" />
+                </LinearLayout>
+            </android.support.v4.widget.NestedScrollView>
+
+            <include layout="@layout/apply_submit_btn_layout" />
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="220dp"
+            android:layout_height="match_parent"
+            android:layout_gravity="right"
+            android:background="@color/white"
+            android:orientation="vertical">
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/home_work_right_recycler"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                app:layoutManager="LinearLayoutManager" />
+
+            <LinearLayout
+                android:id="@+id/home_work_btn_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:paddingBottom="10dp"
+                android:paddingLeft="5dp"
+                android:paddingRight="5dp">
+
+                <Button
+                    android:id="@+id/home_work_right_drawer_cancel"
+                    android:layout_width="0dp"
+                    android:layout_height="40dp"
+                    android:layout_marginRight="5dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/right_drawer_cancel_btn"
+                    android:text="取消"
+                    android:textColor="@color/blue"
+                    android:textSize="15sp" />
+
+                <Button
+                    android:id="@+id/home_work_right_drawer_confirm"
+                    android:layout_width="0dp"
+                    android:layout_height="40dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/right_drawer_confirm_btn"
+                    android:text="确定"
+                    android:textColor="@color/white"
+                    android:textSize="15sp" />
+
+            </LinearLayout>
+        </LinearLayout>
+    </android.support.v4.widget.DrawerLayout>
+</LinearLayout>

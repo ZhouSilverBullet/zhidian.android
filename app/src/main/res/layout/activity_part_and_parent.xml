@@ -1,0 +1,183 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.sdxxtop.zhidian.ui.activity.PartAndParentActivity">
+
+    <com.sdxxtop.zhidian.widget.SubTitleView
+        android:id="@+id/part_and_parent_title_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:rightText="取消"
+        app:rightTextIsShow="true"
+        app:subTitle="通讯录" />
+
+    <com.sdxxtop.zhidian.widget.ContactNavigationView
+        android:id="@+id/part_and_parent_navigation_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <LinearLayout
+        android:id="@+id/rl_all_linearLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:id="@+id/rl_all_company_layout"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/y120"
+            android:background="@drawable/recycler_item_selector">
+
+            <RelativeLayout
+                android:layout_width="@dimen/x83"
+                android:layout_height="@dimen/x83"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="@dimen/x22">
+
+                <com.sdxxtop.zhidian.widget.CircleImageView
+                    android:layout_width="@dimen/x83"
+                    android:layout_height="@dimen/y83"
+                    android:src="@color/lan" />
+
+                <TextView
+                    android:id="@+id/tv_short_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:text="全"
+                    android:textColor="@color/bai" />
+            </RelativeLayout>
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="@dimen/x125"
+                android:text="全公司"
+                android:textColor="@color/textcolor"
+                android:textSize="@dimen/y30" />
+
+            <TextView
+                android:id="@+id/tv_all_comp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="@dimen/x30"
+                android:drawablePadding="@dimen/x20"
+                android:drawableRight="@mipmap/next_step"
+                android:text="组织架构"
+                android:textColor="@color/texthintcolor"
+                android:textSize="@dimen/y28" />
+
+        </RelativeLayout>
+
+        <View
+            android:id="@+id/view_all_parent_line"
+            android:layout_width="match_parent"
+            android:layout_height="1px"
+            android:background="@color/recycler_text_item_line_color" />
+
+        <RelativeLayout
+            android:id="@+id/rl_all_parent_layout"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/y120"
+            android:background="@drawable/recycler_item_selector">
+
+            <RelativeLayout
+                android:layout_width="@dimen/x83"
+                android:layout_height="@dimen/x83"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="@dimen/x22">
+
+                <com.sdxxtop.zhidian.widget.CircleImageView
+                    android:layout_width="@dimen/x83"
+                    android:layout_height="@dimen/y83"
+                    android:src="@color/lan" />
+
+                <TextView
+                    android:id="@+id/tv_parent_short_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:text="家长"
+                    android:textColor="@color/bai" />
+            </RelativeLayout>
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="@dimen/x125"
+                android:text="所有家长"
+                android:textColor="@color/textcolor"
+                android:textSize="@dimen/y30" />
+
+            <TextView
+                android:id="@+id/tv_all_parent"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="@dimen/x30"
+                android:drawablePadding="@dimen/x20"
+                android:drawableRight="@mipmap/next_step"
+                android:textColor="@color/texthintcolor"
+                android:textSize="@dimen/y28" />
+
+        </RelativeLayout>
+    </LinearLayout>
+
+    <RelativeLayout
+        android:id="@+id/part_and_all_background"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/y61"
+        android:visibility="gone">
+
+        <CheckBox
+            android:id="@+id/cb_check_all"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/y39"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="@dimen/x24"
+            android:button="@drawable/checkbox_select_all"
+            android:clickable="false"
+            android:paddingLeft="5dp"
+            android:text="全选"
+            android:textColor="@color/textcolor"
+            android:textSize="17sp" />
+
+    </RelativeLayout>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1">
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/part_and_parent_recycler"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/backgroundcolor" />
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/part_and_parent_teacher_recycler"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/backgroundcolor" />
+    </FrameLayout>
+
+
+    <com.sdxxtop.zhidian.widget.BottomSelectorView
+        android:id="@+id/part_and_parent_bottom_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:visibility="gone" />
+
+</LinearLayout>

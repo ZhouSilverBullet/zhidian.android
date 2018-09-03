@@ -53,9 +53,15 @@
     </RelativeLayout>
 
 
-    <ListView
-        android:id="@+id/lv_show_search"
+    <!--<ListView-->
+        <!--android:id="@+id/lv_show_search"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="match_parent"-->
+        <!--android:layout_below="@+id/rl_serch_background"></ListView>-->
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/contact_search_recycler"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@+id/rl_serch_background"></ListView>
+        android:layout_below="@+id/rl_serch_background" />
 </RelativeLayout>

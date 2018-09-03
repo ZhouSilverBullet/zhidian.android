@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/recycler_item_selector"
+    android:orientation="horizontal">
+
+    <LinearLayout
+        android:id="@+id/item_part_and_parent_checkbox_layout"
+        android:layout_width="wrap_content"
+        android:layout_height="55dp"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:paddingLeft="11dp"
+        android:visibility="gone">
+
+        <CheckBox
+            android:id="@+id/item_part_and_parent_checkbox"
+            android:layout_width="18dp"
+            android:layout_height="18dp"
+            android:layout_centerVertical="true"
+            android:background="@drawable/checkbox_select_all"
+            android:button="@null"
+            android:clickable="false" />
+    </LinearLayout>
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="55dp"
+        android:layout_marginLeft="11dp"
+        android:layout_marginRight="11dp">
+
+        <RelativeLayout
+            android:id="@+id/item_part_and_parent_left_layout"
+            android:layout_width="42dp"
+            android:layout_height="42dp"
+            android:layout_centerVertical="true">
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/item_part_and_parent_circle_img"
+                android:layout_width="42dp"
+                android:layout_height="42dp" />
+
+            <TextView
+                android:id="@+id/item_part_and_parent_short_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:text=""
+                android:textColor="@color/bai"
+                android:textSize="14sp" />
+        </RelativeLayout>
+
+        <TextView
+            android:id="@+id/item_part_and_parent_user_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="14dp"
+            android:layout_toRightOf="@id/item_part_and_parent_left_layout"
+            android:text="safasdfas"
+            android:textColor="@color/textcolor"
+            android:textSize="17sp" />
+
+        <ImageView
+            android:id="@+id/item_part_and_parent_right_icon"
+            android:layout_width="18dp"
+            android:layout_height="18dp"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:src="@mipmap/the_right" />
+
+    </RelativeLayout>
+
+</LinearLayout>

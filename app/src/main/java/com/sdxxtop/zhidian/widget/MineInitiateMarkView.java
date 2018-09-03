@@ -27,6 +27,7 @@ public class MineInitiateMarkView extends LinearLayout {
     private boolean isVote;
     private boolean isShowBtn;
     private boolean selectorSingle;
+    private boolean isSendShow;
 
     public MineInitiateMarkView(Context context) {
         this(context, null);
@@ -79,7 +80,13 @@ public class MineInitiateMarkView extends LinearLayout {
 
     public void setOptionBean(final VoteReadBean.DataBean.OptionBean optionBean) {
         this.optionBean = optionBean;
-        int score = optionBean.getScore();
+        int score = 0;
+        if (isSendShow) { //发布即可见，直接显示平均值，不然就显示自己的分数
+            score = optionBean.getNum();
+        } else {
+            score = optionBean.getScore();
+        }
+
         scoreRating.setStar(score);
         setRatingValue(score);
 
@@ -174,6 +181,10 @@ public class MineInitiateMarkView extends LinearLayout {
     //用于显示右边评分按钮
     public void setShowPinfenBtn(boolean isShowBtn) {
         this.isShowBtn = isShowBtn;
+    }
+
+    public void setSendShow(boolean isSendShow) {
+        this.isSendShow = isSendShow;
     }
 
     public interface MarkListener {

@@ -1,9 +1,5 @@
 package zhangphil.iosdialog.widget;
 
-import java.util.ArrayList;
-import java.util.List;
-
-import zhangphil.iosdialog.R;
 import android.app.Dialog;
 import android.content.Context;
 import android.graphics.Color;
@@ -18,6 +14,11 @@ import android.widget.LinearLayout;
 import android.widget.LinearLayout.LayoutParams;
 import android.widget.ScrollView;
 import android.widget.TextView;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import zhangphil.iosdialog.R;
 
 public class ActionSheetDialog {
     private Context context;
@@ -89,11 +90,8 @@ public class ActionSheetDialog {
     }
 
     /**
-     *
-     * @param strItem
-     *            条目名称
-     * @param color
-     *            条目字体颜色，设置null则默认蓝色
+     * @param strItem  条目名称
+     * @param color    条目字体颜色，设置null则默认蓝色
      * @param listener
      * @return
      */
@@ -106,7 +104,9 @@ public class ActionSheetDialog {
         return this;
     }
 
-    /** 设置条目布局 */
+    /**
+     * 设置条目布局
+     */
     private void setSheetItems() {
         if (sheetItemList == null || sheetItemList.size() <= 0) {
             return;

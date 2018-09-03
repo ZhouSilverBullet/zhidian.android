@@ -18,7 +18,7 @@ import com.sdxxtop.zhidian.http.RequestCallback;
 import com.sdxxtop.zhidian.http.RequestUtils;
 import com.sdxxtop.zhidian.model.ConstantValue;
 import com.sdxxtop.zhidian.ui.base.BaseActivity;
-import com.sdxxtop.zhidian.utils.ImageSelectorHelper;
+import com.sdxxtop.zhidian.utils.AccountPicHelper;
 import com.sdxxtop.zhidian.utils.NetUtil;
 import com.sdxxtop.zhidian.utils.PreferenceUtils;
 import com.sdxxtop.zhidian.utils.ToastUtil;
@@ -63,8 +63,8 @@ public class MyInfoActivity extends BaseActivity {
     @BindView(R.id.btn_remove)
     Button btnRemove;
 
-    private ImageSelectorHelper imageSelectorHelper;
     private UcenterUserinfoBean ucenterUserinfoBean;
+    private AccountPicHelper accountPicHelper;
 
     @Override
     protected int getActivityView() {
@@ -73,8 +73,7 @@ public class MyInfoActivity extends BaseActivity {
 
     @Override
     protected void initView() {
-        imageSelectorHelper = new ImageSelectorHelper(mContext);
-
+        accountPicHelper = new AccountPicHelper(this);
         titleView.getLeftText().setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -93,8 +92,8 @@ public class MyInfoActivity extends BaseActivity {
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.iv_img:
-                if (imageSelectorHelper != null) {
-                    imageSelectorHelper.show();
+                if (accountPicHelper != null) {
+                    accountPicHelper.show();
                 }
                 break;
             case R.id.iv_into_img:
@@ -125,13 +124,14 @@ public class MyInfoActivity extends BaseActivity {
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        if (imageSelectorHelper != null) {
-            imageSelectorHelper.onActivityResult(requestCode, resultCode, data);
-            String imgPath = imageSelectorHelper.getImgPath();
-            if (!TextUtils.isEmpty(imgPath)) {
-                isChange = true;
-                postUcenterModImg(imgPath);
-            }
+        if (accountPicHelper != null) {
+            accountPicHelper.handleResult(requestCode, ivImg, data, new Runnable() {
+                @Override
+                public void run() {
+                    isChange = true;
+                    postUcenterUserinfo();
+                }
+            });
         }
     }
 

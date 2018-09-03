@@ -173,6 +173,12 @@ public class StatSelectionDateWindow extends PopupWindow {
 
     }
 
+    public void setSelectorDate(CalendarDay date) {
+        if (materialCalendarView != null) {
+            materialCalendarView.setSelectedDate(date);
+        }
+    }
+
 
     private SelectorDateListener listener;
 

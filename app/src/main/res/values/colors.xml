@@ -5,12 +5,14 @@
     <color name="colorAccent">#FF4081</color>
     <color name="hui">#E5E5E5</color>
     <color name="lan">#3296FA</color>
+    <color name="lan_press">#bb3296FA</color>
     <color name="bai">#FFFFFF</color>
     <color name="textcolor">#333333</color>
     <color name="linecolor">#E5E5E5</color>
     <color name="notice_contentcolor">#666666</color>
     <color name="texthintcolor">#999999</color>
     <color name="backgroundcolor">#F4F4F4</color>
+    <color name="backgroundcolor_press">#ABF4F4F4</color>
     <color name="alpah">#ffffffff</color>
     <color name="lv">#54BB5B</color>
 
@@ -43,4 +45,13 @@
     <color name="time_selector_gray2">#88EDEDF0</color>
     
     <color name="grey">#d7d7d7</color>
+    <color name="course_tab_color">#E3F2FC</color>
+    <color name="course_tab_text_color">#006BB3</color>
+    <color name="course_tab_select_color">#535353</color>
+
+    <color name="student_btn_gray_color">#E0E0E0</color>
+
+    <color name="contact_btn_gray_color">#BFBFBF</color>
+    <color name="edit_line_gray_color">#F3F5F5</color>
+
 </resources>

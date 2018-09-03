@@ -48,18 +48,23 @@ public class ShowReciveRangeAdapter extends BaseAdapter {
 
     private boolean singleSelector;
 
-    public ShowReciveRangeAdapter(Context context, ContactPartBean.DataEntity dataBean, OnClickObsever obsever, int isPartSelect, int partSelectNotIn) {
+    public ShowReciveRangeAdapter(Context context, ContactPartBean.DataEntity dataBean, OnClickObsever obsever) {
         this.context = context;
         this.dataBean = dataBean;
         this.obsever = obsever;
+    }
+
+    public void setIsPartSelect(int isPartSelect) {
         this.isPartSelect = isPartSelect;
+    }
+
+    public void setPartSelectNotIn(int partSelectNotIn) {
         this.partSelectNotIn = partSelectNotIn;
     }
 
     public void setSingSelector(boolean singleSelector) {
         this.singleSelector = singleSelector;
     }
-
 
     @Override
     public int getCount() {
@@ -114,6 +119,12 @@ public class ShowReciveRangeAdapter extends BaseAdapter {
 
             if (isPartSelect == NoticeReciveRangeActivity.PART_NOT_SELECTOR) {
                 holder.checkbox.setVisibility(View.GONE);
+                holder.rl_item.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+
+                    }
+                });
             } else {
                 holder.checkbox.setVisibility(View.VISIBLE);
                 final boolean isCheck;

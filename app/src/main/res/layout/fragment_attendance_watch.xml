@@ -33,7 +33,6 @@
                     android:id="@+id/attendance_calendar_view"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginBottom="-30dp"
                     android:background="@color/translate"
                     app:mcv_selectionColor="@color/calendar_selector_color"
                     app:mcv_weekDayLabels="@array/custom_weekdays" />

@@ -358,7 +358,8 @@ public class HomeRecyclerAdapter extends BaseQuickAdapter<MainIndexBean.DataBean
                             String[] split = sign_time.split(" ");
                             if (split.length == 2) {
                                 String time = split[1].substring(0, split[1].lastIndexOf(":"));
-                                workDescription.setText(StringUtil.stringNotNull(time));
+//                                workDescription.setText(StringUtil.stringNotNull(time));
+                                workDescription.setText("正常");
                             } else {
                                 workDescription.setText("---");
                             }

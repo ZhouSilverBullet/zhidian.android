@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.sdxxtop.zhidian.ui.activity.CourseUpdateActivity">
+
+    <com.sdxxtop.zhidian.widget.SubTitleView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:subTitle="更新课表" />
+
+    <android.support.v4.widget.DrawerLayout
+        android:id="@+id/course_update_drawer"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <com.sdxxtop.zhidian.widget.TextAndTextView
+                android:id="@+id/course_update_select_class_text"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:tatv_text_right_value="选择"
+                app:tatv_text_view="授课班级" />
+
+            <com.sdxxtop.zhidian.widget.TextAndTextView
+                android:id="@+id/course_update_select_subject_text"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:tatv_text_right_value="选择"
+                app:tatv_text_view="授课课程" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="55dp"
+                android:layout_below="@id/approver_msg_line"
+                android:layout_marginTop="40dp"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <Button
+                    android:id="@+id/course_update_clear_btn"
+                    style="?android:attr/borderlessButtonStyle"
+                    android:layout_width="120dp"
+                    android:layout_height="32dp"
+                    android:background="@drawable/shape_view_blue_submission_bg"
+                    android:text="清空课程并添加"
+                    android:textColor="@color/white"
+                    android:textSize="14sp" />
+
+                <Button
+                    android:id="@+id/course_update_no_clear"
+                    style="?android:attr/borderlessButtonStyle"
+                    android:layout_width="120dp"
+                    android:layout_height="32dp"
+                    android:layout_marginLeft="40dp"
+                    android:background="@drawable/shape_view_blue_stroke_submission_bg"
+                    android:text="追加课程"
+                    android:textColor="@color/lan"
+                    android:textSize="14sp" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="220dp"
+            android:layout_height="match_parent"
+            android:layout_gravity="right"
+            android:background="@color/white"
+            android:orientation="vertical">
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/course_update_right_recycler"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                app:layoutManager="LinearLayoutManager" />
+
+            <LinearLayout
+                android:id="@+id/course_update_btn_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:paddingBottom="10dp"
+                android:paddingLeft="5dp"
+                android:paddingRight="5dp">
+
+                <Button
+                    android:id="@+id/course_update_right_drawer_cancel"
+                    android:layout_width="0dp"
+                    android:layout_height="40dp"
+                    android:layout_marginRight="5dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/right_drawer_cancel_btn"
+                    android:text="取消"
+                    android:textColor="@color/blue"
+                    android:textSize="15sp" />
+
+                <Button
+                    android:id="@+id/course_update_right_drawer_confirm"
+                    android:layout_width="0dp"
+                    android:layout_height="40dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/right_drawer_confirm_btn"
+                    android:text="确定"
+                    android:textColor="@color/white"
+                    android:textSize="15sp" />
+
+            </LinearLayout>
+        </LinearLayout>
+    </android.support.v4.widget.DrawerLayout>
+
+
+</LinearLayout>

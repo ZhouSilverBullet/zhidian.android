@@ -15,7 +15,8 @@ import com.sdxxtop.zhidian.http.Params;
 import com.sdxxtop.zhidian.http.RequestCallback;
 import com.sdxxtop.zhidian.http.RequestUtils;
 import com.sdxxtop.zhidian.ui.base.BaseActivity;
-import com.sdxxtop.zhidian.ui.fragment.ApplyListFragment;
+import com.sdxxtop.zhidian.ui.fragment.ApplyExamineListFragment;
+import com.sdxxtop.zhidian.utils.StringUtil;
 import com.sdxxtop.zhidian.widget.SubTitleView;
 
 import org.greenrobot.eventbus.EventBus;
@@ -28,7 +29,7 @@ public class OneKeyExamination2Activity extends BaseActivity {
 
     @BindView(R.id.examine_title_view)
     SubTitleView titleView;
-    private ApplyListFragment approval;
+    private ApplyExamineListFragment approval;
     @BindView(R.id.one_key_examine_search_edit)
     EditText searchEdit;
     @BindView(R.id.examine_search_cancel)
@@ -52,7 +53,7 @@ public class OneKeyExamination2Activity extends BaseActivity {
             }
         });
 
-        approval = ApplyListFragment.newInstance(examineType, "approval", 2);
+        approval = ApplyExamineListFragment.newInstance(examineType, "approval", 2);
         getSupportFragmentManager().beginTransaction()
                 .replace(R.id.one_key_frame_layout, approval).commit();
 
@@ -79,7 +80,7 @@ public class OneKeyExamination2Activity extends BaseActivity {
             public void afterTextChanged(Editable s) {
                 //加入0.4s的间隔
                 editChangeTextValue = "";
-                if (!TextUtils.isEmpty(s)) {
+                if (!StringUtil.isEmptyWithTrim(s.toString())) {
                     editChangeTextValue = s.toString();
                     searchCancelText.setVisibility(View.VISIBLE);
                 } else {
@@ -110,6 +111,9 @@ public class OneKeyExamination2Activity extends BaseActivity {
         agreeBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                if (approval.isMaxCount()) {
+                    return;
+                }
                 if (isSubmit()) {
                     submitData(1);
                 }

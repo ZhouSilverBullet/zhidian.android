@@ -13,6 +13,8 @@ import android.widget.TextView;
 import com.sdxxtop.zhidian.R;
 import com.sdxxtop.zhidian.entity.VoteReadBean;
 
+import java.text.DecimalFormat;
+
 /**
  * Created by Administrator on 2018/5/21.
  */
@@ -26,6 +28,8 @@ public class MineInitiateProgressView extends LinearLayout {
     private ClipDrawable clipDrawable;
     private VoteReadBean.DataBean.OptionBean optionBean;
     private boolean isVote;
+
+    DecimalFormat df = new DecimalFormat("#.00");
 
     public MineInitiateProgressView(Context context) {
         this(context, null);
@@ -61,9 +65,9 @@ public class MineInitiateProgressView extends LinearLayout {
         String option_name = optionBean.getOption_name();
         pingFenText.setText(option_name);
         int num = optionBean.getNum();
-        int present = 100 * num / sum;
-        pingFenProgress.setText(num + "(" + present + "%)");
-        clipDrawable.setLevel(100 * present);
+        double present = 100.0 * num / sum;
+        pingFenProgress.setText(num + "(" + optionBean.getAverage() + "%)");
+        clipDrawable.setLevel((int) (100 * present));
         if (optionBean.isCheck()) {
             pingCheckBox.setChecked(true);
         } else {

@@ -11,15 +11,22 @@ import com.sdxxtop.zhidian.AppSession;
 import com.sdxxtop.zhidian.R;
 import com.sdxxtop.zhidian.entity.CreateCompanyBean;
 import com.sdxxtop.zhidian.entity.CreateCompanyData;
+import com.sdxxtop.zhidian.eventbus.ChangeCompanyEvent;
+import com.sdxxtop.zhidian.http.BaseModel;
+import com.sdxxtop.zhidian.http.IRequestListener;
 import com.sdxxtop.zhidian.http.RequestUtils;
+import com.sdxxtop.zhidian.im.IMLoginHelper;
 import com.sdxxtop.zhidian.model.ConstantValue;
 import com.sdxxtop.zhidian.ui.activity.CreateCompanyActivity;
 import com.sdxxtop.zhidian.ui.activity.CreateCompanySuccActivity;
 import com.sdxxtop.zhidian.ui.base.BaseFragment;
+import com.sdxxtop.zhidian.utils.LogUtils;
 import com.sdxxtop.zhidian.utils.NetUtil;
 import com.sdxxtop.zhidian.utils.PreferenceUtils;
 import com.sdxxtop.zhidian.utils.StringUtil;
 import com.sdxxtop.zhidian.utils.ToastUtil;
+
+import org.greenrobot.eventbus.EventBus;
 
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -43,6 +50,7 @@ import retrofit2.Response;
  * 描述：创建公司的第三个Fragment
  */
 public class CreateCompThirdFragment extends BaseFragment {
+    public static final String TAG = "CreateCompThirdFragment";
 
     @BindView(R.id.et_class_name)
     EditText etClassName;
@@ -178,11 +186,12 @@ public class CreateCompThirdFragment extends BaseFragment {
                 closeProgressDialog();
                 CreateCompanyBean companyBean = response.body();
                 if (companyBean.getCode() == 200) {
-                    AppSession.getInstance().setCompanyId(companyBean.getData().getCompany_id());
-//                    PreferenceUtils.getInstance(mContext).saveParam(ConstantValue.COMPANY_ID, companyBean.getData().getCompany_id());
-                    Intent intent = new Intent(mContext, CreateCompanySuccActivity.class);
-                    startActivity(intent);
-                    ((CreateCompanyActivity) getActivity()).finish();
+                    toChangeIm(companyBean.getData().getCompany_id());
+//                    AppSession.getInstance().setCompanyId(companyBean.getData().getCompany_id());
+////                    PreferenceUtils.getInstance(mContext).saveParam(ConstantValue.COMPANY_ID, companyBean.getData().getCompany_id());
+//                    Intent intent = new Intent(mContext, CreateCompanySuccActivity.class);
+//                    startActivity(intent);
+//                    ((CreateCompanyActivity) getActivity()).finish();
                 } else {
                     ToastUtil.show(response.body().getMsg());
                 }
@@ -192,6 +201,24 @@ public class CreateCompThirdFragment extends BaseFragment {
             public void onFailure(Call<CreateCompanyBean> call, Throwable t) {
                 closeProgressDialog();
                 ToastUtil.show("网络错误");
+            }
+        });
+    }
+
+    private void toChangeIm(final String company_id) {
+        IMLoginHelper.getInstance().changeUserSignature(getContext(), company_id + "", new IRequestListener<BaseModel>() {
+            @Override
+            public void onSuccess(BaseModel baseModel) {
+                AppSession.getInstance().setCompanyId(company_id);
+                EventBus.getDefault().post(new ChangeCompanyEvent());
+                Intent intent = new Intent(mContext, CreateCompanySuccActivity.class);
+                startActivity(intent);
+                ((CreateCompanyActivity) getActivity()).finish();
+            }
+
+            @Override
+            public void onFailure(int code, String errorMsg) {
+                LogUtils.e(TAG, "code " + code + "errorMsg: " + errorMsg);
             }
         });
     }

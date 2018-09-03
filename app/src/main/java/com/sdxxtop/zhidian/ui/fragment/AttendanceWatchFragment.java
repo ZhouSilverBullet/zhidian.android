@@ -41,6 +41,7 @@ import com.sdxxtop.zhidian.widget.decorator.TodayTextDecorator;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Calendar;
+import java.util.Collections;
 import java.util.Date;
 import java.util.List;
 
@@ -342,6 +343,7 @@ public class AttendanceWatchFragment extends BaseFragment {
         List<MainIndexBean.DataBean.SignLogBean> signLogList = data.getSign_log();
 
         if (!TextUtils.isEmpty(sign_date) && !TextUtils.isEmpty(sign_name) && signLogList != null) {
+            Collections.sort(signLogList);
             //进行缓存的一个最后是一个真的数据
             List<MainIndexBean.DataBean.SignLogBean> tempSignLogList = new ArrayList<>();
             List<MainIndexBean.DataBean.SignLogBean> removeLogList = new ArrayList<>(signLogList);

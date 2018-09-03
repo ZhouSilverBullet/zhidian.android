@@ -78,6 +78,25 @@ public class SubmissionBean extends BaseModel<SubmissionBean.DataBean> {
         private UserinfoBean userinfo;
         private ApproverNameBean approver_name;
 
+        private String visit_time;
+        private String student_name;
+
+        public String getVisit_time() {
+            return visit_time;
+        }
+
+        public void setVisit_time(String visit_time) {
+            this.visit_time = visit_time;
+        }
+
+        public String getStudent_name() {
+            return student_name;
+        }
+
+        public void setStudent_name(String student_name) {
+            this.student_name = student_name;
+        }
+
         public int getApply_id() {
             return apply_id;
         }

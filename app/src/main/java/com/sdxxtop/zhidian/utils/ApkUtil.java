@@ -24,14 +24,15 @@ import java.io.File;
  */
 public class ApkUtil {
 	public static void installApk(Context context, String filePath) {
-		Intent intent = new Intent("android.intent.action.VIEW");
+		Intent intent = new Intent(Intent.ACTION_VIEW);
 		intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
 		Uri localUri;
 		if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
 			intent.setFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
-			localUri = FileProvider.getUriForFile(context, "com.caohua.games.apps.fileprovider", new File(filePath));
+			localUri = FileProvider.getUriForFile(context, context.getPackageName() + ".FileProvider", new File(filePath));
 			intent.setDataAndType(localUri, "application/vnd.android.package-archive");
 		} else {
+			intent.addCategory("android.intent.category.DEFAULT");
 			localUri = Uri.fromFile(new File(filePath));
 			intent.setDataAndType(localUri, "application/vnd.android.package-archive");
 		}

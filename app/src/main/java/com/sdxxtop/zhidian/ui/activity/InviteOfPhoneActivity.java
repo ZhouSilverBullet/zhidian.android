@@ -149,12 +149,12 @@ public class InviteOfPhoneActivity extends BaseActivity {
      * 手机号邀请员工
      */
     private void postJoinByPhone() {
-        String name = etName.getText().toString();
+        String name = etName.getText().toString().trim();
         if (TextUtils.isEmpty(name)) {
             ToastUtil.show("请输入姓名");
             return;
         }
-        String phone = etPhone.getText().toString();
+        String phone = etPhone.getText().toString().trim();
         if (TextUtils.isEmpty(phone) || phone.length() < 13) {
             ToastUtil.show("请输入正确手机号");
             return;
@@ -170,7 +170,10 @@ public class InviteOfPhoneActivity extends BaseActivity {
             public void onSuccess(BaseModel baseModel) {
                 closeProgressDialog();
                 ToastUtil.show("添加成功");
-                finish();
+                etName.setText("");
+                etName.requestFocus();
+                etPhone.setText("");
+//                finish();
             }
 
             @Override

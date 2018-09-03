@@ -233,7 +233,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="@dimen/x39"
-                    android:text="更换其他班次"
+                    android:text="更换成他的班次"
                     android:textColor="#333333"
                     android:textSize="@dimen/y34" />
 

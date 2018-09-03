@@ -25,6 +25,7 @@ public class NormalLoginBean extends BaseModel<NormalLoginBean.DataEntity> {
         private int userid;
         private String msg;
         private String company_id;
+        private String signature;
 
         public String getAuto_token() {
             return auto_token;
@@ -64,6 +65,14 @@ public class NormalLoginBean extends BaseModel<NormalLoginBean.DataEntity> {
 
         public void setCompany_id(String company_id) {
             this.company_id = company_id;
+        }
+
+        public String getSignature() {
+            return signature;
+        }
+
+        public void setSignature(String signature) {
+            this.signature = signature;
         }
     }
 

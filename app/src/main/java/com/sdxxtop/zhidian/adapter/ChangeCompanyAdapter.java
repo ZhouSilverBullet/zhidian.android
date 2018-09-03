@@ -12,6 +12,9 @@ import com.sdxxtop.zhidian.AppSession;
 import com.sdxxtop.zhidian.R;
 import com.sdxxtop.zhidian.entity.ShowCompanyBean;
 import com.sdxxtop.zhidian.eventbus.ChangeCompanyEvent;
+import com.sdxxtop.zhidian.http.BaseModel;
+import com.sdxxtop.zhidian.http.IRequestListener;
+import com.sdxxtop.zhidian.im.IMLoginHelper;
 import com.sdxxtop.zhidian.model.ConstantValue;
 import com.sdxxtop.zhidian.ui.activity.ChangeCompanyActivity;
 import com.sdxxtop.zhidian.utils.PreferenceUtils;
@@ -74,13 +77,15 @@ public class ChangeCompanyAdapter extends BaseAdapter {
             @Override
             public void onClick(View v) {
                 if (!equals) {
-                    AppSession.getInstance().setCompanyId(list.get(position).getCompany_id() + "");
-//                    PreferenceUtils.getInstance(context).saveParam(ConstantValue.COMPANY_ID, list.get(position).getCompany_id()+"");
-                    ToastUtil.show("切换成功");
-                    //切换成功发送消息
-                    EventBus.getDefault().post(new ChangeCompanyEvent());
-                    notifyDataSetChanged();
-                    ((ChangeCompanyActivity) context).finish();
+                    int company_id = list.get(position).getCompany_id();
+                    toChangeIm(company_id);
+//                    AppSession.getInstance().setCompanyId(company_id + "");
+////                    PreferenceUtils.getInstance(context).saveParam(ConstantValue.COMPANY_ID, list.get(position).getCompany_id()+"");
+//                    ToastUtil.show("切换成功");
+//                    //切换成功发送消息
+//                    EventBus.getDefault().post(new ChangeCompanyEvent());
+//                    notifyDataSetChanged();
+//                    ((ChangeCompanyActivity) context).finish();
                 } else {
                     finalHolder.checkbox.setChecked(true);
                     ToastUtil.show("已经在" + /*+list.get(position).getCompany_id()+*/"这家公司");
@@ -89,6 +94,25 @@ public class ChangeCompanyAdapter extends BaseAdapter {
             }
         });
         return convertView;
+    }
+
+    private void toChangeIm(final int company_id) {
+        IMLoginHelper.getInstance().changeUserSignature(context,company_id + "", new IRequestListener<BaseModel>() {
+            @Override
+            public void onSuccess(BaseModel baseModel) {
+                AppSession.getInstance().setCompanyId(company_id + "");
+//                    PreferenceUtils.getInstance(context).saveParam(ConstantValue.COMPANY_ID, list.get(position).getCompany_id()+"");
+                ToastUtil.show("切换成功");
+                //切换成功发送消息
+                EventBus.getDefault().post(new ChangeCompanyEvent());
+                notifyDataSetChanged();
+                ((ChangeCompanyActivity) context).finish();
+            }
+
+            @Override
+            public void onFailure(int code, String errorMsg) {
+            }
+        });
     }
 
     static class MyViewHolder {
@@ -102,5 +126,6 @@ public class ChangeCompanyAdapter extends BaseAdapter {
             companyRl = (RelativeLayout) view.findViewById(R.id.tv_company_rl);
         }
     }
+
 
 }

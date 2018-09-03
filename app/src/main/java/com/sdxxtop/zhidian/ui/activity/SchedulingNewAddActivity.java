@@ -23,6 +23,7 @@ import com.sdxxtop.zhidian.http.RequestUtils;
 import com.sdxxtop.zhidian.ui.base.BaseActivity;
 import com.sdxxtop.zhidian.utils.DateUtil;
 import com.sdxxtop.zhidian.utils.ItemDivider;
+import com.sdxxtop.zhidian.utils.StringUtil;
 import com.sdxxtop.zhidian.widget.SubTitleView;
 import com.sdxxtop.zhidian.widget.TextAndTextView;
 
@@ -293,12 +294,12 @@ public class SchedulingNewAddActivity extends BaseActivity {
         String addNameEditValue = addNameEdit.getText().toString();
         String addShortEditValue = addShortEdit.getText().toString();
 
-        if (TextUtils.isEmpty(addNameEditValue)) {
+        if (StringUtil.isEmptyWithTrim(addNameEditValue)) {
             showToast("请输入班次名");
             return;
         }
 
-        if (TextUtils.isEmpty(addShortEditValue)) {
+        if (StringUtil.isEmptyWithTrim(addShortEditValue)) {
             showToast("请输入班次名");
             return;
         }
@@ -342,12 +343,12 @@ public class SchedulingNewAddActivity extends BaseActivity {
         String addNameEditValue = addNameEdit.getText().toString();
         String addShortEditValue = addShortEdit.getText().toString();
 
-        if (TextUtils.isEmpty(addNameEditValue)) {
+        if (StringUtil.isEmptyWithTrim(addNameEditValue)) {
             showToast("请输入班次名");
             return;
         }
 
-        if (TextUtils.isEmpty(addShortEditValue)) {
+        if (StringUtil.isEmptyWithTrim(addShortEditValue)) {
             showToast("请输入班次名");
             return;
         }

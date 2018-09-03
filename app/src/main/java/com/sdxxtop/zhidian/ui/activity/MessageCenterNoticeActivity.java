@@ -17,6 +17,7 @@ import com.scwang.smartrefresh.layout.listener.OnRefreshLoadMoreListener;
 import com.sdxxtop.zhidian.R;
 import com.sdxxtop.zhidian.entity.MsgNoticeBean;
 import com.sdxxtop.zhidian.eventbus.MessageCenterEvent;
+import com.sdxxtop.zhidian.eventbus.NoticeReadEvent;
 import com.sdxxtop.zhidian.http.IRequestListener;
 import com.sdxxtop.zhidian.http.Params;
 import com.sdxxtop.zhidian.http.RequestCallback;
@@ -26,6 +27,7 @@ import com.sdxxtop.zhidian.utils.DateUtil;
 import com.sdxxtop.zhidian.widget.SubTitleView;
 
 import org.greenrobot.eventbus.EventBus;
+import org.greenrobot.eventbus.Subscribe;
 
 import java.util.List;
 
@@ -49,6 +51,8 @@ public class MessageCenterNoticeActivity extends BaseActivity {
 
     @Override
     protected void initView() {
+        registeredEvent();
+
         mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
     }
 
@@ -109,6 +113,11 @@ public class MessageCenterNoticeActivity extends BaseActivity {
                 showToast(errorMsg);
             }
         }));
+    }
+
+    @Subscribe
+    public void notifyNoticeReadEvent(NoticeReadEvent event) {
+        initData();
     }
 
     class MessageNoticeAdapter extends BaseQuickAdapter<MsgNoticeBean.DataBean.NoticeBean, BaseViewHolder> {

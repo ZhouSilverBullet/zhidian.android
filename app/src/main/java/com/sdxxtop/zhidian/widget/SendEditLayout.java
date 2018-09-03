@@ -60,14 +60,14 @@ public class SendEditLayout extends LinearLayout {
 
                 SendBean sendBean = convertSpannedToRichText(editable);
                 if (TextUtils.isEmpty(editable)) {
-                    ToastUtil.show("请输入要回复内容");
+                    ToastUtil.show("请输入评论内容");
                     return;
                 }
 
                 int comUserId = sendBean.comUserId;
                 String content = sendBean.content;
                 if (TextUtils.isEmpty(content)) {
-                    ToastUtil.show("请输入要回复内容");
+                    ToastUtil.show("请输入评论内容");
                     return;
                 }
 

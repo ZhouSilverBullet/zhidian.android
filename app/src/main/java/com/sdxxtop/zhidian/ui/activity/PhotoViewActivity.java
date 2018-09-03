@@ -1,13 +1,12 @@
 package com.sdxxtop.zhidian.ui.activity;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.database.Cursor;
 import android.net.Uri;
 import android.os.Environment;
 import android.provider.MediaStore;
-import android.support.v4.app.ActivityCompat;
-import android.support.v4.app.ActivityOptionsCompat;
 import android.text.TextUtils;
 import android.view.View;
 import android.widget.LinearLayout;
@@ -59,7 +58,7 @@ public class PhotoViewActivity extends BaseActivity {
         photoView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                finish();
+                closeActivity();
             }
         });
     }
@@ -206,8 +205,8 @@ public class PhotoViewActivity extends BaseActivity {
 
     @Override
     public void onBackPressed() {
-        super.onBackPressed();
-        ActivityCompat.finishAfterTransition(this);
+        closeActivity();
+//        ActivityCompat.finishAfterTransition(this);
     }
 
     public static void start(Context context, String imageUrl) {
@@ -219,13 +218,25 @@ public class PhotoViewActivity extends BaseActivity {
 //            context.startActivity(intent, compat.toBundle());
 //        } else {
         context.startActivity(intent);
+        if (context instanceof Activity) {
+            ((Activity) context).overridePendingTransition(com.luck.picture.lib.R.anim.a5, 0);
+        }
 //        }
+    }
+
+    protected void closeActivity() {
+        this.finish();
+//        this.overridePendingTransition(0, R.anim.photo_view_out);
+            this.overridePendingTransition(0, com.luck.picture.lib.R.anim.a3);
+
     }
 
     public static void start(Context context, String imageUrl, View ImageView) {
         Intent intent = new Intent(context, PhotoViewActivity.class);
         intent.putExtra("image_url", imageUrl);
-        ActivityOptionsCompat compat = ActivityOptionsCompat.makeSceneTransitionAnimation((BaseActivity) context, ImageView, "photo_view");
-        ActivityCompat.startActivity(context, new Intent(context, PhotoViewActivity.class), compat.toBundle());
+        context.startActivity(intent);
+
+//        ActivityOptionsCompat compat = ActivityOptionsCompat.makeSceneTransitionAnimation((BaseActivity) context, ImageView, "photo_view");
+//        ActivityCompat.startActivity(context, new Intent(context, PhotoViewActivity.class), compat.toBundle());
     }
 }

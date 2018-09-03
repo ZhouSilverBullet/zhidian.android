@@ -27,6 +27,7 @@ public class MineInitiateSeekBarView extends LinearLayout {
     private boolean isVote;
     private boolean selectorSingle;
     private VoteReadBean.DataBean.OptionBean optionBean;
+    private boolean isSendShow;
 
     public MineInitiateSeekBarView(Context context) {
         this(context, null);
@@ -67,7 +68,12 @@ public class MineInitiateSeekBarView extends LinearLayout {
             name.setVisibility(GONE);
         }
 
-        int score = optionBean.getScore();
+        int score = 0;
+        if (isSendShow) { //发布即可见，直接显示平均值，不然就显示自己的分数
+            score = optionBean.getNum();
+        } else {
+            score = optionBean.getScore();
+        }
         if (score > maxScore) {
             score = maxScore;
         }
@@ -114,6 +120,10 @@ public class MineInitiateSeekBarView extends LinearLayout {
                 }
             }
         });
+    }
+
+    public void setSendShow(boolean isSendShow) {
+        this.isSendShow = isSendShow;
     }
 
     public void setType(boolean type) {

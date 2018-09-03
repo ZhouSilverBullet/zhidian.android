@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/recycler_item_selector"
+    android:minHeight="60dp"
+    android:orientation="horizontal"
+    android:paddingLeft="7dp"
+    android:paddingRight="7dp">
+
+    <TextView
+        android:id="@+id/item_student_atten_name"
+        android:layout_width="75dp"
+        android:layout_height="match_parent"
+        android:ellipsize="end"
+        android:gravity="center"
+        android:singleLine="true"
+        android:text="姓名"
+        android:textColor="@color/textcolor"
+        android:textSize="15sp" />
+
+    <FrameLayout
+        android:layout_width="150dp"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:id="@+id/item_student_atten_recycler_layout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/item_student_atten_get_school"
+                android:layout_width="75dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                app:layoutManager="LinearLayoutManager" />
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/item_student_atten_out_school"
+                android:layout_width="75dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                app:layoutManager="LinearLayoutManager" />
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/tem_student_atten_is_arrive"
+            android:layout_width="75dp"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:text="请假"
+            android:textColor="@color/lan"
+            android:textSize="15sp" />
+    </FrameLayout>
+
+
+    <FrameLayout
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_gravity="center"
+        android:layout_weight="1">
+
+        <TextView
+            android:id="@+id/item_student_atten_modify"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:text="修改"
+            android:textColor="@color/texthintcolor"
+            android:textSize="15sp" />
+
+        <LinearLayout
+            android:id="@+id/item_student_atten_operation_layout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center">
+
+            <TextView
+                android:id="@+id/item_student_atten_operation_confirm_school"
+                android:layout_width="58dp"
+                android:layout_height="25dp"
+                android:background="@drawable/item_student_solid_blue_bg"
+                android:gravity="center"
+                android:paddingLeft="3dp"
+                android:paddingRight="3dp"
+                android:text="确认到校"
+                android:textColor="@color/white"
+                android:textSize="10sp" />
+
+            <View
+                android:layout_width="3dp"
+                android:layout_height="1dp" />
+
+            <TextView
+                android:id="@+id/item_student_atten_operation_notify_parent"
+                android:layout_width="58dp"
+                android:layout_height="25dp"
+                android:background="@drawable/item_student_stroke_blue_bg"
+                android:gravity="center"
+                android:paddingLeft="3dp"
+                android:paddingRight="3dp"
+                android:text="已通知家长"
+                android:textColor="@color/textcolor"
+                android:textSize="10sp" />
+        </LinearLayout>
+    </FrameLayout>
+</LinearLayout>

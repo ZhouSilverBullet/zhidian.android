@@ -3,6 +3,7 @@ package com.sdxxtop.zhidian.ui.fragment;
 import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
+import android.support.v4.widget.NestedScrollView;
 import android.text.TextUtils;
 import android.view.View;
 import android.widget.AdapterView;
@@ -18,6 +19,8 @@ import com.sdxxtop.zhidian.entity.UcenterIndexBean;
 import com.sdxxtop.zhidian.eventbus.ChangeCompanyEvent;
 import com.sdxxtop.zhidian.http.RequestUtils;
 import com.sdxxtop.zhidian.model.ConstantValue;
+import com.sdxxtop.zhidian.ui.activity.CourseTableActivity;
+import com.sdxxtop.zhidian.ui.activity.HomeworkActivity;
 import com.sdxxtop.zhidian.ui.activity.MineAttendanceActivity;
 import com.sdxxtop.zhidian.ui.activity.MineFieldActivity;
 import com.sdxxtop.zhidian.ui.activity.MineWorkActivity;
@@ -26,6 +29,7 @@ import com.sdxxtop.zhidian.ui.activity.MySettingActivity;
 import com.sdxxtop.zhidian.ui.activity.Notice2Activity;
 import com.sdxxtop.zhidian.ui.activity.SchedulingManageActivity;
 import com.sdxxtop.zhidian.ui.activity.StatisticalActivity;
+import com.sdxxtop.zhidian.ui.activity.StudentAttendanceActivity;
 import com.sdxxtop.zhidian.ui.activity.VoteActivity;
 import com.sdxxtop.zhidian.ui.base.BaseFragment;
 import com.sdxxtop.zhidian.utils.NetUtil;
@@ -89,14 +93,15 @@ public class MineFragment extends BaseFragment implements AdapterView.OnItemClic
     GridView gridView;
     @BindView(R.id.mine_gridView)
     GridView mineGridView;
+    @BindView(R.id.mine_scroll_view)
+    NestedScrollView mineNestedScrollView;
 
 
-    String[] names = {"排班", "统计", "民主评议"};
-    int[] imgs = {R.mipmap.classes, R.mipmap.statistics, R.mipmap.vote};
+    String[] mineNames = {"公告", "我的考勤", "我的外勤", "工作汇报", "课程表"};
+    int[] mineImgs = {R.mipmap.announcement, R.mipmap.my_attendance, R.mipmap.my_field, R.drawable.my_work, R.drawable.my_list};
 
-    String[] mineNames = {"公告", "我的考勤", "我的外勤", "工作汇报"};
-    int[] mineImgs = {R.mipmap.announcement, R.mipmap.my_attendance, R.mipmap.my_field, R.drawable.my_work};
-
+    String[] names = {"排班", "统计", "民主评议", "学生出勤", "布置作业"};
+    int[] imgs = {R.mipmap.classes, R.mipmap.statistics, R.mipmap.vote, R.drawable.my_student, R.drawable.my_homework};
 
     PowerBean powerBean = null;
     private int is_manager;
@@ -105,6 +110,8 @@ public class MineFragment extends BaseFragment implements AdapterView.OnItemClic
     private int is_stat;
     private PowerAdapter powerAdapter;
     private List<PowerBean> list;
+
+    private boolean isFirstLayout;
 
     @Override
     protected int getFragmentView() {
@@ -127,6 +134,7 @@ public class MineFragment extends BaseFragment implements AdapterView.OnItemClic
         topViewPadding(topLayout);
 
         gridView.setSelector(new ColorDrawable(Color.TRANSPARENT));
+
     }
 
     @Override
@@ -231,7 +239,7 @@ public class MineFragment extends BaseFragment implements AdapterView.OnItemClic
                     rlMiddle.setVisibility(View.VISIBLE);
 
                     list = new ArrayList<>();
-                    for (int i = 0; i < 3; i++) {
+                    for (int i = 0; i < imgs.length; i++) {
                         powerBean = new PowerBean();
                         powerBean.setId(i);
                         powerBean.setImg(imgs[i]);
@@ -286,10 +294,18 @@ public class MineFragment extends BaseFragment implements AdapterView.OnItemClic
                                     Intent workIntent = new Intent(mContext, MineWorkActivity.class);
                                     startActivity(workIntent);
                                     break;
+                                case 4:
+                                    Intent coureTableIntent = new Intent(mContext, CourseTableActivity.class);
+                                    startActivity(coureTableIntent);
+                                    break;
                             }
                         }
                     });
 
+                    if (!isFirstLayout) {
+                        mineNestedScrollView.fullScroll(NestedScrollView.FOCUS_UP);
+                        isFirstLayout = true;
+                    }
                 } else {
                     ToastUtil.show(ucenterIndexBean.getMsg());
                 }
@@ -305,6 +321,7 @@ public class MineFragment extends BaseFragment implements AdapterView.OnItemClic
 
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+        Intent intent;
         switch (list.get(position).getId()) {
             case 0:
 //                ToastUtil.show("排班");
@@ -316,6 +333,14 @@ public class MineFragment extends BaseFragment implements AdapterView.OnItemClic
             case 2:
                 Intent intentVote = new Intent(mContext, VoteActivity.class);
                 startActivity(intentVote);
+                break;
+            case 3:
+//                intent = new Intent(mContext, VoteActivity.class);
+//                startActivity(intent);
+                StudentAttendanceActivity.startStudentAttendanceActivity(mContext);
+                break;
+            case 4:
+                HomeworkActivity.startHomeworkActivity(mContext);
                 break;
         }
     }

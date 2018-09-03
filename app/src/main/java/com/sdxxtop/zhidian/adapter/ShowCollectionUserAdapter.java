@@ -72,6 +72,10 @@ public class ShowCollectionUserAdapter extends BaseAdapter {
         return convertView;
     }
 
+    public List<ContactIndexBean.DataEntity.ColloectUserEntity> getList() {
+        return list;
+    }
+
     static class MyViewHolder {
         TextView tv_item_user_name, tv_item_user_job, tv_item_short_name;
         CircleImageView iv_item_user_head;

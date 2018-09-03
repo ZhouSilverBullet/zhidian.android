@@ -23,7 +23,8 @@ import com.luck.picture.lib.config.PictureMimeType;
 import com.luck.picture.lib.entity.LocalMedia;
 import com.sdxxtop.zhidian.R;
 import com.sdxxtop.zhidian.entity.NoticeAddBean;
-import com.sdxxtop.zhidian.entity.SelectBean;
+import com.sdxxtop.zhidian.entity.ParentListBean;
+import com.sdxxtop.zhidian.entity.TeacherBean;
 import com.sdxxtop.zhidian.eventbus.NoticeReadEvent;
 import com.sdxxtop.zhidian.http.IRequestListener;
 import com.sdxxtop.zhidian.http.ImageParams;
@@ -34,11 +35,14 @@ import com.sdxxtop.zhidian.utils.ViewUtil;
 import com.sdxxtop.zhidian.widget.SubTitleView;
 import com.sdxxtop.zhidian.widget.TextAndEditView;
 import com.sdxxtop.zhidian.widget.TextAndTextView;
+import com.xuxin.entry.ParentUserBean;
+import com.xuxin.utils.CollectUtil;
 
 import org.greenrobot.eventbus.EventBus;
 
 import java.io.File;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 
@@ -67,9 +71,21 @@ public class IssueNotice2Activity extends BaseActivity {
     @BindView(R.id.issue_notice2_add_btn)
     Button addBtn;
 
-    private HashSet<Integer> partListSet;
-    private HashSet<Integer> userListSet;
+    //    private HashSet<Integer> partListSet;
+//    private HashSet<Integer> userListSet;
     private Notice2Adapter mAdapter;
+    //    private List<SelectBean> selectData;
+    private HashSet<TeacherBean> teacherCacheSet;
+    private HashSet<Integer> userSet;
+    private HashSet<Integer> partSet;
+    private HashSet<ParentListBean.DataBeanX.DataBean> parentCacheSet;
+    private HashSet<Integer> typeSet;
+    private HashMap<String, ParentUserBean> parentMap;
+    private String userSetString;
+    private String partSetString;
+    private String typeSetString;
+    private String parentMapString;
+    private static final String TAG = "IssueNotice2Activity";
 
     @Override
     protected int getActivityView() {
@@ -102,7 +118,7 @@ public class IssueNotice2Activity extends BaseActivity {
         fanweiText.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(mContext, NoticeReciveRangeActivity.class);
+                Intent intent = new Intent(mContext, PartAndParentActivity.class);
                 startActivityForResult(intent, 100);
             }
         });
@@ -131,9 +147,9 @@ public class IssueNotice2Activity extends BaseActivity {
     }
 
     private void send() {
-        String editTitleValue = titleText.getEditText().getText().toString();
-        String editNameValue = nameText.getEditText().getText().toString();
-        String editContentValue = contentEdit.getText().toString();
+        String editTitleValue = titleText.getEditText().getText().toString().trim();
+        String editNameValue = nameText.getEditText().getText().toString().trim();
+        String editContentValue = contentEdit.getText().toString().trim();
 
         if (TextUtils.isEmpty(editTitleValue)) {
             showToast("请输入公告标题");
@@ -150,12 +166,24 @@ public class IssueNotice2Activity extends BaseActivity {
             return;
         }
 
+        if (TextUtils.isEmpty(partSetString) &&
+                TextUtils.isEmpty(userSetString) &&
+                TextUtils.isEmpty(typeSetString) &&
+                TextUtils.isEmpty(parentMapString)) {
+            showToast("请选择接收范围");
+            return;
+        }
+
         showProgressDialog("");
 
         ImageParams params = new ImageParams();
         params.put("oi", params.getUserId());
-        params.put("pi", getPartValue());
-        params.put("ui", getUserValue());
+        params.put("pi", partSetString);
+        params.put("ui", userSetString);
+        params.put("ti", typeSetString);
+        params.put("sui", parentMapString);
+
+
         params.put("te", editTitleValue);
         params.put("un", editNameValue);
         params.put("ct", editContentValue);
@@ -198,23 +226,139 @@ public class IssueNotice2Activity extends BaseActivity {
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        if (requestCode == 100 && resultCode == NoticeReciveRangeActivity.NOTICE_RESULT_OK && data != null) {
-            partListSet = (HashSet<Integer>) data.getSerializableExtra("partList");
-            userListSet = (HashSet<Integer>) data.getSerializableExtra("userList");
-            List<SelectBean> selectData = (List<SelectBean>) data.getSerializableExtra("selectData");
-            String value = "";
-            if (selectData != null) {
-                for (int i = 0; i < selectData.size(); i++) {
-                    SelectBean selectBean = selectData.get(i);
-                    if (i == selectData.size() - 1) {
-                        value = value + selectBean.getName();
-                    } else {
-                        value = value + selectBean.getName() + " ";
+        if (requestCode == 100 && resultCode == PartAndParentActivity.CUSTOMER_RESULT_OK && data != null) {
+
+            if (teacherCacheSet != null && teacherCacheSet.size() > 0) {
+                HashSet<TeacherBean> tempTeacherCacheSet = teacherCacheSet;
+                teacherCacheSet = (HashSet<TeacherBean>) data.getSerializableExtra(PartAndParentActivity.TEACHER_CACHE_SET);
+                HashSet<TeacherBean> centerTeacherCacheSet = new HashSet<>(teacherCacheSet);
+                for (TeacherBean centerTeacherBean : centerTeacherCacheSet) {
+                    for (TeacherBean bean : tempTeacherCacheSet) {
+                        if (bean.isPart()) {
+                            if (bean.getPart_id() == centerTeacherBean.getPart_id()) {
+                                teacherCacheSet.remove(centerTeacherBean);
+                            }
+                        } else {
+                            if (bean.getUserid() == centerTeacherBean.getUserid()) {
+                                teacherCacheSet.remove(centerTeacherBean);
+                            }
+                        }
                     }
                 }
+
+                teacherCacheSet.addAll(tempTeacherCacheSet);
+            } else {
+                teacherCacheSet = (HashSet<TeacherBean>) data.getSerializableExtra(PartAndParentActivity.TEACHER_CACHE_SET);
             }
-            if (!TextUtils.isEmpty(value)) {
-                fanweiText.getTextRightText().setText(value);
+
+
+            if (parentCacheSet != null && parentCacheSet.size() > 0) {
+                HashSet<ParentListBean.DataBeanX.DataBean> tempParentCacheSet = parentCacheSet;
+                parentCacheSet = (HashSet<ParentListBean.DataBeanX.DataBean>) data.getSerializableExtra(PartAndParentActivity.PARENT_CACHE_SET);
+                HashSet<ParentListBean.DataBeanX.DataBean> centerParentCacheSet = new HashSet<>(parentCacheSet);
+                for (ParentListBean.DataBeanX.DataBean centerDataBean : centerParentCacheSet) {
+                    for (ParentListBean.DataBeanX.DataBean dataBean : tempParentCacheSet) {
+                        if (centerDataBean.isPart()) {
+                            if (dataBean.getType_id() == centerDataBean.getType_id()) {
+                                parentCacheSet.remove(centerDataBean);
+                            }
+                        } else {
+                            if (dataBean.getStudent_id() == centerDataBean.getStudent_id()) {
+                                parentCacheSet.remove(centerDataBean);
+                            }
+                        }
+                    }
+                }
+
+                parentCacheSet.addAll(tempParentCacheSet);
+            } else {
+                parentCacheSet = (HashSet<ParentListBean.DataBeanX.DataBean>) data.getSerializableExtra(PartAndParentActivity.PARENT_CACHE_SET);
+            }
+
+
+            userSet = CollectUtil.replaceIntegerHashSet(userSet, data, PartAndParentActivity.TEACHER_USER_SET);
+            partSet = CollectUtil.replaceIntegerHashSet(partSet, data, PartAndParentActivity.TEACHER_PART_SET);
+            typeSet = CollectUtil.replaceIntegerHashSet(typeSet, data, PartAndParentActivity.PARENT_TYPE_SET);
+            parentMap = CollectUtil.replaceParentUserBeanHashMap(parentMap, data, PartAndParentActivity.PARENT_PARENT_MAP);
+
+
+            userSetString = CollectUtil.getIntegerSetToString(userSet);
+            partSetString = CollectUtil.getIntegerSetToString(partSet);
+            typeSetString = CollectUtil.getIntegerSetToString(typeSet);
+            parentMapString = CollectUtil.getParentMapToString(parentMap);
+
+            String value = "";
+            for (TeacherBean teacherBean : teacherCacheSet) {
+                if (teacherBean.isPart()) {
+                    value = value + teacherBean.getPart_name() + " ";
+                } else {
+                    value = value + teacherBean.getName() + " ";
+                }
+            }
+//            if (partListSet != null) {
+//                HashSet<Integer> tempSelectPartSet = partListSet;
+//                partListSet = (HashSet<Integer>) data.getSerializableExtra("partList");
+//                partListSet.addAll(tempSelectPartSet);
+//            } else {
+//                partListSet = (HashSet<Integer>) data.getSerializableExtra("partList");
+//            }
+//
+//            if (userListSet != null) {
+//                HashSet<Integer> tempSelectUserSet = userListSet;
+//                userListSet = (HashSet<Integer>) data.getSerializableExtra("userList");
+//                userListSet.addAll(tempSelectUserSet);
+//            } else {
+//                userListSet = (HashSet<Integer>) data.getSerializableExtra("userList");
+//            }
+//
+//            if (selectData != null && selectData.size() > 0) {
+//                List<SelectBean> tempSelectData = selectData;
+//                selectData = (List<SelectBean>) data.getSerializableExtra("selectData");
+//                List<SelectBean> centerSelectData = new ArrayList<>(selectData);
+//                for (SelectBean centerSelectDatum : centerSelectData) {
+//                    for (SelectBean tempSelectDatum : tempSelectData) {
+//                        if (centerSelectDatum.getId().equals(tempSelectDatum.getId())) {
+//                            selectData.remove(centerSelectDatum);
+//                        }
+//                    }
+//                }
+//
+//                selectData.addAll(0, tempSelectData);
+//            } else {
+//                selectData = (List<SelectBean>) data.getSerializableExtra("selectData");
+//            }
+
+
+            String gradeName = "";
+            String userName = "";
+            for (ParentListBean.DataBeanX.DataBean dataBean : parentCacheSet) {
+                if (dataBean.isPart()) {
+                    String gradeValue = dataBean.getGradeValue();
+                    if (!TextUtils.isEmpty(gradeValue)) {
+                        gradeName = gradeValue;
+                    } else {
+                        gradeName = gradeName + " " + dataBean.getName();
+                    }
+                } else {
+                    userName = userName + " " + dataBean.getName();
+                }
+            }
+
+            String tempValue = value + gradeName + userName;
+
+//            String value = "";
+//            if (selectData != null) {
+//                for (int i = 0; i < selectData.size(); i++) {
+//                    SelectBean selectBean = selectData.get(i);
+//                    if (i == selectData.size() - 1) {
+//                        value = value + selectBean.getName();
+//                    } else {
+//                        value = value + selectBean.getName() + " ";
+//                    }
+//                }
+//            }
+            if (!TextUtils.isEmpty(tempValue)) {
+                fanweiText.getTextRightText().setText(tempValue);
             } else {
                 fanweiText.getTextRightText().setText("默认选择全公司");
             }
@@ -233,33 +377,33 @@ public class IssueNotice2Activity extends BaseActivity {
         }
     }
 
-    private String getUserValue() {
-        String value = "";
-        if (userListSet == null) {
-            return value;
-        }
-        for (Integer integer : userListSet) {
-            value = value + integer + ",";
-        }
-        if (value.length() > 0) {
-            value = value.substring(0, value.length() - 1);
-        }
-        return value;
-    }
-
-    private String getPartValue() {
-        String value = "";
-        if (partListSet == null) {
-            return value;
-        }
-        for (Integer integer : partListSet) {
-            value = value + integer + ",";
-        }
-        if (value.length() > 0) {
-            value = value.substring(0, value.length() - 1);
-        }
-        return value;
-    }
+//    private String getUserValue() {
+//        String value = "";
+//        if (userListSet == null) {
+//            return value;
+//        }
+//        for (Integer integer : userListSet) {
+//            value = value + integer + ",";
+//        }
+//        if (value.length() > 0) {
+//            value = value.substring(0, value.length() - 1);
+//        }
+//        return value;
+//    }
+//
+//    private String getPartValue() {
+//        String value = "";
+//        if (partListSet == null) {
+//            return value;
+//        }
+//        for (Integer integer : partListSet) {
+//            value = value + integer + ",";
+//        }
+//        if (value.length() > 0) {
+//            value = value.substring(0, value.length() - 1);
+//        }
+//        return value;
+//    }
 
     private class Notice2Adapter extends BaseQuickAdapter<LocalMedia, BaseViewHolder> {
         public Notice2Adapter(int layoutResId) {

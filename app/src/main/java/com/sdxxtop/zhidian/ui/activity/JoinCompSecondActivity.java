@@ -15,11 +15,14 @@ import com.sdxxtop.zhidian.R;
 import com.sdxxtop.zhidian.adapter.ShowOutPowerDrawerLayoutAdapter;
 import com.sdxxtop.zhidian.entity.JoinByCodeBean;
 import com.sdxxtop.zhidian.entity.UcenterOutIndexBean;
+import com.sdxxtop.zhidian.eventbus.ChangeCompanyEvent;
 import com.sdxxtop.zhidian.eventbus.JoinFinishEvent;
+import com.sdxxtop.zhidian.http.BaseModel;
 import com.sdxxtop.zhidian.http.IRequestListener;
 import com.sdxxtop.zhidian.http.Params;
 import com.sdxxtop.zhidian.http.RequestCallback;
 import com.sdxxtop.zhidian.http.RequestUtils;
+import com.sdxxtop.zhidian.im.IMLoginHelper;
 import com.sdxxtop.zhidian.model.ConstantValue;
 import com.sdxxtop.zhidian.ui.base.BaseActivity;
 import com.sdxxtop.zhidian.utils.NetUtil;
@@ -156,14 +159,16 @@ public class JoinCompSecondActivity extends BaseActivity {
                         closeProgressDialog();
                         JoinByCodeBean joinByCodeBean = response.body();
                         if (joinByCodeBean.getCode() == 200) {
-                            AppSession.getInstance().setCompanyId(joinByCodeBean.getData().getCompany_id() + "");
-//                            PreferenceUtils.getInstance(mContext).saveParam(ConstantValue.COMPANY_ID, joinByCodeBean.getData().getCompany_id() + "");
-                            //跳转到首页
-                            Intent intent = new Intent(JoinCompSecondActivity.this, MainActivity.class);
-                            intent.putExtra(MainActivity.MAIN_SKIP, 1);
-                            startActivity(intent);
-                            EventBus.getDefault().post(new JoinFinishEvent());
-                            finish();
+
+                            toChangeIm(joinByCodeBean.getData().getCompany_id() + "");
+//                            AppSession.getInstance().setCompanyId(joinByCodeBean.getData().getCompany_id() + "");
+////                            PreferenceUtils.getInstance(mContext).saveParam(ConstantValue.COMPANY_ID, joinByCodeBean.getData().getCompany_id() + "");
+//                            //跳转到首页
+//                            Intent intent = new Intent(JoinCompSecondActivity.this, MainActivity.class);
+//                            intent.putExtra(MainActivity.MAIN_SKIP, 1);
+//                            startActivity(intent);
+//                            EventBus.getDefault().post(new JoinFinishEvent());
+//                            finish();
                         } else {
                             ToastUtil.show(joinByCodeBean.getMsg().toString());
                         }
@@ -180,5 +185,25 @@ public class JoinCompSecondActivity extends BaseActivity {
                 drawerLayout.openDrawer(Gravity.RIGHT);
                 break;
         }
+    }
+
+    private void toChangeIm(final String company_id) {
+        IMLoginHelper.getInstance().changeUserSignature(mContext,company_id + "", new IRequestListener<BaseModel>() {
+            @Override
+            public void onSuccess(BaseModel baseModel) {
+                AppSession.getInstance().setCompanyId(company_id);
+                //跳转到首页
+                Intent intent = new Intent(JoinCompSecondActivity.this, MainActivity.class);
+                intent.putExtra(MainActivity.MAIN_SKIP, 1);
+                startActivity(intent);
+                EventBus.getDefault().post(new ChangeCompanyEvent());
+                EventBus.getDefault().post(new JoinFinishEvent());
+                finish();
+            }
+
+            @Override
+            public void onFailure(int code, String errorMsg) {
+            }
+        });
     }
 }

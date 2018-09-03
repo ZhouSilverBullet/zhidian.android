@@ -7,7 +7,7 @@
         android:id="@+id/one_key_ll"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="9dp"
+        android:layout_marginLeft="10dp"
         android:orientation="horizontal"
         android:paddingBottom="10dp"
         android:paddingTop="10dp"

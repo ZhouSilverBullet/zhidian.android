@@ -136,9 +136,9 @@ public class CollectiveLeaveFragment extends BaseApproverFragment {
     int selectorType = -1;
 
     private void submit() {
-        String startTime = tvStartTime.getText().toString();
-        String endTime = tvEndTime.getText().toString();
-        String eidtContent = contentEdit.getText().toString();
+        String startTime = tvStartTime.getText().toString().trim();
+        String endTime = tvEndTime.getText().toString().trim();
+        String eidtContent = contentEdit.getText().toString().trim();
 
         if (selectorType == -1) {
             showToast("请选择请假类型");
@@ -146,7 +146,8 @@ public class CollectiveLeaveFragment extends BaseApproverFragment {
         }
 
         String collectValue = getCollectValue();
-        if (TextUtils.isEmpty(collectValue)) {
+        String partValue = getPartValue();
+        if (TextUtils.isEmpty(collectValue) && TextUtils.isEmpty(partValue)) {
             showToast("请选择请假人员");
             return;
         }

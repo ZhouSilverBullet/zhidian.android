@@ -196,7 +196,8 @@ public class DeviceInfoActivity extends BaseActivity implements AdapterView.OnIt
             case R.id.lv_wifi:
                 Intent intentWifi = new Intent(mContext, ModifyWifiActivity.class);
                 intentWifi.putExtra("di", listWifi.get(position).getDevice_id() + "");
-                intentWifi.putExtra("wifi_name", listWifi.get(position).getName());
+                intentWifi.putExtra("name", listWifi.get(position).getName());
+                intentWifi.putExtra("wifi_name", listWifi.get(position).getWifi_name());
                 startActivity(intentWifi);
                 break;
             case R.id.lv_gps:
@@ -204,6 +205,7 @@ public class DeviceInfoActivity extends BaseActivity implements AdapterView.OnIt
                 intentGps.putExtra("di", listGps.get(position).getDevice_id() + "");
                 intentGps.putExtra("gn", listGps.get(position).getName());
                 intentGps.putExtra("address", listGps.get(position).getAddress());
+                intentGps.putExtra("longitude", listGps.get(position).getLongitude());
                 intentGps.putExtra("sign_range", listGps.get(position).getSign_range() + "m");
                 startActivity(intentGps);
                 break;

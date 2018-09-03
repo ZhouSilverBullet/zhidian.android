@@ -1,6 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <paths xmlns:android="http://schemas.android.com/apk/res/android">
+    <external-cache-path
+        name="download_apk"
+        path="."/>
     <external-path
         name="xuxing_images"
+        path="." />
+    <cache-path
+        name="zhidian"
         path="." />
 </paths>

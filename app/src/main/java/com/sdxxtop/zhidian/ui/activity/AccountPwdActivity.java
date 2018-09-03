@@ -99,7 +99,7 @@ public class AccountPwdActivity extends BaseActivity {
      * 调取普通登陆请求
      */
     private void postNormalLogin(final String password) {
-        String phone = tvLoginPhone.getText().toString();
+        final String phone = tvLoginPhone.getText().toString();
         final String spacePhone = StringUtil.textPhoneValue(phone);
         Params params = new Params();
         params.removeKey("ui");
@@ -122,7 +122,7 @@ public class AccountPwdActivity extends BaseActivity {
                     return;
                 }
 
-                PreferenceUtils.getInstance(mContext).saveParam(ConstantValue.USER_NAME, spacePhone);
+                PreferenceUtils.getInstance(mContext).saveParam(ConstantValue.USER_NAME, phone);
                 PreferenceUtils.getInstance(mContext).saveParam(ConstantValue.PASSWORD, password);
                 PreferenceUtils.getInstance(mContext).saveParam(ConstantValue.LOGIN_TIME_TEMP, data.getExpire_time());
                 PreferenceUtils.getInstance(mContext).saveParam(ConstantValue.LOGIN_TOKEN, data.getAuto_token());
@@ -133,7 +133,7 @@ public class AccountPwdActivity extends BaseActivity {
 
 //                PreferenceUtils.getInstance(mContext).saveParam(ConstantValue.COMPANY_ID, company_id);
 
-                AnalyticsHome.bindAccount(spacePhone);
+                AnalyticsHome.bindAccount(phone);
 
                 int userid = data.getUserid();
 

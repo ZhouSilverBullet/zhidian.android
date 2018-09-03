@@ -3,18 +3,12 @@
     android:layout_width="50dp"
     android:layout_height="50dp">
 
-    <TextView
-        android:id="@+id/item_apply_hor_dele"
-        android:layout_width="16dp"
-        android:layout_height="16dp"
-        android:layout_gravity="right|top"
-        android:background="@mipmap/dele" />
-
     <ImageView
         android:id="@+id/item_apply_hor_img"
         android:layout_width="42dp"
         android:layout_height="42dp"
-        android:layout_gravity="left|bottom" />
+        android:layout_gravity="left|bottom"
+        android:scaleType="centerCrop" />
 
     <ImageView
         android:id="@+id/item_apply_hor_photo"
@@ -23,4 +17,10 @@
         android:src="@mipmap/upload_pictures"
         android:visibility="gone" />
 
+    <TextView
+        android:id="@+id/item_apply_hor_dele"
+        android:layout_width="16dp"
+        android:layout_height="16dp"
+        android:layout_gravity="right|top"
+        android:background="@mipmap/dele" />
 </FrameLayout>

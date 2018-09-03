@@ -174,6 +174,7 @@ public class Date2Util {
 
     /**
      * 获取本月的最后一天
+     *
      * @return
      */
     public static Date getLastDayOfMonth() {
@@ -237,5 +238,223 @@ public class Date2Util {
         }
 
         return false;
+    }
+
+    public static String getWeixinShowTime(String time) {
+        SimpleDateFormat dft = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        try {
+            Date parse = dft.parse(time);
+            return getWeixinShowTime(parse);
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        return "";
+    }
+
+    public static String getWeixinShowTime(Date time) {
+        try {
+            Calendar currentTime = Calendar.getInstance();
+            currentTime.setTime(time);
+            Calendar nowTime = Calendar.getInstance();
+
+            int nowYear = nowTime.get(Calendar.YEAR);
+            int nowMonth = nowTime.get(Calendar.MONTH);
+            int nowDay = nowTime.get(Calendar.DAY_OF_MONTH);
+            int nowHour = nowTime.get(Calendar.HOUR_OF_DAY);
+            int nowMinute = nowTime.get(Calendar.MINUTE);
+
+            int currentYear = currentTime.get(Calendar.YEAR);
+            int currentMonth = currentTime.get(Calendar.MONTH);
+            int currentDay = currentTime.get(Calendar.DAY_OF_MONTH);
+            int currentHour = currentTime.get(Calendar.HOUR_OF_DAY);
+            int currentMinute = currentTime.get(Calendar.MINUTE);
+
+            if (nowYear != currentYear) {
+                //不是同一年  6月30日 20：10
+                return currentYear + "/" + getZeroTime(currentMonth + 1) + "/" + getZeroTime(currentDay) + "日" /*+ " " + getZeroTime(currentHour) + ":" + getZeroTime(currentMinute)*/;
+            }
+
+            if (nowMonth != currentMonth) {
+                //不是同一月  6月30日 20：10
+                return getZeroTime(currentMonth + 1) + "月" + getZeroTime(currentDay) + "日" + " " + getZeroTime(currentHour) + ":" + getZeroTime(currentMinute);
+            }
+
+            int totalDay = Math.abs(nowDay - currentDay);
+            //小于等于六天 要带星期几
+            //如：星期四  20：10  不能是昨天和今天
+            if (totalDay <= 6 && totalDay >= 2) {
+                int i = currentTime.get(Calendar.DAY_OF_WEEK);
+                String tempWeekName = "";
+                switch (i) {
+                    case Calendar.MONDAY:
+                        tempWeekName = "星期一";
+                        break;
+
+                    case Calendar.TUESDAY:
+                        tempWeekName = "星期二";
+                        break;
+
+                    case Calendar.WEDNESDAY:
+                        tempWeekName = "星期三";
+                        break;
+
+                    case Calendar.THURSDAY:
+                        tempWeekName = "星期四";
+                        break;
+
+                    case Calendar.FRIDAY:
+                        tempWeekName = "星期五";
+                        break;
+
+                    case Calendar.SATURDAY:
+                        tempWeekName = "星期六";
+                        break;
+                    default:
+                        //Calendar.SUNDAY
+                        tempWeekName = "星期日";
+                        break;
+                }
+
+                return tempWeekName + " " + getZeroTime(currentHour) + ":" + getZeroTime(currentMinute);
+            }
+
+            if (totalDay == 1) {
+                return "昨天" + " " + getZeroTime(currentHour) + ":" + getZeroTime(currentMinute);
+            }
+
+            if (totalDay == 0) {
+                if (Math.abs(currentMinute - nowMinute) <= 1) {
+                    return "刚刚";
+                }
+                return getZeroTime(currentHour) + ":" + getZeroTime(currentMinute);
+            }
+
+            //不可能有这种情况了,暂时写着容错处理 和 最开始的那种相同
+            return getZeroTime(currentMonth + 1) + "月" + getZeroTime(currentDay) + "日" + " " + getZeroTime(currentHour) + ":" + getZeroTime(currentMinute);
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return "";
+    }
+
+    /**
+     * 产品需要修改的时间
+     * 举例如下图（3号是今天）：
+     * <p>
+     * 1小时内：23分钟前
+     * 超过一小时：20:23
+     * 2号发的：昨天
+     * 6.27号~7.1号：星期三~星期日
+     * 26号及之前：7/26
+     * 去年及去年之前：2017/7/25
+     *
+     * @param time
+     * @return
+     */
+    public static String getWeixinShowTime0(Date time) {
+        try {
+            Calendar currentTime = Calendar.getInstance();
+            currentTime.setTime(time);
+            Calendar nowTime = Calendar.getInstance();
+
+            int nowYear = nowTime.get(Calendar.YEAR);
+            int nowMonth = nowTime.get(Calendar.MONTH);
+            int nowDay = nowTime.get(Calendar.DAY_OF_MONTH);
+            int nowHour = nowTime.get(Calendar.HOUR_OF_DAY);
+            int nowMinute = nowTime.get(Calendar.MINUTE);
+
+            int currentYear = currentTime.get(Calendar.YEAR);
+            int currentMonth = currentTime.get(Calendar.MONTH);
+            int currentDay = currentTime.get(Calendar.DAY_OF_MONTH);
+            int currentHour = currentTime.get(Calendar.HOUR_OF_DAY);
+            int currentMinute = currentTime.get(Calendar.MINUTE);
+
+            if (nowYear != currentYear) {
+                //不是同一年  6月30日 20：10
+                return currentYear + "/" + getZeroTime(currentMonth + 1) + "/" + getZeroTime(currentDay) + "日" /*+ " " + getZeroTime(currentHour) + ":" + getZeroTime(currentMinute)*/;
+            }
+
+            if (nowMonth != currentMonth) {
+                //不是同一月  07/30
+                return getZeroTime(currentMonth + 1) + "/" + getZeroTime(currentDay) /*+ "日" + " " + getZeroTime(currentHour) + ":" + getZeroTime(currentMinute)*/;
+            }
+
+            int totalDay = Math.abs(nowDay - currentDay);
+
+            if (totalDay > 7) {
+                return getZeroTime(currentMonth + 1) + "/" + getZeroTime(currentDay);
+            } else {
+                //小于等于六天 要带星期几
+                //如：星期四  20：10  不能是昨天和今天
+                if (totalDay <= 6 && totalDay >= 2) {
+                    int i = currentTime.get(Calendar.DAY_OF_WEEK);
+                    String tempWeekName = "";
+                    switch (i) {
+                        case Calendar.MONDAY:
+                            tempWeekName = "星期一";
+                            break;
+
+                        case Calendar.TUESDAY:
+                            tempWeekName = "星期二";
+                            break;
+
+                        case Calendar.WEDNESDAY:
+                            tempWeekName = "星期三";
+                            break;
+
+                        case Calendar.THURSDAY:
+                            tempWeekName = "星期四";
+                            break;
+
+                        case Calendar.FRIDAY:
+                            tempWeekName = "星期五";
+                            break;
+
+                        case Calendar.SATURDAY:
+                            tempWeekName = "星期六";
+                            break;
+                        default:
+                            //Calendar.SUNDAY
+                            tempWeekName = "星期日";
+                            break;
+                    }
+
+                    return tempWeekName /*+ " " + getZeroTime(currentHour) + ":" + getZeroTime(currentMinute)*/;
+                }
+
+                if (totalDay == 1) {
+                    return "昨天" /*+ " " + getZeroTime(currentHour) + ":" + getZeroTime(currentMinute)*/;
+                }
+
+                if (totalDay == 0) {
+                    int abs = nowMinute - currentMinute;
+                    if (currentHour - nowHour == 0 && abs < 1 && abs > 0) {
+                        return "刚刚";
+                    }
+                    if (abs < 60 && abs > 0) {
+                        return abs + "分钟前";
+                    }
+                    return getZeroTime(currentHour) + ":" + getZeroTime(currentMinute);
+                }
+            }
+
+            //不可能有这种情况了,暂时写着容错处理 和 最开始的那种相同
+            return getZeroTime(currentMonth + 1) + "月" + getZeroTime(currentDay) + "日" + " " + getZeroTime(currentHour) + ":" + getZeroTime(currentMinute);
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return "";
+    }
+
+    public static String getZeroTime(int time) {
+        String value = "";
+        if (time >= 10) {
+            value = time + "";
+        } else {
+            value = "0" + time;
+        }
+        return value;
     }
 }

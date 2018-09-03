@@ -1,22 +1,12 @@
 package com.sdxxtop.zhidian.ui.activity;
 
 import android.content.Intent;
-import android.graphics.Color;
-import android.graphics.drawable.ColorDrawable;
-import android.support.annotation.Nullable;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
 import android.text.TextUtils;
 import android.view.View;
-import android.widget.Button;
-import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
-import com.bumptech.glide.Glide;
-import com.chad.library.adapter.base.BaseMultiItemQuickAdapter;
-import com.chad.library.adapter.base.BaseViewHolder;
 import com.sdxxtop.zhidian.AppSession;
 import com.sdxxtop.zhidian.R;
 import com.sdxxtop.zhidian.adapter.ShowReciveRangeAdapter;
@@ -32,8 +22,8 @@ import com.sdxxtop.zhidian.model.ConstantValue;
 import com.sdxxtop.zhidian.ui.base.BaseActivity;
 import com.sdxxtop.zhidian.utils.NetUtil;
 import com.sdxxtop.zhidian.utils.PreferenceUtils;
-import com.sdxxtop.zhidian.utils.StringUtil;
 import com.sdxxtop.zhidian.utils.ToastUtil;
+import com.sdxxtop.zhidian.widget.BottomSelectorView;
 import com.sdxxtop.zhidian.widget.LinkManView;
 import com.sdxxtop.zhidian.widget.SubTitleView;
 
@@ -45,7 +35,6 @@ import java.util.List;
 import java.util.Map;
 
 import butterknife.BindView;
-import butterknife.OnClick;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -57,10 +46,14 @@ public class NoticeReciveRangeActivity extends BaseActivity implements ShowReciv
     //用户自己不进行选中
     public static final String SELF_NOT_SELECT = "self_not_select";
 
+    //排班里面涉及的修改人员的地方使用到，要进行人员的验证
+    //在选择班中，选中部门就不让进去选部门人
+    public static final String PART_SELECT_NOT_IN = "partSelectNotIn";
+    public static final int PART_SELECTOR_NOT_CLICK = 5;
+
     public static final int PART_SELECTOR = 2;  //可以选中
     public static final int PART_NOT_SELECTOR = 3;  //不进行选中
     public static final int SINGLE_SELECTOR = 4;  //当选
-    public static final int PART_SELECTOR_NOT_CLICK = 5;  //在选择班中，选中部门就不让进去选部门人
 
 
     public static final String NOTICE_TYPE = "notice_type";  //
@@ -80,22 +73,24 @@ public class NoticeReciveRangeActivity extends BaseActivity implements ShowReciv
     RelativeLayout checkLayout;
     @BindView(R.id.lvShow)
     ListView lvShow;
-    @BindView(R.id.btn_make_sure)
-    Button btnMakeSure;
+    //    @BindView(R.id.btn_make_sure)
+//    Button btnMakeSure;
     @BindView(R.id.notice_recive_title_view)
     SubTitleView titleView;
-    @BindView(R.id.notice_recive_recycler)
-    RecyclerView recyclerView;
+    //    @BindView(R.id.notice_recive_recycler)
+//    RecyclerView recyclerView;
+    @BindView(R.id.bottom_select_view)
+    BottomSelectorView bottomSelectorView;
 
     private HashMap<String, Boolean> clickAllMap = new HashMap<>();
 
     private ShowReciveRangeAdapter adapter;
     private ContactPartBean.DataEntity dataBean = new ContactPartBean.DataEntity();
     private int partIntId;
-    private NoticeRecyclerAdapter recyclerAdapter;
-    private int isPartSelect;
-    private int singleSelect;
-    private int partSelectNotIn;
+    //    private NoticeRecyclerAdapter recyclerAdapter;
+    private int isPartSelect;  //部门是否可以选中
+    private int singleSelect;  //单选
+    private int partSelectNotIn; //part的select不能被点击
     private ContactPartBean.DataEntity schedulingDataEntity;
 
     //SchedulingManageActivity
@@ -124,13 +119,12 @@ public class NoticeReciveRangeActivity extends BaseActivity implements ShowReciv
             titleView.setTitleValue(noticeTitle);
         }
 
-        adapter = new ShowReciveRangeAdapter(mContext, dataBean, this, isPartSelect, partSelectNotIn);
+        adapter = new ShowReciveRangeAdapter(mContext, dataBean, this);
+        //部门不被进行选中
+        adapter.setIsPartSelect(isPartSelect);
+        adapter.setPartSelectNotIn(partSelectNotIn);
         lvShow.setAdapter(adapter);
         adapter.setSingSelector(isOpenSingle());
-
-        recyclerView.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false));
-        recyclerAdapter = new NoticeRecyclerAdapter(new ArrayList<SelectBean>());
-        recyclerView.setAdapter(recyclerAdapter);
 
         //SchedulingManageActivity 过来的，是否已经选中了值
         if (schedulingDataEntity != null) {
@@ -156,7 +150,7 @@ public class NoticeReciveRangeActivity extends BaseActivity implements ShowReciv
             }
 
             List<SelectBean> selectData = adapter.getSelectData();
-            recyclerAdapter.replaceData(selectData);
+            bottomRefreshData(selectData);
         }
 
         if (isOpenSingle()) {
@@ -166,6 +160,10 @@ public class NoticeReciveRangeActivity extends BaseActivity implements ShowReciv
         }
     }
 
+    private void bottomRefreshData(List<SelectBean> selectData) {
+        bottomSelectorView.refreshData(selectData);
+    }
+
     @Override
     protected void initVariables() {
         if (getIntent() != null) {
@@ -173,7 +171,8 @@ public class NoticeReciveRangeActivity extends BaseActivity implements ShowReciv
             noticeType = getIntent().getIntExtra(NOTICE_TYPE, -1);
             isPartSelect = getIntent().getIntExtra("isPartSelect", -1);
             singleSelect = getIntent().getIntExtra("singleSelect", -1);
-            partSelectNotIn = getIntent().getIntExtra("partSelectNotIn", -1);
+            //排班的时候使用到
+            partSelectNotIn = getIntent().getIntExtra(PART_SELECT_NOT_IN, -1);
             if (partSelectNotIn == PART_SELECTOR_NOT_CLICK) {
                 schedulingDataEntity = (ContactPartBean.DataEntity) getIntent().getSerializableExtra("DataEntity");
                 rule_id = getIntent().getIntExtra("rule_id", -1);
@@ -210,7 +209,7 @@ public class NoticeReciveRangeActivity extends BaseActivity implements ShowReciv
             @Override
             public void selectAll() {
                 List<SelectBean> selectData = adapter.getSelectData();
-                recyclerAdapter.replaceData(selectData);
+                bottomRefreshData(selectData);
                 List<ContactPartBean.DataEntity.UserinfoEntity> userinfo = adapter.getDataBean().getUserinfo();
                 List<ContactPartBean.DataEntity.PartEntity> part = adapter.getDataBean().getPart();
                 if (isPartSelect != PART_NOT_SELECTOR) { //部门是否选中
@@ -231,6 +230,45 @@ public class NoticeReciveRangeActivity extends BaseActivity implements ShowReciv
                 setChecked(partId, true);
             }
         });
+
+        bottomSelectorView.getSubmitBtn().setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                submit();
+            }
+        });
+
+        bottomSelectorView.setBottomRemoveClickListener(new BottomSelectorView.BottomRemoveClickListener() {
+            @Override
+            public void onRemoveClick(int type, Integer id) {
+                if (type == SelectBean.TYPE_PART) {
+                    adapter.selectPartMap.remove(id);
+                    adapter.selectPartSet.remove((Integer) id);
+                } else if (type == SelectBean.TYPE_USER) {
+                    adapter.selectUserMap.remove(id);
+                    adapter.selectUserSet.remove((Integer) id);
+                }
+                adapter.notifyDataSetChanged();
+                List<SelectBean> selectData = adapter.getSelectData();
+                bottomRefreshData(selectData);
+            }
+        });
+    }
+
+    private void submit() {
+        if (noticeType == NOTICE_TYPE_CHECK_SAFE) {
+            checkSafe();
+        } else if (partSelectNotIn == PART_SELECTOR_NOT_CLICK) {
+            checkRepeat();
+        } else {
+            Intent intent = new Intent();
+            intent.putExtra("range", "中心校");
+            intent.putExtra("partList", adapter.selectPartSet);
+            intent.putExtra("userList", adapter.selectUserSet);
+            intent.putExtra("selectData", (ArrayList<SelectBean>) adapter.getSelectData());
+            setResult(NOTICE_RESULT_OK, intent);
+            finish();
+        }
     }
 
     private void checkAll() {
@@ -261,7 +299,7 @@ public class NoticeReciveRangeActivity extends BaseActivity implements ShowReciv
             adapter.notifyDataSetChanged();
 
             List<SelectBean> selectData = adapter.getSelectData();
-            recyclerAdapter.replaceData(selectData);
+            bottomRefreshData(selectData);
         } else {
             cbCheckAll.setBackgroundResource(R.drawable.unselected);
             if (isPartSelect != PART_NOT_SELECTOR) {
@@ -282,29 +320,7 @@ public class NoticeReciveRangeActivity extends BaseActivity implements ShowReciv
             adapter.notifyDataSetChanged();
 
             List<SelectBean> selectData = adapter.getSelectData();
-            recyclerAdapter.replaceData(selectData);
-        }
-    }
-
-    @OnClick({R.id.btn_make_sure})
-    public void onViewClicked(View view) {
-        switch (view.getId()) {
-            case R.id.btn_make_sure:
-                if (noticeType == NOTICE_TYPE_CHECK_SAFE) {
-                    checkSafe();
-                } else if (partSelectNotIn == PART_SELECTOR_NOT_CLICK) {
-                    checkRepeat();
-                } else {
-                    Intent intent = new Intent();
-                    intent.putExtra("range", "中心校");
-                    intent.putExtra("partList", adapter.selectPartSet);
-                    intent.putExtra("userList", adapter.selectUserSet);
-                    intent.putExtra("selectData", (ArrayList<SelectBean>) adapter.getSelectData());
-                    setResult(NOTICE_RESULT_OK, intent);
-                    finish();
-                }
-
-                break;
+            bottomRefreshData(selectData);
         }
     }
 
@@ -355,7 +371,6 @@ public class NoticeReciveRangeActivity extends BaseActivity implements ShowReciv
             postPartInfo(dataBean.getNav().get(position - 1).getPart_id() + "", false);
         }
     }
-
 
     /**
      * 组织架构网络请求
@@ -621,57 +636,4 @@ public class NoticeReciveRangeActivity extends BaseActivity implements ShowReciv
         return value;
     }
 
-    class NoticeRecyclerAdapter extends BaseMultiItemQuickAdapter<SelectBean, BaseViewHolder> {
-
-        public NoticeRecyclerAdapter(@Nullable List<SelectBean> data) {
-            super(data);
-
-            addItemType(SelectBean.TYPE_USER, R.layout.item_notice_recve_user_recycler);
-            addItemType(SelectBean.TYPE_PART, R.layout.item_notice_recve_part_recycler);
-        }
-
-        @Override
-        protected void convert(BaseViewHolder helper, SelectBean item) {
-            switch (item.type) {
-                case SelectBean.TYPE_USER:
-                    ImageView imageView = helper.getView(R.id.item_user_img);
-                    TextView textView = helper.getView(R.id.item_user_text);
-                    String color = item.color;
-                    if (color.startsWith("#")) {
-                        textView.setText(StringUtil.stringSubName(item.name));
-                        imageView.setImageDrawable(new ColorDrawable(Color.parseColor(color)));
-                    } else {
-                        textView.setText("");
-                        Glide.with(mContext).load(color).into(imageView);
-                    }
-                    final Integer id = item.id;
-                    helper.getConvertView().setOnClickListener(new View.OnClickListener() {
-                        @Override
-                        public void onClick(View v) {
-                            adapter.selectUserMap.remove(id);
-                            adapter.selectUserSet.remove((Integer) id);
-                            adapter.notifyDataSetChanged();
-                            List<SelectBean> selectData = adapter.getSelectData();
-                            replaceData(selectData);
-                        }
-                    });
-
-                    break;
-                case SelectBean.TYPE_PART:
-                    helper.setText(R.id.item_part_text, item.name);
-                    final Integer ids = item.id;
-                    helper.getConvertView().setOnClickListener(new View.OnClickListener() {
-                        @Override
-                        public void onClick(View v) {
-                            adapter.selectPartMap.remove(ids);
-                            adapter.selectPartSet.remove((Integer) ids);
-                            adapter.notifyDataSetChanged();
-                            List<SelectBean> selectData = adapter.getSelectData();
-                            replaceData(selectData);
-                        }
-                    });
-                    break;
-            }
-        }
-    }
 }

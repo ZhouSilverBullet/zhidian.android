@@ -2,6 +2,7 @@ package zhangphil.iosdialog.widget;
 
 import android.app.Dialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.view.Display;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -199,6 +200,28 @@ public class AlertDialog {
             btn_neg.setVisibility(View.VISIBLE);
             btn_neg.setBackgroundResource(R.drawable.alertdialog_single_selector);
         }
+
+        if (dialog != null) {
+            dialog.setOnDismissListener(new DialogInterface.OnDismissListener() {
+                @Override
+                public void onDismiss(DialogInterface dialog) {
+                    if (listener != null) {
+                        listener.dismiss();
+                    }
+                }
+            });
+        }
+    }
+
+    public AlertDialog setDismissListener(DialogDismissListener listener) {
+        this.listener = listener;
+        return this;
+    }
+
+    private DialogDismissListener listener;
+
+    public interface DialogDismissListener {
+        void dismiss();
     }
 
     public void show() {

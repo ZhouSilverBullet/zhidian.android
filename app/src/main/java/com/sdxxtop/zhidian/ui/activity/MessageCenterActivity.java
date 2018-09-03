@@ -1,22 +1,25 @@
 package com.sdxxtop.zhidian.ui.activity;
 
 import android.content.Intent;
-import android.text.TextUtils;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.FrameLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.sdxxtop.zhidian.R;
+import com.sdxxtop.zhidian.adapter.MessageCenterRecyclerAdapter;
 import com.sdxxtop.zhidian.entity.MsgIndexBean;
 import com.sdxxtop.zhidian.http.IRequestListener;
 import com.sdxxtop.zhidian.http.Params;
 import com.sdxxtop.zhidian.http.RequestCallback;
 import com.sdxxtop.zhidian.http.RequestUtils;
 import com.sdxxtop.zhidian.ui.base.BaseActivity;
-import com.sdxxtop.zhidian.utils.DateUtil;
-import com.sdxxtop.zhidian.utils.StringUtil;
+import com.sdxxtop.zhidian.utils.ItemDivider;
 import com.sdxxtop.zhidian.widget.SubTitleView;
+
+import java.util.List;
 
 import butterknife.BindView;
 
@@ -63,9 +66,22 @@ public class MessageCenterActivity extends BaseActivity {
     @BindView(R.id.message_center_time3)
     TextView reportTime;
 
+    @BindView(R.id.message_center_recycler)
+    RecyclerView msgRecyclerView;
+    private MessageCenterRecyclerAdapter msgAdapter;
+
     @Override
     protected int getActivityView() {
         return R.layout.activity_message_center;
+    }
+
+    @Override
+    protected void initView() {
+        super.initView();
+        msgRecyclerView.addItemDecoration(new ItemDivider());
+        msgRecyclerView.setLayoutManager(new LinearLayoutManager(this));
+        msgAdapter = new MessageCenterRecyclerAdapter(R.layout.item_message_center_recycler);
+        msgRecyclerView.setAdapter(msgAdapter);
     }
 
     @Override
@@ -75,7 +91,7 @@ public class MessageCenterActivity extends BaseActivity {
         RequestUtils.createRequest().postMsgIndex(params.getData()).enqueue(new RequestCallback<>(new IRequestListener<MsgIndexBean>() {
             @Override
             public void onSuccess(MsgIndexBean baseModel) {
-                MsgIndexBean.DataBean data = baseModel.getData();
+                List<MsgIndexBean.DataBean> data = baseModel.getData();
                 if (data != null) {
                     handleData(data);
                 }
@@ -126,87 +142,7 @@ public class MessageCenterActivity extends BaseActivity {
         });
     }
 
-    private void handleData(MsgIndexBean.DataBean data) {
-        MsgIndexBean.DataBean.ApplyBean apply = data.getApply();
-        MsgIndexBean.DataBean.NoticeBean notice = data.getNotice();
-        MsgIndexBean.DataBean.ReportBean report = data.getReport();
-
-        if (apply != null) {
-            int apply_num = apply.getApply_num();
-            if (apply_num != 0) {
-                if (apply_num >= 99) {
-                    approverFrameText.setText("99+");
-                } else {
-                    approverFrameText.setText(apply_num + "");
-                }
-                approverFrameText.setVisibility(View.VISIBLE);
-            } else {
-                approverFrameText.setVisibility(View.INVISIBLE);
-            }
-
-            approverContent.setText(StringUtil.stringNotNull(apply.getTitle()));
-            String update_time = apply.getUpdate_time();
-            if (!TextUtils.isEmpty(update_time)) {
-                approverRelate.setVisibility(View.VISIBLE);
-                approverTime.setText(DateUtil.getShowTime(update_time));
-            } else {
-                approverRelate.setVisibility(View.GONE);
-                centerLine.setVisibility(View.GONE);
-            }
-        } else {
-            approverRelate.setVisibility(View.GONE);
-            centerLine.setVisibility(View.GONE);
-        }
-
-        if (notice != null) {
-            int notice_num = notice.getNotice_num();
-            if (notice_num != 0) {
-                if (notice_num >= 99) {
-                    noticeFrameText.setText("99+");
-                } else {
-                    noticeFrameText.setText(notice_num + "");
-                }
-                noticeFrameText.setVisibility(View.VISIBLE);
-            } else {
-                noticeFrameText.setVisibility(View.INVISIBLE);
-            }
-            noticeContent.setText(StringUtil.stringNotNull(notice.getTitle()));
-            String update_time = notice.getUpdate_time();
-            if (!TextUtils.isEmpty(update_time)) {
-                String updateTime = DateUtil.getShowTime(update_time);
-                noticeTime.setText(updateTime);
-                noticeRelate.setVisibility(View.VISIBLE);
-            } else {
-                noticeRelate.setVisibility(View.GONE);
-            }
-        } else {
-            noticeRelate.setVisibility(View.GONE);
-        }
-
-        if (report != null) {
-            int report_num = report.getReport_num();
-            if (report_num != 0) {
-                if (report_num >= 99) {
-                    reportFrameText.setText("99+");
-                } else {
-                    reportFrameText.setText(report_num + "");
-                }
-                reportFrameText.setVisibility(View.VISIBLE);
-            } else {
-                reportFrameText.setVisibility(View.INVISIBLE);
-            }
-            reportContent.setText(StringUtil.stringNotNull(report.getTitle()));
-            String update_time = report.getUpdate_time();
-            if (!TextUtils.isEmpty(update_time)) {
-                String updateTime = DateUtil.getShowTime(update_time);
-                reportTime.setText(updateTime);
-                noticeRelate3.setVisibility(View.VISIBLE);
-            } else {
-                noticeRelate3.setVisibility(View.GONE);
-            }
-        } else {
-            noticeRelate3.setVisibility(View.GONE);
-        }
-
+    private void handleData(List<MsgIndexBean.DataBean> data) {
+        msgAdapter.replaceData(data);
     }
 }

@@ -141,11 +141,11 @@ public class EvectionActivity extends BaseApproverActivity {
     }
 
     private void submit() {
-        String startTime = tvStartTime.getText().toString();
-        String endTime = tvEndTime.getText().toString();
-        String eidtContent = contentEdit.getText().toString();
+        String startTime = tvStartTime.getText().toString().trim();
+        String endTime = tvEndTime.getText().toString().trim();
+        String eidtContent = contentEdit.getText().toString().trim();
 
-        String selectAddressValue = selectAddress.getText().toString();
+        String selectAddressValue = selectAddress.getText().toString().trim();
 
         if (TextUtils.isEmpty(selectAddressValue)) {
             if (at == 9) {

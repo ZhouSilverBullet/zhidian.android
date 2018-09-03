@@ -18,13 +18,15 @@ android {
         applicationId "com.sdxxtop.zhidian"
         minSdkVersion 15
         targetSdkVersion 25
-        versionCode 10003
-        versionName "1.0.3"
+        versionCode 20000
+        versionName "2.0.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
         multiDexEnabled true
         ndk {
             //设置支持的SO库架构（开发者可以根据需要，选择一个或多个平台的so）
-            abiFilters "armeabi", "armeabi-v7a", "x86"//, "arm64-v8a", "x86", "arm64-v8a", "x86_64"
+//            abiFilters "armeabi", "armeabi-v7a", "x86"//, "arm64-v8a", "x86", "arm64-v8a", "x86_64"
+            abiFilters "armeabi-v7a"
+//            abiFilters "armeabi", "armeabi-v7a", "arm64-v8a"
         }
     }
 
@@ -67,7 +69,7 @@ dependencies {
         exclude group: 'com.android.support'
     }
     compile 'com.prolificinteractive:material-calendarview:1.4.3'
-    compile 'pub.devrel:easypermissions:0.4.0'
+    implementation 'pub.devrel:easypermissions:1.0.0'
     compile 'com.amap.api:3dmap:6.2.0'
     compile 'com.amap.api:map2d:5.2.0'
     compile 'com.amap.api:search:6.1.0'
@@ -91,4 +93,6 @@ dependencies {
     implementation 'com.aliyun.ams:alicloud-android-third-push:3.0.5@aar'
     implementation project(':faceplatform-ui')
     implementation project(':QrZxingLib')
+    implementation project(':tencentIm')
+    compile project(path: ':zhidianutils')
 }

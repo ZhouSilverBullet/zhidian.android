@@ -81,7 +81,7 @@ public class ChangeMobileActivity extends BaseActivity {
                 postUcenterSendCode();
                 break;
             case R.id.btn_make_sure:
-                String phoneValue = etNewMobile.getText().toString();
+                String phoneValue = etNewMobile.getText().toString().trim();
                 if (TextUtils.isEmpty(phoneValue)){
                     ToastUtil.show("请输入新手机号");
                     return;

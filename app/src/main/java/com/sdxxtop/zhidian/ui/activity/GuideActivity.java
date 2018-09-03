@@ -26,7 +26,7 @@ public class GuideActivity extends SplashActivity implements ViewPager.OnPageCha
     private ArrayList<ImageView> cacheView;
     private int[] imgs = {R.drawable.guide_one,
             R.drawable.guide_two,
-            R.drawable.guide_three,
+            R.drawable.guide_three, R.drawable.guide_four
     };
 
     @BindView(R.id.guide_pager)
@@ -114,7 +114,7 @@ public class GuideActivity extends SplashActivity implements ViewPager.OnPageCha
 
     @Override
     public void onPageSelected(int position) {
-        if (position == 2) {
+        if (position == imgs.length - 1) {
             btn.setVisibility(View.VISIBLE);
         } else {
             btn.setVisibility(View.INVISIBLE);

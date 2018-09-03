@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context="com.sdxxtop.zhidian.ui.activity.StatDayActivity">
+    tools:context="com.sdxxtop.zhidian.ui.activity.StatMonthActivity">
 
     <com.sdxxtop.zhidian.widget.SubTitleView
         android:id="@+id/statistical_title_view"

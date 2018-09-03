@@ -109,7 +109,7 @@ public class RaceSelectWindowAdapter extends BaseAdapter {
                 temp = temp + 1;
             }
         }
-        return temp == 9 || temp == 0;
+        return temp == getCount() - 1 || temp == 0;
     }
 
     public List<TestBean> getBeans() {

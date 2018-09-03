@@ -23,6 +23,7 @@ import com.sdxxtop.zhidian.http.RequestCallback;
 import com.sdxxtop.zhidian.http.RequestUtils;
 import com.sdxxtop.zhidian.popupwindow.SelectionDateWindow;
 import com.sdxxtop.zhidian.utils.DateUtil;
+import com.sdxxtop.zhidian.utils.StringUtil;
 import com.sdxxtop.zhidian.utils.ToastUtil;
 import com.sdxxtop.zhidian.widget.SubTitleView;
 
@@ -160,7 +161,7 @@ public class PunchCardActivity extends BaseApproverActivity {
         String eidtContent = contentEdit.getText().toString();
 
 
-        if (TextUtils.isEmpty(eidtContent)) {
+        if (StringUtil.isEmptyWithTrim(eidtContent)) {
             if (at == 2) {
                 showToast("请填写漏打卡理由");
             } else {

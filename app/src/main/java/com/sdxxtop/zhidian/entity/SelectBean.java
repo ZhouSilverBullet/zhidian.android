@@ -19,6 +19,11 @@ public class SelectBean implements MultiItemEntity, Serializable {
     public String name;
     public int type;
     public String color;
+    public String identify;
+    public boolean isPart;
+
+    //用于判断是否是parent的值,当删除的时候id相同的时候只会删除一个，从而解决问题
+    public boolean isParent;
 
 
     public static SelectBean createSelectBean(int type, Integer id, String finalName, String color) {
@@ -114,5 +119,13 @@ public class SelectBean implements MultiItemEntity, Serializable {
 
     public void setColor(String color) {
         this.color = color;
+    }
+
+    public void setIdentify(String identify) {
+        this.identify = identify;
+    }
+
+    public String getIdentify() {
+        return identify;
     }
 }

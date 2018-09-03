@@ -35,6 +35,8 @@
         <attr name="subTitle" format="string" />
         <attr name="rightText" format="string" />
         <attr name="rightTextIsShow" format="boolean" />
+        <attr name="rightImage" format="reference|color" />
+        <attr name="rightImageIsShow" format="boolean" />
         <attr name="rightTextColor" format="color" />
         <attr name="layoutBg" format="color" />
         <attr name="bottomLineIsShow" format="boolean" />

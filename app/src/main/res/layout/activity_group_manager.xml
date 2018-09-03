@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/backgroundcolor"
+    android:orientation="vertical"
+    tools:context="com.sdxxtop.zhidian.im.GroupManagerActivity">
+
+    <com.sdxxtop.zhidian.widget.SubTitleView
+        android:id="@+id/group_manager_title_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:subTitle="群管理" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:background="@color/white"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:paddingLeft="15dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:text="管理员"
+            android:textColor="#333333"
+            android:textSize="17sp" />
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/group_manager_recycler"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:paddingLeft="5dp" />
+
+        <LinearLayout
+            android:id="@+id/group_manager_right_image"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:paddingRight="15dp">
+
+            <ImageView
+                android:layout_width="19dp"
+                android:layout_height="19dp"
+                android:paddingLeft="8dp"
+                android:layout_gravity="center"
+                android:src="@drawable/next_step" />
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/line" />
+
+    <com.sdxxtop.zhidian.widget.TextAndTextView
+        android:id="@+id/group_manager_transfer_owner"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:tatv_text_right_value=""
+        app:tatv_text_view="转让群主" />
+</LinearLayout>

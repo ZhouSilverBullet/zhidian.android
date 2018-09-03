@@ -7,30 +7,39 @@ import android.os.Build;
 import android.os.Bundle;
 import android.os.IBinder;
 import android.support.annotation.Nullable;
-import android.support.annotation.RequiresApi;
 import android.support.v4.app.Fragment;
 import android.view.KeyEvent;
+import android.view.View;
 import android.widget.FrameLayout;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
+import android.widget.TextView;
+import android.widget.Toast;
 
+import com.luck.picture.lib.permissions.RxPermissions;
 import com.sdxxtop.zhidian.App;
 import com.sdxxtop.zhidian.AppSession;
 import com.sdxxtop.zhidian.R;
 import com.sdxxtop.zhidian.alipush.LocationService;
+import com.sdxxtop.zhidian.entity.AppInitBean;
+import com.sdxxtop.zhidian.http.IRequestListener;
+import com.sdxxtop.zhidian.http.Params;
+import com.sdxxtop.zhidian.http.RequestCallback;
+import com.sdxxtop.zhidian.http.RequestUtils;
+import com.sdxxtop.zhidian.im.ConversationFragment;
+import com.sdxxtop.zhidian.model.ConstantValue;
 import com.sdxxtop.zhidian.ui.base.BaseActivity;
 import com.sdxxtop.zhidian.ui.fragment.ApplyFragment;
 import com.sdxxtop.zhidian.ui.fragment.ContactFragment;
 import com.sdxxtop.zhidian.ui.fragment.HomeFragment;
 import com.sdxxtop.zhidian.ui.fragment.MineFragment;
 import com.sdxxtop.zhidian.utils.DeviceUtil;
+import com.sdxxtop.zhidian.utils.DownloadDialog;
 import com.sdxxtop.zhidian.utils.FDLocation;
-import com.sdxxtop.zhidian.utils.ToastUtil;
 
 import java.util.HashMap;
 import java.util.List;
 import java.util.Timer;
-import java.util.TimerTask;
 
 import butterknife.BindView;
 import pub.devrel.easypermissions.EasyPermissions;
@@ -56,6 +65,8 @@ public class MainActivity extends BaseActivity implements RadioGroup.OnCheckedCh
     RadioButton rbMine;
     @BindView(R.id.rg_home)
     RadioGroup rgHome;
+    @BindView(R.id.rb_conversation_red_count)
+    TextView redCountText;
 
     private HomeFragment homeFragment;
     private ApplyFragment applyFragment;
@@ -67,6 +78,8 @@ public class MainActivity extends BaseActivity implements RadioGroup.OnCheckedCh
     private LocalServiceConnection conn;
     private LocationService.LocationBind iBinder;
     private Timer tExit;
+    private ConversationFragment conversationFragment;
+    private RxPermissions rxPermissions;
 
     @Override
     protected int getActivityView() {
@@ -93,6 +106,9 @@ public class MainActivity extends BaseActivity implements RadioGroup.OnCheckedCh
     @Override
     protected void initVariables() {
         super.initVariables();
+
+        rxPermissions = new RxPermissions(this);
+
         homeTakeCardNotify(getIntent());
     }
 
@@ -130,6 +146,26 @@ public class MainActivity extends BaseActivity implements RadioGroup.OnCheckedCh
     }
 
     @Override
+    protected void initData() {
+        Params params = new Params();
+        params.put("pi", ConstantValue.pi);
+        RequestUtils.createRequest().postAppInit(params.getData()).enqueue(new RequestCallback<>(new IRequestListener<AppInitBean>() {
+            @Override
+            public void onSuccess(AppInitBean appInitBean) {
+                AppInitBean.DataEntity data = appInitBean.getData();
+                if (data != null) {
+                    DownloadDialog dialog = new DownloadDialog(mContext, data, rxPermissions);
+                    dialog.show();
+                }
+            }
+
+            @Override
+            public void onFailure(int code, String errorMsg) {
+            }
+        }));
+    }
+
+    @Override
     public void onCheckedChanged(RadioGroup group, int checkedId) {
         switch (checkedId) {
             case R.id.rb_main:
@@ -139,13 +175,11 @@ public class MainActivity extends BaseActivity implements RadioGroup.OnCheckedCh
                 replaceFragment(homeFragment);
 //                getSupportFragmentManager().beginTransaction().replace(R.id.fl_home, homeFragment).commitAllowingStateLoss();
                 break;
-            case R.id.rb_apply:
-                if (applyFragment == null) {
-                    applyFragment = new ApplyFragment();
+            case R.id.rb_conversation:
+                if (conversationFragment == null) {
+                    conversationFragment = new ConversationFragment();
                 }
-
-                replaceFragment(applyFragment);
-//                getSupportFragmentManager().beginTransaction().replace(R.id.fl_home, applyFragment).commitAllowingStateLoss();
+                replaceFragment(conversationFragment);
                 break;
             case R.id.rb_book:
                 if (contactFragment == null) {
@@ -153,6 +187,15 @@ public class MainActivity extends BaseActivity implements RadioGroup.OnCheckedCh
                 }
                 replaceFragment(contactFragment);
 //                getSupportFragmentManager().beginTransaction().replace(R.id.fl_home, contactFragment).commitAllowingStateLoss();
+                break;
+
+            case R.id.rb_apply:
+                if (applyFragment == null) {
+                    applyFragment = new ApplyFragment();
+                }
+
+                replaceFragment(applyFragment);
+//                getSupportFragmentManager().beginTransaction().replace(R.id.fl_home, applyFragment).commitAllowingStateLoss();
                 break;
             case R.id.rb_mine:
                 if (mineFragment == null) {
@@ -167,29 +210,29 @@ public class MainActivity extends BaseActivity implements RadioGroup.OnCheckedCh
     /**
      * 双击退出应用程序
      */
-    @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN)
+    private long mExitTime;
+
+    //对返回键进行监听
     @Override
     public boolean onKeyDown(int keyCode, KeyEvent event) {
-        if (keyCode == KeyEvent.KEYCODE_BACK) {
-            exitByDoubleClick();
+        if (keyCode == KeyEvent.KEYCODE_BACK && event.getRepeatCount() == 0) {
+            exit();
+            return true;
         }
-        return false;
+        return super.onKeyDown(keyCode, event);
     }
 
-    @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN)
-    private void exitByDoubleClick() {
-        if (!isExit) {
-            isExit = true;
-            ToastUtil.show("再按一次退出应用程序");
-            tExit = new Timer();
-            tExit.schedule(new TimerTask() {
-                @Override
-                public void run() {
-                    isExit = false;//取消退出
-                }
-            }, 2000);// 如果2秒钟内没有按下返回键，则启动定时器取消掉刚才执行的任务
+    //退出方法
+    private void exit() {
+        if ((System.currentTimeMillis() - mExitTime) > 2000) {
+            Toast.makeText(MainActivity.this, "再按一次退出应用", Toast.LENGTH_SHORT).show();
+            mExitTime = System.currentTimeMillis();
         } else {
-            finishAffinity();//可以关闭当前activity所属的activity栈中所有的activity
+            //用户退出处理
+            finish();
+            if (Build.VERSION.SDK_INT > Build.VERSION_CODES.JELLY_BEAN) {
+                finishAffinity();
+            }
         }
     }
 
@@ -258,7 +301,9 @@ public class MainActivity extends BaseActivity implements RadioGroup.OnCheckedCh
         App.getAppContext().setRun(false);
         AppSession.getInstance().clearSession();
 
-        unbindService(conn);
+        if (conn != null) {
+            unbindService(conn);
+        }
         if (tExit != null) {
             tExit.cancel();
         }
@@ -292,6 +337,30 @@ public class MainActivity extends BaseActivity implements RadioGroup.OnCheckedCh
     public void clearAlarm() {
         if (iBinder != null) {
             iBinder.clearCache();
+        }
+    }
+
+    /**
+     * 设置未读tab显示
+     */
+    public void setMsgUnread(long unRead) {
+        if (unRead <= 0) {
+            redCountText.setVisibility(View.INVISIBLE);
+        } else {
+            redCountText.setVisibility(View.VISIBLE);
+            String unReadStr = String.valueOf(unRead);
+            if (unRead < 10) {
+                redCountText.setBackgroundDrawable(mContext.getResources().getDrawable(com.tencent.qcloud.timchat.R.drawable.point1));
+            } else {
+                if (unRead > 99) {
+                    redCountText.setBackgroundDrawable(mContext.getResources().getDrawable(com.tencent.qcloud.timchat.R.drawable.point2));
+                    unReadStr = mContext.getResources().getString(com.tencent.qcloud.timchat.R.string.time_more);
+                }
+            }
+            if (unRead > 99) {
+                unReadStr = mContext.getResources().getString(com.tencent.qcloud.timchat.R.string.time_more);
+            }
+            redCountText.setText(unReadStr);
         }
     }
 

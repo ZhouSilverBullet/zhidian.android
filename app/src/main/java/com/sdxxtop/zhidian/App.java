@@ -6,6 +6,7 @@ import android.content.Context;
 import android.os.Bundle;
 import android.support.multidex.MultiDexApplication;
 import android.text.TextUtils;
+import android.util.Log;
 
 import com.alibaba.sdk.android.push.CloudPushService;
 import com.alibaba.sdk.android.push.CommonCallback;
@@ -25,6 +26,13 @@ import com.sdxxtop.zhidian.alipush.CrashHandler;
 import com.sdxxtop.zhidian.model.ConstantValue;
 import com.sdxxtop.zhidian.utils.LogUtils;
 import com.sdxxtop.zhidian.utils.PreferenceUtils;
+import com.tencent.imsdk.TIMGroupReceiveMessageOpt;
+import com.tencent.imsdk.TIMManager;
+import com.tencent.imsdk.TIMOfflinePushListener;
+import com.tencent.imsdk.TIMOfflinePushNotification;
+import com.tencent.qalsdk.sdk.MsfSdkUtils;
+import com.tencent.qcloud.timchat.MyApplication;
+import com.tencent.qcloud.timchat.utils.Foreground;
 
 import java.util.Stack;
 
@@ -60,6 +68,24 @@ public class App extends MultiDexApplication {
         registerActivityLifecycleCallbacks(new SwitchBackgroundCallbacks());
         FaceSDKManager.getInstance().initialize(this, "zhidian-face-android", "idl-license.face-android");
         initCloudChannel(this);
+        initTencentIM();
+    }
+
+    private void initTencentIM() {
+        MyApplication.setContext(getApplicationContext());
+        Foreground.init(this);
+        if (MsfSdkUtils.isMainProcess(this)) {
+            TIMManager.getInstance().setOfflinePushListener(new TIMOfflinePushListener() {
+                @Override
+                public void handleNotification(TIMOfflinePushNotification notification) {
+                    if (notification.getGroupReceiveMsgOpt() == TIMGroupReceiveMessageOpt.ReceiveAndNotify) {
+                        //消息被设置为需要提醒
+                        notification.doNotify(getApplicationContext(), R.mipmap.ic_launcher);
+                    }
+                }
+            });
+
+        }
     }
 
     public boolean isZhidianProcess(String process) {
@@ -179,20 +205,20 @@ public class App extends MultiDexApplication {
      *
      * @param applicationContext
      */
-    private void initCloudChannel(Context applicationContext) {
-
-        MiPushRegister.register(applicationContext, "2882303761517799604", "5531779955604");
-        // 注册方法会自动判断是否支持华为系统推送，如不支持会跳过注册。
-        HuaWeiRegister.register(applicationContext);
-//        //GCM/FCM辅助通道注册
-//        GcmRegister.register(this, sendId, applicationId); //sendId/applicationId为步骤获得的参数
-
+    private void initCloudChannel(final Context applicationContext) {
         PushServiceFactory.init(applicationContext);
-        CloudPushService pushService = PushServiceFactory.getCloudPushService();
+        final CloudPushService pushService = PushServiceFactory.getCloudPushService();
         pushService.register(applicationContext, new CommonCallback() {
             @Override
             public void onSuccess(String response) {
                 LogUtils.e(TAG, "init cloudchannel success");
+                MiPushRegister.register(applicationContext, "2882303761517799604", "5531779955604");
+//              // 注册方法会自动判断是否支持华为系统推送，如不支持会跳过注册。
+                HuaWeiRegister.register(applicationContext);
+//              //GCM/FCM辅助通道注册
+//               GcmRegister.register(this, sendId, applicationId); //sendId/applicationId为步骤获得的参数
+                String deviceId = pushService.getDeviceId();
+                Log.e("deviceId", "==" + deviceId);
             }
 
             @Override

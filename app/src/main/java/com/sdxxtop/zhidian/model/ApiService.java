@@ -17,13 +17,16 @@ import com.sdxxtop.zhidian.entity.ContactCollectBean;
 import com.sdxxtop.zhidian.entity.ContactIndexBean;
 import com.sdxxtop.zhidian.entity.ContactPartBean;
 import com.sdxxtop.zhidian.entity.ContactRemoveBean;
-import com.sdxxtop.zhidian.entity.ContactSearchBean;
+import com.sdxxtop.zhidian.entity.ContactTeacherBean;
 import com.sdxxtop.zhidian.entity.ContactUserInfoBean;
+import com.sdxxtop.zhidian.entity.CourseIndexBean;
 import com.sdxxtop.zhidian.entity.CreateCompanyBean;
 import com.sdxxtop.zhidian.entity.DeviceAddBean;
 import com.sdxxtop.zhidian.entity.DeviceIndexBean;
 import com.sdxxtop.zhidian.entity.DeviceModifyBean;
 import com.sdxxtop.zhidian.entity.DeviceModifyInfoBean;
+import com.sdxxtop.zhidian.entity.HomeworkDetailBean;
+import com.sdxxtop.zhidian.entity.HomeworkListBean;
 import com.sdxxtop.zhidian.entity.JoinByCodeBean;
 import com.sdxxtop.zhidian.entity.MainIndexBean;
 import com.sdxxtop.zhidian.entity.MainWeekBean;
@@ -38,6 +41,7 @@ import com.sdxxtop.zhidian.entity.NoticeDataBean;
 import com.sdxxtop.zhidian.entity.NoticeReadBean;
 import com.sdxxtop.zhidian.entity.NoticeShow2PeopleBean;
 import com.sdxxtop.zhidian.entity.NoticeShowPeopleBean;
+import com.sdxxtop.zhidian.entity.ParentListBean;
 import com.sdxxtop.zhidian.entity.ReadClassBean;
 import com.sdxxtop.zhidian.entity.RegisterRegBean;
 import com.sdxxtop.zhidian.entity.ReportIndexBean;
@@ -52,6 +56,8 @@ import com.sdxxtop.zhidian.entity.StatMonthBean;
 import com.sdxxtop.zhidian.entity.StatPartSignBean;
 import com.sdxxtop.zhidian.entity.StatPeopleBean;
 import com.sdxxtop.zhidian.entity.StateIndexBean;
+import com.sdxxtop.zhidian.entity.StudentAttendanceBean;
+import com.sdxxtop.zhidian.entity.StudentClassBean;
 import com.sdxxtop.zhidian.entity.SubmissionBean;
 import com.sdxxtop.zhidian.entity.UcenterIndexBean;
 import com.sdxxtop.zhidian.entity.UcenterModMobileBean;
@@ -63,6 +69,7 @@ import com.sdxxtop.zhidian.entity.UcenterRemindBean;
 import com.sdxxtop.zhidian.entity.UcenterSendCodeBean;
 import com.sdxxtop.zhidian.entity.UcenterSetBean;
 import com.sdxxtop.zhidian.entity.UcenterUserinfoBean;
+import com.sdxxtop.zhidian.entity.UserCourseBean;
 import com.sdxxtop.zhidian.entity.VerfiyCodeBean;
 import com.sdxxtop.zhidian.entity.VoteIndexBean;
 import com.sdxxtop.zhidian.entity.VoteReadBean;
@@ -153,6 +160,7 @@ public interface ApiService {
     @FormUrlEncoded
     @POST("main/day")
     Call<MainIndexBean> postMainDay(@Field("data") String data);
+
     /**
      * 查看指定日期打卡
      *
@@ -190,7 +198,7 @@ public interface ApiService {
 
     @FormUrlEncoded
     @POST("apply/{name}")
-    Call<ApproverIndexBean> postApplyApprover(@Path("name") String name ,@Field("data") String data);
+    Call<ApproverIndexBean> postApplyApprover(@Path("name") String name, @Field("data") String data);
 
     @FormUrlEncoded
     @POST("apply/day")
@@ -204,13 +212,28 @@ public interface ApiService {
     @POST("apply/getClassName")
     Call<ClassNameBean> postClassName(@Field("data") String data);
 
+    /**
+     * read
+     * readParent
+     *
+     * @param data
+     * @return
+     */
     @FormUrlEncoded
-    @POST("apply/read")
-    Call<SubmissionBean> postApplyRead(@Field("data") String data);
+    @POST("apply/{name}")
+    Call<SubmissionBean> postApplyRead(@Path("name") String name, @Field("data") String data);
 
+    /**
+     * modify
+     * modifyParent
+     *
+     * @param name
+     * @param data
+     * @return
+     */
     @FormUrlEncoded
-    @POST("apply/modify")
-    Call<BaseModel> postApplyModify(@Field("data") String data);
+    @POST("apply/{name}")
+    Call<BaseModel> postApplyModify(@Path("name") String name, @Field("data") String data);
 
     @FormUrlEncoded
     @POST("apply/batch")
@@ -255,7 +278,6 @@ public interface ApiService {
     //TODO  /*=============================↑我的考勤=============================*/
 
 
-
     //TODO  /*=============================↓我的外勤=============================*/
 
     //我的外勤
@@ -286,6 +308,7 @@ public interface ApiService {
     @FormUrlEncoded
     @POST("classes/addClass")
     Call<BaseModel> postClassAddClass(@Field("data") String data);
+
     //排班
     @FormUrlEncoded
     @POST("classes/modifyClass")
@@ -300,6 +323,7 @@ public interface ApiService {
     @FormUrlEncoded
     @POST("classes/checkRepeat")
     Call<BaseModel> postCheckRepeat(@Field("data") String data);
+
     //排班
     @FormUrlEncoded
     @POST("classes/readClass")
@@ -381,6 +405,7 @@ public interface ApiService {
     //TODO  /*=============================↑人脸识别=============================*/
 
     //TODO  /*=============================↓注册模块=============================*/
+
     /**
      * 发送验证码
      */
@@ -495,7 +520,7 @@ public interface ApiService {
      */
     @FormUrlEncoded
     @POST("contact/search")
-    Call<ContactSearchBean> postContactSearch(@Field("data") String data);
+    Call<ContactIndexBean> postContactSearch(@Field("data") String data);
 
     /**
      * 组织架构
@@ -512,11 +537,20 @@ public interface ApiService {
     Call<ContactPartBean> postContactPart(@Field("data") String data);
 
     /**
+     * 查看部门信息
+     * part
+     * organize
+     */
+    @FormUrlEncoded
+    @POST("contact/{name}")
+    Call<ContactTeacherBean> postContactTeacher(@Path("name") String name, @Field("data") String data);
+
+    /**
      * 查看个人信息
      */
     @FormUrlEncoded
-    @POST("contact/userInfo")
-    Call<ContactUserInfoBean> postContactUserInfo(@Field("data") String data);
+    @POST("contact/{name}")
+    Call<ContactUserInfoBean> postContactUserInfo(@Path("name") String name, @Field("data") String data);
 
     /**
      * 收藏和取消收藏用户
@@ -531,6 +565,20 @@ public interface ApiService {
     @FormUrlEncoded
     @POST("contact/remove")
     Call<ContactRemoveBean> postContactRemove(@Field("data") String data);
+
+    /**
+     * 查看个人信息
+     */
+    @FormUrlEncoded
+    @POST("contact/parentInfo")
+    Call<BaseModel> postContactParentInfo(@Field("data") String data);
+
+    /**
+     * 家长
+     */
+    @FormUrlEncoded
+    @POST("contact/parent")
+    Call<ParentListBean> postContactParent(@Field("data") String data);
 
 
     //TODO  /*=============================↓公告模块=============================*/
@@ -565,6 +613,7 @@ public interface ApiService {
     @FormUrlEncoded
     @POST("notice/showPeople")
     Call<NoticeShowPeopleBean> postShowNoticePeople(@Field("data") String data);
+
     /**
      * 公告阅读人详情
      */
@@ -789,4 +838,91 @@ public interface ApiService {
     Call<WorkListBean> postMsgReport(@Field("data") String data);
 
     //TODO  /*=============================↑工作汇报=============================*/
+    //TODO  /*=============================↓布置作业=============================*/
+
+    @Multipart
+    @POST("user/addTask")
+    Call<BaseModel> postUserAddTask(@PartMap HashMap<String, RequestBody> map);
+
+    @FormUrlEncoded
+    @POST("user/taskIndex")
+    Call<HomeworkListBean> postUserTaskIndex(@Field("data") String data);
+
+    @FormUrlEncoded
+    @POST("user/readTask")
+    Call<HomeworkDetailBean> postUserReadTask(@Field("data") String data);
+
+    @FormUrlEncoded
+    @POST("user/revokeTask")
+    Call<BaseModel> postUserRevokeTask(@Field("data") String data);
+
+    @FormUrlEncoded
+    @POST("user/course")
+    Call<UserCourseBean> postUserCourse(@Field("data") String data);
+
+    //TODO  /*=============================↑布置作业=============================*/
+
+    //TODO  /*=============================↓课程表=============================*/
+
+    @FormUrlEncoded
+    @POST("timetable/index")
+    Call<CourseIndexBean> postTimeTableIndex(@Field("data") String data);
+
+    @FormUrlEncoded
+    @POST("timetable/add")
+    Call<BaseModel> postTimeTableAdd(@Field("data") String data);
+
+    @FormUrlEncoded
+    @POST("timetable/checkRepeat")
+    Call<BaseModel> postTimeTableCheckRepeat(@Field("data") String data);
+
+    //TODO  /*=============================↑课程表=============================*/
+
+    //TODO  /*=============================↓学生考勤=============================*/
+
+    @FormUrlEncoded
+    @POST("student/index")
+    Call<StudentAttendanceBean> postStudentIndex(@Field("data") String data);
+
+    @FormUrlEncoded
+    @POST("student/modify")
+    Call<BaseModel> postStudentModify(@Field("data") String data);
+
+    @FormUrlEncoded
+    @POST("student/modifyClass")
+    Call<BaseModel> postStudentModifyClass(@Field("data") String data);
+
+    @FormUrlEncoded
+    @POST("student/showClass")
+    Call<StudentClassBean> postStudentShowClass(@Field("data") String data);
+
+    //TODO  /*=============================↑学生考勤=============================*/
+
+    //TODO  /*=============================↓腾讯im=============================*/
+
+    /**
+     * @param data name: createGroup  addGroupMember
+     * @return
+     */
+    @FormUrlEncoded
+    @POST("tim/{name}")
+    Call<BaseModel> postTimGroup(@Path("name") String name, @Field("data") String data);
+
+    @FormUrlEncoded
+    @POST("tim/getSign")
+    Call<BaseModel> postTimGetSign(@Field("data") String data);
+
+    @Multipart
+    @POST("tim/modifyUserImg")
+    Call<BaseModel> postTimModifyUserImg(@PartMap HashMap<String, RequestBody> map);
+
+    @FormUrlEncoded
+    @POST("tim/modifyGroupImg")
+    Call<BaseModel> postTimModifyGroupImg(@PartMap HashMap<String, RequestBody> map);
+
+    @FormUrlEncoded
+    @POST("tim/addFriend")
+    Call<BaseModel> postTimAddFriend(@Field("data") String data);
+
+    //TODO  /*=============================↑腾讯im=============================*/
 }

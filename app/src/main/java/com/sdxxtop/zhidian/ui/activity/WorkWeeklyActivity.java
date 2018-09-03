@@ -11,9 +11,11 @@ import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.google.gson.Gson;
 import com.google.gson.internal.LinkedTreeMap;
 import com.sdxxtop.zhidian.R;
 import com.sdxxtop.zhidian.adapter.ApplyHorCopyRecyclerAdapter;
+import com.sdxxtop.zhidian.entity.ReportReadBean;
 import com.sdxxtop.zhidian.entity.SelectBean;
 import com.sdxxtop.zhidian.http.BaseModel;
 import com.sdxxtop.zhidian.http.IRequestListener;
@@ -23,10 +25,13 @@ import com.sdxxtop.zhidian.http.RequestUtils;
 import com.sdxxtop.zhidian.ui.base.BaseActivity;
 import com.sdxxtop.zhidian.utils.Date2Util;
 import com.sdxxtop.zhidian.utils.DateUtil;
+import com.sdxxtop.zhidian.utils.StringUtil;
 import com.sdxxtop.zhidian.widget.SubTitleView;
 import com.sdxxtop.zhidian.widget.TextAndTextView;
+import com.tencent.qcloud.timchat.model.ChatBean;
 
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.HashSet;
@@ -89,6 +94,8 @@ public class WorkWeeklyActivity extends BaseActivity {
     protected ApplyHorCopyRecyclerAdapter copyAdapter;
     protected ApplyHorCopyRecyclerAdapter reviewerAdapter;
 
+    private int chatActivityValue;
+
     @Override
     protected int getActivityView() {
         return R.layout.activity_work_weekly;
@@ -100,6 +107,8 @@ public class WorkWeeklyActivity extends BaseActivity {
         if (getIntent() != null) {
             mPosition = getIntent().getIntExtra("position", -1);
             mType = mPosition + 1;
+
+            chatActivityValue = getIntent().getIntExtra("chat_activity", -1);
         }
     }
 
@@ -244,19 +253,19 @@ public class WorkWeeklyActivity extends BaseActivity {
 
     private void submit() {
         //总结
-        String summaryValue = mContent1.getText().toString();
+        final String summaryValue = mContent1.getText().toString();
         //计划
-        String planValue = mContent2.getText().toString();
+        final String planValue = mContent2.getText().toString();
         //问题 可以为空
-        String problemValue = mContent3.getText().toString();
+        final String problemValue = mContent3.getText().toString();
 
-        if (TextUtils.isEmpty(summaryValue)) {
+        if (StringUtil.isEmptyWithTrim(summaryValue)) {
 //            showToast("工作总结不能为空");
             showToast("请输入" + mTitle1.getText().toString());
             return;
         }
 
-        if (TextUtils.isEmpty(planValue)) {
+        if (StringUtil.isEmptyWithTrim(planValue)) {
 //            showToast("工作计划不能为空");
             showToast("请输入" + mTitle2.getText().toString());
             return;
@@ -307,8 +316,12 @@ public class WorkWeeklyActivity extends BaseActivity {
                     report_id = (String) ((LinkedTreeMap) data).get("report_id");
                     if (!TextUtils.isEmpty(report_id)) {
                         int reportInt = Integer.parseInt(report_id);
-                        MineWorkDetailActivity.startWorkDetailActivity(mContext, MineWorkActivity.TYPE_SEND, reportInt);
-                        finish();
+                        if (chatActivityValue == 0) { //chat的周报
+                            toChatJson(reportInt, 0);
+                        } else {
+                            MineWorkDetailActivity.startWorkDetailActivity(mContext, MineWorkActivity.TYPE_SEND, reportInt);
+                            finish();
+                        }
                     }
                 }
             }
@@ -319,6 +332,58 @@ public class WorkWeeklyActivity extends BaseActivity {
                 showToast(errorMsg);
             }
         }));
+    }
+
+    private void toChatJson(final int reportInt, final int type) {
+
+        Params params = new Params();
+        params.put("ri", reportInt);
+
+        RequestUtils.createRequest().postReportRead(params.getData()).enqueue(new RequestCallback<>(new IRequestListener<ReportReadBean>() {
+            @Override
+            public void onSuccess(ReportReadBean reportReadBean) {
+                closeProgressDialog();
+                ReportReadBean.DataBean data = reportReadBean.getData();
+                if (data != null) {
+                    ReportReadBean.DataBean.ReportBean report = data.getReport();
+                    ChatBean chatBean = new ChatBean();
+                    int reportType = report.getReport_type();
+                    chatBean.setType(reportType);
+                    chatBean.setPlan(report.getPlan());
+                    chatBean.setUserAction(1);
+                    chatBean.setProblem(report.getProblem());
+                    chatBean.setReport_id(reportInt);
+                    chatBean.setSummary(report.getSummary());
+                    chatBean.setReviewer_id(getReviewerValue());
+                    String name = report.getName();
+                    switch (reportType) {
+                        case 1: //日报
+                            chatBean.setTitle(name + "的日报");
+                            break;
+                        case 2: //周报
+                            chatBean.setTitle(name + "的周报");
+                            break;
+                        default: //月报
+                            chatBean.setTitle(name + "的月报");
+                            break;
+                    }
+
+                    String s = new Gson().toJson(chatBean);
+                    Intent intent = new Intent();
+                    intent.putExtra("report_json", s);
+                    intent.putExtra("report_type", reportType);
+                    setResult(100, intent);
+                    finish();
+                }
+            }
+
+            @Override
+            public void onFailure(int code, String errorMsg) {
+                closeProgressDialog();
+                showToast(errorMsg);
+            }
+        }));
+
     }
 
     private void showDailySelectorWindow() {
@@ -490,16 +555,89 @@ public class WorkWeeklyActivity extends BaseActivity {
             return;
         }
         if (IS_COPY == type) {
+            copyPeople(data);
+//            selectUserSetCopy = (HashSet<Integer>) data.getSerializableExtra("userList");
+//            selectDataCopy = (List<SelectBean>) data.getSerializableExtra("selectData");
+//            selectDataCopy.add(new SelectBean());
+//            copyAdapter.replaceData(selectDataCopy);
+        } else {
+            reviewerPeople(data);
+//            selectUserSetReviewer = (HashSet<Integer>) data.getSerializableExtra("userList");
+//            selectDataReviewer = (List<SelectBean>) data.getSerializableExtra("selectData");
+//            selectDataReviewer.add(new SelectBean());
+//            reviewerAdapter.replaceData(selectDataReviewer);
+        }
+    }
+
+
+    private void copyPeople(Intent data) {
+        if (data == null) {
+            return;
+        }
+
+        if (selectUserSetCopy != null) {
+            HashSet<Integer> tempSelectUserSet = selectUserSetCopy;
             selectUserSetCopy = (HashSet<Integer>) data.getSerializableExtra("userList");
+            selectUserSetCopy.addAll(tempSelectUserSet);
+        } else {
+            selectUserSetCopy = (HashSet<Integer>) data.getSerializableExtra("userList");
+        }
+
+        if (selectDataCopy != null && selectDataCopy.size() > 0) {
+            List<SelectBean> tempSelectData = selectDataCopy;
+            tempSelectData.remove(tempSelectData.size() - 1);
             selectDataCopy = (List<SelectBean>) data.getSerializableExtra("selectData");
-            selectDataCopy.add(new SelectBean());
-            copyAdapter.replaceData(selectDataCopy);
+            List<SelectBean> centerSelectData = new ArrayList<>(selectDataCopy);
+            for (SelectBean centerSelectDatum : centerSelectData) {
+                for (SelectBean tempSelectDatum : tempSelectData) {
+                    if (centerSelectDatum.getId().equals(tempSelectDatum.getId())) {
+                        selectDataCopy.remove(centerSelectDatum);
+                    }
+                }
+            }
+
+            //删除相同的最后再加入集合中
+            selectDataCopy.addAll(0, tempSelectData);
+        } else {
+            selectDataCopy = (List<SelectBean>) data.getSerializableExtra("selectData");
+        }
+        selectDataCopy.add(new SelectBean());
+        copyAdapter.replaceData(selectDataCopy);
+    }
+
+    private void reviewerPeople(Intent data) {
+        if (data == null) {
+            return;
+        }
+
+        if (selectUserSetReviewer != null) {
+            HashSet<Integer> tempSelectUserSet = selectUserSetReviewer;
+            selectUserSetReviewer = (HashSet<Integer>) data.getSerializableExtra("userList");
+            selectUserSetReviewer.addAll(tempSelectUserSet);
         } else {
             selectUserSetReviewer = (HashSet<Integer>) data.getSerializableExtra("userList");
-            selectDataReviewer = (List<SelectBean>) data.getSerializableExtra("selectData");
-            selectDataReviewer.add(new SelectBean());
-            reviewerAdapter.replaceData(selectDataReviewer);
         }
+
+        if (selectDataReviewer != null && selectDataReviewer.size() > 0) {
+            List<SelectBean> tempSelectData = selectDataReviewer;
+            tempSelectData.remove(tempSelectData.size() - 1);
+            selectDataReviewer = (List<SelectBean>) data.getSerializableExtra("selectData");
+            List<SelectBean> centerSelectData = new ArrayList<>(selectDataReviewer);
+            for (SelectBean centerSelectDatum : centerSelectData) {
+                for (SelectBean tempSelectDatum : tempSelectData) {
+                    if (centerSelectDatum.getId().equals(tempSelectDatum.getId())) {
+                        selectDataReviewer.remove(centerSelectDatum);
+                    }
+                }
+            }
+
+            //删除相同的最后再加入集合中
+            selectDataReviewer.addAll(0, tempSelectData);
+        } else {
+            selectDataReviewer = (List<SelectBean>) data.getSerializableExtra("selectData");
+        }
+        selectDataReviewer.add(new SelectBean());
+        reviewerAdapter.replaceData(selectDataReviewer);
     }
 
     protected String getCopyValue() {

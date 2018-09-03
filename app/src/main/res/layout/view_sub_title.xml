@@ -51,6 +51,15 @@
         android:textSize="18sp"
         android:visibility="gone" />
 
+    <ImageView
+        android:id="@+id/view_sub_title_right_img"
+        android:layout_width="18dp"
+        android:layout_height="18dp"
+        android:layout_alignParentRight="true"
+        android:layout_centerVertical="true"
+        android:layout_marginRight="17dp"
+        android:visibility="visible" />
+
     <View
         android:id="@+id/view_sub_title_bottom_line"
         android:layout_width="match_parent"

@@ -12,7 +12,7 @@
         android:layout_height="wrap_content"
         app:leftText="返回"
         app:subTitle="通讯录" />
-    
+
     <!--app:rightText="取消"-->
     <!--app:rightTextIsShow="true"-->
 
@@ -20,7 +20,7 @@
         android:id="@+id/linkView"
         android:layout_width="match_parent"
         android:layout_height="@dimen/y95"
-        android:layout_below="@+id/notice_recive_title_view"></com.sdxxtop.zhidian.widget.LinkManView>
+        android:layout_below="@+id/notice_recive_title_view" />
 
     <RelativeLayout
         android:id="@+id/cb_check_all_background"
@@ -51,45 +51,13 @@
         android:id="@+id/lvShow"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_above="@+id/rl_bottom"
-        android:layout_below="@+id/cb_check_all_background"></ListView>
+        android:layout_above="@+id/bottom_select_view"
+        android:layout_below="@+id/cb_check_all_background"
+        android:listSelector="@color/white" />
 
-    <RelativeLayout
-        android:id="@+id/rl_bottom"
+    <com.sdxxtop.zhidian.widget.BottomSelectorView
+        android:id="@+id/bottom_select_view"
         android:layout_width="match_parent"
-        android:layout_height="71dp"
-        android:layout_alignParentBottom="true"
-        android:orientation="vertical">
-
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:background="@color/recycler_text_item_line_color" />
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:layout_centerVertical="true"
-            android:orientation="horizontal">
-
-            <android.support.v7.widget.RecyclerView
-                android:id="@+id/notice_recive_recycler"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1" />
-
-            <Button
-                android:id="@+id/btn_make_sure"
-                android:layout_width="@dimen/x224"
-                android:layout_height="46dp"
-                android:layout_alignParentRight="true"
-                android:layout_centerVertical="true"
-                android:layout_marginRight="@dimen/x31"
-                android:background="@drawable/btn_make_suer"
-                android:text="确定"
-                android:textColor="@color/bai"
-                android:textSize="@dimen/y32" />
-        </LinearLayout>
-
-    </RelativeLayout>
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true" />
 </RelativeLayout>

@@ -29,7 +29,7 @@
             android:layout_toRightOf="@id/text_and_text_check"
             android:text="上班时间"
             android:textColor="@color/textcolor"
-            android:textSize="17dp" />
+            android:textSize="17sp" />
 
         <TextView
             android:id="@+id/text_and_text_hint"
@@ -55,7 +55,7 @@
             android:lines="1"
             android:text="09:00"
             android:textColor="@color/texthintcolor"
-            android:textSize="17dp" />
+            android:textSize="17sp" />
 
         <TextView
             android:id="@+id/text_and_text_right_image"

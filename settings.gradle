@@ -1,1 +1,1 @@
-include ':app', ':iOS_Dialog_Library', ':Recyclerlibrary', ':calendarview', ':android-pickers', ':MPChartLib', ':swipemenulib', ':faceplatform-ui', ':faceplatform-release', ':QrZxingLib'
+include ':app', ':iOS_Dialog_Library', ':Recyclerlibrary', ':calendarview', ':android-pickers', ':MPChartLib', ':swipemenulib', ':faceplatform-ui', ':faceplatform-release', ':QrZxingLib', ':sdk', ':tencentIm', ':ui', ':presentation', ':tlslibrary', ':zhidianutils'

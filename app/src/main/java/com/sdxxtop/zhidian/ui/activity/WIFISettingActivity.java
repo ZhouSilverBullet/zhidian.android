@@ -92,14 +92,15 @@ public class WIFISettingActivity extends BaseActivity {
                     ToastUtil.show("请连接WiFi后，再进入当前界面");
                     return;
                 }
-                if (etOname.getText().toString().equals("")) {
+                String s = etOname.getText().toString();
+                if (StringUtil.isEmptyWithTrim(s)) {
                     ToastUtil.show("请输入别名");
                     return;
                 }
                 LogUtils.e("LOG", "ssid+ss" + bssid);
                 Intent intent = new Intent();
                 intent.putExtra("wn", tvWifiShow.getText().toString());
-                intent.putExtra("nn", etOname.getText().toString());
+                intent.putExtra("nn", s);
                 intent.putExtra("bi", bssid);
                 setResult(200, intent);
                 finish();

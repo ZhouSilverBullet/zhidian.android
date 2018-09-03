@@ -75,7 +75,7 @@
                         android:layout_marginTop="4dp"
                         android:text=""
                         android:textColor="@color/textcolor"
-                        android:textSize="18sp" />
+                        android:textSize="15sp" />
 
                     <ImageView
                         android:id="@+id/cb_collect"
@@ -238,7 +238,36 @@
                 android:visibility="gone"
                 app:ctv_text_name="紧急联系人" />
 
+            <com.sdxxtop.zhidian.widget.ContactTextView
+                android:id="@+id/contact_part_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:visibility="gone"
+                app:ctv_text_name="部门" />
+
+            <com.sdxxtop.zhidian.widget.ContactTextView
+                android:id="@+id/contact_grade_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:visibility="gone"
+                app:ctv_text_name="年级" />
+
+            <com.sdxxtop.zhidian.widget.ContactTextView
+                android:id="@+id/contact_class_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:visibility="gone"
+                app:ctv_text_name="班级" />
+
+            <com.sdxxtop.zhidian.widget.ContactTextView
+                android:id="@+id/contact_relation"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:visibility="gone"
+                app:ctv_text_name="与学生关系" />
+
             <RelativeLayout
+                android:id="@+id/contact_device_layout"
                 android:layout_width="match_parent"
                 android:layout_height="47dp"
                 android:background="@color/white">
@@ -287,6 +316,46 @@
             <View
                 android:layout_width="match_parent"
                 android:layout_height="30dp"
+                android:background="@color/backgroundcolor" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <Button
+                    android:id="@+id/contact_send_btn"
+                    style="?android:attr/borderlessButtonStyle"
+                    android:layout_width="match_parent"
+                    android:layout_height="35dp"
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginRight="16dp"
+                    android:background="@drawable/blue_btn_selector"
+                    android:gravity="center"
+                    android:text="发消息"
+                    android:textColor="@color/white"
+                    android:textSize="16sp"
+                    android:visibility="gone" />
+
+                <Button
+                    android:id="@+id/contact_voice_btn"
+                    style="?android:attr/borderlessButtonStyle"
+                    android:layout_width="match_parent"
+                    android:layout_height="35dp"
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginRight="16dp"
+                    android:layout_marginTop="10dp"
+                    android:background="@drawable/gray_item_selector"
+                    android:gravity="center"
+                    android:text="语音通话"
+                    android:textColor="@color/textcolor"
+                    android:textSize="16sp"
+                    android:visibility="gone" />
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
                 android:background="@color/backgroundcolor" />
         </LinearLayout>
     </com.sdxxtop.zhidian.widget.KnowHeightScrollView>

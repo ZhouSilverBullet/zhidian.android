@@ -132,7 +132,7 @@ public class LeaveActivity extends BaseApproverActivity implements View.OnClickL
     private void submit() {
         String startTime = tvStartTime.getText().toString();
         String endTime = tvEndTime.getText().toString();
-        String eidtContent = contentEdit.getText().toString();
+        String eidtContent = contentEdit.getText().toString().trim();
 
 
         if (selectorType == -1) {

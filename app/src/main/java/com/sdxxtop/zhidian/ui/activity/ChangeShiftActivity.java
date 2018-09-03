@@ -201,12 +201,12 @@ public class ChangeShiftActivity extends BaseApproverActivity {
     }
 
     private void submit() {
-        String changeStartTime = tvChangeStartTime.getText().toString();
-        String changeEndTime = tvChangeEndTime.getText().toString();
-        String otherChangeStartTime = tvOtherChangeStartTime.getText().toString();
-        String otherChangeEndTime = tvOtherChangeEndTime.getText().toString();
+        String changeStartTime = tvChangeStartTime.getText().toString().trim();
+        String changeEndTime = tvChangeEndTime.getText().toString().trim();
+        String otherChangeStartTime = tvOtherChangeStartTime.getText().toString().trim();
+        String otherChangeEndTime = tvOtherChangeEndTime.getText().toString().trim();
 
-        String eidtContent = contentEdit.getText().toString();
+        String eidtContent = contentEdit.getText().toString().trim();
 
         if (TextUtils.isEmpty(changeStartTime) || TextUtils.isEmpty(changeEndTime)) {
             showToast("请填写调班人开始时间或结束时间");

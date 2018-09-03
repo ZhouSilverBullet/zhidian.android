@@ -15,7 +15,7 @@ import android.widget.TextView;
 import com.sdxxtop.zhidian.R;
 import com.sdxxtop.zhidian.adapter.TablayoutFragmentPagerAdapter;
 import com.sdxxtop.zhidian.ui.base.BaseActivity;
-import com.sdxxtop.zhidian.ui.fragment.ApplyListFragment;
+import com.sdxxtop.zhidian.ui.fragment.ApplyExamineListFragment;
 import com.sdxxtop.zhidian.widget.SubTitleView;
 
 import java.util.ArrayList;
@@ -72,7 +72,7 @@ public class ExamineActivity extends BaseActivity {
 
     private void handleBeforeFragment() {
         int currentItem = viewPagerApplied.getCurrentItem();
-        ApplyListFragment fragment = (ApplyListFragment) fragmentList.get(currentItem);
+        ApplyExamineListFragment fragment = (ApplyExamineListFragment) fragmentList.get(currentItem);
         fragment.showWindow();
     }
 
@@ -86,9 +86,9 @@ public class ExamineActivity extends BaseActivity {
         strList.add("已处理");
         strList.add("抄送");
 
-        fragmentList.add(ApplyListFragment.newInstance(pending, "approval", 1));
-        fragmentList.add(ApplyListFragment.newInstance(processed, "approval", 1));
-        fragmentList.add(ApplyListFragment.newInstance(copy, "approval", 1));
+        fragmentList.add(ApplyExamineListFragment.newInstance(pending, "approval", 1));
+        fragmentList.add(ApplyExamineListFragment.newInstance(processed, "approval", 1));
+        fragmentList.add(ApplyExamineListFragment.newInstance(copy, "approval", 1));
 
         tabApplied.setTabMode(TabLayout.MODE_FIXED);
         tabApplied.setTabGravity(TabLayout.GRAVITY_FILL);
@@ -141,7 +141,7 @@ public class ExamineActivity extends BaseActivity {
                 //加入0.4s的间隔
                 editChangeTextValue = "";
                 if (!TextUtils.isEmpty(s)) {
-                    editChangeTextValue = s.toString();
+                    editChangeTextValue = s.toString().trim();
                     searchCancelText.setVisibility(View.VISIBLE);
                 } else {
                     searchCancelText.setVisibility(View.GONE);
@@ -162,7 +162,7 @@ public class ExamineActivity extends BaseActivity {
 
     private void refreshFragment(String editChangeTextValue) {
         int currentItem = viewPagerApplied.getCurrentItem();
-        ApplyListFragment fragment = (ApplyListFragment) fragmentList.get(currentItem);
+        ApplyExamineListFragment fragment = (ApplyExamineListFragment) fragmentList.get(currentItem);
         fragment.searchName(editChangeTextValue);
     }
 

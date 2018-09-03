@@ -1,5 +1,7 @@
 package com.sdxxtop.zhidian.entity;
 
+import com.sdxxtop.zhidian.http.BaseModel;
+
 /**
  * 作者：CaiCM
  * 日期：2018/3/22  时间：13:24
@@ -7,41 +9,7 @@ package com.sdxxtop.zhidian.entity;
  * 描述：APP_SDK初始化实体
  */
 
-public class AppInitBean {
-
-    /**
-     * code : 200
-     * msg : 成功
-     * data : {"apk_url":"http:://cdn.sdxxtop.com/apk/test.apk","version_code":"10100","force_update":0}
-     */
-
-    private int code;
-    private String msg;
-    private DataEntity data;
-
-    public int getCode() {
-        return code;
-    }
-
-    public void setCode(int code) {
-        this.code = code;
-    }
-
-    public String getMsg() {
-        return msg;
-    }
-
-    public void setMsg(String msg) {
-        this.msg = msg;
-    }
-
-    public DataEntity getData() {
-        return data;
-    }
-
-    public void setData(DataEntity data) {
-        this.data = data;
-    }
+public class AppInitBean extends BaseModel<AppInitBean.DataEntity> {
 
     public static class DataEntity {
         /**
@@ -53,6 +21,8 @@ public class AppInitBean {
         private String apk_url;
         private String version_code;
         private int force_update;
+        private String content;
+        private String version_name;
 
         public String getApk_url() {
             return apk_url;
@@ -77,14 +47,21 @@ public class AppInitBean {
         public void setForce_update(int force_update) {
             this.force_update = force_update;
         }
-    }
 
-    @Override
-    public String toString() {
-        return "AppInitBean{" +
-                "code=" + code +
-                ", msg='" + msg + '\'' +
-                ", data=" + data +
-                '}';
+        public String getContent() {
+            return content;
+        }
+
+        public void setContent(String content) {
+            this.content = content;
+        }
+
+        public String getVersion_name() {
+            return version_name;
+        }
+
+        public void setVersion_name(String version_name) {
+            this.version_name = version_name;
+        }
     }
 }

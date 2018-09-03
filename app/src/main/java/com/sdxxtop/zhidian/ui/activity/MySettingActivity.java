@@ -19,6 +19,7 @@ import com.sdxxtop.zhidian.ui.base.BaseActivity;
 import com.sdxxtop.zhidian.utils.NetUtil;
 import com.sdxxtop.zhidian.utils.PreferenceUtils;
 import com.sdxxtop.zhidian.utils.ToastUtil;
+import com.tencent.imsdk.TIMManager;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -140,7 +141,11 @@ public class MySettingActivity extends BaseActivity {
                                 AnalyticsHome.unbindAccount();
                                 Intent intentNormalLogin = new Intent(mContext, NormalLoginActivity.class);
                                 startActivity(intentNormalLogin);
+                                PreferenceUtils.getInstance(mContext).saveParam(ConstantValue.LOGIN_TIME_TEMP, -1);
                                 finishAffinity();//可以关闭当前activity所属的activity栈中所有的activity
+
+                                //腾讯im退出
+                                TIMManager.getInstance().logout(null);
                             }
                         })
                         .setNegativeButton("取消", new View.OnClickListener() {

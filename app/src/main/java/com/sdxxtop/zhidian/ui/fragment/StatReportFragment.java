@@ -260,7 +260,7 @@ public class StatReportFragment extends BaseFragment {
                         public void onSuccess(BaseModel baseModel) {
                             isOpenChange(reportStatusBtn, !open);
                             closeProgressDialog();
-                            showToast(baseModel.msg);
+//                            showToast(baseModel.msg);
                             item.setOpen(!open);
                             notifyDataSetChanged();
 
@@ -324,7 +324,7 @@ public class StatReportFragment extends BaseFragment {
                         public void onSuccess(BaseModel baseModel) {
                             isOpenChange(reportStatusBtn, !open);
                             closeProgressDialog();
-                            showToast(baseModel.msg);
+//                            showToast(baseModel.msg);
                             item.setOpen(!open);
                             notifyDataSetChanged();
 

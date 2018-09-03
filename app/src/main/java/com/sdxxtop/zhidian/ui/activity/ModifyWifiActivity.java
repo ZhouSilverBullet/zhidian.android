@@ -3,6 +3,7 @@ package com.sdxxtop.zhidian.ui.activity;
 import android.content.Intent;
 import android.net.wifi.WifiInfo;
 import android.net.wifi.WifiManager;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -14,6 +15,7 @@ import com.sdxxtop.zhidian.entity.DeviceModifyInfoBean;
 import com.sdxxtop.zhidian.http.RequestUtils;
 import com.sdxxtop.zhidian.ui.base.BaseActivity;
 import com.sdxxtop.zhidian.utils.NetUtil;
+import com.sdxxtop.zhidian.utils.StringUtil;
 import com.sdxxtop.zhidian.utils.ToastUtil;
 
 import java.util.HashMap;
@@ -42,6 +44,7 @@ public class ModifyWifiActivity extends BaseActivity {
     private String wifiName = "";
     private String di;
     private String wifi_name;
+    private String name;
 
     @Override
     protected int getActivityView() {
@@ -57,15 +60,20 @@ public class ModifyWifiActivity extends BaseActivity {
     protected void initData() {
         Intent intent = getIntent();
         di = intent.getStringExtra("di");
+        name = intent.getStringExtra("name");
         wifi_name = intent.getStringExtra("wifi_name");
-        etOname.setText(wifi_name);
+        etOname.setText(name);
         etOname.setSelection(etOname.getText().length());
         WifiManager wifiManager = (WifiManager) getApplicationContext().getSystemService(WIFI_SERVICE);
         if (wifiManager != null) {
             wifiInfo = wifiManager.getConnectionInfo();
             bssid = wifiInfo.getBSSID();
             wifiName = wifiInfo.getSSID();
-            tvWifiShow.setText(wifiName.replace("\"", ""));
+            if (TextUtils.isEmpty(wifi_name)) {
+                tvWifiShow.setText(wifiName.replace("\"", ""));
+            } else {
+                tvWifiShow.setText(wifi_name);
+            }
         }
     }
 
@@ -77,7 +85,8 @@ public class ModifyWifiActivity extends BaseActivity {
                     ToastUtil.show("请连接WiFi后，在进入当前界面");
                     return;
                 }
-                if (etOname.getText().toString().equals("")) {
+                String s = etOname.getText().toString();
+                if (StringUtil.isEmptyWithTrim(s)) {
                     ToastUtil.show("请输入别名");
                     return;
                 }

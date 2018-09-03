@@ -178,6 +178,11 @@ public class MineInitiateVoteActivity extends BaseActivity {
 
     private void handleData(VoteReadBean.DataBean data) {
         int is_vote = data.getIs_vote();
+        int is_show = data.getIs_show();
+
+        //发布即可见吗
+        boolean isSendShow = is_show == 2;
+
         //是否公开
         final int is_hide = data.getIs_hide();
         if (is_hide == 1) { //1公开 2匿名
@@ -413,30 +418,37 @@ public class MineInitiateVoteActivity extends BaseActivity {
 
                     if (type == 2 && selectorSingle) { //是去评论的前提下判断
                         addBtnLayout.setVisibility(View.VISIBLE);
+                    } else {
+                        addBtnLayout.setVisibility(View.GONE);
                     }
 
                     for (int i = 0; i < option.size(); i++) {
                         VoteReadBean.DataBean.OptionBean optionBean = option.get(i);
                         MineInitiateMarkView markView = new MineInitiateMarkView(mContext);
-                        markView.setIsVote(isVote);
+                        if (selectorSingle) {
+                            markView.setIsVote(isVote);
+                        } else {
+                            markView.setIsVote(optionBean.getIs_vote() == 1);
+                        }
                         markView.setSelectorSingle(selectorSingle);
+                        markView.setSendShow(isSendShow);
                         markView.setShowPinfenBtn(type == 2);
                         markView.setOptionBean(optionBean);
-                        if (isDuiXiang) {
-                            markView.setMarkListener(new MineInitiateMarkView.MarkListener() {
-                                @Override
-                                public void mark(int rating, VoteReadBean.DataBean.OptionBean optionBean) {
-                                    if (rating == 0) {
-                                        showToast("评分不能为0分");
-                                        return;
-                                    }
-                                    option_id = optionBean.getOption_id();
-                                    progressValue = rating;
-                                    //进行网络请求
-                                    send(is_hide == 2);
+//                        if (isDuiXiang) {
+                        markView.setMarkListener(new MineInitiateMarkView.MarkListener() {
+                            @Override
+                            public void mark(int rating, VoteReadBean.DataBean.OptionBean optionBean) {
+                                if (rating == 0) {
+                                    showToast("评分不能为0分");
+                                    return;
                                 }
-                            });
-                        }
+                                option_id = optionBean.getOption_id();
+                                progressValue = rating;
+                                //进行网络请求
+                                send(is_hide == 2);
+                            }
+                        });
+//                        }
                         markAddLayout.addView(markView);
                     }
                 } else {
@@ -451,6 +463,7 @@ public class MineInitiateVoteActivity extends BaseActivity {
                         seekBarView.setType(type == 1);
                         seekBarView.setIsVote(isVote);
                         seekBarView.setSelectorSingle(selectorSingle);
+                        seekBarView.setSendShow(isSendShow);
                         seekBarView.setData(score, optionBean);
                         seekBarView.setSubmitListener(new MineInitiateSeekBarView.SubmitListener() {
 
@@ -478,6 +491,7 @@ public class MineInitiateVoteActivity extends BaseActivity {
                             seekBarView.setType(type == 1);
                             seekBarView.setIsVote(isVote);
                             seekBarView.setSelectorSingle(selectorSingle);
+                            seekBarView.setSendShow(isSendShow);
                             seekBarView.setData(score, optionBean);
                             seekBarView.setSubmitListener(new MineInitiateSeekBarView.SubmitListener() {
 

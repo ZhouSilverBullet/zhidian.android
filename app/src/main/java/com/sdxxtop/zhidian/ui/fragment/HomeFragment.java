@@ -395,7 +395,12 @@ public class HomeFragment extends BaseFragment implements Handler.Callback {
                     public void onSuccess(MainIndexBean mainIndexBean) {
                         MainIndexBean.DataBean data = mainIndexBean.getData();
                         if (data != null) {
-                            handleMainIndexData(data, true);
+                            if (isToday()) {
+                                handleMainIndexData(data, true);
+                            } else {
+                                CalendarDay selectedDate = calendarView.getSelectedDate();
+                                loadDayData((DateUtil.getSelectorDate(selectedDate)));
+                            }
                         }
                     }
 
@@ -409,7 +414,7 @@ public class HomeFragment extends BaseFragment implements Handler.Callback {
     /**
      * 指定日期打卡
      */
-    private void loadDayData(String signDate) {
+    private void loadDayData(final String signDate) {
         canTakeCard = 2;
         Params params = new Params();
         params.put("sd", signDate);
@@ -452,6 +457,52 @@ public class HomeFragment extends BaseFragment implements Handler.Callback {
 
     private int locationNotifyIndex = 0;
 
+    private void handleFirstMainIndexData(MainIndexBean.DataBean data) {
+        String company_name = data.getCompany_name();
+        homeCompanyNameText.setText(StringUtil.stringNotNull(company_name));
+
+        if (isToday()) {
+            int sign_time = data.getSign_time();
+            //转化成
+            signTime = sign_time * 60 * 1000;
+            workType = data.getWork_type();
+        }
+
+        List<String> abnormal = data.getAbnormal();
+        if (abnormal != null) {
+            if (eventDecorator != null) {
+                calendarView.removeDecorator(eventDecorator);
+            }
+            //等请求回来时候小红点设置
+            eventDecorator = new EventDecorator(Color.RED, abnormal);
+            calendarView.addDecorator(eventDecorator);
+        }
+
+        int remindMin = data.getRemind_min();
+        if (remindMin != 0 && data.getIs_rest() == 0 && data.getIs_need() != 2) { //为0时就是不提醒
+            String sign_date = data.getSign_date();
+            if (!TextUtils.isEmpty(sign_date)) {
+                String[] signDate = sign_date.split(",");
+                List<String> signDateList = Arrays.asList(signDate);
+                List<MainIndexBean.DataBean.SignLogBean> sign_log = data.getSign_log();
+                String[] split = signDate[0].split(" ");
+                long logLongDate = 0;
+                if (sign_log.size() > 0) {
+                    MainIndexBean.DataBean.SignLogBean signLogBean = sign_log.get(sign_log.size() - 1);
+                    String sysDate = signLogBean.getSys_date();
+                    sysDate = split[0] + sysDate;
+                    logLongDate = DateUtil.convertTimeToLong(sysDate, "yyyy-MM-dd HH:mm:ss");
+                }
+
+                if (getActivity() instanceof MainActivity) {
+                    ((MainActivity) getActivity()).startLocationService(signDateList, workType == 2, remindMin * 60 * 1000, logLongDate);
+//                        LocationService.startLocationService(getActivity(), signDateList, workType == 2, remindMin * 60 * 1000, logLongDate);
+                }
+//                    LocationPushHelper.getInstance().setLocation(signDateList, workType == 2, remindMin * 60 * 1000);
+            }
+        }
+    }
+
     private void handleMainIndexData(MainIndexBean.DataBean data, boolean isFirst) {
         if (calendarView == null) {
             return;
@@ -482,17 +533,17 @@ public class HomeFragment extends BaseFragment implements Handler.Callback {
             String company_name = data.getCompany_name();
             homeCompanyNameText.setText(StringUtil.stringNotNull(company_name));
 
-            int msg_num = data.getMsg_num();
-            if (msg_num == 0) {
-                homeDotText.setVisibility(View.INVISIBLE);
-            } else {
-                homeDotText.setVisibility(View.VISIBLE);
-                if (msg_num > 99) {
-                    homeDotText.setText("99+");
-                } else {
-                    homeDotText.setText(msg_num + "");
-                }
-            }
+//            int msg_num = data.getMsg_num();
+//            if (msg_num == 0) {
+//                homeDotText.setVisibility(View.INVISIBLE);
+//            } else {
+//                homeDotText.setVisibility(View.VISIBLE);
+//                if (msg_num > 99) {
+//                    homeDotText.setText("99+");
+//                } else {
+//                    homeDotText.setText(msg_num + "");
+//                }
+//            }
 
             if (isToday()) {
                 int sign_time = data.getSign_time();
@@ -510,6 +561,7 @@ public class HomeFragment extends BaseFragment implements Handler.Callback {
 
         List<MainIndexBean.DataBean.SignLogBean> signLogList = data.getSign_log();
         if (!TextUtils.isEmpty(sign_date) && !TextUtils.isEmpty(sign_name) && signLogList != null) {
+            Collections.sort(signLogList);
             //进行缓存的一个最后是一个真的数据
             List<MainIndexBean.DataBean.SignLogBean> tempSignLogList = new ArrayList<>();
             List<MainIndexBean.DataBean.SignLogBean> removeLogList = new ArrayList<>(signLogList);
@@ -788,7 +840,7 @@ public class HomeFragment extends BaseFragment implements Handler.Callback {
                 String sign_date = data.getSign_date();
                 if (!TextUtils.isEmpty(sign_date)) {
                     String[] signDate = sign_date.split(",");
-                    List<String> signDateList =  Arrays.asList(signDate);
+                    List<String> signDateList = Arrays.asList(signDate);
                     List<MainIndexBean.DataBean.SignLogBean> sign_log = data.getSign_log();
                     String[] split = signDate[0].split(" ");
                     long logLongDate = 0;
@@ -984,7 +1036,12 @@ public class HomeFragment extends BaseFragment implements Handler.Callback {
 
                 break;
             case ChangeCardDialog.WIFI:
-                params.put("bi", DeviceUtil.getWifiId(mContext));
+                String wifiId = DeviceUtil.getWifiId(mContext);
+                if (TextUtils.isEmpty(wifiId)) {
+                    showToast("请连接WiFi");
+                    return;
+                }
+                params.put("bi", wifiId);
                 break;
 //            case ChangeCardDialog.FACE:
 //

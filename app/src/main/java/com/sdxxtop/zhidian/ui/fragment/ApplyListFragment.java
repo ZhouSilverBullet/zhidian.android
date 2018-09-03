@@ -123,6 +123,8 @@ public class ApplyListFragment extends BaseFragment {
             public void onLoadMore(RefreshLayout refreshLayout) {
                 if (mAdapter != null) {
                     loadData(mAdapter.getData().size());
+                } else {
+                    refreshLayout.finishLoadMore(300);
                 }
             }
         });
@@ -188,7 +190,7 @@ public class ApplyListFragment extends BaseFragment {
         }
         params.put("st", status);
         RequestUtils.createRequest().postApplyList(path, params.getData()).enqueue(
-                new RequestCallback<>(new IRequestListener<ApplyListBean>() {
+                new RequestCallback<>(mContext, new IRequestListener<ApplyListBean>() {
                     @Override
                     public void onSuccess(ApplyListBean applyListBean) {
                         ApplyListBean.DataBean data = applyListBean.getData();
@@ -197,8 +199,11 @@ public class ApplyListFragment extends BaseFragment {
                             ApplyListBean.DataBean.UserinfoBean userInfo = data.getUserinfo();
                             if (userInfo != null) {
                                 for (ApplyListBean.DataBean.ApplyBean applyBean : apply) {
-                                    applyBean.setName(userInfo.getName());
-                                    applyBean.setImg(userInfo.getImg());
+                                    String name = applyBean.getName();
+                                    if (TextUtils.isEmpty(name)) {
+                                        applyBean.setName(userInfo.getName());
+                                        applyBean.setImg(userInfo.getImg());
+                                    }
                                 }
                             }
                             //如果全选选中了，我回来就给它全部标记为true选中
@@ -294,6 +299,7 @@ public class ApplyListFragment extends BaseFragment {
         if (data.size() > 0) {
             for (ApplyListBean.DataBean.ApplyBean datum : data) {
                 if (!datum.isCheck()) { //有一个没选中就当全部没选中
+                    setCheck(oneKeySelectText, false);
                     return;
                 }
             }
@@ -451,6 +457,7 @@ public class ApplyListFragment extends BaseFragment {
         }
 
         List<ApplyListBean.DataBean.ApplyBean> data = mAdapter.getData();
+
         for (int i = 0; i < data.size(); i++) {
             ApplyListBean.DataBean.ApplyBean applyBean = data.get(i);
             if (applyBean.isCheck()) {
@@ -461,6 +468,18 @@ public class ApplyListFragment extends BaseFragment {
             value = value.substring(0, value.length() - 1);
         }
         return value;
+    }
+
+    public boolean isMaxCount() {
+        if (mAdapter == null) {
+            return false;
+        }
+
+        if (mAdapter.getData().size() > 30) {
+            showToast("最多审批30个申请");
+            return true;
+        }
+        return false;
     }
 
     /**

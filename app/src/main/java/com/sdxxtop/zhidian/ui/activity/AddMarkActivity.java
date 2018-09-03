@@ -223,7 +223,7 @@ public class AddMarkActivity extends BaseActivity {
 
     private void send() {
         //标题判断
-        String editTile = editTitle.getText().toString();
+        String editTile = editTitle.getText().toString().trim();
 
         if (TextUtils.isEmpty(editTile)) {
             showToast("请输入标题");

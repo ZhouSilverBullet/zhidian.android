@@ -106,19 +106,24 @@ public class CreateCompFirstFragment extends BaseFragment {
                 onOptionPicker();
                 break;
             case R.id.btn_next:
-                if (etCompQname.getText().toString().length() == 0) {
+                String compQname = etCompQname.getText().toString().trim();
+                if (TextUtils.isEmpty(compQname)) {
                     ToastUtil.show("公司姓名不能为空");
                     return;
                 }
-                if (etCompJname.getText().toString().length() == 0) {
+
+                String compJname = etCompJname.getText().toString().trim();
+                if (TextUtils.isEmpty(compJname)) {
                     ToastUtil.show("公司简称不能为空");
                     return;
                 }
-                if (tvSelectLocation.getText().toString().length() == 0) {
+                String selectLocation = tvSelectLocation.getText().toString().trim();
+                if (TextUtils.isEmpty(selectLocation)) {
                     ToastUtil.show("公司地址不能为空");
                     return;
                 }
-                if (etCompLocation.getText().toString().length() == 0) {
+                String compLocation = etCompLocation.getText().toString().trim();
+                if (TextUtils.isEmpty(compLocation)) {
                     ToastUtil.show("公司详细地址不能为空");
                     return;
                 }

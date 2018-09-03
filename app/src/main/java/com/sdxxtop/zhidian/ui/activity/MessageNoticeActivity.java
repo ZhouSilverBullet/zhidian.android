@@ -93,7 +93,7 @@ public class MessageNoticeActivity extends BaseActivity implements CompoundButto
         Calendar instance = Calendar.getInstance();
         switch (view.getId()) {
             case R.id.tv_stat_time_show:
-                String startTimeShow = tvStatTimeShow.getText().toString();
+                String startTimeShow = tvStatTimeShow.getText().toString().trim();
                 if (!TextUtils.isEmpty(startTimeShow)) {
                     Long aLong = DateUtil.convertTimeToLong(startTimeShow, "HH:mm");
                     instance.setTime(new Date(aLong));
@@ -101,7 +101,7 @@ public class MessageNoticeActivity extends BaseActivity implements CompoundButto
                 onStartTimePicker(1, instance);
                 break;
             case R.id.tv_end_time_show:
-                String endTimeShow = tvEndTimeShow.getText().toString();
+                String endTimeShow = tvEndTimeShow.getText().toString().trim();
                 if (!TextUtils.isEmpty(endTimeShow)) {
                     Long aLong = DateUtil.convertTimeToLong(endTimeShow, "HH:mm");
                     instance.setTime(new Date(aLong));

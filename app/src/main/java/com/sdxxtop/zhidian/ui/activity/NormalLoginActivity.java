@@ -35,11 +35,15 @@ import com.sdxxtop.zhidian.http.IRequestListener;
 import com.sdxxtop.zhidian.http.Params;
 import com.sdxxtop.zhidian.http.RequestCallback;
 import com.sdxxtop.zhidian.http.RequestUtils;
+import com.sdxxtop.zhidian.im.IMLoginCallback;
+import com.sdxxtop.zhidian.im.IMLoginHelper;
 import com.sdxxtop.zhidian.model.ConstantValue;
 import com.sdxxtop.zhidian.ui.base.BaseActivity;
 import com.sdxxtop.zhidian.utils.DeviceUtil;
+import com.sdxxtop.zhidian.utils.LogUtils;
 import com.sdxxtop.zhidian.utils.PhoneTextWatcher;
 import com.sdxxtop.zhidian.utils.PreferenceUtils;
+import com.sdxxtop.zhidian.utils.StringUtil;
 import com.sdxxtop.zhidian.utils.ToastUtil;
 
 import java.util.List;
@@ -204,19 +208,27 @@ public class NormalLoginActivity extends BaseActivity implements CompoundButton.
 
             case R.id.btn_login:
 
-                if (etPhonenum.getText().toString().length() == 0 && etPwd.getText().toString().length() == 0) {
+                String phoneNum = etPhonenum.getText().toString();
+                String pwdNum = etPwd.getText().toString();
+                if (StringUtil.isEmptyWithTrim(phoneNum)) {
                     ToastUtil.show("请输入正确的手机号码！");
                     return;
                 }
-                if (etPhonenum.getText().toString().length() < 13) {
-                    ToastUtil.show("请输入正确的手机号码！");
-                    return;
-                }
-                if (etPwd.getText().toString().length() < 6) {
+
+                if (StringUtil.isEmptyWithTrim(pwdNum)) {
                     ToastUtil.show("密码格式错误");
                     return;
                 }
-                if (etPwd.getText().toString().length() > 16) {
+
+                if (phoneNum.length() < 13) {
+                    ToastUtil.show("请输入正确的手机号码！");
+                    return;
+                }
+                if (pwdNum.length() < 6) {
+                    ToastUtil.show("密码格式错误");
+                    return;
+                }
+                if (pwdNum.length() > 16) {
                     ToastUtil.show("密码格式错误");
                     return;
                 }
@@ -245,9 +257,9 @@ public class NormalLoginActivity extends BaseActivity implements CompoundButton.
         RequestUtils.createRequest().postNormalLogin(params.getData()).enqueue(new RequestCallback<NormalLoginBean>(new IRequestListener<NormalLoginBean>() {
             @Override
             public void onSuccess(NormalLoginBean loginBean) {
-                closeProgressDialog();
                 NormalLoginBean.DataEntity data = loginBean.getData();
                 if (data == null) {
+                    closeProgressDialog();
                     ToastUtil.show("登录失败");
                     return;
                 }
@@ -273,15 +285,14 @@ public class NormalLoginActivity extends BaseActivity implements CompoundButton.
                 //登陆完成之后进行存储相关登陆数据
                 AppSession.getInstance().addOrRefreshAccountBean(etPhonenum.getText().toString(), etPwd.getText().toString(), company_id, userid + "");
 
-
-                //判断是否有company_id 来决定跳转到哪个界面（5.11 21:22 ccm改过）
+                //判断是否有company_id 来决定跳转到哪个界面
                 if (TextUtils.isEmpty(company_id)) {
+                    closeProgressDialog();
                     Intent intent = new Intent(NormalLoginActivity.this, LoginSuccessActivity.class);
                     startActivity(intent);
                 } else {
-                    Intent intent = new Intent(NormalLoginActivity.this, MainActivity.class);
-                    startActivity(intent);
-                    finish();
+                    String signature = data.getSignature();
+                    tlsLogin(company_id, userid + "", signature);
                 }
             }
 
@@ -293,43 +304,23 @@ public class NormalLoginActivity extends BaseActivity implements CompoundButton.
         }));
     }
 
-    /**
-     * 调取自动登陆请求
-     */
-    private void postAutoLogin() {
-        Params params = new Params();
-        params.putDeviceNo();
-        params.put("at", PreferenceUtils.getInstance(mContext).getStringParam(ConstantValue.LOGIN_TOKEN));
-        params.put("pi", ConstantValue.pi);
-        params.put("dm", PreferenceUtils.getInstance(mContext).getStringParam(ConstantValue.DEVICE_NAME));
-        showProgressDialog("正在登录");
-        RequestUtils.createRequest().postAutoLogin(params.getData()).enqueue(new RequestCallback<>(new IRequestListener<NormalLoginBean>() {
+    private void tlsLogin(String company_id, String userid, final String signature) {
+        IMLoginHelper.getInstance().tIMLogin(company_id, userid, signature, new IMLoginCallback() {
             @Override
-            public void onSuccess(NormalLoginBean normalLoginBean) {
+            public void onError(int i, String s) {
                 closeProgressDialog();
-                NormalLoginBean.DataEntity data = normalLoginBean.getData();
-                if (data != null) {
-                    PreferenceUtils.getInstance(mContext).saveParam(ConstantValue.LOGIN_TIME_TEMP, data.getExpire_time());
-                    PreferenceUtils.getInstance(mContext).saveParam(ConstantValue.LOGIN_TOKEN, data.getAuto_token());
-                    String company_id = data.getCompany_id();
-                    PreferenceUtils.getInstance(mContext).saveParam(ConstantValue.COMPANY_ID, company_id);
-                    if ("0".equals(company_id)) {
-                        Intent intent = new Intent(NormalLoginActivity.this, LoginSuccessActivity.class);
-                        startActivity(intent);
-                    } else {
-                        Intent intent = new Intent(NormalLoginActivity.this, MainActivity.class);
-                        startActivity(intent);
-                    }
-                    finish();
-                }
+                showToast(s + "i");
+                LogUtils.e("i " + i + "\ns = " + s);
             }
 
             @Override
-            public void onFailure(int code, String errorMsg) {
+            public void onSuccess() {
                 closeProgressDialog();
-                showToast(errorMsg);
+                Intent intent = new Intent(NormalLoginActivity.this, MainActivity.class);
+                startActivity(intent);
+                finish();
             }
-        }));
+        });
     }
 
     /*

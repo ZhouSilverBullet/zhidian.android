@@ -1,0 +1,202 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:focusable="true"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/systemMessage"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginBottom="5dp"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/time_background"
+        android:paddingBottom="2dp"
+        android:paddingLeft="8dp"
+        android:paddingRight="8dp"
+        android:paddingTop="2dp"
+        android:textColor="@color/white"
+        android:textSize="11sp"
+        android:visibility="gone" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <RelativeLayout
+            android:id="@+id/leftPanel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginTop="5dp">
+
+            <!--<com.tencent.qcloud.ui.CircleImageView-->
+            <!--android:id="@+id/leftAvatar"-->
+            <!--android:layout_width="35dp"-->
+            <!--android:layout_height="35dp"-->
+            <!--android:layout_alignParentLeft="true"-->
+            <!--android:src="@drawable/head_other" />-->
+
+            <RelativeLayout
+                android:id="@+id/chat_left_layout"
+                android:layout_width="42dp"
+                android:layout_height="42dp"
+                android:layout_alignParentLeft="true">
+
+                <de.hdodenhof.circleimageview.CircleImageView
+                    android:id="@+id/chat_left_circle_img"
+                    android:layout_width="42dp"
+                    android:layout_height="42dp" />
+
+                <TextView
+                    android:id="@+id/chat_left_short_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:text=""
+                    android:textSize="14sp" />
+            </RelativeLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_toRightOf="@id/chat_left_layout"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/sender"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="3dp"
+                    android:layout_marginLeft="6dp"
+                    android:text="name"
+                    android:textColor="@color/text_gray1"
+                    android:textSize="12sp" />
+
+                <RelativeLayout
+                    android:id="@+id/leftMessage"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="5dp"
+                    android:background="@drawable/bubble_gray2"
+                    android:clickable="true"
+                    android:gravity="center"
+                    android:longClickable="true"
+                    android:paddingBottom="5dp"
+                    android:paddingLeft="10dp"
+                    android:paddingRight="5dp"
+                    android:paddingTop="5dp" />
+            </LinearLayout>
+
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/rightPanel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_marginBottom="10dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginTop="5dp">
+
+            <!--<com.tencent.qcloud.ui.CircleImageView-->
+            <!--android:id="@+id/rightAvatar"-->
+            <!--android:layout_width="35dp"-->
+            <!--android:layout_height="35dp"-->
+            <!--android:layout_alignParentRight="true"-->
+            <!--android:src="@drawable/head_me" />-->
+
+            <RelativeLayout
+                android:id="@+id/chat_right_layout"
+                android:layout_width="42dp"
+                android:layout_height="42dp"
+                android:layout_alignParentBottom="true"
+                android:layout_alignParentRight="true">
+
+                <de.hdodenhof.circleimageview.CircleImageView
+                    android:id="@+id/chat_right_circle_img"
+                    android:layout_width="42dp"
+                    android:layout_height="42dp" />
+
+                <TextView
+                    android:id="@+id/chat_right_short_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:text=""
+                    android:textSize="14sp" />
+            </RelativeLayout>
+
+            <FrameLayout
+                android:id="@+id/rightMessage_layout"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_toLeftOf="@id/chat_right_layout"
+                android:paddingBottom="8dp">
+
+                <RelativeLayout
+                    android:id="@+id/rightMessage"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/bubble_blue2"
+                    android:clickable="true"
+                    android:gravity="center"
+                    android:longClickable="true"
+                    android:paddingBottom="5dp"
+                    android:paddingLeft="5dp"
+                    android:paddingRight="10dp"
+                    android:paddingTop="5dp" />
+            </FrameLayout>
+
+
+            <TextView
+                android:id="@+id/rightDesc"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignRight="@id/rightMessage_layout"
+                android:layout_below="@id/rightMessage_layout"
+                android:layout_marginRight="3dp"
+                android:textColor="@color/text_gray1"
+                android:textSize="12sp"
+                android:visibility="gone" />
+
+            <RelativeLayout
+                android:id="@+id/sendStatus"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_toLeftOf="@id/rightMessage_layout">
+
+                <ProgressBar
+                    android:id="@+id/sending"
+                    android:layout_width="15dp"
+                    android:layout_height="15dp" />
+
+                <ImageView
+                    android:id="@+id/sendError"
+                    android:layout_width="15dp"
+                    android:layout_height="15dp"
+                    android:src="@drawable/ic_error"
+                    android:visibility="gone" />
+
+            </RelativeLayout>
+
+            <TextView
+                android:id="@+id/message_is_read"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="未读" />
+
+        </RelativeLayout>
+    </RelativeLayout>
+
+
+</LinearLayout>

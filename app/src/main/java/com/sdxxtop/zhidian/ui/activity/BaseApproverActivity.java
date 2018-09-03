@@ -161,8 +161,36 @@ public abstract class BaseApproverActivity extends BaseActivity implements Apply
         if (data == null) {
             return;
         }
-        selectUserSet = (HashSet<Integer>) data.getSerializableExtra("userList");
-        selectData = (List<SelectBean>) data.getSerializableExtra("selectData");
+
+        HashSet<Integer> tempSelectUserSet = null;
+        if (selectUserSet != null) {
+            tempSelectUserSet = selectUserSet;
+            selectUserSet = (HashSet<Integer>) data.getSerializableExtra("userList");
+            selectUserSet.addAll(tempSelectUserSet);
+        } else {
+            selectUserSet = (HashSet<Integer>) data.getSerializableExtra("userList");
+        }
+
+
+        List<SelectBean> tempSelectData = null;
+        if (selectData != null && selectData.size() > 0) {
+            tempSelectData = selectData;
+            tempSelectData.remove(tempSelectData.size() - 1);
+            selectData = (List<SelectBean>) data.getSerializableExtra("selectData");
+            List<SelectBean> centerSelectData = new ArrayList<>(selectData);
+            for (SelectBean centerSelectDatum : centerSelectData) {
+                for (SelectBean tempSelectDatum : tempSelectData) {
+                    if (centerSelectDatum.getId().equals(tempSelectDatum.getId())) {
+                        selectData.remove(centerSelectDatum);
+                    }
+                }
+            }
+
+            //删除相同的最后再加入集合中
+            selectData.addAll(0, tempSelectData);
+        } else {
+            selectData = (List<SelectBean>) data.getSerializableExtra("selectData");
+        }
         selectData.add(new SelectBean());
         copyAdapter.replaceData(selectData);
     }
@@ -300,7 +328,7 @@ public abstract class BaseApproverActivity extends BaseActivity implements Apply
         }
     }
 
-    protected void editTextCountControl(@IdRes int editId , final EditText contentEdit, final TextView changeText) {
+    protected void editTextCountControl(@IdRes int editId, final EditText contentEdit, final TextView changeText) {
         ViewUtil.editTextInScrollView(editId, contentEdit);
         contentEdit.addTextChangedListener(new TextWatcher() {
             @Override

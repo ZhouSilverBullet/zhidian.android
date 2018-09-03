@@ -26,6 +26,7 @@ import com.sdxxtop.zhidian.http.IRequestListener;
 import com.sdxxtop.zhidian.http.Params;
 import com.sdxxtop.zhidian.http.RequestCallback;
 import com.sdxxtop.zhidian.http.RequestUtils;
+import com.sdxxtop.zhidian.im.IMLoginHelper;
 import com.sdxxtop.zhidian.model.ConstantValue;
 import com.sdxxtop.zhidian.ui.base.BaseActivity;
 import com.sdxxtop.zhidian.ui.fragment.ApplyListFragment;
@@ -215,6 +216,12 @@ public class SubmissionActivity extends BaseActivity {
             case 10:
                 value = "手机解绑";
                 break;
+            case 21:
+                value = "请假";
+                break;
+            case 22:
+                value = "拜访";
+                break;
         }
         titleView.setTitleValue(value);
     }
@@ -227,7 +234,13 @@ public class SubmissionActivity extends BaseActivity {
             params.put("ci", company_id);
         }
         params.put("ai", applyId);
-        RequestUtils.createRequest().postApplyRead(params.getData()).enqueue(new RequestCallback<SubmissionBean>(new IRequestListener<SubmissionBean>() {
+        String name = "";
+        if (at < 21) {
+            name = "read";
+        } else {
+            name = "readParent";
+        }
+        RequestUtils.createRequest().postApplyRead(name, params.getData()).enqueue(new RequestCallback<SubmissionBean>(new IRequestListener<SubmissionBean>() {
             @Override
             public void onSuccess(SubmissionBean submissionBean) {
                 SubmissionBean.DataBean data = submissionBean.getData();
@@ -254,12 +267,14 @@ public class SubmissionActivity extends BaseActivity {
                     .setPositiveButton("", new View.OnClickListener() {
                         @Override
                         public void onClick(View v) {
-                            AppSession.getInstance().setCompanyId(companyId);
-                            //刷新首页数据
-                            EventBus.getDefault().post(new MessageCenterEvent());
-                            //刷新我的
-                            EventBus.getDefault().post(new ChangeCompanyEvent());
-                            EventBus.getDefault().post(new PostSuccessEvent());
+
+                            toChangeIm(companyId);
+//                            AppSession.getInstance().setCompanyId(companyId);
+//                            //刷新首页数据
+//                            EventBus.getDefault().post(new MessageCenterEvent());
+//                            //刷新我的
+//                            EventBus.getDefault().post(new ChangeCompanyEvent());
+//                            EventBus.getDefault().post(new PostSuccessEvent());
 //                            PreferenceUtils.getInstance(mContext).saveParam(ConstantValue.COMPANY_ID, companyId);
                         }
                     }).setNegativeButton("", new View.OnClickListener() {
@@ -270,6 +285,24 @@ public class SubmissionActivity extends BaseActivity {
                 }
             }).show();
         }
+    }
+
+    private void toChangeIm(final String company_id) {
+        IMLoginHelper.getInstance().changeUserSignature(mContext, company_id + "", new IRequestListener<BaseModel>() {
+            @Override
+            public void onSuccess(BaseModel baseModel) {
+                AppSession.getInstance().setCompanyId(company_id);
+                //刷新首页数据
+                EventBus.getDefault().post(new MessageCenterEvent());
+                //刷新我的
+                EventBus.getDefault().post(new ChangeCompanyEvent());
+                EventBus.getDefault().post(new PostSuccessEvent());
+            }
+
+            @Override
+            public void onFailure(int code, String errorMsg) {
+            }
+        });
     }
 
     protected void loadData(SubmissionBean.DataBean data) {
@@ -318,16 +351,30 @@ public class SubmissionActivity extends BaseActivity {
             }
         }
 
-
+        int status = data.getStatus();
+        String uId = PreferenceUtils.getInstance(mContext).getStringParam(ConstantValue.USER_ID);
         //审批人item
         SubmissionBean.DataBean.ApproverNameBean approver_name = data.getApprover_name();
-        ViewUtil.setColorItemView(approver_name.getImg(), approver_name.getName(), tvApproverText, approverCircleImage);
-        //拿当前用户id来对比
-        String uId = PreferenceUtils.getInstance(mContext).getStringParam(ConstantValue.USER_ID);
-        if ((approver_name.getUserid() + "").equals(uId)) {
-            tvApproverName.setText("我");
+
+        if (status == 3) {
+            meTime.setText(DateUtil.getReplaceLineTime(add_time));
+            SubmissionBean.DataBean.UserinfoBean userinfo = data.getUserinfo();
+            ViewUtil.setColorItemView(userinfo.getImg(), userinfo.getName(), tvApproverText, approverCircleImage);
+
+            if ((userinfo.getUserid() + "").equals(uId)) {
+                tvApproverName.setText("我");
+            } else {
+                tvApproverName.setText(userinfo.getName());
+            }
         } else {
-            tvApproverName.setText(approver_name.getName());
+            ViewUtil.setColorItemView(approver_name.getImg(), approver_name.getName(), tvApproverText, approverCircleImage);
+            //拿当前用户id来对比
+
+            if ((approver_name.getUserid() + "").equals(uId)) {
+                tvApproverName.setText("我");
+            } else {
+                tvApproverName.setText(approver_name.getName());
+            }
         }
 
         //自己的item
@@ -338,11 +385,15 @@ public class SubmissionActivity extends BaseActivity {
         if ((userinfo.getUserid() + "").equals(uId)) {
             tvMyName.setText("我");
         } else {
-            tvMyName.setText(userinfo.getName());
+            if (data.getApply_type() == 21 || data.getApply_type() == 22) {
+                tvMyName.setText(data.getStudent_name() + "家长\n(" + userinfo.getName() + ")");
+            } else {
+                tvMyName.setText(userinfo.getName());
+            }
         }
 
 //        if (approvalActivityValue == -1) {
-        approverTextStatus(data, data.getStatus());
+        approverTextStatus(data, status);
 //        }
 
         String sign_time = "";
@@ -361,6 +412,7 @@ public class SubmissionActivity extends BaseActivity {
         String partAndUser = "";
         String group_part;
         String group_user;
+        int leave_type;
         switch (data.getApply_type()) {
             case 1: //请假
 //                String getidmt = getidmt(start_time, end_time);
@@ -372,7 +424,7 @@ public class SubmissionActivity extends BaseActivity {
                 stringList.add(applyShowTime);
                 arrayAdapter = new ArrayAdapter(this, R.layout.item_submiss_list, stringList);
                 lvListEvent.setAdapter(arrayAdapter);
-                int leave_type = data.getLeave_type();
+                leave_type = data.getLeave_type();
                 String name = LeaveUtil.getName(leave_type);
                 tvContent.setText(name);
                 break;
@@ -432,11 +484,15 @@ public class SubmissionActivity extends BaseActivity {
                 break;
             case 5:
                 tvContent.setText("加班");
-                if (!TextUtils.isEmpty(leaveTime)) {
-                    stringList.add("加班" + leaveTime);
-                }
+//                if (!TextUtils.isEmpty(leaveTime)) {
+//                    stringList.add("加班" + leaveTime);
+//                }
                 applyShowTime = DateUtil.getApplyShowTime(start_time, end_time);
-                stringList.add(LeaveUtil.getOverTimeType(data.getOvertime_type()));
+                if (TextUtils.isEmpty(leaveTime)) {
+                    stringList.add(LeaveUtil.getOverTimeType(data.getOvertime_type()));
+                } else {
+                    stringList.add(LeaveUtil.getOverTimeType(data.getOvertime_type()) + "：" + leaveTime);
+                }
                 stringList.add(applyShowTime);
                 arrayAdapter = new ArrayAdapter(this, R.layout.item_submiss_list, stringList);
                 lvListEvent.setAdapter(arrayAdapter);
@@ -446,6 +502,8 @@ public class SubmissionActivity extends BaseActivity {
                 overTimeName.setText(LeaveUtil.getOverTimePosition(data.getOvertime_position()));
                 break;
             case 6: //集体请假类型
+                leave_type = data.getLeave_type();
+                tvContent.setText(LeaveUtil.getName(leave_type));
 
                 if (!TextUtils.isEmpty(leaveTime)) {
                     stringList.add("集体请假" + leaveTime);
@@ -457,9 +515,9 @@ public class SubmissionActivity extends BaseActivity {
                 group_part = data.getGroup_part();
                 group_user = data.getGroup_user();
                 if (!TextUtils.isEmpty(group_part) && !TextUtils.isEmpty(group_user)) {
-                    partAndUser = "部门:" + group_part + "\n人员：" + group_user;
+                    partAndUser = "部门：" + group_part + "\n人员：" + group_user;
                 } else if (!TextUtils.isEmpty(group_part)) {
-                    partAndUser = "部门:" + group_part;
+                    partAndUser = "部门：" + group_part;
                 } else if (!TextUtils.isEmpty(group_user)) {
                     partAndUser = "人员：" + group_user;
                 }
@@ -474,8 +532,9 @@ public class SubmissionActivity extends BaseActivity {
                 lvListEvent.setAdapter(arrayAdapter);
                 break;
             case 7:
+                tvContent.setText("集体出差");
                 if (!TextUtils.isEmpty(leaveTime)) {
-                    stringList.add("集体出差" + leaveTime);
+                    stringList.add("出差" + leaveTime);
                 }
                 tvPlact.setVisibility(View.VISIBLE);
                 tvPlact.setText("出差地点");
@@ -487,9 +546,9 @@ public class SubmissionActivity extends BaseActivity {
                 group_part = data.getGroup_part();
                 group_user = data.getGroup_user();
                 if (!TextUtils.isEmpty(group_part) && !TextUtils.isEmpty(group_user)) {
-                    partAndUser = "部门:" + group_part + "\n人员：" + group_user;
+                    partAndUser = "部门：" + group_part + "\n人员：" + group_user;
                 } else if (!TextUtils.isEmpty(group_part)) {
-                    partAndUser = "部门:" + group_part;
+                    partAndUser = "部门：" + group_part;
                 } else if (!TextUtils.isEmpty(group_user)) {
                     partAndUser = "人员：" + group_user;
                 }
@@ -546,6 +605,32 @@ public class SubmissionActivity extends BaseActivity {
                 overTimePlace.setText("解绑手机");
                 overTimeName.setVisibility(View.VISIBLE);
                 overTimeName.setText(data.getExtra().getDevice_name());
+                break;
+            case 21: //家长请假
+                if (!TextUtils.isEmpty(leaveTime)) {
+                    stringList.add("请假" + leaveTime);
+                }
+                applyShowTime = DateUtil.getApplyShowTime(start_time, end_time);
+                stringList.add(applyShowTime);
+                arrayAdapter = new ArrayAdapter(this, R.layout.item_submiss_list, stringList);
+                lvListEvent.setAdapter(arrayAdapter);
+                leave_type = data.getLeave_type();
+                String parentName = LeaveUtil.getParentName(leave_type);
+                tvContent.setText(parentName);
+                tvContent.setText(data.getStudent_name() + "家长\n(" + userinfo.getName() + ")" + parentName);
+                break;
+            case 22: //家长拜访
+                String visit_time = data.getVisit_time();
+                if (!TextUtils.isEmpty(visit_time) && visit_time.length() == 19) {
+                    visit_time = visit_time.substring(0, 16);
+                }
+                stringList.add(visit_time);
+                arrayAdapter = new ArrayAdapter(this, R.layout.item_submiss_list, stringList);
+                lvListEvent.setAdapter(arrayAdapter);
+
+                String parentUserName = userinfo.getName();
+                String student_name = data.getStudent_name();
+                tvContent.setText(student_name + "家长\n(" + parentUserName + ")拜访");
                 break;
         }
     }
@@ -705,7 +790,13 @@ public class SubmissionActivity extends BaseActivity {
         params.put("ai", applyId);
         params.put("tp", type);
         params.put("on", msg);
-        RequestUtils.createRequest().postApplyModify(params.getData()).enqueue(new RequestCallback<>(new IRequestListener<BaseModel>() {
+        String name = "";
+        if (at < 21) {
+            name = "modify";
+        } else {
+            name = "modifyParent";
+        }
+        RequestUtils.createRequest().postApplyModify(name, params.getData()).enqueue(new RequestCallback<>(new IRequestListener<BaseModel>() {
             @Override
             public void onSuccess(BaseModel baseModel) {
 //                showToast(baseModel.msg);

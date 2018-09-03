@@ -9,7 +9,7 @@ import com.sdxxtop.zhidian.http.BaseModel;
  * 描述：查看个人信息
  */
 
-public class ContactUserInfoBean  extends BaseModel<ContactUserInfoBean.DataBean> {
+public class ContactUserInfoBean extends BaseModel<ContactUserInfoBean.DataBean> {
 
     public static class DataBean {
         /**
@@ -123,6 +123,22 @@ public class ContactUserInfoBean  extends BaseModel<ContactUserInfoBean.DataBean
             private String add_time;
             private String update_time;
             private int is_hide_mobile;
+
+            /**
+             * "relation":"父子", //与学生关系
+             * "student_name":"漩涡鸣人1",//学生姓名
+             * "part_name":"学校名称",
+             * "grade_name":"一年级",
+             * "class_name":"一班",
+             */
+            private String relation;
+            private String part_id;
+            private String grade_id;
+            private String class_id;
+            private String student_name;
+            private String part_name;
+            private String grade_name;
+            private String class_name;
 
             public int getUserid() {
                 return userid;
@@ -298,6 +314,70 @@ public class ContactUserInfoBean  extends BaseModel<ContactUserInfoBean.DataBean
 
             public void setIs_hide_mobile(int is_hide_mobile) {
                 this.is_hide_mobile = is_hide_mobile;
+            }
+
+            public String getRelation() {
+                return relation;
+            }
+
+            public void setRelation(String relation) {
+                this.relation = relation;
+            }
+
+            public String getPart_id() {
+                return part_id;
+            }
+
+            public void setPart_id(String part_id) {
+                this.part_id = part_id;
+            }
+
+            public String getGrade_id() {
+                return grade_id;
+            }
+
+            public void setGrade_id(String grade_id) {
+                this.grade_id = grade_id;
+            }
+
+            public String getClass_id() {
+                return class_id;
+            }
+
+            public void setClass_id(String class_id) {
+                this.class_id = class_id;
+            }
+
+            public String getStudent_name() {
+                return student_name;
+            }
+
+            public void setStudent_name(String student_name) {
+                this.student_name = student_name;
+            }
+
+            public String getPart_name() {
+                return part_name;
+            }
+
+            public void setPart_name(String part_name) {
+                this.part_name = part_name;
+            }
+
+            public String getGrade_name() {
+                return grade_name;
+            }
+
+            public void setGrade_name(String grade_name) {
+                this.grade_name = grade_name;
+            }
+
+            public String getClass_name() {
+                return class_name;
+            }
+
+            public void setClass_name(String class_name) {
+                this.class_name = class_name;
             }
         }
     }

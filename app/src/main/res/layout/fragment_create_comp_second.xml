@@ -84,7 +84,7 @@
             android:layout_height="wrap_content"
             android:text="创建公司"
             android:textSize="@dimen/y28"
-            android:textColor="@color/texthintcolor"
+            android:textColor="@color/lan"
             android:layout_marginLeft="@dimen/x72"
             android:layout_marginTop="@dimen/y172"/>
 

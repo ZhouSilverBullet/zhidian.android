@@ -265,7 +265,7 @@ public class SchedulingManageActivity extends BaseActivity {
                 ContactPartBean.DataEntity data = readClassBean.getData();
                 if (data != null) {
                     Intent intent = new Intent(mContext, NoticeReciveRangeActivity.class);
-                    intent.putExtra("partSelectNotIn", NoticeReciveRangeActivity.PART_SELECTOR_NOT_CLICK);
+                    intent.putExtra(NoticeReciveRangeActivity.PART_SELECT_NOT_IN, NoticeReciveRangeActivity.PART_SELECTOR_NOT_CLICK);
                     intent.putExtra(NoticeReciveRangeActivity.NOTICE_TITLE, "通讯录");
                     intent.putExtra("DataEntity", data);
                     intent.putExtra("rule_id", rule_id);

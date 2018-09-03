@@ -23,6 +23,7 @@ import com.sdxxtop.zhidian.http.IRequestListener;
 import com.sdxxtop.zhidian.http.Params;
 import com.sdxxtop.zhidian.http.RequestCallback;
 import com.sdxxtop.zhidian.http.RequestUtils;
+import com.sdxxtop.zhidian.im.IMLoginHelper;
 import com.sdxxtop.zhidian.model.ConstantValue;
 import com.sdxxtop.zhidian.ui.base.BaseActivity;
 import com.sdxxtop.zhidian.utils.DateUtil;
@@ -190,12 +191,13 @@ public class MineWorkDetailActivity extends BaseActivity {
                     .setPositiveButton("", new View.OnClickListener() {
                         @Override
                         public void onClick(View v) {
-                            AppSession.getInstance().setCompanyId(companyId);
-                            //刷新首页数据
-                            EventBus.getDefault().post(new MessageCenterEvent());
-                            //刷新我的
-                            EventBus.getDefault().post(new ChangeCompanyEvent());
-                            EventBus.getDefault().post(new PostSuccessEvent());
+                            toChangeIm(companyId);
+//                            AppSession.getInstance().setCompanyId(companyId);
+//                            //刷新首页数据
+//                            EventBus.getDefault().post(new MessageCenterEvent());
+//                            //刷新我的
+//                            EventBus.getDefault().post(new ChangeCompanyEvent());
+//                            EventBus.getDefault().post(new PostSuccessEvent());
 //                            PreferenceUtils.getInstance(mContext).saveParam(ConstantValue.COMPANY_ID, companyId);
                         }
                     }).setNegativeButton("", new View.OnClickListener() {
@@ -206,6 +208,24 @@ public class MineWorkDetailActivity extends BaseActivity {
                 }
             }).show();
         }
+    }
+
+    private void toChangeIm(final String company_id) {
+        IMLoginHelper.getInstance().changeUserSignature(mContext, company_id + "", new IRequestListener<BaseModel>() {
+            @Override
+            public void onSuccess(BaseModel baseModel) {
+                AppSession.getInstance().setCompanyId(company_id);
+                //刷新首页数据
+                EventBus.getDefault().post(new MessageCenterEvent());
+                //刷新我的
+                EventBus.getDefault().post(new ChangeCompanyEvent());
+                EventBus.getDefault().post(new PostSuccessEvent());
+            }
+
+            @Override
+            public void onFailure(int code, String errorMsg) {
+            }
+        });
     }
 
     private void handleData(ReportReadBean.DataBean data) {

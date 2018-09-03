@@ -16,7 +16,6 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.text.TextUtils;
@@ -24,6 +23,7 @@ import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 
+import com.luck.picture.lib.permissions.RxPermissions;
 import com.sdxxtop.zhidian.App;
 import com.sdxxtop.zhidian.R;
 import com.sdxxtop.zhidian.ui.activity.SplashActivity;
@@ -65,8 +65,9 @@ public abstract class BaseActivity extends AppCompatActivity implements View.OnC
     private AlertDialog alertDialog;
 
     protected String[] perms = new String[]{Manifest.permission.READ_PHONE_STATE, Manifest.permission.ACCESS_FINE_LOCATION, Manifest.permission.ACCESS_WIFI_STATE};
-    private FragmentManager fragmentManager;
 
+    //rx的权限判断加入
+    protected RxPermissions rxPermissions;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -100,6 +101,9 @@ public abstract class BaseActivity extends AppCompatActivity implements View.OnC
         ButterKnife.bind(this);
         mContext = this;
         initByRestart(savedInstanceState);
+
+        rxPermissions = new RxPermissions(this);
+
         initVariables();
         initView();
         initData();

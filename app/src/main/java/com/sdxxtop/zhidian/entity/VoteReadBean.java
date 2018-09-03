@@ -228,6 +228,7 @@ public class VoteReadBean extends BaseModel<VoteReadBean.DataBean> {
             private int num;
             private int is_vote;
             private int score;
+            private String average;
             //自己加入
             private boolean isCheck;
 
@@ -285,6 +286,14 @@ public class VoteReadBean extends BaseModel<VoteReadBean.DataBean> {
 
             public void setCheck(boolean check) {
                 isCheck = check;
+            }
+
+            public String getAverage() {
+                return average;
+            }
+
+            public void setAverage(String average) {
+                this.average = average;
             }
         }
     }

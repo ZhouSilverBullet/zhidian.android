@@ -53,8 +53,12 @@ public class StatMonthAdapter extends BaseQuickAdapter<StatMonthBean.DataBean.St
         String num = item.getNum() == null ? "0" : item.getNum();
 
 
-        sortText.setText((helper.getAdapterPosition() + 1) + "");
-
+        if (type == 4) { //今日打卡记录没有顺序
+            sortText.setVisibility(View.GONE);
+        } else {
+            sortText.setVisibility(View.VISIBLE);
+            sortText.setText((helper.getAdapterPosition() + 1) + "");
+        }
 
         switch (type) {
             case 1:

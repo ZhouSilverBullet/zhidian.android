@@ -22,6 +22,7 @@ import com.sdxxtop.zhidian.utils.GridDividerItemDecoration;
 import com.sdxxtop.zhidian.utils.StringUtil;
 import com.sdxxtop.zhidian.utils.ViewUtil;
 
+import java.text.DecimalFormat;
 import java.util.List;
 
 /**
@@ -126,6 +127,8 @@ public class MineInitiateImageProgressView extends LinearLayout {
 
     public class ImageProgressAdapter extends BaseQuickAdapter<VoteReadBean.DataBean.OptionBean, BaseViewHolder> {
 
+        DecimalFormat df = new DecimalFormat("#.00");
+
         public ImageProgressAdapter(int layoutResId) {
             super(layoutResId);
         }
@@ -143,8 +146,8 @@ public class MineInitiateImageProgressView extends LinearLayout {
             pingFenText.setText(option_name);
 
             int num = item.getNum();
-            int percent = num * 100 / sum;
-            pingProgressText.setText(num + "(" + percent + "%)");
+//            double percent = (num * 100.0 / sum);
+            pingProgressText.setText(num + "(" + item.getAverage() + "%)");
 
             if (type) {
                 pingCheck.setVisibility(GONE);

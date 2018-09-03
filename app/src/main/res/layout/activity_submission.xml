@@ -180,7 +180,7 @@
                     android:orientation="horizontal">
 
                     <LinearLayout
-                        android:layout_width="wrap_content"
+                        android:layout_width="@dimen/x82"
                         android:layout_height="match_parent"
                         android:layout_marginLeft="@dimen/x28"
                         android:gravity="center"
@@ -235,19 +235,20 @@
                     </LinearLayout>
 
                     <LinearLayout
-                        android:layout_width="wrap_content"
+                        android:id="@+id/tv_approver_layout"
+                        android:layout_width="0dp"
                         android:layout_height="match_parent"
+                        android:layout_weight="1"
                         android:layout_marginLeft="@dimen/y27"
                         android:gravity="center_vertical"
                         android:orientation="vertical">
 
                         <TextView
                             android:id="@+id/my_user_text"
-                            android:layout_width="wrap_content"
+                            android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:ellipsize="end"
-                            android:lines="1"
-                            android:maxWidth="100dp"
+                            android:singleLine="true"
                             android:text="我"
                             android:textColor="#303030"
                             android:textSize="@dimen/y32" />
@@ -262,19 +263,18 @@
 
                         <TextView
                             android:id="@+id/tv_approver_name"
-                            android:layout_width="wrap_content"
+                            android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="@dimen/y53"
                             android:ellipsize="end"
-                            android:lines="1"
-                            android:maxWidth="150dp"
+                            android:singleLine="true"
                             android:text="徐小白"
                             android:textColor="#303030"
                             android:textSize="@dimen/y32" />
 
                         <TextView
                             android:id="@+id/tv_approvaling"
-                            android:layout_width="match_parent"
+                            android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="@dimen/y6"
                             android:text="审批中"
@@ -284,7 +284,7 @@
                     </LinearLayout>
 
                     <LinearLayout
-                        android:layout_width="match_parent"
+                        android:layout_width="wrap_content"
                         android:layout_height="match_parent"
                         android:layout_marginRight="@dimen/x32"
                         android:gravity="right"

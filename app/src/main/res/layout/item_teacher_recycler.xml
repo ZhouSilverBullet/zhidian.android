@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/recycler_item_selector"
+    android:orientation="vertical">
+
+    <View
+        android:id="@+id/item_teacher_user_line_view"
+        android:layout_width="match_parent"
+        android:layout_height="10dp"
+        android:background="@color/backgroundcolor" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:id="@+id/item_teacher_checkbox_layout"
+            android:layout_width="wrap_content"
+            android:layout_height="55dp"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:paddingLeft="11dp"
+            android:visibility="gone">
+
+            <CheckBox
+                android:id="@+id/item_teacher_checkbox"
+                android:layout_width="18dp"
+                android:layout_height="18dp"
+                android:layout_centerVertical="true"
+                android:background="@drawable/checkbox_select_all"
+                android:button="@null"
+                android:clickable="false" />
+        </LinearLayout>
+
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="55dp"
+            android:layout_marginLeft="11dp"
+            android:layout_marginRight="11dp">
+
+            <RelativeLayout
+                android:id="@+id/item_teacher_left_layout"
+                android:layout_width="42dp"
+                android:layout_height="42dp"
+                android:layout_centerVertical="true">
+
+                <de.hdodenhof.circleimageview.CircleImageView
+                    android:id="@+id/item_teacher_circle_img"
+                    android:layout_width="42dp"
+                    android:layout_height="42dp" />
+
+                <TextView
+                    android:id="@+id/item_teacher_short_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:text=""
+                    android:textColor="@color/bai"
+                    android:textSize="14sp" />
+            </RelativeLayout>
+
+            <TextView
+                android:id="@+id/item_teacher_user_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="14dp"
+                android:layout_toRightOf="@id/item_teacher_left_layout"
+                android:text="safasdfas"
+                android:textColor="@color/textcolor"
+                android:textSize="17sp" />
+
+            <TextView
+                android:id="@+id/item_teacher_position"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="20dp"
+                android:layout_toRightOf="@id/item_teacher_user_name"
+                android:ellipsize="end"
+                android:gravity="right"
+                android:singleLine="true"
+                android:text="校长"
+                android:textColor="@color/texthintcolor"
+                android:textSize="15sp" />
+
+            <ImageView
+                android:id="@+id/item_teacher_right_icon"
+                android:layout_width="18dp"
+                android:layout_height="18dp"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:src="@mipmap/the_right" />
+
+        </RelativeLayout>
+    </LinearLayout>
+
+
+</LinearLayout>

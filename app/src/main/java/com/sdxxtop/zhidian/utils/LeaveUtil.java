@@ -8,6 +8,7 @@ import android.util.SparseArray;
 
 public class LeaveUtil {
     static SparseArray<String> leaveMap;
+    static SparseArray<String> leaveParentMap;
     static SparseArray<String> overTimeTypeMap; //加班类型
     static SparseArray<String> overTimePositonMap; //加班地点
     static SparseArray<String> weekMap; //日期兑换
@@ -36,6 +37,21 @@ public class LeaveUtil {
         }
 
         return leaveMap.get(key);
+
+    }
+
+    public static String getParentName(int key) {
+        if (key == 0 || key > 4) {
+            return "";
+        }
+        if (leaveParentMap == null) {
+            leaveParentMap = new SparseArray<>();
+            leaveParentMap.put(1, "事假");
+            leaveParentMap.put(2, "病假");
+            leaveParentMap.put(3, "其他");
+        }
+
+        return leaveParentMap.get(key);
 
     }
 

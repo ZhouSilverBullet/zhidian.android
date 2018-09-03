@@ -9,6 +9,7 @@ import com.sdxxtop.zhidian.R;
 import com.sdxxtop.zhidian.entity.SelectBean;
 import com.sdxxtop.zhidian.eventbus.SchedulingFinishEvent;
 import com.sdxxtop.zhidian.ui.base.BaseActivity;
+import com.sdxxtop.zhidian.utils.StringUtil;
 import com.sdxxtop.zhidian.widget.SubTitleView;
 import com.sdxxtop.zhidian.widget.TextAndEditView;
 import com.sdxxtop.zhidian.widget.TextAndTextView;
@@ -53,8 +54,8 @@ public class SchedulingCreateActivity extends BaseActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(mContext, NoticeReciveRangeActivity.class);
-                intent.putExtra("partSelectNotIn", NoticeReciveRangeActivity.PART_SELECTOR_NOT_CLICK);
                 startActivityForResult(intent, 100);
+                intent.putExtra(NoticeReciveRangeActivity.PART_SELECT_NOT_IN, NoticeReciveRangeActivity.PART_SELECTOR_NOT_CLICK);
             }
         });
     }
@@ -66,7 +67,7 @@ public class SchedulingCreateActivity extends BaseActivity {
             public void onClick(View v) {
 
                 String editValue = editEditText.getEditText().getText().toString();
-                if (TextUtils.isEmpty(editValue)) {
+                if (StringUtil.isEmptyWithTrim(editValue)) {
                     showToast("请填写规则名称");
                     return;
                 }

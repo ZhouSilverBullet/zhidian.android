@@ -155,12 +155,12 @@ public class OvertimeActivity extends BaseApproverActivity {
     }
 
     private void submit() {
-        String startTime = tvStartTime.getText().toString();
-        String endTime = tvEndTime.getText().toString();
-        String eidtContent = contentEdit.getText().toString();
+        String startTime = tvStartTime.getText().toString().trim();
+        String endTime = tvEndTime.getText().toString().trim();
+        String eidtContent = contentEdit.getText().toString().trim();
 
-        String selectTypeValue = tvSelectType.getText().toString();
-        String tvSelectPlaceValue = tvSelectPlace.getText().toString();
+        String selectTypeValue = tvSelectType.getText().toString().trim();
+        String tvSelectPlaceValue = tvSelectPlace.getText().toString().trim();
 
         if (TextUtils.isEmpty(startTime) || TextUtils.isEmpty(endTime)) {
             showToast(getString(R.string.toast_apply_start_end_time));

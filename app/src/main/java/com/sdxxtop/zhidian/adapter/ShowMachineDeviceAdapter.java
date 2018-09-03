@@ -4,6 +4,7 @@ import android.content.Context;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.CheckBox;
 import android.widget.TextView;
 
 import com.sdxxtop.zhidian.R;
@@ -50,16 +51,19 @@ public class ShowMachineDeviceAdapter extends BaseAdapter{
             convertView = View.inflate(context, R.layout.item_device_machine, null);
             viewHolder = new ViewHolder();
             viewHolder.tv_item_machine_name = (TextView) convertView.findViewById(R.id.tv_item_machine_name);
+            viewHolder.cb_item_gps = (CheckBox) convertView.findViewById(R.id.cb_item_gps);
             convertView.setTag(viewHolder);
         }
         else{
             viewHolder = (ViewHolder) convertView.getTag();
         }
         viewHolder.tv_item_machine_name.setText(list.get(position).getName());
+        viewHolder.cb_item_gps.setVisibility(View.GONE);
         return convertView;
     }
 
     static class ViewHolder{
         TextView tv_item_machine_name;
+        CheckBox cb_item_gps;
     }
 }

@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.sdxxtop.zhidian.im.ZDGroupMemberActivity">
+
+    <com.sdxxtop.zhidian.widget.SubTitleView
+        android:id="@+id/group_member_title_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:rightText="添加"
+        app:rightTextIsShow="true" />
+
+    <RelativeLayout
+        android:id="@+id/group_member_search_background"
+        android:layout_width="match_parent"
+        android:layout_height="58dp"
+        android:background="@color/backgroundcolor"
+        android:paddingBottom="10dp"
+        android:paddingLeft="8dp"
+        android:paddingRight="8dp"
+        android:paddingTop="10dp">
+
+        <RelativeLayout
+            android:id="@+id/rl_serch"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_centerInParent="true"
+            android:background="@drawable/contact_search_bg">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:drawableLeft="@mipmap/search"
+                android:drawablePadding="@dimen/x17"
+                android:text="搜索"
+                android:textColor="@color/texthintcolor"
+                android:textSize="@dimen/y30" />
+        </RelativeLayout>
+    </RelativeLayout>
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/group_member_recycler"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:background="@color/backgroundcolor" />
+
+    <com.sdxxtop.zhidian.widget.BottomSelectorView
+        android:id="@+id/group_member_selector_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:visibility="gone" />
+</LinearLayout>

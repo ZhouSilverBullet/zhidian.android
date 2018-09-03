@@ -39,6 +39,14 @@ public class Params {
         return ui;
     }
 
+    public String getCompanyId() {
+        String ci = map.get("ci");
+        if (TextUtils.isEmpty(ci)) {
+            ci = PreferenceUtils.getInstance(context).getStringParam(ConstantValue.COMPANY_ID);
+        }
+        return ci;
+    }
+
     public void removeKey(String key) {
         if (map.containsKey(key)) {
             map.remove(key);

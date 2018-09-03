@@ -35,7 +35,7 @@ public class PhoneTextWatcher implements TextWatcher {
 
     @Override
     public void onTextChanged(CharSequence s, int start, int before, int count) {
-
+        s = trim(s);
         if (s == null || s.length() == 0) {
             if (ivDelPhone != null) {
                 ivDelPhone.setVisibility(View.GONE);
@@ -83,5 +83,18 @@ public class PhoneTextWatcher implements TextWatcher {
     @Override
     public void afterTextChanged(Editable s) {
 
+    }
+
+    public static CharSequence trim(CharSequence cs) {
+        int len = cs.length();
+        int st = 0;
+
+        while ((st < len) && (cs.charAt(st) <= ' ')) {
+            st++;
+        }
+        while ((st < len) && (cs.charAt(len - 1) <= ' ')) {
+            len--;
+        }
+        return ((st > 0) || (len < cs.length())) ? cs.subSequence(st, len) : cs;
     }
 }

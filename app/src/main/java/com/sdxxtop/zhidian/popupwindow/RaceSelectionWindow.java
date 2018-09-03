@@ -75,6 +75,8 @@ public class RaceSelectionWindow extends PopupWindow {
             TestBean bean8 = new TestBean("调班", false, 8);
             TestBean bean9 = new TestBean("外勤", false, 9);
             TestBean bean10 = new TestBean("手机解绑", false, 10);
+            TestBean bean11 = new TestBean("家长请假", false, 21);
+            TestBean bean12 = new TestBean("家长拜访", false, 22);
 
             beans.add(bean1);
             beans.add(bean2);
@@ -86,6 +88,8 @@ public class RaceSelectionWindow extends PopupWindow {
             beans.add(bean8);
             beans.add(bean9);
             beans.add(bean10);
+            beans.add(bean11);
+            beans.add(bean12);
         }
 
         adapter = new RaceSelectWindowAdapter(mContext, beans);

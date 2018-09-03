@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.sdxxtop.zhidian.ui.activity.StudentAttendanceActivity">
+
+    <com.sdxxtop.zhidian.widget.SubTitleView
+        android:id="@+id/student_attendance_sub_title_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:rightTextIsShow="true" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:background="@color/course_tab_color"
+        android:orientation="horizontal"
+        android:paddingLeft="7dp"
+        android:paddingRight="7dp">
+
+        <TextView
+            android:layout_width="75dp"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:text="姓名"
+            android:textColor="@color/textcolor"
+            android:textSize="15sp" />
+
+        <TextView
+            android:layout_width="75dp"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:text="到校"
+            android:textColor="@color/textcolor"
+            android:textSize="15sp" />
+
+        <TextView
+            android:layout_width="75dp"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:text="到校"
+            android:textColor="@color/textcolor"
+            android:textSize="15sp" />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="操作"
+            android:textColor="@color/textcolor"
+            android:textSize="15sp" />
+    </LinearLayout>
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/student_attendance_recycler"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+</LinearLayout>

@@ -106,12 +106,13 @@ public class GPSSettingActivity extends BaseActivity {
                 startActivityForResult(intentMap, 1994);
                 break;
             case R.id.btn_save:
-                if (etName.getText().toString().equals("")) {
+                String s1 = etName.getText().toString().trim();
+                if (TextUtils.isEmpty(s1)) {
                     ToastUtil.show("请输入GPS名字");
                     return;
                 }
                 Intent intent = new Intent();
-                intent.putExtra("gn", etName.getText().toString());
+                intent.putExtra("gn", s1);
                 String s = tvFanweiShow.getText().toString();
                 String sr = "";
                 //"300m", "200m", "100m"

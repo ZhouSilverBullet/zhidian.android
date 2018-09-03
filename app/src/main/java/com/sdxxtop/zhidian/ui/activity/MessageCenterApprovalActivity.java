@@ -66,25 +66,26 @@ public class MessageCenterApprovalActivity extends BaseActivity {
             @Override
             public void onLoadMore(RefreshLayout refreshLayout) {
                 if (mAdapter != null) {
-                    loadData(mAdapter.getData().size());
+                    loadData(mAdapter.getNum(), mAdapter.getParentNum());
                 }
             }
 
             @Override
             public void onRefresh(RefreshLayout refreshLayout) {
-                loadData(0);
+                loadData(0, 0);
             }
         });
     }
 
     @Override
     protected void initData() {
-        loadData(0);
+        loadData(0, 0);
     }
 
-    private void loadData(final int page) {
+    private void loadData(final int page, final int parentPage) {
         Params params = new Params();
         params.put("sp", page);
+        params.put("psp", parentPage);
         RequestUtils.createRequest().postMsgApply(params.getData()).enqueue(new RequestCallback<>(new IRequestListener<MsgApprovalBean>() {
             @Override
             public void onSuccess(MsgApprovalBean msgNoticeBean) {
@@ -94,16 +95,27 @@ public class MessageCenterApprovalActivity extends BaseActivity {
                     EventBus.getDefault().post(new MessageCenterEvent());
                 }
                 MsgApprovalBean.DataBean data = msgNoticeBean.getData();
-                if (data != null && data.getApply() != null) {
-                    List<MsgApprovalBean.DataBean.ApplyBean> notice = data.getApply();
+                if (data != null && data.getAll_apply() != null) {
+                    int num = data.getNum();
+                    int parent_num = data.getParent_num();
+                    List<MsgApprovalBean.DataBean.ApplyBean> notice = data.getAll_apply();
+//                    List<MsgApprovalBean.DataBean.ApplyBean> parent_apply = data.getParent_apply();
+//                    List<MsgApprovalBean.DataBean.ApplyBean> all_apply = data.getAll_apply();
+//                    notice.addAll(parent_apply);
                     if (mAdapter == null) {
                         mAdapter = new MessageApprovalAdapter(R.layout.item_message_center_approval_recycler);
                         mRecyclerView.setAdapter(mAdapter);
                         mAdapter.addData(notice);
+                        mAdapter.setNum(num);
+                        mAdapter.setParentNum(parent_num);
                     } else {
                         if (page == 0) {
+                            mAdapter.setNum(num);
+                            mAdapter.setParentNum(parent_num);
                             mAdapter.replaceData(notice);
                         } else {
+                            mAdapter.setNum(mAdapter.getNum() + num);
+                            mAdapter.setParentNum(mAdapter.getParentNum() + parent_num);
                             mAdapter.addData(notice);
                         }
                     }
@@ -120,6 +132,9 @@ public class MessageCenterApprovalActivity extends BaseActivity {
     }
 
     class MessageApprovalAdapter extends BaseQuickAdapter<MsgApprovalBean.DataBean.ApplyBean, BaseViewHolder> {
+        private int num;
+        private int parentNum;
+
         public MessageApprovalAdapter(int layoutResId) {
             super(layoutResId);
         }
@@ -136,12 +151,23 @@ public class MessageCenterApprovalActivity extends BaseActivity {
             Button unagreed = helper.getView(R.id.item_message_center_approval_unagreed);
             Button agreed = helper.getView(R.id.item_message_center_approval_agreed);
 
+
             title.setText(item.getTitle());
             time.setText(DateUtil.getShowTime(item.getAdd_time()));
 
             int status = item.getStatus();
             int reviewer_id = item.getReviewer_id();
             final int at = item.getApply_type();
+            switch (at) {
+                case 21:
+                    title.setText(item.getStudent_name() + "家长的请假申请");
+                    break;
+                case 22:
+                    title.setText(item.getStudent_name() + "家长的拜访申请");
+                    break;
+            }
+
+
             final int adapterPosition = helper.getAdapterPosition();
 
             switch (status) {
@@ -303,24 +329,29 @@ public class MessageCenterApprovalActivity extends BaseActivity {
                     break;
                 case 6:
 //                    value = "集体请假";
-                    group_part = item.getGroup_part();
-                    group_user = item.getGroup_user();
-                    if (!TextUtils.isEmpty(group_part) && !TextUtils.isEmpty(group_user)) {
-                        partAndUser = "部门:" + group_part + "\n人员：" + group_user;
-                    } else if (!TextUtils.isEmpty(group_part)) {
-                        partAndUser = "部门:" + group_part;
-                    } else if (!TextUtils.isEmpty(group_user)) {
-                        partAndUser = "人员：" + group_user;
-                    }
-
                     int leave_type1 = item.getLeave_type();
                     String name1 = LeaveUtil.getName(leave_type1);
                     applyShowTime = DateUtil.getApplyShowTime(start_time, end_time);
                     stringList = new ArrayList<>();
                     stringList.add("类型：" + name1);
-                    stringList.add("人员：" + partAndUser);
-//                    if (!TextUtils.isEmpty(item.getTime())) {
-//                        stringList.add("时间：" + item.getTime());
+
+
+                    group_part = item.getGroup_part();
+                    group_user = item.getGroup_user();
+                    if (!TextUtils.isEmpty(group_part) && !TextUtils.isEmpty(group_user)) {
+//                        partAndUser = "部门：" + group_part + "\n人员：" + group_user;
+                        stringList.add("部门：" + group_part);
+                        stringList.add("人员：" + group_user);
+                    } else if (!TextUtils.isEmpty(group_part)) {
+                        partAndUser = "部门：" + group_part;
+                        stringList.add(partAndUser);
+                    } else if (!TextUtils.isEmpty(group_user)) {
+                        partAndUser = "人员：" + group_user;
+                        stringList.add(partAndUser);
+                    }
+//
+//                    if (!TextUtils.isEmpty(partAndUser)) {
+//                        stringList.add(partAndUser);
 //                    }
                     stringList.add("时间：" + applyShowTime);
                     stringList.add("理由：" + item.getReason());
@@ -330,20 +361,36 @@ public class MessageCenterApprovalActivity extends BaseActivity {
                 case 7:
 //                    value = "集体出差";
 
-                    group_part = item.getGroup_part();
-                    group_user = item.getGroup_user();
-                    if (!TextUtils.isEmpty(group_part) && !TextUtils.isEmpty(group_user)) {
-                        partAndUser = "部门:" + group_part + "\n人员：" + group_user;
-                    } else if (!TextUtils.isEmpty(group_part)) {
-                        partAndUser = "部门:" + group_part;
-                    } else if (!TextUtils.isEmpty(group_user)) {
-                        partAndUser = "人员：" + group_user;
-                    }
+
+//                    if (!TextUtils.isEmpty(group_part) && !TextUtils.isEmpty(group_user)) {
+//                        partAndUser = "部门：" + group_part + "\n人员：" + group_user;
+//                    } else if (!TextUtils.isEmpty(group_part)) {
+//                        partAndUser = "部门：" + group_part;
+//                    } else if (!TextUtils.isEmpty(group_user)) {
+//                        partAndUser = "人员：" + group_user;
+//                    }
 
                     applyShowTime = DateUtil.getApplyShowTime(start_time, end_time);
                     stringList = new ArrayList<>();
                     stringList.add("地点：" + item.getSpace());
-                    stringList.add("人员：" + partAndUser);
+
+                    group_part = item.getGroup_part();
+                    group_user = item.getGroup_user();
+                    if (!TextUtils.isEmpty(group_part) && !TextUtils.isEmpty(group_user)) {
+//                        partAndUser = "部门：" + group_part + "\n人员：" + group_user;
+                        stringList.add("部门：" + group_part);
+                        stringList.add("人员：" + group_user);
+                    } else if (!TextUtils.isEmpty(group_part)) {
+                        partAndUser = "部门：" + group_part;
+                        stringList.add(partAndUser);
+                    } else if (!TextUtils.isEmpty(group_user)) {
+                        partAndUser = "人员：" + group_user;
+                        stringList.add(partAndUser);
+                    }
+
+//                    if (!TextUtils.isEmpty(partAndUser)) {
+//                        stringList.add(partAndUser);
+//                    }
 //                    if (!TextUtils.isEmpty(item.getTime())) {
 //                        stringList.add("时间：" + item.getTime());
 //                    }
@@ -390,6 +437,25 @@ public class MessageCenterApprovalActivity extends BaseActivity {
                     arrayAdapter = new ArrayAdapter(mContext, R.layout.item_submiss_list2, stringList);
                     contentListView.setAdapter(arrayAdapter);
                     break;
+                case 21:
+                    stringList = new ArrayList<>();
+                    applyShowTime = DateUtil.getApplyShowTime(start_time, end_time);
+                    String leaveParentName = LeaveUtil.getParentName(item.getLeave_type());
+                    stringList.add("类型：" + leaveParentName);
+                    stringList.add("时间：" + applyShowTime);
+                    stringList.add("时长：共" + item.getTime());
+                    stringList.add("理由：" + item.getReason());
+                    arrayAdapter = new ArrayAdapter(mContext, R.layout.item_submiss_list2, stringList);
+                    contentListView.setAdapter(arrayAdapter);
+                    break;
+                case 22:
+                    stringList = new ArrayList<>();
+                    stringList.add("时间：" + DateUtil.getVisitTime(item.getVisit_time()));
+                    stringList.add("理由：" + item.getReason());
+                    arrayAdapter = new ArrayAdapter(mContext, R.layout.item_submiss_list2, stringList);
+                    contentListView.setAdapter(arrayAdapter);
+                    break;
+
             }
 
             final int apply_type = item.getApply_type();
@@ -429,7 +495,14 @@ public class MessageCenterApprovalActivity extends BaseActivity {
             params.put("ai", item.getApply_id());
             params.put("tp", type);
 //          params.put("on", "");
-            RequestUtils.createRequest().postApplyModify(params.getData()).enqueue(new RequestCallback<>(new IRequestListener<BaseModel>() {
+            int apply_type = item.getApply_type();
+            String name = "";
+            if (apply_type < 21) {
+                name = "modify";
+            } else {
+                name = "modifyParent";
+            }
+            RequestUtils.createRequest().postApplyModify(name, params.getData()).enqueue(new RequestCallback<>(new IRequestListener<BaseModel>() {
                 @Override
                 public void onSuccess(BaseModel baseModel) {
                     showToast(baseModel.msg);
@@ -449,6 +522,22 @@ public class MessageCenterApprovalActivity extends BaseActivity {
                     showToast(errorMsg);
                 }
             }));
+        }
+
+        public void setNum(int num) {
+            this.num = num;
+        }
+
+        public int getNum() {
+            return num;
+        }
+
+        public int getParentNum() {
+            return parentNum;
+        }
+
+        public void setParentNum(int parentNum) {
+            this.parentNum = parentNum;
         }
     }
 

@@ -12,11 +12,10 @@ import android.widget.TextView;
 import com.sdxxtop.zhidian.R;
 import com.sdxxtop.zhidian.entity.DeviceModifyInfoBean;
 import com.sdxxtop.zhidian.http.RequestUtils;
-import com.sdxxtop.zhidian.model.ConstantValue;
 import com.sdxxtop.zhidian.ui.base.BaseActivity;
 import com.sdxxtop.zhidian.utils.FDLocation;
 import com.sdxxtop.zhidian.utils.NetUtil;
-import com.sdxxtop.zhidian.utils.PreferenceUtils;
+import com.sdxxtop.zhidian.utils.StringUtil;
 import com.sdxxtop.zhidian.utils.ToastUtil;
 
 import java.util.HashMap;
@@ -51,6 +50,7 @@ public class ModifyGpsActivity extends BaseActivity {
     private OptionPicker picker;
     private String sign_range;
     private String address;
+    private String locationJinWeiDu;
 
     @Override
     protected int getActivityView() {
@@ -82,6 +82,7 @@ public class ModifyGpsActivity extends BaseActivity {
         ogn = intent.getStringExtra("gn");
         sign_range = intent.getStringExtra("sign_range");
         address = intent.getStringExtra("address");
+        locationJinWeiDu = intent.getStringExtra("longitude");
         etName.setText(ogn);
         etName.setSelection(etName.getText().length());
         if (!TextUtils.isEmpty(sign_range)) {
@@ -114,7 +115,8 @@ public class ModifyGpsActivity extends BaseActivity {
                 startActivityForResult(intentMap, 1994);
                 break;
             case R.id.btn_save:
-                if (etName.getText().toString().equals("")) {
+                String s1 = etName.getText().toString();
+                if (StringUtil.isEmptyWithTrim(s1)) {
                     ToastUtil.show("请输入GPS名字");
                     return;
                 }
@@ -136,6 +138,7 @@ public class ModifyGpsActivity extends BaseActivity {
         if (requestCode == 1994 && resultCode == 10087) {
             ToastUtil.show(data.getStringExtra("ad"));
             tvGpsShow.setText(data.getStringExtra("ad"));
+            locationJinWeiDu = data.getStringExtra("lt");
         }
     }
 
@@ -190,9 +193,9 @@ public class ModifyGpsActivity extends BaseActivity {
         map.put("bi", "");
         map.put("gn", etName.getText().toString());
         map.put("sr", fanwei + "");
-        String jinDu = PreferenceUtils.getInstance(mContext).getStringParam(ConstantValue.MAP_JING_DU);
-        String weiDu = PreferenceUtils.getInstance(mContext).getStringParam(ConstantValue.MAP_WEI_DU);
-        map.put("slt", jinDu + "," + weiDu);
+//        String jinDu = PreferenceUtils.getInstance(mContext).getStringParam(ConstantValue.MAP_JING_DU);
+//        String weiDu = PreferenceUtils.getInstance(mContext).getStringParam(ConstantValue.MAP_WEI_DU);
+        map.put("slt", locationJinWeiDu);
         map.put("sa", tvGpsShow.getText().toString());
         String base64Data = NetUtil.getBase64Data(map);
         showProgressDialog("");

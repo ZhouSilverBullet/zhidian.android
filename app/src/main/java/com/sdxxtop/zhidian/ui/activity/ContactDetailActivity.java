@@ -1,34 +1,56 @@
 package com.sdxxtop.zhidian.ui.activity;
 
 import android.annotation.SuppressLint;
+import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.sdxxtop.zhidian.AppSession;
 import com.sdxxtop.zhidian.R;
 import com.sdxxtop.zhidian.entity.ContactCollectBean;
 import com.sdxxtop.zhidian.entity.ContactRemoveBean;
 import com.sdxxtop.zhidian.entity.ContactUserInfoBean;
+import com.sdxxtop.zhidian.eventbus.ChangeCompanyEvent;
+import com.sdxxtop.zhidian.http.BaseModel;
 import com.sdxxtop.zhidian.http.IRequestListener;
 import com.sdxxtop.zhidian.http.Params;
 import com.sdxxtop.zhidian.http.RequestCallback;
 import com.sdxxtop.zhidian.http.RequestUtils;
 import com.sdxxtop.zhidian.model.ConstantValue;
 import com.sdxxtop.zhidian.ui.base.BaseActivity;
+import com.sdxxtop.zhidian.utils.LogUtils;
 import com.sdxxtop.zhidian.utils.NetUtil;
 import com.sdxxtop.zhidian.utils.PreferenceUtils;
+import com.sdxxtop.zhidian.utils.StringUtil;
 import com.sdxxtop.zhidian.utils.ToastUtil;
 import com.sdxxtop.zhidian.utils.ViewUtil;
 import com.sdxxtop.zhidian.widget.ContactTextView;
 import com.sdxxtop.zhidian.widget.KnowHeightScrollView;
+import com.tencent.imsdk.TIMCallBack;
+import com.tencent.imsdk.TIMConversationType;
+import com.tencent.imsdk.TIMValueCallBack;
+import com.tencent.imsdk.ext.sns.TIMAddFriendRequest;
+import com.tencent.imsdk.ext.sns.TIMFriendResult;
+import com.tencent.imsdk.ext.sns.TIMFriendStatus;
+import com.tencent.imsdk.ext.sns.TIMFriendshipManagerExt;
+import com.tencent.qcloud.presentation.event.FriendshipEvent;
+import com.tencent.qcloud.timchat.model.FriendshipInfo;
+import com.tencent.qcloud.timchat.ui.ChatActivity;
 
+import org.greenrobot.eventbus.EventBus;
+
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import butterknife.BindView;
@@ -101,16 +123,38 @@ public class ContactDetailActivity extends BaseActivity implements KnowHeightScr
     ContactTextView contactAddress;
     @BindView(R.id.contact_contact)
     ContactTextView contactContact;
+    @BindView(R.id.contact_part_name)
+    ContactTextView contactPartName;
+    @BindView(R.id.contact_grade_name)
+    ContactTextView contactGradeName;
+    @BindView(R.id.contact_class_name)
+    ContactTextView contactClassName;
+    @BindView(R.id.contact_relation)
+    ContactTextView contactRelation;
+
+    @BindView(R.id.contact_device_layout)
+    RelativeLayout deviceLayout;
 
     @BindView(R.id.know_height_scroll)
     KnowHeightScrollView scrollView;
     @BindView(R.id.ll_background)
     LinearLayout llBackground;
 
+
+    @BindView(R.id.contact_send_btn)
+    Button sendBtn;
+    @BindView(R.id.contact_voice_btn)
+    Button voiceBtn;
+
     private String userid;
     private String is_collect;
     private ContactUserInfoBean userInfoBean;
     private int height;
+    private String studentId;
+    private int type;
+    private String skipActivityName;
+
+    private static final String TAG = "ContactDetailActivity";
 
     @Override
     protected int getActivityView() {
@@ -130,7 +174,10 @@ public class ContactDetailActivity extends BaseActivity implements KnowHeightScr
     @Override
     protected void initData() {
         Intent intent = getIntent();
+        type = intent.getIntExtra("type", -1);
         userid = intent.getStringExtra("userId");
+        studentId = intent.getStringExtra("studentId");
+        skipActivityName = intent.getStringExtra("activity");
         postUserInfo();
     }
 
@@ -246,10 +293,16 @@ public class ContactDetailActivity extends BaseActivity implements KnowHeightScr
      * 联系人详情网络请求
      */
     private void postUserInfo() {
+        String path = "userInfo";
         Params params = new Params();
+        if (type == TYPE_PARENT) {
+            deviceLayout.setVisibility(View.GONE);
+            params.put("si", studentId);
+            path = "parentInfo";
+        }
         params.put("ui", userid);
         params.put("cu", PreferenceUtils.getInstance(mContext).getStringParam(ConstantValue.USER_ID));
-        RequestUtils.createRequest().postContactUserInfo(params.getData()).enqueue(new RequestCallback<ContactUserInfoBean>(new IRequestListener<ContactUserInfoBean>() {
+        RequestUtils.createRequest().postContactUserInfo(path, params.getData()).enqueue(new RequestCallback<>(new IRequestListener<ContactUserInfoBean>() {
             @Override
             public void onSuccess(ContactUserInfoBean contactUserInfoBean) {
                 userInfoBean = contactUserInfoBean;
@@ -295,6 +348,39 @@ public class ContactDetailActivity extends BaseActivity implements KnowHeightScr
             return;
         }
 
+        final String name = userinfo.getName();
+        final String student_name = userinfo.getStudent_name();
+
+        if (is_self == 1) {
+            sendBtn.setVisibility(View.GONE);
+        } else {
+            sendBtn.setVisibility(View.VISIBLE);
+            //发送消息
+            sendBtn.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    final String identify;
+                    String message;
+                    String group;
+                    final String remark;
+                    if (type == TYPE_PARENT) {
+                        identify = "p" + studentId + userid;
+                        remark = student_name + "家长(" + name + ")";
+                    } else {
+                        identify = "t" + AppSession.getInstance().getCompanyId() + userid;
+                        remark = name;
+                    }
+
+                    if (FriendshipInfo.getInstance().isFriend(identify)) {
+                        ChatActivity.navToChat(mContext, identify, TIMConversationType.C2C);
+                    } else {
+                        showProgressDialog("");
+                        toAddFriendShip(identify, remark);
+                    }
+                }
+            });
+        }
+
         if (userinfo.getIs_hide_mobile() == 1) {
 
         } else {
@@ -308,10 +394,21 @@ public class ContactDetailActivity extends BaseActivity implements KnowHeightScr
 
 
         cbCollect.setImageResource(data.getIs_collect() == 2 ? R.mipmap.collect : R.mipmap.collected);
-        String img = userinfo.getImg();
-        String name = userinfo.getName();
+        final String img = userinfo.getImg();
         ViewUtil.setColorItemView(img, name, tvShortName, ivImg);
-        tvName.setText(name);
+        ivImg.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (!TextUtils.isEmpty(img) && !img.startsWith("#")) {
+                    PhotoViewActivity.start(mContext, img);
+                }
+            }
+        });
+        if (type == TYPE_PARENT) {
+            tvName.setText(student_name + "家长(" + name + ")");
+        } else {
+            tvName.setText(name);
+        }
         String mobile = userinfo.getMobile();
         tvPhone.setText(TextUtils.isEmpty(mobile) ? "未设置" : mobile);
         //职位
@@ -323,10 +420,14 @@ public class ContactDetailActivity extends BaseActivity implements KnowHeightScr
         setContactValue(contactPartment, part_name);
 //        contactPartment.getValueText().setText(TextUtils.isEmpty(part_name) ? "未设置" : part_name);
         //性别
-        if (userinfo.getSex() == 0) {
-            contactSex.getValueText().setText("未设置");
+        if (type == TYPE_PARENT) {
+            contactSex.setVisibility(View.GONE);
         } else {
-            contactSex.getValueText().setText(userinfo.getSex() == 1 ? "男" : "女");
+            if (userinfo.getSex() == 0) {
+                contactSex.getValueText().setText("未设置");
+            } else {
+                contactSex.getValueText().setText(userinfo.getSex() == 1 ? "男" : "女");
+            }
         }
 
         String email = userinfo.getEmail();
@@ -340,6 +441,10 @@ public class ContactDetailActivity extends BaseActivity implements KnowHeightScr
         String address = userinfo.getAddress();
         String contact = userinfo.getContact();
         String workPlace = userinfo.getWork_place();
+        String partName = userinfo.getPart_name();
+        String relation = userinfo.getRelation();
+        String grade_name = userinfo.getGrade_name();
+        String class_name = userinfo.getClass_name();
 
         setContactValue(contactEmail, email);
         setContactValue(contactWx, wechat);
@@ -351,6 +456,10 @@ public class ContactDetailActivity extends BaseActivity implements KnowHeightScr
         setContactValue(contactAddress, address);
         setContactValue(contactContact, contact);
         setContactValue(contactWorkPlace, workPlace);
+        setContactValue(contactPartName, partName);
+        setContactValue(contactRelation, relation);
+        setContactValue(contactGradeName, grade_name);
+        setContactValue(contactClassName, class_name);
 
         if (marriage != null) {
             switch (marriage) {
@@ -373,6 +482,97 @@ public class ContactDetailActivity extends BaseActivity implements KnowHeightScr
         }
     }
 
+    private void toAddFriendShip(final String identify, final String remark) {
+        Params params = new Params();
+        params.put("un", AppSession.getInstance().getIdentify());
+        if (type == TYPE_PARENT) {
+            params.put("si", StringUtil.stringNotNull(studentId));
+        } else {
+            params.put("ci", AppSession.getInstance().getCompanyId());
+        }
+        params.put("ui", StringUtil.stringNotNull(userid));
+        showProgressDialog("");
+        RequestUtils.createRequest().postTimAddFriend(params.getData()).enqueue(new RequestCallback<>(new IRequestListener<BaseModel>() {
+            @Override
+            public void onSuccess(BaseModel baseModel) {
+
+                setFriendMark(identify, remark);
+
+//                TIMFriendshipManagerExt.getInstance().getFriendGroups(null, new TIMValueCallBack<List<TIMFriendGroup>>() {
+//                    @Override
+//                    public void onError(int i, String s) {
+//                        closeProgressDialog();
+//                    }
+//
+//                    @Override
+//                    public void onSuccess(final List<TIMFriendGroup> timFriendGroups) {
+//                        if (timFriendGroups != null && timFriendGroups.size() > 0) {
+//                            TIMFriendGroup timFriendGroup = timFriendGroups.get(0);
+//                            String groupName = timFriendGroup.getGroupName();
+//                            TIMFriendshipManagerExt.getInstance().addFriendsToFriendGroup(groupName, Collections.singletonList(identify), new TIMValueCallBack<List<TIMFriendResult>>() {
+//                                @Override
+//                                public void onError(int code, String errorMessage) {
+//                                    closeProgressDialog();
+//                                    LogUtils.e(TAG, " code = " + code + " errorMessage = " + errorMessage);
+//                                }
+//
+//                                @Override
+//                                public void onSuccess(List<TIMFriendResult> resultList) {
+//                                    if (resultList != null && resultList.size() > 0) {
+//                                        setFriendMark(identify, remark);
+//                                    }
+//                                }
+//                            });
+//                        } else {
+//                            TIMFriendshipManagerExt.getInstance().createFriendGroup(Collections.singletonList("xuxin_group"), Collections.singletonList(identify), new TIMValueCallBack<List<TIMFriendResult>>() {
+//                                @Override
+//                                public void onError(int code, String desc) {
+//                                    closeProgressDialog();
+//                                    Log.e(TAG, "modifySnsProfile failed: " + code + " desc" + desc);
+//                                }
+//
+//                                @Override
+//                                public void onSuccess(List<TIMFriendResult> resultList) {
+//                                    if (resultList != null && resultList.size() > 0) {
+//                                        setFriendMark(identify, remark);
+//                                    }
+//                                }
+//                            });
+//                        }
+//                    }
+//                });
+            }
+
+            @Override
+            public void onFailure(int code, String errorMessage) {
+                closeProgressDialog();
+                LogUtils.e(TAG, " code = " + code + " errorMessage = " + errorMessage);
+            }
+        }));
+    }
+
+    private void setFriendMark(final String identify, String remark) {
+        TIMFriendshipManagerExt.ModifySnsProfileParam param = new TIMFriendshipManagerExt.ModifySnsProfileParam(identify);
+        param.setRemark(remark);
+        TIMFriendshipManagerExt.getInstance().modifySnsProfile(param, new TIMCallBack() {
+            @Override
+            public void onError(int code, String desc) {
+                closeProgressDialog();
+                //错误码 code 和错误描述 desc，可用于定位请求失败原因
+                //错误码 code 列表请参见错误码表
+                Log.e(TAG, "modifySnsProfile failed: " + code + " desc" + desc);
+            }
+
+            @Override
+            public void onSuccess() {
+                closeProgressDialog();
+                EventBus.getDefault().post(new ChangeCompanyEvent());
+                Log.e(TAG, "modifySnsProfile succ");
+                ChatActivity.navToChat(mContext, identify, TIMConversationType.C2C);
+            }
+        });
+    }
+
     private void setContactValue(ContactTextView textView, String value) {
         if (value != null) {
             if ("".equals(value)) {
@@ -391,11 +591,14 @@ public class ContactDetailActivity extends BaseActivity implements KnowHeightScr
         //PreferenceUtils.getInstance(mContext).getStringParam(ConstantValue.COMPANY_ID)
         map.put("ci", PreferenceUtils.getInstance(mContext).getStringParam(ConstantValue.COMPANY_ID));
         map.put("ui", PreferenceUtils.getInstance(mContext).getStringParam(ConstantValue.USER_ID));
+        if (type == TYPE_PARENT) {
+            map.put("si", studentId);
+        }
         map.put("cui", userid);
         map.put("ct", collectType);//新增收藏
         String base64Data = NetUtil.getBase64Data(map);
         showProgressDialog("");
-        RequestUtils.getInstance().buildRequest().postContactCollect(base64Data).enqueue(new Callback<ContactCollectBean>() {
+        RequestUtils.createRequest().postContactCollect(base64Data).enqueue(new Callback<ContactCollectBean>() {
             @Override
             public void onResponse(Call<ContactCollectBean> call, Response<ContactCollectBean> response) {
                 closeProgressDialog();
@@ -432,5 +635,97 @@ public class ContactDetailActivity extends BaseActivity implements KnowHeightScr
         } else if (percent > 1) {
             llBackground.setAlpha(1);
         }
+    }
+
+    /**
+     * 添加好友
+     *
+     * @param identify 添加对象Identify
+     * @param remark   备注名
+     * @param group    分组
+     * @param message  附加消息
+     */
+    private String isAdd = null;
+
+    public void addFriend(final String identify, String remark, String group, String message) {
+        List<TIMAddFriendRequest> reqList = new ArrayList<>();
+        TIMAddFriendRequest req = new TIMAddFriendRequest(identify);
+        req.setAddWording(message);
+        req.setRemark(remark);
+        req.setFriendGroup(group);
+        reqList.add(req);
+        TIMFriendshipManagerExt.getInstance().addFriend(reqList, new TIMValueCallBack<List<TIMFriendResult>>() {
+
+            @Override
+            public void onError(int arg0, String arg1) {
+                Log.e(TAG, "addFriend " + arg1);
+            }
+
+            @Override
+            public void onSuccess(List<TIMFriendResult> resultList) {
+                for (TIMFriendResult item : resultList) {
+                    if (item.getIdentifer().equals(identify)) {
+                        onAddFriend(identify, item.getStatus());
+                    }
+                }
+
+                if (!TextUtils.isEmpty(isAdd)) {
+                    FriendshipEvent.getInstance().OnFriendGroupUpdate(null);
+                    ChatActivity.navToChat(mContext, identify, TIMConversationType.C2C);
+                    LogUtils.e(TAG, "" + FriendshipInfo.getInstance().isFriend(identify));
+                }
+            }
+        });
+    }
+
+    private void onAddFriend(String identify, TIMFriendStatus status) {
+        switch (status) {
+            case TIM_ADD_FRIEND_STATUS_PENDING:
+//                Toast.makeText(this, getResources().getString(com.tencent.qcloud.timchat.R.string.add_friend_succeed), Toast.LENGTH_SHORT).show();
+//                finish();
+                break;
+            case TIM_FRIEND_STATUS_SUCC:
+
+                isAdd = "isAdd";
+//                Toast.makeText(this, getResources().getString(com.tencent.qcloud.timchat.R.string.add_friend_added), Toast.LENGTH_SHORT).show();
+//                finish();
+                break;
+//            case TIM_ADD_FRIEND_STATUS_FRIEND_SIDE_FORBID_ADD:
+//                Toast.makeText(this, getResources().getString(com.tencent.qcloud.timchat.R.string.add_friend_refuse_all), Toast.LENGTH_SHORT).show();
+//                finish();
+//                break;
+//            case TIM_ADD_FRIEND_STATUS_IN_OTHER_SIDE_BLACK_LIST:
+//                Toast.makeText(this, getResources().getString(com.tencent.qcloud.timchat.R.string.add_friend_to_blacklist), Toast.LENGTH_SHORT).show();
+//                finish();
+//                break;
+            default:
+                Toast.makeText(this, getResources().getString(com.tencent.qcloud.timchat.R.string.add_friend_error), Toast.LENGTH_SHORT).show();
+                break;
+        }
+    }
+
+
+    public static final int TYPE_PARENT = 10;
+    public static final int TYPE_TEACHER = 11;
+
+    /**
+     *
+     */
+    public static void startContactDetailActivityParent(Context context, String userid, String studentId) {
+        Intent intent = new Intent(context, ContactDetailActivity.class);
+        intent.putExtra("userId", userid);
+        intent.putExtra("studentId", studentId);
+        intent.putExtra("type", TYPE_PARENT);
+        context.startActivity(intent);
+    }
+
+    /**
+     *
+     */
+    public static void startContactDetailActivityTeacher(Context context, String userid) {
+        Intent intent = new Intent(context, ContactDetailActivity.class);
+        intent.putExtra("userId", userid);
+        intent.putExtra("type", TYPE_TEACHER);
+        context.startActivity(intent);
     }
 }

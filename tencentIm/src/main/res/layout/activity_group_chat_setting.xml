@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/group_chat_root_layout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.tencent.qcloud.timchat.ui.GroupProfileActivity">
+
+    <com.tencent.qcloud.ui.TemplateTitle
+        android:id="@+id/chat_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:background="@color/white"
+        android:fitsSystemWindows="true"
+        app:canBack="true"
+        app:titleText="聊天信息" />
+
+    <android.support.v4.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <com.tencent.qcloud.ui.TextAndTextView
+                android:id="@+id/nameText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                app:tatv_line_is_show="true"
+                app:tatv_text_img_is_show="false"
+                app:tatv_text_view="群聊名称" />
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:background="@color/white"
+                android:orientation="horizontal"
+                android:paddingLeft="15dp"
+                android:paddingRight="15dp">
+
+                <TextView
+                    android:id="@+id/group_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:text="群头像"
+                    android:textColor="#333333"
+                    android:textSize="17sp" />
+
+                <de.hdodenhof.circleimageview.CircleImageView
+                    android:id="@+id/group_circle_image"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginRight="20dp" />
+
+                <TextView
+                    android:id="@+id/group_right_image"
+                    android:layout_width="11dp"
+                    android:layout_height="19dp"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:background="@drawable/next_step" />
+            </RelativeLayout>
+
+            <com.tencent.qcloud.ui.TextAndTextView
+                android:id="@+id/member"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                app:tatv_text_view="@string/chat_setting_group_member" />
+
+            <com.tencent.qcloud.ui.FixedWidthLayout
+                android:id="@+id/fixed_width_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="12dp" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/recycler_text_item_line_color" />
+
+            <LinearLayout
+                android:id="@+id/new_add_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                android:orientation="horizontal"
+                android:paddingBottom="14dp"
+                android:paddingLeft="17dp"
+                android:paddingRight="17dp"
+                android:paddingTop="14dp">
+
+                <ImageView
+                    android:layout_width="18dp"
+                    android:layout_height="18dp"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginRight="10dp"
+                    android:src="@drawable/more3" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="添加成员"
+                    android:textColor="@color/im_text_color"
+                    android:textSize="17sp" />
+            </LinearLayout>
+
+            <com.tencent.qcloud.ui.TextAndTextView
+                android:id="@+id/notification_text"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                app:tatv_text_right_value="未设置"
+                app:tatv_text_view="群公告" />
+
+            <com.tencent.qcloud.ui.TextAndTextView
+                android:id="@+id/admin_setting_text"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:visibility="gone"
+                app:tatv_text_right_value=""
+                app:tatv_text_view="群管理" />
+
+            <com.tencent.qcloud.ui.TextAndSwitchView
+                android:id="@+id/top_chat_view"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:tasv_line_is_show="false"
+                app:tasv_text_is_check="false"
+                app:tasv_text_view="置顶聊天" />
+
+            <com.tencent.qcloud.ui.TextAndSwitchView
+                android:id="@+id/message_view"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:visibility="gone"
+                app:tasv_line_is_show="false"
+                app:tasv_text_is_check="false"
+                app:tasv_text_view="消息免打扰" />
+
+            <LinearLayout
+                android:id="@+id/quit_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingTop="15dp">
+
+                <TextView
+                    android:id="@+id/quit_btn"
+                    android:layout_width="match_parent"
+                    android:layout_height="45dp"
+                    android:layout_gravity="bottom"
+                    android:background="@color/white"
+                    android:gravity="center"
+                    android:text="退出群聊"
+                    android:textColor="@color/btn_red" />
+            </LinearLayout>
+        </LinearLayout>
+    </android.support.v4.widget.NestedScrollView>
+</LinearLayout>

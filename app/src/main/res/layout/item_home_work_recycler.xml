@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="90dp"
+    android:layout_height="90dp">
+
+    <ImageView
+        android:id="@+id/item_apply_hor_img"
+        android:layout_width="82dp"
+        android:layout_height="82dp"
+        android:layout_gravity="left|bottom"
+        android:scaleType="centerCrop" />
+
+    <FrameLayout
+        android:id="@+id/item_apply_hor_layout"
+        android:layout_width="90dp"
+        android:layout_height="90dp"
+        android:background="@color/backgroundcolor"
+        android:visibility="gone">
+
+        <ImageView
+            android:id="@+id/item_apply_hor_photo"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_gravity="center"
+            android:src="@mipmap/upload_pictures" />
+    </FrameLayout>
+
+
+    <TextView
+        android:id="@+id/item_apply_hor_dele"
+        android:layout_width="16dp"
+        android:layout_height="16dp"
+        android:layout_gravity="right|top"
+        android:background="@mipmap/dele" />
+</FrameLayout>

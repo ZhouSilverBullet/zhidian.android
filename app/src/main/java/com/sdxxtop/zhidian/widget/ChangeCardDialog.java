@@ -77,6 +77,10 @@ public class ChangeCardDialog {
             }
         });
         Window dialogWindow = dialog.getWindow();
+        if (dialogWindow == null) {
+            dialog.show();
+            return;
+        }
         dialogWindow.setGravity(Gravity.BOTTOM);
         WindowManager.LayoutParams lp = dialogWindow.getAttributes();
         lp.width = WindowManager.LayoutParams.MATCH_PARENT;
